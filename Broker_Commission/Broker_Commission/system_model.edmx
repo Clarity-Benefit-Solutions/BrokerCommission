@@ -1,0 +1,1997 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Broker_CommissionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BROKER_COMMISSION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PERIOD" Type="varchar" MaxLength="50" />
+          <Property Name="BROKER_ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="varchar" MaxLength="500" />
+          <Property Name="PAYLOCITY_NUMBER" Type="int" />
+          <Property Name="PAYMENT_AMOUNT" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BROKER_GROUP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BROKER_GROUP" Type="varchar" MaxLength="50" />
+          <Property Name="AGENT" Type="varchar" MaxLength="500" />
+          <Property Name="AGENT_ID" Type="int" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BROKER_MASTER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="PREMIUM" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="SECONDARY_EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="500" />
+          <Property Name="PREMIUM_TH" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="NOTES" Type="nvarchar" MaxLength="3000" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="BROKER_NAME_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_1" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_2" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_3" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_4" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_5" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_6" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="BROKER_MASTER_">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BROKER_NAME" Type="varchar" MaxLength="500" />
+          <Property Name="BROKER_GROUP" Type="int" />
+          <Property Name="PREMIUM" Type="int" />
+          <Property Name="CREATE_DATE" Type="datetime" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="PREMIUM_TH" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="NOTES" Type="nvarchar(max)" />
+          <Property Name="PAYLOCITY_ID" Type="int" />
+          <Property Name="BROKER_NAME_ID" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_ID" Type="int" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="FEE" Type="nvarchar" MaxLength="50" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CLIENT_">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLIENT_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="BROKER_ID" Type="int" />
+          <Property Name="FEE" Type="varchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="varchar" MaxLength="50" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Detail_Input">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Num" Type="nvarchar" MaxLength="255" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Memo" Type="nvarchar" MaxLength="3000" />
+          <Property Name="Agent" Type="nvarchar" MaxLength="255" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Error_Msg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Flat File Source Error Output Column" Type="varchar(max)" />
+          <Property Name="ErrorCode" Type="int" />
+          <Property Name="ErrorColumn" Type="int" />
+        </EntityType>
+        <EntityType Name="FEE_MEMO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MEMO" Type="nvarchar" MaxLength="255" />
+          <Property Name="COMMISIONABLE" Type="int" />
+          <Property Name="CLIENT_ID" Type="int" />
+          <Property Name="NOTE" Type="nvarchar" MaxLength="255" />
+          <Property Name="RATE" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Import_OCT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Num" Type="varchar" MaxLength="3000" />
+          <Property Name="Name" Type="varchar" MaxLength="3000" />
+          <Property Name="Memo" Type="varchar" MaxLength="3000" />
+          <Property Name="Agent" Type="varchar" MaxLength="500" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="SENT_INVOICE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="INVOICE_NUM" Type="varchar" MaxLength="500" />
+          <Property Name="OPEN_BALANCE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="DATE_ENTER" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STATEMENT_DETAILS">
+          <Key>
+            <PropertyRef Name="DETAIL_ID" />
+          </Key>
+          <Property Name="DETAIL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HEADER_ID" Type="int" Nullable="false" />
+          <Property Name="INVOICE_DATE" Type="date" />
+          <Property Name="INVOICE_NUM" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="SALES_PRICE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TOTAL_PRICE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="OPEN_BALANCE" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="STATEMENT_DETAILS_ADD">
+          <Key>
+            <PropertyRef Name="DETAIL_ID" />
+          </Key>
+          <Property Name="DETAIL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HEADER_ID" Type="int" Nullable="false" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="SALES_PRICE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TOTAL_PRICE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RESULTID" Type="int" />
+        </EntityType>
+        <EntityType Name="STATEMENT_HEADER">
+          <Key>
+            <PropertyRef Name="HEADER_ID" />
+          </Key>
+          <Property Name="HEADER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MONTH" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="YEAR" Type="int" Nullable="false" />
+          <Property Name="BROKER_ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="FLAG" Type="int" Nullable="false" />
+          <Property Name="STATEMENT_TOTAL" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Change_Date" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.BROKER_CLIENT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BROKER_CLIENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_BROKER_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="SECONDARY_EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_1" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_2" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_3" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_4" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_5" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_6" Type="nvarchar" MaxLength="500" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT_NAME0' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="COMMISSION_RESULT_NAME0">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_BROKER_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_AGENT" Type="varchar" MaxLength="8000" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_CLIENT" Type="varchar" MaxLength="8000" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="MEMO" Type="varchar" MaxLength="3000" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMISSION AMOUNT" Type="numeric" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="Num" Type="varchar" MaxLength="3000" />
+          <Property Name="INVOICE_DATE" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT_NAME1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="COMMISSION_RESULT_NAME1">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_BROKER_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_AGENT" Type="varchar" MaxLength="500" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_CLIENT" Type="varchar" MaxLength="8000" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="MEMO" Type="varchar" MaxLength="3000" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMISSION AMOUNT" Type="numeric" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="Num" Type="varchar" MaxLength="3000" />
+          <Property Name="INVOICE_DATE" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT_NAME2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="COMMISSION_RESULT_NAME2">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_BROKER_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_AGENT" Type="varchar" MaxLength="500" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_CLIENT" Type="varchar" MaxLength="8000" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="MEMO" Type="varchar" MaxLength="3000" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMISSION AMOUNT" Type="numeric" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="Num" Type="varchar" MaxLength="3000" />
+          <Property Name="INVOICE_DATE" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT_NAME3' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="COMMISSION_RESULT_NAME3">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_BROKER_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_AGENT" Type="varchar" MaxLength="500" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_CLIENT" Type="varchar" MaxLength="8000" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="MEMO" Type="varchar" MaxLength="3000" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMISSION AMOUNT" Type="numeric" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="Num" Type="varchar" MaxLength="3000" />
+          <Property Name="INVOICE_DATE" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT_NAME4' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="COMMISSION_RESULT_NAME4">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_BROKER_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_AGENT" Type="varchar" MaxLength="500" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_CLIENT" Type="varchar" MaxLength="8000" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="MEMO" Type="varchar" MaxLength="3000" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMISSION AMOUNT" Type="numeric" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="Num" Type="varchar" MaxLength="3000" />
+          <Property Name="INVOICE_DATE" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT_NAME5' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="COMMISSION_RESULT_NAME5">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_BROKER_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_AGENT" Type="varchar" MaxLength="500" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_CLIENT" Type="varchar" MaxLength="8000" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="MEMO" Type="varchar" MaxLength="3000" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMISSION AMOUNT" Type="numeric" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="Num" Type="varchar" MaxLength="3000" />
+          <Property Name="INVOICE_DATE" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT_NAME6' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="COMMISSION_RESULT_NAME6">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_BROKER_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_AGENT" Type="varchar" MaxLength="500" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_CLIENT" Type="varchar" MaxLength="8000" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="MEMO" Type="varchar" MaxLength="3000" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMISSION AMOUNT" Type="numeric" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="Num" Type="varchar" MaxLength="3000" />
+          <Property Name="INVOICE_DATE" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_SUMMARY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="COMMISSION_SUMMARY">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="BROKER_ID" Type="int" Nullable="false" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="TOTAL" Type="numeric" Precision="38" Scale="4" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.DASH_BOARD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DASH_BOARD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="PREMIUM" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="SECONDARY_EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="500" />
+          <Property Name="PREMIUM_TH" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="NOTES" Type="nvarchar" MaxLength="3000" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="BROKER_NAME_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_1" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_2" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_3" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_4" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_5" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_NAME_6" Type="nvarchar" MaxLength="500" />
+          <Property Name="TOTAL_AMOUNT" Type="numeric" Precision="38" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_STATEMENT">
+          <Key>
+            <PropertyRef Name="HEADER_ID" />
+            <PropertyRef Name="MONTH" />
+            <PropertyRef Name="YEAR" />
+            <PropertyRef Name="FLAG" />
+          </Key>
+          <Property Name="HEADER_ID" Type="int" Nullable="false" />
+          <Property Name="PID" Type="nvarchar" MaxLength="50" />
+          <Property Name="MONTH" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="YEAR" Type="int" Nullable="false" />
+          <Property Name="BROKER_ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="FLAG" Type="int" Nullable="false" />
+          <Property Name="STATEMENT_TOTAL" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Change_Date" Type="datetime" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="SALES_PRICE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TOTAL_PRICE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="OPEN_BALANCE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="GET_TOTAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_FILE_IMPORT_SSIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_IMPORT_FILE_SENT_SSIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Month" Type="nvarchar" Mode="In" />
+          <Parameter Name="Year" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Broker_CommissionModelStoreContainer">
+          <EntitySet Name="BROKER_COMMISSION" EntityType="Self.BROKER_COMMISSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BROKER_MASTER" EntityType="Self.BROKER_MASTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BROKER_MASTER_" EntityType="Self.BROKER_MASTER_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENT" EntityType="Self.CLIENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENT_" EntityType="Self.CLIENT_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detail_Input" EntityType="Self.Detail_Input" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Error_Msg" EntityType="Self.Error_Msg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FEE_MEMO" EntityType="Self.FEE_MEMO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Import_OCT" EntityType="Self.Import_OCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SENT_INVOICE" EntityType="Self.SENT_INVOICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATEMENT_DETAILS" EntityType="Self.STATEMENT_DETAILS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATEMENT_DETAILS_ADD" EntityType="Self.STATEMENT_DETAILS_ADD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATEMENT_HEADER" EntityType="Self.STATEMENT_HEADER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BROKER_GROUP" EntityType="Self.BROKER_GROUP" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[BROKER_GROUP].[ID] AS [ID], 
+[BROKER_GROUP].[BROKER_GROUP] AS [BROKER_GROUP], 
+[BROKER_GROUP].[AGENT] AS [AGENT], 
+[BROKER_GROUP].[AGENT_ID] AS [AGENT_ID], 
+[BROKER_GROUP].[TITLE] AS [TITLE]
+FROM [dbo].[BROKER_GROUP] AS [BROKER_GROUP]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BROKER_CLIENT" EntityType="Self.BROKER_CLIENT" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[BROKER_CLIENT].[ID] AS [ID], 
+[BROKER_CLIENT].[BROKER_NAME] AS [BROKER_NAME], 
+[BROKER_CLIENT].[QB_BROKER_NAME] AS [QB_BROKER_NAME], 
+[BROKER_CLIENT].[CLIENT_NAME] AS [CLIENT_NAME], 
+[BROKER_CLIENT].[QB_FEE] AS [QB_FEE], 
+[BROKER_CLIENT].[BROKER_STATUS] AS [BROKER_STATUS], 
+[BROKER_CLIENT].[EMAIL] AS [EMAIL], 
+[BROKER_CLIENT].[QB_CLIENT_NAME] AS [QB_CLIENT_NAME], 
+[BROKER_CLIENT].[FEE_MEMO] AS [FEE_MEMO], 
+[BROKER_CLIENT].[COMMISSION_RATE] AS [COMMISSION_RATE], 
+[BROKER_CLIENT].[UNIT] AS [UNIT], 
+[BROKER_CLIENT].[PAYLOCITY_ID] AS [PAYLOCITY_ID], 
+[BROKER_CLIENT].[SECONDARY_EMAIL] AS [SECONDARY_EMAIL], 
+[BROKER_CLIENT].[BROKER_NAME_1] AS [BROKER_NAME_1], 
+[BROKER_CLIENT].[BROKER_NAME_2] AS [BROKER_NAME_2], 
+[BROKER_CLIENT].[BROKER_NAME_3] AS [BROKER_NAME_3], 
+[BROKER_CLIENT].[BROKER_NAME_4] AS [BROKER_NAME_4], 
+[BROKER_CLIENT].[BROKER_NAME_5] AS [BROKER_NAME_5], 
+[BROKER_CLIENT].[BROKER_NAME_6] AS [BROKER_NAME_6], 
+[BROKER_CLIENT].[START_DATE] AS [START_DATE]
+FROM [dbo].[BROKER_CLIENT] AS [BROKER_CLIENT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="COMMISSION_RESULT_NAME0" EntityType="Self.COMMISSION_RESULT_NAME0" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[COMMISSION_RESULT_NAME0].[ID] AS [ID], 
+[COMMISSION_RESULT_NAME0].[BROKER_NAME] AS [BROKER_NAME], 
+[COMMISSION_RESULT_NAME0].[QB_BROKER_NAME] AS [QB_BROKER_NAME], 
+[COMMISSION_RESULT_NAME0].[QB_AGENT] AS [QB_AGENT], 
+[COMMISSION_RESULT_NAME0].[CLIENT_NAME] AS [CLIENT_NAME], 
+[COMMISSION_RESULT_NAME0].[QB_CLIENT] AS [QB_CLIENT], 
+[COMMISSION_RESULT_NAME0].[QB_FEE] AS [QB_FEE], 
+[COMMISSION_RESULT_NAME0].[MEMO] AS [MEMO], 
+[COMMISSION_RESULT_NAME0].[Qty] AS [Qty], 
+[COMMISSION_RESULT_NAME0].[Sales Price] AS [Sales Price], 
+[COMMISSION_RESULT_NAME0].[Amount] AS [Amount], 
+[COMMISSION_RESULT_NAME0].[Open Balance] AS [Open Balance], 
+[COMMISSION_RESULT_NAME0].[COMMISSION_RATE] AS [COMMISSION_RATE], 
+[COMMISSION_RESULT_NAME0].[UNIT] AS [UNIT], 
+[COMMISSION_RESULT_NAME0].[COMMISSION AMOUNT] AS [COMMISSION AMOUNT], 
+[COMMISSION_RESULT_NAME0].[BROKER_STATUS] AS [BROKER_STATUS], 
+[COMMISSION_RESULT_NAME0].[EMAIL] AS [EMAIL], 
+[COMMISSION_RESULT_NAME0].[QB_CLIENT_NAME] AS [QB_CLIENT_NAME], 
+[COMMISSION_RESULT_NAME0].[FEE_MEMO] AS [FEE_MEMO], 
+[COMMISSION_RESULT_NAME0].[BROKER_ID] AS [BROKER_ID], 
+[COMMISSION_RESULT_NAME0].[Date] AS [Date], 
+[COMMISSION_RESULT_NAME0].[PAYLOCITY_ID] AS [PAYLOCITY_ID], 
+[COMMISSION_RESULT_NAME0].[START_DATE] AS [START_DATE], 
+[COMMISSION_RESULT_NAME0].[Num] AS [Num], 
+[COMMISSION_RESULT_NAME0].[INVOICE_DATE] AS [INVOICE_DATE]
+FROM [dbo].[COMMISSION_RESULT_NAME0] AS [COMMISSION_RESULT_NAME0]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="COMMISSION_RESULT_NAME1" EntityType="Self.COMMISSION_RESULT_NAME1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[COMMISSION_RESULT_NAME1].[ID] AS [ID], 
+[COMMISSION_RESULT_NAME1].[BROKER_NAME] AS [BROKER_NAME], 
+[COMMISSION_RESULT_NAME1].[QB_BROKER_NAME] AS [QB_BROKER_NAME], 
+[COMMISSION_RESULT_NAME1].[QB_AGENT] AS [QB_AGENT], 
+[COMMISSION_RESULT_NAME1].[CLIENT_NAME] AS [CLIENT_NAME], 
+[COMMISSION_RESULT_NAME1].[QB_CLIENT] AS [QB_CLIENT], 
+[COMMISSION_RESULT_NAME1].[QB_FEE] AS [QB_FEE], 
+[COMMISSION_RESULT_NAME1].[MEMO] AS [MEMO], 
+[COMMISSION_RESULT_NAME1].[Qty] AS [Qty], 
+[COMMISSION_RESULT_NAME1].[Sales Price] AS [Sales Price], 
+[COMMISSION_RESULT_NAME1].[Amount] AS [Amount], 
+[COMMISSION_RESULT_NAME1].[Open Balance] AS [Open Balance], 
+[COMMISSION_RESULT_NAME1].[COMMISSION_RATE] AS [COMMISSION_RATE], 
+[COMMISSION_RESULT_NAME1].[UNIT] AS [UNIT], 
+[COMMISSION_RESULT_NAME1].[COMMISSION AMOUNT] AS [COMMISSION AMOUNT], 
+[COMMISSION_RESULT_NAME1].[BROKER_STATUS] AS [BROKER_STATUS], 
+[COMMISSION_RESULT_NAME1].[EMAIL] AS [EMAIL], 
+[COMMISSION_RESULT_NAME1].[QB_CLIENT_NAME] AS [QB_CLIENT_NAME], 
+[COMMISSION_RESULT_NAME1].[FEE_MEMO] AS [FEE_MEMO], 
+[COMMISSION_RESULT_NAME1].[BROKER_ID] AS [BROKER_ID], 
+[COMMISSION_RESULT_NAME1].[Date] AS [Date], 
+[COMMISSION_RESULT_NAME1].[PAYLOCITY_ID] AS [PAYLOCITY_ID], 
+[COMMISSION_RESULT_NAME1].[START_DATE] AS [START_DATE], 
+[COMMISSION_RESULT_NAME1].[Num] AS [Num], 
+[COMMISSION_RESULT_NAME1].[INVOICE_DATE] AS [INVOICE_DATE]
+FROM [dbo].[COMMISSION_RESULT_NAME1] AS [COMMISSION_RESULT_NAME1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="COMMISSION_RESULT_NAME2" EntityType="Self.COMMISSION_RESULT_NAME2" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[COMMISSION_RESULT_NAME2].[ID] AS [ID], 
+[COMMISSION_RESULT_NAME2].[BROKER_NAME] AS [BROKER_NAME], 
+[COMMISSION_RESULT_NAME2].[QB_BROKER_NAME] AS [QB_BROKER_NAME], 
+[COMMISSION_RESULT_NAME2].[QB_AGENT] AS [QB_AGENT], 
+[COMMISSION_RESULT_NAME2].[CLIENT_NAME] AS [CLIENT_NAME], 
+[COMMISSION_RESULT_NAME2].[QB_CLIENT] AS [QB_CLIENT], 
+[COMMISSION_RESULT_NAME2].[QB_FEE] AS [QB_FEE], 
+[COMMISSION_RESULT_NAME2].[MEMO] AS [MEMO], 
+[COMMISSION_RESULT_NAME2].[Qty] AS [Qty], 
+[COMMISSION_RESULT_NAME2].[Sales Price] AS [Sales Price], 
+[COMMISSION_RESULT_NAME2].[Amount] AS [Amount], 
+[COMMISSION_RESULT_NAME2].[Open Balance] AS [Open Balance], 
+[COMMISSION_RESULT_NAME2].[COMMISSION_RATE] AS [COMMISSION_RATE], 
+[COMMISSION_RESULT_NAME2].[UNIT] AS [UNIT], 
+[COMMISSION_RESULT_NAME2].[COMMISSION AMOUNT] AS [COMMISSION AMOUNT], 
+[COMMISSION_RESULT_NAME2].[BROKER_STATUS] AS [BROKER_STATUS], 
+[COMMISSION_RESULT_NAME2].[EMAIL] AS [EMAIL], 
+[COMMISSION_RESULT_NAME2].[QB_CLIENT_NAME] AS [QB_CLIENT_NAME], 
+[COMMISSION_RESULT_NAME2].[FEE_MEMO] AS [FEE_MEMO], 
+[COMMISSION_RESULT_NAME2].[BROKER_ID] AS [BROKER_ID], 
+[COMMISSION_RESULT_NAME2].[Date] AS [Date], 
+[COMMISSION_RESULT_NAME2].[PAYLOCITY_ID] AS [PAYLOCITY_ID], 
+[COMMISSION_RESULT_NAME2].[START_DATE] AS [START_DATE], 
+[COMMISSION_RESULT_NAME2].[Num] AS [Num], 
+[COMMISSION_RESULT_NAME2].[INVOICE_DATE] AS [INVOICE_DATE]
+FROM [dbo].[COMMISSION_RESULT_NAME2] AS [COMMISSION_RESULT_NAME2]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="COMMISSION_RESULT_NAME3" EntityType="Self.COMMISSION_RESULT_NAME3" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[COMMISSION_RESULT_NAME3].[ID] AS [ID], 
+[COMMISSION_RESULT_NAME3].[BROKER_NAME] AS [BROKER_NAME], 
+[COMMISSION_RESULT_NAME3].[QB_BROKER_NAME] AS [QB_BROKER_NAME], 
+[COMMISSION_RESULT_NAME3].[QB_AGENT] AS [QB_AGENT], 
+[COMMISSION_RESULT_NAME3].[CLIENT_NAME] AS [CLIENT_NAME], 
+[COMMISSION_RESULT_NAME3].[QB_CLIENT] AS [QB_CLIENT], 
+[COMMISSION_RESULT_NAME3].[QB_FEE] AS [QB_FEE], 
+[COMMISSION_RESULT_NAME3].[MEMO] AS [MEMO], 
+[COMMISSION_RESULT_NAME3].[Qty] AS [Qty], 
+[COMMISSION_RESULT_NAME3].[Sales Price] AS [Sales Price], 
+[COMMISSION_RESULT_NAME3].[Amount] AS [Amount], 
+[COMMISSION_RESULT_NAME3].[Open Balance] AS [Open Balance], 
+[COMMISSION_RESULT_NAME3].[COMMISSION_RATE] AS [COMMISSION_RATE], 
+[COMMISSION_RESULT_NAME3].[UNIT] AS [UNIT], 
+[COMMISSION_RESULT_NAME3].[COMMISSION AMOUNT] AS [COMMISSION AMOUNT], 
+[COMMISSION_RESULT_NAME3].[BROKER_STATUS] AS [BROKER_STATUS], 
+[COMMISSION_RESULT_NAME3].[EMAIL] AS [EMAIL], 
+[COMMISSION_RESULT_NAME3].[QB_CLIENT_NAME] AS [QB_CLIENT_NAME], 
+[COMMISSION_RESULT_NAME3].[FEE_MEMO] AS [FEE_MEMO], 
+[COMMISSION_RESULT_NAME3].[BROKER_ID] AS [BROKER_ID], 
+[COMMISSION_RESULT_NAME3].[Date] AS [Date], 
+[COMMISSION_RESULT_NAME3].[PAYLOCITY_ID] AS [PAYLOCITY_ID], 
+[COMMISSION_RESULT_NAME3].[START_DATE] AS [START_DATE], 
+[COMMISSION_RESULT_NAME3].[Num] AS [Num], 
+[COMMISSION_RESULT_NAME3].[INVOICE_DATE] AS [INVOICE_DATE]
+FROM [dbo].[COMMISSION_RESULT_NAME3] AS [COMMISSION_RESULT_NAME3]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="COMMISSION_RESULT_NAME4" EntityType="Self.COMMISSION_RESULT_NAME4" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[COMMISSION_RESULT_NAME4].[ID] AS [ID], 
+[COMMISSION_RESULT_NAME4].[BROKER_NAME] AS [BROKER_NAME], 
+[COMMISSION_RESULT_NAME4].[QB_BROKER_NAME] AS [QB_BROKER_NAME], 
+[COMMISSION_RESULT_NAME4].[QB_AGENT] AS [QB_AGENT], 
+[COMMISSION_RESULT_NAME4].[CLIENT_NAME] AS [CLIENT_NAME], 
+[COMMISSION_RESULT_NAME4].[QB_CLIENT] AS [QB_CLIENT], 
+[COMMISSION_RESULT_NAME4].[QB_FEE] AS [QB_FEE], 
+[COMMISSION_RESULT_NAME4].[MEMO] AS [MEMO], 
+[COMMISSION_RESULT_NAME4].[Qty] AS [Qty], 
+[COMMISSION_RESULT_NAME4].[Sales Price] AS [Sales Price], 
+[COMMISSION_RESULT_NAME4].[Amount] AS [Amount], 
+[COMMISSION_RESULT_NAME4].[Open Balance] AS [Open Balance], 
+[COMMISSION_RESULT_NAME4].[COMMISSION_RATE] AS [COMMISSION_RATE], 
+[COMMISSION_RESULT_NAME4].[UNIT] AS [UNIT], 
+[COMMISSION_RESULT_NAME4].[COMMISSION AMOUNT] AS [COMMISSION AMOUNT], 
+[COMMISSION_RESULT_NAME4].[BROKER_STATUS] AS [BROKER_STATUS], 
+[COMMISSION_RESULT_NAME4].[EMAIL] AS [EMAIL], 
+[COMMISSION_RESULT_NAME4].[QB_CLIENT_NAME] AS [QB_CLIENT_NAME], 
+[COMMISSION_RESULT_NAME4].[FEE_MEMO] AS [FEE_MEMO], 
+[COMMISSION_RESULT_NAME4].[BROKER_ID] AS [BROKER_ID], 
+[COMMISSION_RESULT_NAME4].[Date] AS [Date], 
+[COMMISSION_RESULT_NAME4].[PAYLOCITY_ID] AS [PAYLOCITY_ID], 
+[COMMISSION_RESULT_NAME4].[START_DATE] AS [START_DATE], 
+[COMMISSION_RESULT_NAME4].[Num] AS [Num], 
+[COMMISSION_RESULT_NAME4].[INVOICE_DATE] AS [INVOICE_DATE]
+FROM [dbo].[COMMISSION_RESULT_NAME4] AS [COMMISSION_RESULT_NAME4]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="COMMISSION_RESULT_NAME5" EntityType="Self.COMMISSION_RESULT_NAME5" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[COMMISSION_RESULT_NAME5].[ID] AS [ID], 
+[COMMISSION_RESULT_NAME5].[BROKER_NAME] AS [BROKER_NAME], 
+[COMMISSION_RESULT_NAME5].[QB_BROKER_NAME] AS [QB_BROKER_NAME], 
+[COMMISSION_RESULT_NAME5].[QB_AGENT] AS [QB_AGENT], 
+[COMMISSION_RESULT_NAME5].[CLIENT_NAME] AS [CLIENT_NAME], 
+[COMMISSION_RESULT_NAME5].[QB_CLIENT] AS [QB_CLIENT], 
+[COMMISSION_RESULT_NAME5].[QB_FEE] AS [QB_FEE], 
+[COMMISSION_RESULT_NAME5].[MEMO] AS [MEMO], 
+[COMMISSION_RESULT_NAME5].[Qty] AS [Qty], 
+[COMMISSION_RESULT_NAME5].[Sales Price] AS [Sales Price], 
+[COMMISSION_RESULT_NAME5].[Amount] AS [Amount], 
+[COMMISSION_RESULT_NAME5].[Open Balance] AS [Open Balance], 
+[COMMISSION_RESULT_NAME5].[COMMISSION_RATE] AS [COMMISSION_RATE], 
+[COMMISSION_RESULT_NAME5].[UNIT] AS [UNIT], 
+[COMMISSION_RESULT_NAME5].[COMMISSION AMOUNT] AS [COMMISSION AMOUNT], 
+[COMMISSION_RESULT_NAME5].[BROKER_STATUS] AS [BROKER_STATUS], 
+[COMMISSION_RESULT_NAME5].[EMAIL] AS [EMAIL], 
+[COMMISSION_RESULT_NAME5].[QB_CLIENT_NAME] AS [QB_CLIENT_NAME], 
+[COMMISSION_RESULT_NAME5].[FEE_MEMO] AS [FEE_MEMO], 
+[COMMISSION_RESULT_NAME5].[BROKER_ID] AS [BROKER_ID], 
+[COMMISSION_RESULT_NAME5].[Date] AS [Date], 
+[COMMISSION_RESULT_NAME5].[PAYLOCITY_ID] AS [PAYLOCITY_ID], 
+[COMMISSION_RESULT_NAME5].[START_DATE] AS [START_DATE], 
+[COMMISSION_RESULT_NAME5].[Num] AS [Num], 
+[COMMISSION_RESULT_NAME5].[INVOICE_DATE] AS [INVOICE_DATE]
+FROM [dbo].[COMMISSION_RESULT_NAME5] AS [COMMISSION_RESULT_NAME5]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="COMMISSION_RESULT_NAME6" EntityType="Self.COMMISSION_RESULT_NAME6" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[COMMISSION_RESULT_NAME6].[ID] AS [ID], 
+[COMMISSION_RESULT_NAME6].[BROKER_NAME] AS [BROKER_NAME], 
+[COMMISSION_RESULT_NAME6].[QB_BROKER_NAME] AS [QB_BROKER_NAME], 
+[COMMISSION_RESULT_NAME6].[QB_AGENT] AS [QB_AGENT], 
+[COMMISSION_RESULT_NAME6].[CLIENT_NAME] AS [CLIENT_NAME], 
+[COMMISSION_RESULT_NAME6].[QB_CLIENT] AS [QB_CLIENT], 
+[COMMISSION_RESULT_NAME6].[QB_FEE] AS [QB_FEE], 
+[COMMISSION_RESULT_NAME6].[MEMO] AS [MEMO], 
+[COMMISSION_RESULT_NAME6].[Qty] AS [Qty], 
+[COMMISSION_RESULT_NAME6].[Sales Price] AS [Sales Price], 
+[COMMISSION_RESULT_NAME6].[Amount] AS [Amount], 
+[COMMISSION_RESULT_NAME6].[Open Balance] AS [Open Balance], 
+[COMMISSION_RESULT_NAME6].[COMMISSION_RATE] AS [COMMISSION_RATE], 
+[COMMISSION_RESULT_NAME6].[UNIT] AS [UNIT], 
+[COMMISSION_RESULT_NAME6].[COMMISSION AMOUNT] AS [COMMISSION AMOUNT], 
+[COMMISSION_RESULT_NAME6].[BROKER_STATUS] AS [BROKER_STATUS], 
+[COMMISSION_RESULT_NAME6].[EMAIL] AS [EMAIL], 
+[COMMISSION_RESULT_NAME6].[QB_CLIENT_NAME] AS [QB_CLIENT_NAME], 
+[COMMISSION_RESULT_NAME6].[FEE_MEMO] AS [FEE_MEMO], 
+[COMMISSION_RESULT_NAME6].[BROKER_ID] AS [BROKER_ID], 
+[COMMISSION_RESULT_NAME6].[Date] AS [Date], 
+[COMMISSION_RESULT_NAME6].[PAYLOCITY_ID] AS [PAYLOCITY_ID], 
+[COMMISSION_RESULT_NAME6].[START_DATE] AS [START_DATE], 
+[COMMISSION_RESULT_NAME6].[Num] AS [Num], 
+[COMMISSION_RESULT_NAME6].[INVOICE_DATE] AS [INVOICE_DATE]
+FROM [dbo].[COMMISSION_RESULT_NAME6] AS [COMMISSION_RESULT_NAME6]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="COMMISSION_SUMMARY" EntityType="Self.COMMISSION_SUMMARY" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[COMMISSION_SUMMARY].[BROKER_ID] AS [BROKER_ID], 
+[COMMISSION_SUMMARY].[BROKER_NAME] AS [BROKER_NAME], 
+[COMMISSION_SUMMARY].[PAYLOCITY_ID] AS [PAYLOCITY_ID], 
+[COMMISSION_SUMMARY].[TOTAL] AS [TOTAL]
+FROM [dbo].[COMMISSION_SUMMARY] AS [COMMISSION_SUMMARY]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DASH_BOARD" EntityType="Self.DASH_BOARD" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[DASH_BOARD].[ID] AS [ID], 
+[DASH_BOARD].[BROKER_NAME] AS [BROKER_NAME], 
+[DASH_BOARD].[PAYLOCITY_ID] AS [PAYLOCITY_ID], 
+[DASH_BOARD].[PREMIUM] AS [PREMIUM], 
+[DASH_BOARD].[EMAIL] AS [EMAIL], 
+[DASH_BOARD].[SECONDARY_EMAIL] AS [SECONDARY_EMAIL], 
+[DASH_BOARD].[STATUS] AS [STATUS], 
+[DASH_BOARD].[PREMIUM_TH] AS [PREMIUM_TH], 
+[DASH_BOARD].[NOTES] AS [NOTES], 
+[DASH_BOARD].[BROKER_STATUS] AS [BROKER_STATUS], 
+[DASH_BOARD].[BROKER_NAME_ID] AS [BROKER_NAME_ID], 
+[DASH_BOARD].[BROKER_NAME_1] AS [BROKER_NAME_1], 
+[DASH_BOARD].[BROKER_NAME_2] AS [BROKER_NAME_2], 
+[DASH_BOARD].[BROKER_NAME_3] AS [BROKER_NAME_3], 
+[DASH_BOARD].[BROKER_NAME_4] AS [BROKER_NAME_4], 
+[DASH_BOARD].[BROKER_NAME_5] AS [BROKER_NAME_5], 
+[DASH_BOARD].[BROKER_NAME_6] AS [BROKER_NAME_6], 
+[DASH_BOARD].[TOTAL_AMOUNT] AS [TOTAL_AMOUNT]
+FROM [dbo].[DASH_BOARD] AS [DASH_BOARD]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_STATEMENT" EntityType="Self.VW_STATEMENT" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[VW_STATEMENT].[HEADER_ID] AS [HEADER_ID], 
+[VW_STATEMENT].[PID] AS [PID], 
+[VW_STATEMENT].[MONTH] AS [MONTH], 
+[VW_STATEMENT].[YEAR] AS [YEAR], 
+[VW_STATEMENT].[BROKER_ID] AS [BROKER_ID], 
+[VW_STATEMENT].[BROKER_NAME] AS [BROKER_NAME], 
+[VW_STATEMENT].[FLAG] AS [FLAG], 
+[VW_STATEMENT].[STATEMENT_TOTAL] AS [STATEMENT_TOTAL], 
+[VW_STATEMENT].[Change_Date] AS [Change_Date], 
+[VW_STATEMENT].[QB_CLIENT_NAME] AS [QB_CLIENT_NAME], 
+[VW_STATEMENT].[CLIENT_NAME] AS [CLIENT_NAME], 
+[VW_STATEMENT].[QB_FEE] AS [QB_FEE], 
+[VW_STATEMENT].[FEE_MEMO] AS [FEE_MEMO], 
+[VW_STATEMENT].[QUANTITY] AS [QUANTITY], 
+[VW_STATEMENT].[COMMISSION_RATE] AS [COMMISSION_RATE], 
+[VW_STATEMENT].[UNIT] AS [UNIT], 
+[VW_STATEMENT].[SALES_PRICE] AS [SALES_PRICE], 
+[VW_STATEMENT].[TOTAL_PRICE] AS [TOTAL_PRICE], 
+[VW_STATEMENT].[OPEN_BALANCE] AS [OPEN_BALANCE], 
+[VW_STATEMENT].[START_DATE] AS [START_DATE], 
+[VW_STATEMENT].[BROKER_STATUS] AS [BROKER_STATUS]
+FROM [dbo].[VW_STATEMENT] AS [VW_STATEMENT]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Broker_CommissionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Broker_CommissionEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="BROKER_COMMISSION" EntityType="Broker_CommissionModel.BROKER_COMMISSION" />
+          <EntitySet Name="BROKER_MASTER" EntityType="Broker_CommissionModel.BROKER_MASTER" />
+          <EntitySet Name="BROKER_MASTER_" EntityType="Broker_CommissionModel.BROKER_MASTER_" />
+          <EntitySet Name="CLIENTs" EntityType="Broker_CommissionModel.CLIENT" />
+          <EntitySet Name="FEE_MEMO" EntityType="Broker_CommissionModel.FEE_MEMO" />
+          <EntitySet Name="STATEMENT_HEADER" EntityType="Broker_CommissionModel.STATEMENT_HEADER" />
+          <EntitySet Name="BROKER_GROUP" EntityType="Broker_CommissionModel.BROKER_GROUP" />
+          <EntitySet Name="BROKER_CLIENT" EntityType="Broker_CommissionModel.BROKER_CLIENT" />
+          <EntitySet Name="COMMISSION_RESULT_NAME0" EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME0" />
+          <EntitySet Name="COMMISSION_RESULT_NAME1" EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME1" />
+          <EntitySet Name="COMMISSION_RESULT_NAME2" EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME2" />
+          <EntitySet Name="COMMISSION_RESULT_NAME3" EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME3" />
+          <EntitySet Name="COMMISSION_RESULT_NAME4" EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME4" />
+          <EntitySet Name="COMMISSION_RESULT_NAME5" EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME5" />
+          <EntitySet Name="COMMISSION_RESULT_NAME6" EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME6" />
+          <EntitySet Name="COMMISSION_SUMMARY" EntityType="Broker_CommissionModel.COMMISSION_SUMMARY" />
+          <EntitySet Name="DASH_BOARD" EntityType="Broker_CommissionModel.DASH_BOARD" />
+          <EntitySet Name="VW_STATEMENT" EntityType="Broker_CommissionModel.VW_STATEMENT" />
+          <FunctionImport Name="GET_TOTAL" ReturnType="Collection(Decimal)">
+          <Parameter Name="bid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_FILE_IMPORT_SSIS" ReturnType="Collection(Broker_CommissionModel.SP_FILE_IMPORT_SSIS_Result)" />
+          <FunctionImport Name="SP_IMPORT_FILE_SENT_SSIS">
+            <Parameter Name="Month" Mode="In" Type="String" />
+            <Parameter Name="Year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CLIENT_" EntityType="Broker_CommissionModel.CLIENT_" />
+          <EntitySet Name="STATEMENT_DETAILS_ADD" EntityType="Broker_CommissionModel.STATEMENT_DETAILS_ADD" />
+          <EntitySet Name="Import_OCT" EntityType="Broker_CommissionModel.Import_OCT" />
+          <EntitySet Name="Error_Msg" EntityType="Broker_CommissionModel.Error_Msg" />
+          <EntitySet Name="Detail_Input" EntityType="Broker_CommissionModel.Detail_Input" />
+          <EntitySet Name="SENT_INVOICE" EntityType="Broker_CommissionModel.SENT_INVOICE" />
+          <EntitySet Name="STATEMENT_DETAILS" EntityType="Broker_CommissionModel.STATEMENT_DETAILS" />
+        </EntityContainer>
+        <EntityType Name="BROKER_COMMISSION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PERIOD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BROKER_ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PAYLOCITY_NUMBER" Type="Int32" />
+          <Property Name="PAYMENT_AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="BROKER_MASTER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PAYLOCITY_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PREMIUM" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SECONDARY_EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PREMIUM_TH" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NOTES" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_4" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_5" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_6" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BROKER_MASTER_">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BROKER_GROUP" Type="Int32" />
+          <Property Name="PREMIUM" Type="Int32" />
+          <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PREMIUM_TH" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NOTES" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PAYLOCITY_ID" Type="Int32" />
+          <Property Name="BROKER_NAME_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_ID" Type="Int32" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FEE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FEE_MEMO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEMO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="COMMISIONABLE" Type="Int32" />
+          <Property Name="CLIENT_ID" Type="Int32" />
+          <Property Name="NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RATE" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="STATEMENT_HEADER">
+          <Key>
+            <PropertyRef Name="HEADER_ID" />
+          </Key>
+          <Property Name="HEADER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MONTH" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YEAR" Type="Int32" Nullable="false" />
+          <Property Name="BROKER_ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FLAG" Type="Int32" Nullable="false" />
+          <Property Name="STATEMENT_TOTAL" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Change_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BROKER_GROUP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BROKER_GROUP1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AGENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AGENT_ID" Type="Int32" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BROKER_CLIENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_BROKER_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PAYLOCITY_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SECONDARY_EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_4" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_5" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_6" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="COMMISSION_RESULT_NAME0">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_BROKER_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_AGENT" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MEMO" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Sales_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMISSION_AMOUNT" Type="Decimal" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="PAYLOCITY_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Open_Balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Num" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="INVOICE_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="COMMISSION_RESULT_NAME1">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_BROKER_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_AGENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MEMO" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Sales_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMISSION_AMOUNT" Type="Decimal" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="PAYLOCITY_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Open_Balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Num" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="INVOICE_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="COMMISSION_RESULT_NAME2">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_BROKER_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_AGENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MEMO" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Sales_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMISSION_AMOUNT" Type="Decimal" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="PAYLOCITY_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Open_Balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Num" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="INVOICE_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="COMMISSION_RESULT_NAME3">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_BROKER_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_AGENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MEMO" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Sales_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMISSION_AMOUNT" Type="Decimal" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="PAYLOCITY_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Open_Balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Num" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="INVOICE_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="COMMISSION_RESULT_NAME4">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_BROKER_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_AGENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MEMO" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Sales_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMISSION_AMOUNT" Type="Decimal" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="PAYLOCITY_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Open_Balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Num" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="INVOICE_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="COMMISSION_RESULT_NAME5">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_BROKER_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_AGENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MEMO" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Sales_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMISSION_AMOUNT" Type="Decimal" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="PAYLOCITY_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Open_Balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Num" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="INVOICE_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="COMMISSION_RESULT_NAME6">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_BROKER_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_AGENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MEMO" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Sales_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMISSION_AMOUNT" Type="Decimal" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="PAYLOCITY_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Open_Balance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Num" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="INVOICE_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="COMMISSION_SUMMARY">
+          <Key>
+            <PropertyRef Name="BROKER_ID" />
+          </Key>
+          <Property Name="BROKER_ID" Type="Int32" Nullable="false" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TOTAL" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="PAYLOCITY_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DASH_BOARD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PAYLOCITY_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PREMIUM" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SECONDARY_EMAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PREMIUM_TH" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NOTES" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_4" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_5" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_NAME_6" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TOTAL_AMOUNT" Type="Decimal" Precision="38" Scale="2" />
+        </EntityType>
+        <EntityType Name="VW_STATEMENT">
+          <Key>
+            <PropertyRef Name="HEADER_ID" />
+            <PropertyRef Name="MONTH" />
+            <PropertyRef Name="YEAR" />
+            <PropertyRef Name="FLAG" />
+          </Key>
+          <Property Name="HEADER_ID" Type="Int32" Nullable="false" />
+          <Property Name="PID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MONTH" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YEAR" Type="Int32" Nullable="false" />
+          <Property Name="BROKER_ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FLAG" Type="Int32" Nullable="false" />
+          <Property Name="STATEMENT_TOTAL" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Change_Date" Type="DateTime" Precision="3" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SALES_PRICE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TOTAL_PRICE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OPEN_BALANCE" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <ComplexType Name="SP_FILE_IMPORT_SSIS_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BROKER_NAME" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="PAYLOCITY_ID" Nullable="true" MaxLength="500" />
+          <Property Type="Decimal" Name="PREMIUM" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="SECONDARY_EMAIL" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="STATUS" Nullable="true" MaxLength="500" />
+          <Property Type="Decimal" Name="PREMIUM_TH" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="NOTES" Nullable="true" MaxLength="3000" />
+          <Property Type="String" Name="BROKER_STATUS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BROKER_NAME_ID" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="BROKER_NAME_1" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="BROKER_NAME_2" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="BROKER_NAME_3" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="BROKER_NAME_4" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="BROKER_NAME_5" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="BROKER_NAME_6" Nullable="true" MaxLength="500" />
+          <Property Type="Decimal" Name="TOTAL_AMOUNT" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <EntityType Name="CLIENT_">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BROKER_ID" Type="Int32" />
+          <Property Name="FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="STATEMENT_DETAILS_ADD">
+          <Key>
+            <PropertyRef Name="DETAIL_ID" />
+          </Key>
+          <Property Name="DETAIL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HEADER_ID" Type="Int32" Nullable="false" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SALES_PRICE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TOTAL_PRICE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PAYLOCITY_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RESULTID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Import_OCT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Num" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="Memo" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="Agent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Sales_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Open_Balance" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Error_Msg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Flat_File_Source_Error_Output_Column" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorCode" Type="Int32" />
+          <Property Name="ErrorColumn" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Detail_Input">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Num" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Memo" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="Agent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Sales_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Open_Balance" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="SENT_INVOICE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="INVOICE_NUM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OPEN_BALANCE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DATE_ENTER" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+        </EntityType>
+        <EntityType Name="STATEMENT_DETAILS">
+          <Key>
+            <PropertyRef Name="DETAIL_ID" />
+          </Key>
+          <Property Name="DETAIL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HEADER_ID" Type="Int32" Nullable="false" />
+          <Property Name="INVOICE_DATE" Type="DateTime" Precision="0" />
+          <Property Name="INVOICE_NUM" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SALES_PRICE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TOTAL_PRICE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OPEN_BALANCE" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Broker_CommissionModelStoreContainer" CdmEntityContainer="Broker_CommissionEntities" >
+          <EntitySetMapping Name="BROKER_COMMISSION">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.BROKER_COMMISSION">
+              <MappingFragment StoreEntitySet="BROKER_COMMISSION">
+                <ScalarProperty Name="PAYMENT_AMOUNT" ColumnName="PAYMENT_AMOUNT" />
+                <ScalarProperty Name="PAYLOCITY_NUMBER" ColumnName="PAYLOCITY_NUMBER" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="PERIOD" ColumnName="PERIOD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BROKER_MASTER">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.BROKER_MASTER">
+              <MappingFragment StoreEntitySet="BROKER_MASTER">
+                <ScalarProperty Name="BROKER_NAME_6" ColumnName="BROKER_NAME_6" />
+                <ScalarProperty Name="BROKER_NAME_5" ColumnName="BROKER_NAME_5" />
+                <ScalarProperty Name="BROKER_NAME_4" ColumnName="BROKER_NAME_4" />
+                <ScalarProperty Name="BROKER_NAME_3" ColumnName="BROKER_NAME_3" />
+                <ScalarProperty Name="BROKER_NAME_2" ColumnName="BROKER_NAME_2" />
+                <ScalarProperty Name="BROKER_NAME_1" ColumnName="BROKER_NAME_1" />
+                <ScalarProperty Name="BROKER_NAME_ID" ColumnName="BROKER_NAME_ID" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+                <ScalarProperty Name="PREMIUM_TH" ColumnName="PREMIUM_TH" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="SECONDARY_EMAIL" ColumnName="SECONDARY_EMAIL" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PREMIUM" ColumnName="PREMIUM" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BROKER_MASTER_">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.BROKER_MASTER_">
+              <MappingFragment StoreEntitySet="BROKER_MASTER_">
+                <ScalarProperty Name="BROKER_NAME_ID" ColumnName="BROKER_NAME_ID" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+                <ScalarProperty Name="PREMIUM_TH" ColumnName="PREMIUM_TH" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="PREMIUM" ColumnName="PREMIUM" />
+                <ScalarProperty Name="BROKER_GROUP" ColumnName="BROKER_GROUP" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTs">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.CLIENT">
+              <MappingFragment StoreEntitySet="CLIENT">
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="FEE" ColumnName="FEE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FEE_MEMO">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.FEE_MEMO">
+              <MappingFragment StoreEntitySet="FEE_MEMO">
+                <ScalarProperty Name="RATE" ColumnName="RATE" />
+                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="COMMISIONABLE" ColumnName="COMMISIONABLE" />
+                <ScalarProperty Name="MEMO" ColumnName="MEMO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATEMENT_HEADER">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.STATEMENT_HEADER">
+              <MappingFragment StoreEntitySet="STATEMENT_HEADER">
+                <ScalarProperty Name="Change_Date" ColumnName="Change_Date" />
+                <ScalarProperty Name="STATEMENT_TOTAL" ColumnName="STATEMENT_TOTAL" />
+                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+                <ScalarProperty Name="MONTH" ColumnName="MONTH" />
+                <ScalarProperty Name="HEADER_ID" ColumnName="HEADER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BROKER_GROUP">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.BROKER_GROUP">
+              <MappingFragment StoreEntitySet="BROKER_GROUP">
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="AGENT_ID" ColumnName="AGENT_ID" />
+                <ScalarProperty Name="AGENT" ColumnName="AGENT" />
+                <ScalarProperty Name="BROKER_GROUP1" ColumnName="BROKER_GROUP" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BROKER_CLIENT">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.BROKER_CLIENT">
+              <MappingFragment StoreEntitySet="BROKER_CLIENT">
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="BROKER_NAME_6" ColumnName="BROKER_NAME_6" />
+                <ScalarProperty Name="BROKER_NAME_5" ColumnName="BROKER_NAME_5" />
+                <ScalarProperty Name="BROKER_NAME_4" ColumnName="BROKER_NAME_4" />
+                <ScalarProperty Name="BROKER_NAME_3" ColumnName="BROKER_NAME_3" />
+                <ScalarProperty Name="BROKER_NAME_2" ColumnName="BROKER_NAME_2" />
+                <ScalarProperty Name="BROKER_NAME_1" ColumnName="BROKER_NAME_1" />
+                <ScalarProperty Name="SECONDARY_EMAIL" ColumnName="SECONDARY_EMAIL" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_BROKER_NAME" ColumnName="QB_BROKER_NAME" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMISSION_RESULT_NAME0">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.COMMISSION_RESULT_NAME0">
+              <MappingFragment StoreEntitySet="COMMISSION_RESULT_NAME0">
+                <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Open_Balance" ColumnName="Open Balance" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="COMMISSION_AMOUNT" ColumnName="COMMISSION AMOUNT" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="MEMO" ColumnName="MEMO" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="QB_CLIENT" ColumnName="QB_CLIENT" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_AGENT" ColumnName="QB_AGENT" />
+                <ScalarProperty Name="QB_BROKER_NAME" ColumnName="QB_BROKER_NAME" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMISSION_RESULT_NAME1">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.COMMISSION_RESULT_NAME1">
+              <MappingFragment StoreEntitySet="COMMISSION_RESULT_NAME1">
+                <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Open_Balance" ColumnName="Open Balance" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="COMMISSION_AMOUNT" ColumnName="COMMISSION AMOUNT" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="MEMO" ColumnName="MEMO" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="QB_CLIENT" ColumnName="QB_CLIENT" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_AGENT" ColumnName="QB_AGENT" />
+                <ScalarProperty Name="QB_BROKER_NAME" ColumnName="QB_BROKER_NAME" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMISSION_RESULT_NAME2">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.COMMISSION_RESULT_NAME2">
+              <MappingFragment StoreEntitySet="COMMISSION_RESULT_NAME2">
+                <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Open_Balance" ColumnName="Open Balance" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="COMMISSION_AMOUNT" ColumnName="COMMISSION AMOUNT" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="MEMO" ColumnName="MEMO" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="QB_CLIENT" ColumnName="QB_CLIENT" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_AGENT" ColumnName="QB_AGENT" />
+                <ScalarProperty Name="QB_BROKER_NAME" ColumnName="QB_BROKER_NAME" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMISSION_RESULT_NAME3">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.COMMISSION_RESULT_NAME3">
+              <MappingFragment StoreEntitySet="COMMISSION_RESULT_NAME3">
+                <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Open_Balance" ColumnName="Open Balance" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="COMMISSION_AMOUNT" ColumnName="COMMISSION AMOUNT" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="MEMO" ColumnName="MEMO" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="QB_CLIENT" ColumnName="QB_CLIENT" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_AGENT" ColumnName="QB_AGENT" />
+                <ScalarProperty Name="QB_BROKER_NAME" ColumnName="QB_BROKER_NAME" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMISSION_RESULT_NAME4">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.COMMISSION_RESULT_NAME4">
+              <MappingFragment StoreEntitySet="COMMISSION_RESULT_NAME4">
+                <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Open_Balance" ColumnName="Open Balance" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="COMMISSION_AMOUNT" ColumnName="COMMISSION AMOUNT" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="MEMO" ColumnName="MEMO" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="QB_CLIENT" ColumnName="QB_CLIENT" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_AGENT" ColumnName="QB_AGENT" />
+                <ScalarProperty Name="QB_BROKER_NAME" ColumnName="QB_BROKER_NAME" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMISSION_RESULT_NAME5">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.COMMISSION_RESULT_NAME5">
+              <MappingFragment StoreEntitySet="COMMISSION_RESULT_NAME5">
+                <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Open_Balance" ColumnName="Open Balance" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="COMMISSION_AMOUNT" ColumnName="COMMISSION AMOUNT" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="MEMO" ColumnName="MEMO" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="QB_CLIENT" ColumnName="QB_CLIENT" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_AGENT" ColumnName="QB_AGENT" />
+                <ScalarProperty Name="QB_BROKER_NAME" ColumnName="QB_BROKER_NAME" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMISSION_RESULT_NAME6">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.COMMISSION_RESULT_NAME6">
+              <MappingFragment StoreEntitySet="COMMISSION_RESULT_NAME6">
+                <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Open_Balance" ColumnName="Open Balance" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="COMMISSION_AMOUNT" ColumnName="COMMISSION AMOUNT" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="MEMO" ColumnName="MEMO" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="QB_CLIENT" ColumnName="QB_CLIENT" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_AGENT" ColumnName="QB_AGENT" />
+                <ScalarProperty Name="QB_BROKER_NAME" ColumnName="QB_BROKER_NAME" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMISSION_SUMMARY">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.COMMISSION_SUMMARY">
+              <MappingFragment StoreEntitySet="COMMISSION_SUMMARY">
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DASH_BOARD">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.DASH_BOARD">
+              <MappingFragment StoreEntitySet="DASH_BOARD">
+                <ScalarProperty Name="TOTAL_AMOUNT" ColumnName="TOTAL_AMOUNT" />
+                <ScalarProperty Name="BROKER_NAME_6" ColumnName="BROKER_NAME_6" />
+                <ScalarProperty Name="BROKER_NAME_5" ColumnName="BROKER_NAME_5" />
+                <ScalarProperty Name="BROKER_NAME_4" ColumnName="BROKER_NAME_4" />
+                <ScalarProperty Name="BROKER_NAME_3" ColumnName="BROKER_NAME_3" />
+                <ScalarProperty Name="BROKER_NAME_2" ColumnName="BROKER_NAME_2" />
+                <ScalarProperty Name="BROKER_NAME_1" ColumnName="BROKER_NAME_1" />
+                <ScalarProperty Name="BROKER_NAME_ID" ColumnName="BROKER_NAME_ID" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+                <ScalarProperty Name="PREMIUM_TH" ColumnName="PREMIUM_TH" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="SECONDARY_EMAIL" ColumnName="SECONDARY_EMAIL" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PREMIUM" ColumnName="PREMIUM" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_STATEMENT">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.VW_STATEMENT">
+              <MappingFragment StoreEntitySet="VW_STATEMENT">
+                <ScalarProperty Name="OPEN_BALANCE" ColumnName="OPEN_BALANCE" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="TOTAL_PRICE" ColumnName="TOTAL_PRICE" />
+                <ScalarProperty Name="SALES_PRICE" ColumnName="SALES_PRICE" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="Change_Date" ColumnName="Change_Date" />
+                <ScalarProperty Name="STATEMENT_TOTAL" ColumnName="STATEMENT_TOTAL" />
+                <ScalarProperty Name="FLAG" ColumnName="FLAG" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+                <ScalarProperty Name="MONTH" ColumnName="MONTH" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="HEADER_ID" ColumnName="HEADER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GET_TOTAL" FunctionName="Broker_CommissionModel.Store.GET_TOTAL" />
+          <FunctionImportMapping FunctionImportName="SP_FILE_IMPORT_SSIS" FunctionName="Broker_CommissionModel.Store.SP_FILE_IMPORT_SSIS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Broker_CommissionModel.SP_FILE_IMPORT_SSIS_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="PREMIUM" ColumnName="PREMIUM" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SECONDARY_EMAIL" ColumnName="SECONDARY_EMAIL" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PREMIUM_TH" ColumnName="PREMIUM_TH" />
+                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="BROKER_NAME_ID" ColumnName="BROKER_NAME_ID" />
+                <ScalarProperty Name="BROKER_NAME_1" ColumnName="BROKER_NAME_1" />
+                <ScalarProperty Name="BROKER_NAME_2" ColumnName="BROKER_NAME_2" />
+                <ScalarProperty Name="BROKER_NAME_3" ColumnName="BROKER_NAME_3" />
+                <ScalarProperty Name="BROKER_NAME_4" ColumnName="BROKER_NAME_4" />
+                <ScalarProperty Name="BROKER_NAME_5" ColumnName="BROKER_NAME_5" />
+                <ScalarProperty Name="BROKER_NAME_6" ColumnName="BROKER_NAME_6" />
+                <ScalarProperty Name="TOTAL_AMOUNT" ColumnName="TOTAL_AMOUNT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_IMPORT_FILE_SENT_SSIS" FunctionName="Broker_CommissionModel.Store.SP_IMPORT_FILE_SENT_SSIS" />
+          <EntitySetMapping Name="CLIENT_">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.CLIENT_">
+              <MappingFragment StoreEntitySet="CLIENT_">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="FEE" ColumnName="FEE" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATEMENT_DETAILS_ADD">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.STATEMENT_DETAILS_ADD">
+              <MappingFragment StoreEntitySet="STATEMENT_DETAILS_ADD">
+                <ScalarProperty Name="RESULTID" ColumnName="RESULTID" />
+                <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="TOTAL_PRICE" ColumnName="TOTAL_PRICE" />
+                <ScalarProperty Name="SALES_PRICE" ColumnName="SALES_PRICE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="HEADER_ID" ColumnName="HEADER_ID" />
+                <ScalarProperty Name="DETAIL_ID" ColumnName="DETAIL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Import_OCT">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.Import_OCT">
+              <MappingFragment StoreEntitySet="Import_OCT">
+                <ScalarProperty Name="Open_Balance" ColumnName="Open Balance" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Agent" ColumnName="Agent" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Error_Msg">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.Error_Msg">
+              <MappingFragment StoreEntitySet="Error_Msg">
+                <ScalarProperty Name="ErrorColumn" ColumnName="ErrorColumn" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="Flat_File_Source_Error_Output_Column" ColumnName="Flat File Source Error Output Column" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detail_Input">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.Detail_Input">
+              <MappingFragment StoreEntitySet="Detail_Input">
+                <ScalarProperty Name="Open_Balance" ColumnName="Open Balance" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Agent" ColumnName="Agent" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SENT_INVOICE">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.SENT_INVOICE">
+              <MappingFragment StoreEntitySet="SENT_INVOICE">
+                <ScalarProperty Name="DATE_ENTER" ColumnName="DATE_ENTER" />
+                <ScalarProperty Name="OPEN_BALANCE" ColumnName="OPEN_BALANCE" />
+                <ScalarProperty Name="INVOICE_NUM" ColumnName="INVOICE_NUM" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATEMENT_DETAILS">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.STATEMENT_DETAILS">
+              <MappingFragment StoreEntitySet="STATEMENT_DETAILS">
+                <ScalarProperty Name="OPEN_BALANCE" ColumnName="OPEN_BALANCE" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="TOTAL_PRICE" ColumnName="TOTAL_PRICE" />
+                <ScalarProperty Name="SALES_PRICE" ColumnName="SALES_PRICE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="INVOICE_NUM" ColumnName="INVOICE_NUM" />
+                <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
+                <ScalarProperty Name="HEADER_ID" ColumnName="HEADER_ID" />
+                <ScalarProperty Name="DETAIL_ID" ColumnName="DETAIL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

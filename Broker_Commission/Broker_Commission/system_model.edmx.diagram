@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="31a2982568794448a6e39d9f1d8a9a46" Name="Diagram1" ZoomLevel="61" >
+        <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_COMMISSION" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_MASTER" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_MASTER_" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.CLIENT" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.FEE_MEMO" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.STATEMENT_HEADER" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_GROUP" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_CLIENT" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME0" Width="3.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME1" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME2" Width="3.25" PointX="4.375" PointY="8.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME3" Width="2.125" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME4" Width="3.25" PointX="17.625" PointY="0.875" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME5" Width="2.625" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME6" Width="1.5" PointX="8.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_SUMMARY" Width="1.5" PointX="10.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.DASH_BOARD" Width="1.5" PointX="12.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.VW_STATEMENT" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.CLIENT_" Width="1.5" PointX="3.375" PointY="14.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.STATEMENT_DETAILS_ADD" Width="3" PointX="21.875" PointY="1" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Import_OCT" Width="1.5" PointX="5.375" PointY="14.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Error_Msg" Width="1.5" PointX="17.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Detail_Input" Width="1.5" PointX="17.375" PointY="10.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.SENT_INVOICE" Width="1.5" PointX="19.875" PointY="12.5" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.STATEMENT_DETAILS" Width="1.5" PointX="15.375" PointY="14.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

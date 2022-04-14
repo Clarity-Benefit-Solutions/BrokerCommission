@@ -1,0 +1,59 @@
+<%@ Master Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="Broker_Commission.MainMaster" %>
+
+<%-- DXCOMMENT: Page Main.master is a master page that contains central area layout --%>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
+        <dx:ASPxPanel ID="LeftPane" runat="server" FixedPosition="WindowLeft" ClientInstanceName="leftPane" CssClass="leftPane" Collapsible="true">
+            <SettingsAdaptivity CollapseAtWindowInnerWidth="1023" />
+            <Styles>
+                <Panel CssClass="panel"></Panel>
+            </Styles>
+            <PanelCollection>
+                <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
+                        <div class="leftPanel">
+                            <%-- DXCOMMENT: Configure the left panel's ASPxNavBar --%>
+<dx:ASPxNavBar ID="ASPxNavBar1" runat="server" AutoCollapse="False" EnableAnimation="True" Width="100%">
+    <Border BorderWidth="0px" />
+    <Paddings Padding="0px" />
+    <Groups>
+        <dx:NavBarGroup Text="DASHBOARD">
+            <Items>
+                <dx:NavBarItem Text="BROKER COMMISSION" NavigateUrl="Default.aspx"></dx:NavBarItem>
+                
+            </Items>
+        </dx:NavBarGroup>
+        <dx:NavBarGroup Text="NEW UPLOADS">
+            <Items>
+                <dx:NavBarItem Text="QUICKBOOK UPLOAD" NavigateUrl="RawDataUpload.aspx"></dx:NavBarItem>
+                <dx:NavBarItem Text="UPLOAD RESULT" NavigateUrl="Upload_Result.aspx"></dx:NavBarItem>
+             <%--   <dx:NavBarItem Text="Item 3"></dx:NavBarItem>--%>
+            </Items>
+        </dx:NavBarGroup>
+           <dx:NavBarGroup Text="SEARCH">
+            <Items>
+                <dx:NavBarItem Text="STATEMENT SEARCH" NavigateUrl="StatementSearch.aspx"></dx:NavBarItem>
+                
+             <%--   <dx:NavBarItem Text="Item 3"></dx:NavBarItem>--%>
+            </Items>
+        </dx:NavBarGroup>
+        <dx:NavBarGroup Text="MASTER DATA">
+            <Items>
+               <%-- <dx:NavBarItem Text="BROKER GROUP" NavigateUrl="broker_group.aspx"></dx:NavBarItem>--%>
+                <dx:NavBarItem Text="BROKER" NavigateUrl="brokerMaster.aspx"></dx:NavBarItem>
+                <dx:NavBarItem Text="CLIENT" NavigateUrl="client.aspx"></dx:NavBarItem>
+                <dx:NavBarItem Text="MEMO" NavigateUrl="feetype.aspx"></dx:NavBarItem>
+             
+            </Items>
+        </dx:NavBarGroup>
+    </Groups>
+</dx:ASPxNavBar>
+                        </div>
+                </dx:PanelContent>
+            </PanelCollection>
+        </dx:ASPxPanel>
+
+        <div class="contentPane">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+            
+
+</asp:Content>
