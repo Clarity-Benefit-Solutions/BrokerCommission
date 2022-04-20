@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1800
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "DecryptFile", "DecryptFile\DecryptFile.dtproj", "{A51EAEB2-5492-496D-AE98-25D0E7EC916C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A51EAEB2-5492-496D-AE98-25D0E7EC916C}.Development|Default.ActiveCfg = Development
+		{A51EAEB2-5492-496D-AE98-25D0E7EC916C}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDF1D208-8700-47A1-881A-5A91372F65BB}
+	EndGlobalSection
+EndGlobal

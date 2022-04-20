@@ -1,0 +1,10 @@
+E:\SmartData\FTPDATA\DecryptApp\Decrypt\Decrypt\bin\Debug\Decrypt.exe.config
+E:\SmartData\FTPDATA\DecryptApp\Decrypt\Decrypt\bin\Debug\Decrypt.exe
+E:\SmartData\FTPDATA\DecryptApp\Decrypt\Decrypt\bin\Debug\Decrypt.pdb
+E:\SmartData\FTPDATA\DecryptApp\Decrypt\Decrypt\bin\Debug\BouncyCastle.Crypto.dll
+E:\SmartData\FTPDATA\DecryptApp\Decrypt\Decrypt\bin\Debug\BouncyCastle.Crypto.xml
+E:\SmartData\FTPDATA\DecryptApp\Decrypt\Decrypt\obj\Debug\Decrypt.csprojAssemblyReference.cache
+E:\SmartData\FTPDATA\DecryptApp\Decrypt\Decrypt\obj\Debug\Decrypt.csproj.CoreCompileInputs.cache
+E:\SmartData\FTPDATA\DecryptApp\Decrypt\Decrypt\obj\Debug\Decrypt.csproj.CopyComplete
+E:\SmartData\FTPDATA\DecryptApp\Decrypt\Decrypt\obj\Debug\Decrypt.exe
+E:\SmartData\FTPDATA\DecryptApp\Decrypt\Decrypt\obj\Debug\Decrypt.pdb
