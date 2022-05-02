@@ -366,6 +366,22 @@ namespace Broker_Commission
                         mm.Attachments.Add(new Attachment(new MemoryStream(bytes), month + "_" + year + "_" + broker + ".pdf"));
                         mm.IsBodyHtml = true;
                         SmtpClient smtp = new SmtpClient();
+                        // todo: put in app settings
+                        /*
+                         SMTP
+                        Host:
+                        smtp.mailtrap.io
+                        Port:
+                        25 or 465 or 587 or 2525
+                        Username:
+                        a6abec2c4cbb52
+                        Password:
+                        39218b05e65de1
+                        Auth:
+                        PLAIN, LOGIN and CRAM-MD5
+                        TLS:
+                        Optional (STARTTLS on all ports)
+                         */
                         smtp.Host = "smtp.office365.com";
                         smtp.EnableSsl = true;
                         NetworkCredential NetworkCred = new NetworkCredential();
