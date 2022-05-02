@@ -359,7 +359,7 @@ namespace Broker_Commission
 
                         mm.Subject = subject_line;
                         
-                        mm.Body = "Good Morning/Afternoon," + "<br/>" + "<br/>" + "Thank you for your continued support and partnership.Attached you will find your most recent Commission Statement."
+                        mm.Body = "Good Morning/Afternoon," + "<br/>" + "<br/>" + "Thank you for your continued support and partnership. Attached you will find your most recent Commission Statement."
                             + "Thank you and have a great day," + "<br/>" + "<br/>" +
                             "Clarity Finance Dept." + "<br/>" + "(finance@claritybenefitsolutions.com)";
 
