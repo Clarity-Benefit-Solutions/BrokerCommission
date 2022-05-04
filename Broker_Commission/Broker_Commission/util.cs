@@ -383,13 +383,13 @@ namespace Broker_Commission
                         Optional (STARTTLS on all ports)
                          */
                         smtp.Host = "smtp.mailtrap.io";
-                        //smtp.EnableSsl = true;
+                        smtp.EnableSsl = false;
                         NetworkCredential NetworkCred = new NetworkCredential();
-                        NetworkCred.UserName = a6abec2c4cbb52;
-                        NetworkCred.Password = 39218b05e65de1;
+                        NetworkCred.UserName = "a6abec2c4cbb52";
+                        NetworkCred.Password = "39218b05e65de1";
                         //smtp.UseDefaultCredentials = true;
-                        //smtp.Credentials = NetworkCred;
-                        smtp.Port = 465;
+                        smtp.Credentials = NetworkCred;
+                        smtp.Port = 25;
                         smtp.Send(mm);
                         
                         //Original Mail setting comment out 05/04/2022
