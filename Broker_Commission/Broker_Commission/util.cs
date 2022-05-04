@@ -382,15 +382,26 @@ namespace Broker_Commission
                         TLS:
                         Optional (STARTTLS on all ports)
                          */
-                        smtp.Host = "smtp.office365.com";
-                        smtp.EnableSsl = true;
+                        smtp.Host = "smtp.mailtrap.io";
+                        //smtp.EnableSsl = true;
                         NetworkCredential NetworkCred = new NetworkCredential();
-                        NetworkCred.UserName = from_email;
-                        NetworkCred.Password = from_email_pass;
-                        smtp.UseDefaultCredentials = true;
-                        smtp.Credentials = NetworkCred;
-                        smtp.Port = 587;
+                        NetworkCred.UserName = a6abec2c4cbb52;
+                        NetworkCred.Password = 39218b05e65de1;
+                        //smtp.UseDefaultCredentials = true;
+                        //smtp.Credentials = NetworkCred;
+                        smtp.Port = 465;
                         smtp.Send(mm);
+                        
+                        //Original Mail setting comment out 05/04/2022
+                        //smtp.Host = "smtp.office365.com";
+                        //smtp.EnableSsl = true;
+                        //NetworkCredential NetworkCred = new NetworkCredential();
+                        //NetworkCred.UserName = from_email;
+                        //NetworkCred.Password = from_email_pass;
+                        //smtp.UseDefaultCredentials = true;
+                        //smtp.Credentials = NetworkCred;
+                        //smtp.Port = 587;
+                        //smtp.Send(mm);
                     }
                 }
             }
