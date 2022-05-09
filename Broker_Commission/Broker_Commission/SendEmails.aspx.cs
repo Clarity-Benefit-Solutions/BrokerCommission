@@ -52,7 +52,8 @@ namespace Broker_Commission
                 #region email statement
 
                 // setup statement header list
-                var list = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID != null && ( x.FLAG == 0 || x.FLAG == 4 ))
+                //tod: uncoment next line
+                var list = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID != null /*&& ( x.FLAG == 0 || x.FLAG == 4 )*/)
                     .OrderBy(x => x.BROKER_ID).ToList();
                 int current = 0;
                 int totalCount = list.Count();
@@ -75,11 +76,12 @@ namespace Broker_Commission
 
                     if(debugMode == "True")
                     {
-                        to = "azhu@claritybenefitsolutions.com" ;
+                        to = "aidubor@claritybenefitsolutions.com";
+                        //to = "azhu@claritybenefitsolutions.com" ;
                     }
                     else
                     {
-                        to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString()));
+                        //to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
                     }
 
                     

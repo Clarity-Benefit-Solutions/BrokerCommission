@@ -12,6 +12,7 @@ using Aspose.Words;
 using Aspose.Words.Rendering;
 using Aspose.Words.Tables;
 using iTextSharp.text;
+using Document = Aspose.Words.Document;
 
 namespace Broker_Commission
 {

@@ -20,12 +20,23 @@ namespace Broker_Commission
     public class util
     {
         protected static Broker_CommissionEntities db = new Broker_CommissionEntities();
-        public static string  subject_line = "Commission Statement";
+        public static string subject_line = "Commission Statement";
         public static string from_email =
            System.Web.Configuration.WebConfigurationManager.AppSettings["from_email"].ToString();
 
+        public static string from_username =
+         System.Web.Configuration.WebConfigurationManager.AppSettings["from_username"].ToString();
+
         public static string from_email_pass =
             System.Web.Configuration.WebConfigurationManager.AppSettings["from_email_pass"].ToString();
+
+        public static string from_host =
+            System.Web.Configuration.WebConfigurationManager.AppSettings["from_host"].ToString();
+
+        public static string from_port =
+            System.Web.Configuration.WebConfigurationManager.AppSettings["from_port"].ToString();
+        public static string from_enablessl =
+         System.Web.Configuration.WebConfigurationManager.AppSettings["from_enablessl"].ToString();
 
         public static string cc_email =
            System.Web.Configuration.WebConfigurationManager.AppSettings["cc_email"].ToString();
@@ -50,7 +61,7 @@ namespace Broker_Commission
                     string strActualRecords = string.Empty;
                     strActualRecords = "<table border=\"1\" style=\"width:100%;font-size: 10pt; font-family:Tahoma; border: 1px solid black;border - collapse: collapse;\">";
                     strActualRecords += "<tr><td colspan=\"9\" style=\"text-align: center;white-space: nowrap; border: 1px solid black;border - collapse: collapse;font-weight:bold;\">" +
-                                        dt.Rows[0]["BROKER_NAME"].ToString().Replace("&","").Replace(":", "").Replace(",", "").Replace("-", "") + " " 
+                                        dt.Rows[0]["BROKER_NAME"].ToString().Replace("&", "").Replace(":", "").Replace(",", "").Replace("-", "") + " "
                                         + (string.IsNullOrEmpty(dt.Rows[0]["PAYLOCITY_ID"].ToString()) ? "" : dt.Rows[0]["PAYLOCITY_ID"]) + " : " + month + " " + year +
                                         " Commission Statement</td></tr>";
 
@@ -92,7 +103,7 @@ namespace Broker_Commission
                         total += Convert.ToDouble(dt.Rows[i]["COMMISSION AMOUNT"].ToString());
                     }
 
-                    strActualRecords += "<tr><td colspan=\"9\" style=\"height:50px;text-align: right;font-weight:bold; white-space: nowrap;\">" 
+                    strActualRecords += "<tr><td colspan=\"9\" style=\"height:50px;text-align: right;font-weight:bold; white-space: nowrap;\">"
                         + " Total Commission Payable for " + month + " " + year + "    $" +
                                         DoFormat(total) + " </td></tr>";
                     strActualRecords += "</table>";
@@ -109,7 +120,7 @@ namespace Broker_Commission
             }
 
             return sb;
-        } 
+        }
         public static string DoFormat(double myNumber)
         {
             var s = string.Format("{0:0.00}", myNumber);
@@ -123,7 +134,7 @@ namespace Broker_Commission
             //    return s;
             //}
             return s;
-        } 
+        }
         public static DataTable STATEMENT_VIEW(string month, int year, int broker_id)
         {
             DataTable table = new DataTable();
@@ -132,7 +143,7 @@ namespace Broker_Commission
             //WHERE [MONTH] = 'November' AND [YEAR] = '2021' AND BROKER_ID= 3
             //string query = "SELECT * FROM [dbo].[VW_STATEMENT] WHERE QB_CLIENT_NAME IS NOT NULL AND [MONTH]='" + month + "' "+ " AND [YEAR]="+year + " AND [BROKER_ID]="+ broker_id;
 
-            string query = "SELECT * FROM [dbo].[COMMISSION_RESULT] WHERE BROKER_ID ="+broker_id;
+            string query = "SELECT * FROM [dbo].[COMMISSION_RESULT] WHERE BROKER_ID =" + broker_id;
             string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
@@ -154,7 +165,7 @@ namespace Broker_Commission
             }
 
             return table;
-        } 
+        }
 
         public static DataTable COMMISSION_SUMMARY_GRIDTABLE()
         {
@@ -190,10 +201,10 @@ namespace Broker_Commission
 
         public static void statement_process(string Month, int year)
         {
-           
+
             string query = "";
 
-            query = "EXEC [dbo].[SP_IMPORT_FILE_SENT_SSIS] @Month='" + Month + "', @Year='" + year+"'";
+            query = "EXEC [dbo].[SP_IMPORT_FILE_SENT_SSIS] @Month='" + Month + "', @Year='" + year + "'";
 
 
             string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
@@ -287,7 +298,7 @@ namespace Broker_Commission
                 id = id_object.ID;
             }
             return id;
-        } 
+        }
 
         public static void toSQL(DataTable dt, string monthS, int yearS)
         {
@@ -316,7 +327,7 @@ namespace Broker_Commission
                     };
 
                     db.STATEMENT_HEADER.Add(model);
-                    db.SaveChanges(); 
+                    db.SaveChanges();
 
 
 
@@ -333,9 +344,9 @@ namespace Broker_Commission
             {
                 using (HtmlTextWriter hw = new HtmlTextWriter(sw))
                 {
-                     
-                    DataTable dtp = STATEMENT_VIEW(month,  year, broker_id);
-                    StringBuilder sb = stringPDF(dtp, month,year);
+
+                    DataTable dtp = STATEMENT_VIEW(month, year, broker_id);
+                    StringBuilder sb = stringPDF(dtp, month, year);
 
                     StringReader sr = new StringReader(sb.ToString());
 
@@ -345,7 +356,7 @@ namespace Broker_Commission
                     {
                         PdfWriter writer = PdfWriter.GetInstance(pdfDoc, memoryStream);
                         pdfDoc.Open();
-                       
+
                         htmlparser.Parse(sr);
                         pdfDoc.Close();
                         byte[] bytes = memoryStream.ToArray();
@@ -356,9 +367,9 @@ namespace Broker_Commission
                         MailAddress copy = new MailAddress(cc_email);
                         mm.CC.Add(copy);
 
-
+                        mm.From = new MailAddress(from_email);
                         mm.Subject = subject_line;
-                        
+
                         mm.Body = "Good Morning/Afternoon," + "<br/>" + "<br/>" + "Thank you for your continued support and partnership. Attached you will find your most recent Commission Statement."
                             + "Thank you and have a great day," + "<br/>" + "<br/>" +
                             "Clarity Finance Dept." + "<br/>" + "(finance@claritybenefitsolutions.com)";
@@ -366,32 +377,16 @@ namespace Broker_Commission
                         mm.Attachments.Add(new Attachment(new MemoryStream(bytes), month + "_" + year + "_" + broker + ".pdf"));
                         mm.IsBodyHtml = true;
                         SmtpClient smtp = new SmtpClient();
-                        // todo: put in app settings
-                        /*
-                         SMTP
-                        Host:
-                        smtp.mailtrap.io
-                        Port:
-                        25 or 465 or 587 or 2525
-                        Username:
-                        a6abec2c4cbb52
-                        Password:
-                        39218b05e65de1
-                        Auth:
-                        PLAIN, LOGIN and CRAM-MD5
-                        TLS:
-                        Optional (STARTTLS on all ports)
-                         */
-                        smtp.Host = "smtp.mailtrap.io";
-                        smtp.EnableSsl = false;
+
+                        smtp.Host = from_host;
+                        smtp.Port = Int32.Parse(from_port);
+                        smtp.EnableSsl = from_enablessl != "false" ? true : false;
                         NetworkCredential NetworkCred = new NetworkCredential();
-                        NetworkCred.UserName = "a6abec2c4cbb52";
-                        NetworkCred.Password = "39218b05e65de1";
-                        //smtp.UseDefaultCredentials = true;
+                        NetworkCred.UserName = from_username;
+                        NetworkCred.Password = from_email_pass;
                         smtp.Credentials = NetworkCred;
-                        smtp.Port = 25;
                         smtp.Send(mm);
-                        
+
                         //Original Mail setting comment out 05/04/2022
                         //smtp.Host = "smtp.office365.com";
                         //smtp.EnableSsl = true;
@@ -411,7 +406,7 @@ namespace Broker_Commission
         {
             string memberID = "";
 
-            string query = " SELECT COUNT(*) AS C FROM [dbo].[STATEMENT_HEADER] WHERE [MONTH] = '"+month+"' AND [YEAR]="+year+" AND FLAG=3";
+            string query = " SELECT COUNT(*) AS C FROM [dbo].[STATEMENT_HEADER] WHERE [MONTH] = '" + month + "' AND [YEAR]=" + year + " AND FLAG=3";
             string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"]
                 .ConnectionString;
 
@@ -470,11 +465,11 @@ namespace Broker_Commission
 
             if (broker_model != null)
             {
-                if(broker_model.EMAIL != null && broker_model.EMAIL.Contains("@"))
+                if (broker_model.EMAIL != null && broker_model.EMAIL.Contains("@"))
                 {
                     Address = broker_model.EMAIL;
                 }
-                else if (broker_model.SECONDARY_EMAIL!= null && broker_model.SECONDARY_EMAIL.Contains("@"))
+                else if (broker_model.SECONDARY_EMAIL != null && broker_model.SECONDARY_EMAIL.Contains("@"))
                 {
                     Address = broker_model.SECONDARY_EMAIL;
                 }
@@ -484,7 +479,7 @@ namespace Broker_Commission
                 }
             }
 
-             
+
             return Address;
         }
 
@@ -622,38 +617,41 @@ namespace Broker_Commission
             MailMessage mail = new MailMessage(sender, receiver);
 
             MailAddress copy = new MailAddress(cc_email);
-           
+
 
 
             SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.office365.com";
-            smtp.EnableSsl = true;
+       
+            smtp.Host = from_host;
+            smtp.Port = Int32.Parse(from_port);
+            smtp.EnableSsl = from_enablessl != "false" ? true : false;
             NetworkCredential NetworkCred = new NetworkCredential();
-            NetworkCred.UserName = from_email;
+            NetworkCred.UserName = from_username;
             NetworkCred.Password = from_email_pass;
-            smtp.UseDefaultCredentials = true;
             smtp.Credentials = NetworkCred;
-            smtp.Port = 587;
-            System.Net.Mail.Attachment attachment;
-            attachment = new System.Net.Mail.Attachment(filePath); 
-            mail.Subject = Month+ " "+year.ToString()+" "+ "Commission Statement for "+ BrokerName;// subject_line;
 
-            mail.Body = "Dear "+ BrokerName+ "," + "<br/>" + "<br/>" 
-                + "Thank you for your continued support of Clarity Benefit Solutions." + "<br/>" 
-                +"Attached you will find your Commission Statement for "+Month+"." + "<br/>"
-                + "You can also review your Commission Statements through the Clarity Portal – simply login and select My Commissions from the Manage menu. " 
+            System.Net.Mail.Attachment attachment;
+            attachment = new System.Net.Mail.Attachment(filePath);
+            mail.From = new MailAddress(from_email);
+
+            mail.Subject = Month + " " + year.ToString() + " " + "Commission Statement for " + BrokerName;// subject_line;
+
+            mail.Body = "Dear " + BrokerName + "," + "<br/>" + "<br/>"
+                + "Thank you for your continued support of Clarity Benefit Solutions." + "<br/>"
+                + "Attached you will find your Commission Statement for " + Month + "." + "<br/>"
+                + "You can also review your Commission Statements through the Clarity Portal – simply login and select My Commissions from the Manage menu. "
                 //+ "<br/>"
                 //+ "You can also review your Commission Statements through the Clarity Portal – simply login and select My Commissions from the Manage menu. " 
                 + "<br/>" + "<br/>"
-                + "Thank you again for being a valued Clarity Broker." 
-                + "<br/>" + "<br/>" 
-                + "Sincerely,"  
-                +"<br/>" 
+                + "Thank you again for being a valued Clarity Broker."
+                + "<br/>" + "<br/>"
+                + "Sincerely,"
+                + "<br/>"
                 + "Clarity Benefit Solutions";
 
             if (debugMode == "True")
             {
-                mail.CC.Add(new MailAddress("finance-it@claritybenefitsolutions.com")); 
+                mail.CC.Add(new MailAddress("finance-it@claritybenefitsolutions.com"));
             }
             else
             {
