@@ -12,7 +12,7 @@
         <PathOnServer>/SSISDB/Broker_Commission/BrokerCommissionSSIS</PathOnServer>
         <UserIDs />
         <UserPasswords />
-        <OfflineMode>false</OfflineMode>
+        <OfflineMode>true</OfflineMode>
         <ProgressReporting>true</ProgressReporting>
         <ParameterConfigurationSensitiveValues>
           <ConfigurationSetting>
