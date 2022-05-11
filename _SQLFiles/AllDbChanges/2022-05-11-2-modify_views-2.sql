@@ -38,7 +38,7 @@ alter VIEW [dbo].[COMMISSION_RESULT_NAME0]
           , BC.[CLIENT_ID]
         FROM
             [dbo].[BROKER_CLIENT] AS BC
-                LEFT JOIN [dbo].[Import_OCT] AS OCT
+                LEFT JOIN [dbo].Import_OCT AS OCT
                           ON
                                   BC.QB_BROKER_NAME_FORMATTED = oct.Agent_FORMATTED
                                   and BC.QB_CLIENT_NAME_FORMATTED = oct.Name_FORMATTED
@@ -89,7 +89,7 @@ alter VIEW [dbo].[COMMISSION_RESULT_NAME1]
         FROM
             
             [dbo].[BROKER_CLIENT] AS BC
-                LEFT JOIN [dbo].[Import_OCT] AS OCT
+                LEFT JOIN [dbo].Import_OCT AS OCT
                           ON
                                   BC.BROKER_NAME_3_FORMATTED = oct.Agent_FORMATTED
                                   and BC.QB_CLIENT_NAME_FORMATTED = oct.Name_FORMATTED
@@ -140,7 +140,7 @@ alter VIEW [dbo].[COMMISSION_RESULT_NAME2]
           , BC.[CLIENT_ID]
         FROM
             [dbo].[BROKER_CLIENT] AS BC
-                LEFT JOIN [dbo].[Import_OCT] AS OCT
+                LEFT JOIN [dbo].Import_OCT AS OCT
                           ON
                                   BC.BROKER_NAME_1_FORMATTED = oct.Agent_FORMATTED
                                   and BC.QB_CLIENT_NAME_FORMATTED = oct.Name_FORMATTED
@@ -190,7 +190,7 @@ alter VIEW [dbo].[COMMISSION_RESULT_NAME3]
           , BC.[CLIENT_ID]
         FROM
             [dbo].[BROKER_CLIENT] AS BC
-                LEFT JOIN [dbo].[Import_OCT] AS OCT
+                LEFT JOIN [dbo].Import_OCT AS OCT
                           ON
                                   BC.BROKER_NAME_2_FORMATTED = oct.Agent_FORMATTED
                                   and BC.QB_CLIENT_NAME_FORMATTED = oct.Name_FORMATTED
@@ -240,7 +240,7 @@ alter VIEW [dbo].[COMMISSION_RESULT_NAME4]
           , BC.[CLIENT_ID]
         FROM
             [dbo].[BROKER_CLIENT] AS BC
-                LEFT JOIN [dbo].[Import_OCT] AS OCT
+                LEFT JOIN [dbo].Import_OCT AS OCT
                           ON
                                   BC.BROKER_NAME_4_FORMATTED = oct.Agent_FORMATTED
                                   and BC.QB_CLIENT_NAME_FORMATTED = oct.Name_FORMATTED
@@ -291,7 +291,7 @@ alter VIEW [dbo].[COMMISSION_RESULT_NAME5]
           , BC.[CLIENT_ID]
         FROM
             [dbo].[BROKER_CLIENT] AS BC
-                LEFT JOIN [dbo].[Import_OCT] AS OCT
+                LEFT JOIN [dbo].Import_OCT AS OCT
                           ON
                                   BC.BROKER_NAME_5_FORMATTED = oct.Agent_FORMATTED
                                   and BC.QB_CLIENT_NAME_FORMATTED = oct.Name_FORMATTED
@@ -342,7 +342,7 @@ alter VIEW [dbo].[COMMISSION_RESULT_NAME6]
           , BC.[CLIENT_ID]
         FROM
             [dbo].[BROKER_CLIENT] AS BC
-                LEFT JOIN [dbo].[Import_OCT] AS OCT
+                LEFT JOIN [dbo].Import_OCT AS OCT
                           ON
                                   BC.BROKER_NAME_6_FORMATTED = oct.Agent_FORMATTED
                                   and BC.QB_CLIENT_NAME_FORMATTED = oct.Name_FORMATTED

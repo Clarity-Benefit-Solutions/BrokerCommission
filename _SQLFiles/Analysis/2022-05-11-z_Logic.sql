@@ -88,7 +88,7 @@ ORDER BY
 -- A. raw data grid is bound to :
 select *
 from
-    [dbo].[Import_OCT]
+    [dbo].Import_OCT
 where
     Agent in ('', '', '');
 select

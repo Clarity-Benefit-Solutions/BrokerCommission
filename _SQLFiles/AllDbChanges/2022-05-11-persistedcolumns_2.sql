@@ -12,7 +12,7 @@ alter table dbo.[SENT_INVOICE]
 Go
 create index INVOICE_NUM_FORMATTED on dbo.SENT_INVOICE (INVOICE_NUM_FORMATTED);
 go
-alter table dbo.[Import_OCT]
+alter table dbo.Import_OCT
     add NUM_FORMATTED
         as
             LTRIM(
@@ -22,7 +22,7 @@ alter table dbo.[Import_OCT]
                 ) PERSISTED;
 Go
 
-alter table dbo.[Import_OCT]
+alter table dbo.Import_OCT
     add memo_FORMATTED
         as
             LTRIM(
@@ -32,7 +32,7 @@ alter table dbo.[Import_OCT]
                 ) PERSISTED;
 Go
 
-alter table dbo.[Import_OCT]
+alter table dbo.Import_OCT
     add Agent_FORMATTED
         as
             REPLACE(
@@ -53,7 +53,7 @@ alter table dbo.[Import_OCT]
                     '-' , '' ) PERSISTED;
 Go
 
-alter table dbo.[Import_OCT]
+alter table dbo.Import_OCT
     add Name_FORMATTED
         as
             REPLACE(

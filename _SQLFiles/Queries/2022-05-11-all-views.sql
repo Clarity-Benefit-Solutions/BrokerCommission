@@ -165,7 +165,7 @@ AS
       , BC.[CLIENT_ID]
     FROM
         [dbo].[BROKER_CLIENT] AS BC
-            LEFT JOIN [dbo].[Import_OCT] AS OCT
+            LEFT JOIN [dbo].Import_OCT AS OCT
                       ON
                           --LTRIM(RTRIM(UPPER(REPLACE(BC.QB_BROKER_NAME,'&','')))) =  LTRIM(RTRIM(UPPER(REPLACE(OCT.Agent, '&',''))))
                                   REPLACE( REPLACE( REPLACE( REPLACE( REPLACE(
@@ -245,7 +245,7 @@ AS
       , BC.[CLIENT_ID]
     FROM
         [dbo].[BROKER_CLIENT] AS BC
-            LEFT JOIN [dbo].[Import_OCT] AS OCT
+            LEFT JOIN [dbo].Import_OCT AS OCT
                       ON
                           --LTRIM(RTRIM(UPPER(BC.BROKER_NAME_3))) =  LTRIM(RTRIM(UPPER(OCT.Agent)))
                                   REPLACE( REPLACE( REPLACE( REPLACE( REPLACE(
@@ -327,7 +327,7 @@ AS
       , BC.[CLIENT_ID]
     FROM
         [dbo].[BROKER_CLIENT] AS BC
-            LEFT JOIN [dbo].[Import_OCT] AS OCT
+            LEFT JOIN [dbo].Import_OCT AS OCT
                       ON
                                   REPLACE( REPLACE( REPLACE( REPLACE( REPLACE(
                                                                               REPLACE( LTRIM( RTRIM( UPPER( BC.BROKER_NAME_1 ) ) ) , '&' , '' ) ,
@@ -410,7 +410,7 @@ AS
       , BC.[CLIENT_ID]
     FROM
         [dbo].[BROKER_CLIENT] AS BC
-            LEFT JOIN [dbo].[Import_OCT] AS OCT
+            LEFT JOIN [dbo].Import_OCT AS OCT
                       ON
                                   REPLACE( REPLACE( REPLACE( REPLACE( REPLACE(
                                                                               REPLACE( LTRIM( RTRIM( UPPER( BC.BROKER_NAME_2 ) ) ) , '&' , '' ) ,
@@ -493,7 +493,7 @@ AS
       , BC.[CLIENT_ID]
     FROM
         [dbo].[BROKER_CLIENT] AS BC
-            LEFT JOIN [dbo].[Import_OCT] AS OCT
+            LEFT JOIN [dbo].Import_OCT AS OCT
                       ON
                           --LTRIM(RTRIM(UPPER(BC.BROKER_NAME_4))) =  LTRIM(RTRIM(UPPER(OCT.Agent)))
                                   REPLACE( REPLACE( REPLACE( REPLACE( REPLACE(
@@ -576,7 +576,7 @@ AS
       , BC.[CLIENT_ID]
     FROM
         [dbo].[BROKER_CLIENT] AS BC
-            LEFT JOIN [dbo].[Import_OCT] AS OCT
+            LEFT JOIN [dbo].Import_OCT AS OCT
                       ON
                           --LTRIM(RTRIM(UPPER(BC.BROKER_NAME_4))) =  LTRIM(RTRIM(UPPER(OCT.Agent)))
                                   REPLACE( REPLACE( REPLACE( REPLACE( REPLACE(
@@ -659,7 +659,7 @@ AS
       , BC.[CLIENT_ID]
     FROM
         [dbo].[BROKER_CLIENT] AS BC
-            LEFT JOIN [dbo].[Import_OCT] AS OCT
+            LEFT JOIN [dbo].Import_OCT AS OCT
                       ON
                           --LTRIM(RTRIM(UPPER(BC.BROKER_NAME_4))) =  LTRIM(RTRIM(UPPER(OCT.Agent)))
                                   REPLACE( REPLACE( REPLACE( REPLACE( REPLACE(
