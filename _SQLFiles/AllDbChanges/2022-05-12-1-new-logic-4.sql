@@ -169,7 +169,7 @@ BEGIN
                         end
                     else
                         begin
-                            set @NEW_LINE_STATUS = concat( 'already paid' , @PRV_INV_SENT_AMOUNT );
+                            set @NEW_LINE_STATUS = concat( 'already paid: ' , @PRV_INV_SENT_AMOUNT );
                         end
                 end
             
@@ -202,6 +202,14 @@ BEGIN
     CLOSE db_cursor2
     DEALLOCATE db_cursor2
     
+    /* update total commissions per statement by examing statement details line_payment_status */
+    /* not essential but it is nice to show users the totals for each broker for current months statements*/
+    update dbo.STATEMENT_HEADER
+    set
+        STATEMENT_TOTAL             = dbo.get_broker_commission_paid_amount( BROKER_ID , MONTH , YEAR ),
+        STATEMENT_PENDING_TOTAL= dbo.get_broker_commission_pending_amount( BROKER_ID , MONTH , YEAR ),
+        STATEMENT_ALREADY_PAID_TOTAL= dbo.get_broker_commission_already_paid_amount( BROKER_ID , MONTH , YEAR );
+    
     /**/
     
     SET @msg1 = CONCAT( '**LOG** ' , 'SP_CALC_STATEMENT_LINE_PAYMENT_STATUS_FOR_HEADER' ,
@@ -210,9 +218,10 @@ BEGIN
 
 END
 GO
-
+/*
 
 exec [dbo].[SP_CALC_STATEMENT_LINE_PAYMENT_STATUS] 'MARCH' , 2022;
 
 select
     dbo.get_invoice_sent_total_paid( '032322EPENN' );
+*/

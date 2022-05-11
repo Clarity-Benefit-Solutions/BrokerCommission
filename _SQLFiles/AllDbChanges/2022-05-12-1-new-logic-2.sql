@@ -15,7 +15,8 @@ alter VIEW [dbo].[COMMISSION_SUMMARY]
           , RT.PAYLOCITY_ID
 go
 
-create or alter PROCEDURE [dbo].[SP_CALC_STATEMENT_LINE_PAYMENT_STATUS]
+create or
+alter PROCEDURE [dbo].[SP_CALC_STATEMENT_LINE_PAYMENT_STATUS]
 @month nvarchar(30),
 @year int
 AS
@@ -24,12 +25,13 @@ BEGIN
         '';
 end;
 go
-create or alter PROCEDURE [dbo].[SP_IMPORT_FILE_SENT_SSIS]
+create or
+alter PROCEDURE [dbo].[SP_IMPORT_FILE_SENT_SSIS]
 @month nvarchar(30),
 @year int
 AS
 BEGIN
-    
+    /* 0. check args are valid*/
     if isnull( @month , '' ) = ''
         begin
             THROW 51000, 'Month Cannot be Empty', 1;
@@ -40,13 +42,13 @@ BEGIN
             THROW 51000, 'Year Cannot be Empty', 1;
         end
     
-    -- update current statement month and year
+    /*1. update current statement month and year in imported data for archival purposes*/
     update dbo.Import_OCT
     set
         statement_year  = @Year,
         statement_month = @Month;
     
-    -- delete from import_archive
+    /* 2. receate Import-Archive for passed month and year */
     delete
     from
         dbo.Import_Archive
@@ -102,11 +104,18 @@ BEGIN
           statement_month = @Month
       and statement_year = @Year;
     
+    /* 3. clear current statements header and details - DONT truncate so we opreserve header id over month by month iterations*/
     -- delete curent statement header
     DELETE
     FROM
         [dbo].[STATEMENT_HEADER];
     
+    -- delete curent statement details
+    DELETE
+    FROM
+        [dbo].[STATEMENT_DETAILS];
+    
+    /* 4. generate new statements header and details fr om imported data joiniong imported data agent witgh various possible broker names in master */
     -- create distinct statement header
     INSERT INTO [dbo].[STATEMENT_HEADER]
     (
@@ -135,11 +144,6 @@ BEGIN
         RT.[BROKER_ID]
       , RT.[BROKER_NAME]
       , RT.PAYLOCITY_ID;
-    
-    -- delete curent statement details
-    DELETE
-    FROM
-        [dbo].[STATEMENT_DETAILS];
     
     -- create distinct statement details
     INSERT INTO [dbo].[STATEMENT_DETAILS]
@@ -193,15 +197,12 @@ BEGIN
           month = @Month
       and year = @Year;
     
+    /* 5. RUN logic to set paid, pending and already paid and update header with stastement wise totals for display to the user and lookback */
+    /* VERY IMPORTANT: It is this SP that marks each statement detail line_payment_status as paid, pending, or already paid*/
     /* run sp that will update line payment status based on open_balance and sent_invoices*/
     exec SP_CALC_STATEMENT_LINE_PAYMENT_STATUS @month , @year;
     
-    /* update total commissions per statement */
-    update dbo.STATEMENT_HEADER
-    set
-        STATEMENT_TOTAL        = dbo.get_broker_commission_paid_amount( BROKER_ID , MONTH , YEAR ),
-        STATEMENT_PENDING_TOTAL= dbo.get_broker_commission_pending_amount( BROKER_ID , MONTH , YEAR );
-    
+    /* 5. Now archive these generated statements */
     -- delete from statement details archive
     delete
     from
@@ -227,6 +228,8 @@ BEGIN
                                                 BROKER_NAME,
                                                 FLAG,
                                                 STATEMENT_TOTAL,
+                                                STATEMENT_PENDING_TOTAL,
+                                                STATEMENT_ALREADY_PAID_TOTAL,
                                                 Change_Date
     )
     SELECT
@@ -237,6 +240,8 @@ BEGIN
       , BROKER_NAME
       , FLAG
       , STATEMENT_TOTAL
+      , STATEMENT_PENDING_TOTAL
+      , STATEMENT_ALREADY_PAID_TOTAL
       , Change_Date
     FROM
         [dbo].[STATEMENT_HEADER]
@@ -301,7 +306,8 @@ BEGIN
 
 END
 go
-
+/*
 
 exec [dbo].[SP_IMPORT_FILE_SENT_SSIS] 'MARCH' , 2020
 
+*/
