@@ -19,7 +19,7 @@ alter table [BROKER_MASTER]
                                             '.' , '' ) ,
                                     ' - ' , '-' ) ,
                             '- ' , '-' ) ,
-                    '-' , '' );
+                    '-' , '' ) PERSISTED;;
 ;
 alter table [BROKER_MASTER]
     add BROKER_NAME_FORMATTED
@@ -39,7 +39,7 @@ alter table [BROKER_MASTER]
                                             '.' , '' ) ,
                                     ' - ' , '-' ) ,
                             '- ' , '-' ) ,
-                    '-' , '' );
+                    '-' , '' ) PERSISTED;
 Go
 alter table [BROKER_MASTER]
     add BROKER_NAME_1_FORMATTED
@@ -59,7 +59,7 @@ alter table [BROKER_MASTER]
                                             '.' , '' ) ,
                                     ' - ' , '-' ) ,
                             '- ' , '-' ) ,
-                    '-' , '' );
+                    '-' , '' ) PERSISTED;
 Go
 alter table [BROKER_MASTER]
     add BROKER_NAME_2_FORMATTED
@@ -79,7 +79,7 @@ alter table [BROKER_MASTER]
                                             '.' , '' ) ,
                                     ' - ' , '-' ) ,
                             '- ' , '-' ) ,
-                    '-' , '' );
+                    '-' , '' ) PERSISTED;
 Go
 alter table [BROKER_MASTER]
     add BROKER_NAME_3_FORMATTED
@@ -99,7 +99,7 @@ alter table [BROKER_MASTER]
                                             '.' , '' ) ,
                                     ' - ' , '-' ) ,
                             '- ' , '-' ) ,
-                    '-' , '' );
+                    '-' , '' ) PERSISTED;
 Go
 alter table [BROKER_MASTER]
     add BROKER_NAME_4_FORMATTED
@@ -119,7 +119,7 @@ alter table [BROKER_MASTER]
                                             '.' , '' ) ,
                                     ' - ' , '-' ) ,
                             '- ' , '-' ) ,
-                    '-' , '' );
+                    '-' , '' ) PERSISTED;
 Go
 
 alter table [BROKER_MASTER]
@@ -140,7 +140,7 @@ alter table [BROKER_MASTER]
                                             '.' , '' ) ,
                                     ' - ' , '-' ) ,
                             '- ' , '-' ) ,
-                    '-' , '' );
+                    '-' , '' ) PERSISTED;
 Go
 
 alter table [BROKER_MASTER]
@@ -220,17 +220,8 @@ ALTER TABLE CLIENT
                 RTRIM(
                         UPPER( QB_FEE )
                     )
-            );
+            ) PERSISTED;
 
 create index QB_FEE_FORMATTED_FORMATTED on dbo.CLIENT (QB_FEE_FORMATTED);
 create index QB_CLIENT_NAME_FORMATTED on dbo.CLIENT (QB_CLIENT_NAME_FORMATTED);
 
-ALTER TABLE CLIENT
-    ADD QB_FEE_FORMATTED AS
-        LTRIM(
-                RTRIM(
-                        UPPER( QB_FEE )
-                    )
-            );
-
-create index QB_FEE_FORMATTED_FORMATTED on dbo.CLIENT (QB_FEE_FORMATTED);

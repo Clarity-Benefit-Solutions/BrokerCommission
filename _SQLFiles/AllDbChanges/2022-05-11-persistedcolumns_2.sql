@@ -8,7 +8,7 @@ alter table dbo.[Import_OCT]
                     RTRIM(
                             UPPER( Num )
                         )
-                );
+                ) PERSISTED;
 Go
 
 alter table dbo.[Import_OCT]
@@ -18,7 +18,7 @@ alter table dbo.[Import_OCT]
                     RTRIM(
                             UPPER( Memo )
                         )
-                );
+                ) PERSISTED;
 Go
 
 alter table dbo.[Import_OCT]
@@ -39,7 +39,7 @@ alter table dbo.[Import_OCT]
                                             '.' , '' ) ,
                                     ' - ' , '-' ) ,
                             '- ' , '-' ) ,
-                    '-' , '' );
+                    '-' , '' ) PERSISTED;
 Go
 
 alter table dbo.[Import_OCT]
@@ -60,7 +60,7 @@ alter table dbo.[Import_OCT]
                                             '.' , '' ) ,
                                     ' - ' , '-' ) ,
                             '- ' , '-' ) ,
-                    '-' , '' );
+                    '-' , '' ) PERSISTED;
 Go
 
 create index NUM_FORMATTED on dbo.Import_OCT (NUM_FORMATTED);

@@ -65,8 +65,8 @@ namespace Broker_Commission
 
         protected void DataLoad()
         {
-
-            string query = "SELECT max(H.HEADER_ID) HEADER_ID " +
+                
+            string query = "SELECT MAX(H.HEADER_ID) HEADER_ID " +
                 " , A.BROKER_ID " +
                 " , A.BROKER_NAME " +
                 " , A.PAYLOCITY_ID " +

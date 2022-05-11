@@ -421,11 +421,10 @@ alter VIEW [dbo].[COMMISSION_RESULT]
                     FROM
                         [dbo].[COMMISSION_RESULT_NAME6]
                     UNION
-                    (
-                        SELECT *
-                        FROM
-                            [dbo].[VW_STATEMENT_DETAILS_ADD]
-                    )
+                    SELECT *
+                    FROM
+                        [dbo].[VW_STATEMENT_DETAILS_ADD]
+                
                 )
             /**/
         SELECT DISTINCT
