@@ -139,15 +139,33 @@ ORDER BY
 -- // in testing it goes to -
 -- \\fs009\FTP-IT\Broker_Commission\29_DELUCA PLANNING_JANUARY_2022.pdf
 -- string savedUrl = PDFOutPut + paylocity_ID + "_" + statement_Header.BROKER_NAME + "_" + statement_Header.MONTH + "_" + statement_Header.YEAR + ".pdf";
-select "the filename is generated wrongly - it just takes the first date in table for the statement headerid! "
-select "the totals are wrong as it is just outputting each month which was in the excel file! "
-select "are we supposed to take only the last invoice date for each client?  "
+select
+    "the filename is generated wrongly - it just takes the first date in table for the statement headerid! "
+select
+    "the totals are wrong as it is just outputting each month which was in the excel file! "
+select
+    "are we supposed to take only the last invoice date for each client?  "
 
--- UI Button: Email All and Archive
+-- UI 5: Button: Email All and Archive
 --  calls UploadResults.btn_Approve_Email_OnClick
 --  redirects to string url = "SendEmails.aspx?Month=" + lbl_month.Text + "&Year=" + lbl_year.Text;
+-- next code is SendEmails.sendEmails
+/*
+ 5A   selects all statement headers where enmail is not send ie.e. flag in (0, 4)
+    var list = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID != null /*&& ( x.FLAG == 0 || x.FLAG == 4 )*/)
+                    .OrderBy(x => x.BROKER_ID).ToList();
+*/
+select *
+from
+    dbo.STATEMENT_HEADER
+where
+      MONTH = 'MARCH'
+  and year = 2022
+  and BROKER_ID is not null
+    /*and FLAG in (0,4)*/
+and BROKER_ID = 26
+order by
+    STATEMENT_HEADER.BROKER_ID;
 
 
-
-
-
+--  5B: EXEC [dbo].[SP_STATEMENT_DETAIL_UPDATE];
