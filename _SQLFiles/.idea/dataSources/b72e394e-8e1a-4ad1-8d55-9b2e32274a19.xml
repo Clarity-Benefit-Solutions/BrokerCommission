@@ -111,7 +111,7 @@
     </schema>
     <schema id="30" parent="2" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2022-05-10.08:12:58.147</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2022-05-10.18:32:20.140</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="31" parent="2" name="guest">
@@ -152,7 +152,7 @@
     </schema>
     <schema id="43" parent="16" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2022-05-10.08:12:58.177</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2022-05-10.18:32:15.860</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="44" parent="16" name="guest">
@@ -169,12 +169,12 @@
     <table id="47" parent="30" name="BROKER_GROUP">
       <ObjectId>1029578706</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.810</CreatedTimestamp>
-      <ModifiedTimestamp>2022-02-24.14:03:27.810</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-05-10.18:22:24.337</ModifiedTimestamp>
     </table>
     <table id="48" parent="30" name="BROKER_MASTER">
       <ObjectId>581577110</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.640</CreatedTimestamp>
-      <ModifiedTimestamp>2022-02-24.14:03:27.640</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-05-10.18:20:37.987</ModifiedTimestamp>
     </table>
     <table id="49" parent="30" name="BROKER_MASTER_">
       <ObjectId>1045578763</ObjectId>
@@ -184,7 +184,7 @@
     <table id="50" parent="30" name="CLIENT">
       <ObjectId>613577224</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.653</CreatedTimestamp>
-      <ModifiedTimestamp>2022-02-24.14:03:27.653</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-05-10.18:28:47.070</ModifiedTimestamp>
     </table>
     <table id="51" parent="30" name="CLIENT_">
       <ObjectId>1077578877</ObjectId>
@@ -333,9 +333,9 @@
     </table>
     <view id="80" parent="30" name="BROKER_CLIENT">
       <ObjectId>645577338</ObjectId>
-      <SourceTextLength>600</SourceTextLength>
+      <SourceTextLength>2306</SourceTextLength>
       <CreatedTimestamp>2022-02-24.14:03:27.660</CreatedTimestamp>
-      <ModifiedTimestamp>2022-03-11.09:30:48.270</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-05-10.18:32:14.953</ModifiedTimestamp>
     </view>
     <view id="81" parent="30" name="COMMISSION_RESULT">
       <ObjectId>869578136</ObjectId>
@@ -570,83 +570,209 @@
       <Position>5</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="122" parent="48" name="ID">
+    <index id="122" parent="47" name="AGENT_ID">
+      <Position>2</Position>
+      <ColNames>AGENT_ID</ColNames>
+    </index>
+    <index id="123" parent="47" name="BROKER_GROUP">
+      <Position>3</Position>
+      <ColNames>BROKER_GROUP</ColNames>
+    </index>
+    <index id="124" parent="47" name="AGENT">
+      <Position>4</Position>
+      <ColNames>AGENT</ColNames>
+    </index>
+    <column id="125" parent="48" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="123" parent="48" name="BROKER_NAME">
+    <column id="126" parent="48" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="124" parent="48" name="PAYLOCITY_ID">
+    <column id="127" parent="48" name="PAYLOCITY_ID">
       <Position>3</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="125" parent="48" name="PREMIUM">
+    <column id="128" parent="48" name="PREMIUM">
       <Position>4</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="126" parent="48" name="EMAIL">
+    <column id="129" parent="48" name="EMAIL">
       <Position>5</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="127" parent="48" name="SECONDARY_EMAIL">
+    <column id="130" parent="48" name="SECONDARY_EMAIL">
       <Position>6</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="128" parent="48" name="STATUS">
+    <column id="131" parent="48" name="STATUS">
       <Position>7</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="129" parent="48" name="PREMIUM_TH">
+    <column id="132" parent="48" name="PREMIUM_TH">
       <Position>8</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="130" parent="48" name="NOTES">
+    <column id="133" parent="48" name="NOTES">
       <Position>9</Position>
       <DataType>nvarchar(3000 char)|0s</DataType>
     </column>
-    <column id="131" parent="48" name="BROKER_STATUS">
+    <column id="134" parent="48" name="BROKER_STATUS">
       <Position>10</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="132" parent="48" name="BROKER_NAME_ID">
+    <column id="135" parent="48" name="BROKER_NAME_ID">
       <Position>11</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="133" parent="48" name="BROKER_NAME_1">
+    <column id="136" parent="48" name="BROKER_NAME_1">
       <Position>12</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="134" parent="48" name="BROKER_NAME_2">
+    <column id="137" parent="48" name="BROKER_NAME_2">
       <Position>13</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="135" parent="48" name="BROKER_NAME_3">
+    <column id="138" parent="48" name="BROKER_NAME_3">
       <Position>14</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="136" parent="48" name="BROKER_NAME_4">
+    <column id="139" parent="48" name="BROKER_NAME_4">
       <Position>15</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="137" parent="48" name="BROKER_NAME_5">
+    <column id="140" parent="48" name="BROKER_NAME_5">
       <Position>16</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="138" parent="48" name="BROKER_NAME_6">
+    <column id="141" parent="48" name="BROKER_NAME_6">
       <Position>17</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <index id="139" parent="48" name="PK_Broker_i">
+    <column id="142" parent="48" name="BROKER_NAME_3_FORMATTED">
+      <Position>18</Position>
+      <Computed>1</Computed>
+      <DefaultExpression>replace(replace(replace(replace(replace(replace(ltrim(rtrim(upper([BROKER_NAME_3]))),&apos;&amp;&apos;,&apos;&apos;),&apos;,&apos;,&apos;&apos;),&apos;.&apos;,&apos;&apos;),&apos; - &apos;,&apos;-&apos;),&apos;- &apos;,&apos;-&apos;),&apos;-&apos;,&apos;&apos;)</DefaultExpression>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="143" parent="48" name="BROKER_NAME_FORMATTED">
+      <Position>19</Position>
+      <Computed>1</Computed>
+      <DefaultExpression>replace(replace(replace(replace(replace(replace(ltrim(rtrim(upper([BROKER_NAME]))),&apos;&amp;&apos;,&apos;&apos;),&apos;,&apos;,&apos;&apos;),&apos;.&apos;,&apos;&apos;),&apos; - &apos;,&apos;-&apos;),&apos;- &apos;,&apos;-&apos;),&apos;-&apos;,&apos;&apos;)</DefaultExpression>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="144" parent="48" name="BROKER_NAME_1_FORMATTED">
+      <Position>20</Position>
+      <Computed>1</Computed>
+      <DefaultExpression>replace(replace(replace(replace(replace(replace(ltrim(rtrim(upper([BROKER_NAME_1]))),&apos;&amp;&apos;,&apos;&apos;),&apos;,&apos;,&apos;&apos;),&apos;.&apos;,&apos;&apos;),&apos; - &apos;,&apos;-&apos;),&apos;- &apos;,&apos;-&apos;),&apos;-&apos;,&apos;&apos;)</DefaultExpression>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="145" parent="48" name="BROKER_NAME_2_FORMATTED">
+      <Position>21</Position>
+      <Computed>1</Computed>
+      <DefaultExpression>replace(replace(replace(replace(replace(replace(ltrim(rtrim(upper([BROKER_NAME_2]))),&apos;&amp;&apos;,&apos;&apos;),&apos;,&apos;,&apos;&apos;),&apos;.&apos;,&apos;&apos;),&apos; - &apos;,&apos;-&apos;),&apos;- &apos;,&apos;-&apos;),&apos;-&apos;,&apos;&apos;)</DefaultExpression>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="146" parent="48" name="BROKER_NAME_4_FORMATTED">
+      <Position>22</Position>
+      <Computed>1</Computed>
+      <DefaultExpression>replace(replace(replace(replace(replace(replace(ltrim(rtrim(upper([BROKER_NAME_4]))),&apos;&amp;&apos;,&apos;&apos;),&apos;,&apos;,&apos;&apos;),&apos;.&apos;,&apos;&apos;),&apos; - &apos;,&apos;-&apos;),&apos;- &apos;,&apos;-&apos;),&apos;-&apos;,&apos;&apos;)</DefaultExpression>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="147" parent="48" name="BROKER_NAME_5_FORMATTED">
+      <Position>23</Position>
+      <Computed>1</Computed>
+      <DefaultExpression>replace(replace(replace(replace(replace(replace(ltrim(rtrim(upper([BROKER_NAME_5]))),&apos;&amp;&apos;,&apos;&apos;),&apos;,&apos;,&apos;&apos;),&apos;.&apos;,&apos;&apos;),&apos; - &apos;,&apos;-&apos;),&apos;- &apos;,&apos;-&apos;),&apos;-&apos;,&apos;&apos;)</DefaultExpression>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="148" parent="48" name="BROKER_NAME_6_FORMATTED">
+      <Position>24</Position>
+      <Computed>1</Computed>
+      <DefaultExpression>replace(replace(replace(replace(replace(replace(ltrim(rtrim(upper([BROKER_NAME_6]))),&apos;&amp;&apos;,&apos;&apos;),&apos;,&apos;,&apos;&apos;),&apos;.&apos;,&apos;&apos;),&apos; - &apos;,&apos;-&apos;),&apos;- &apos;,&apos;-&apos;),&apos;-&apos;,&apos;&apos;)</DefaultExpression>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <index id="149" parent="48" name="PK_Broker_i">
       <Position>1</Position>
       <ColNames>ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="140" parent="48" name="PK_Broker_i">
+    <index id="150" parent="48" name="BROKER_NAME">
+      <Position>18</Position>
+      <ColNames>BROKER_NAME</ColNames>
+    </index>
+    <index id="151" parent="48" name="BROKER_NAME_1">
+      <Position>19</Position>
+      <ColNames>BROKER_NAME_1</ColNames>
+    </index>
+    <index id="152" parent="48" name="BROKER_NAME_2">
+      <Position>20</Position>
+      <ColNames>BROKER_NAME_2</ColNames>
+    </index>
+    <index id="153" parent="48" name="BROKER_NAME_3">
+      <Position>21</Position>
+      <ColNames>BROKER_NAME_3</ColNames>
+    </index>
+    <index id="154" parent="48" name="BROKER_NAME_4">
+      <Position>22</Position>
+      <ColNames>BROKER_NAME_4</ColNames>
+    </index>
+    <index id="155" parent="48" name="BROKER_NAME_5">
+      <Position>23</Position>
+      <ColNames>BROKER_NAME_5</ColNames>
+    </index>
+    <index id="156" parent="48" name="BROKER_NAME_6">
+      <Position>24</Position>
+      <ColNames>BROKER_NAME_6</ColNames>
+    </index>
+    <index id="157" parent="48" name="BROKER_NAME_FORMATTED">
+      <Position>25</Position>
+      <ColNames>BROKER_NAME_FORMATTED</ColNames>
+    </index>
+    <index id="158" parent="48" name="BROKER_NAME_1_FORMATTED">
+      <Position>26</Position>
+      <ColNames>BROKER_NAME_1_FORMATTED</ColNames>
+    </index>
+    <index id="159" parent="48" name="BROKER_NAME_2_FORMATTED">
+      <Position>27</Position>
+      <ColNames>BROKER_NAME_2_FORMATTED</ColNames>
+    </index>
+    <index id="160" parent="48" name="BROKER_NAME_3_FORMATTED">
+      <Position>28</Position>
+      <ColNames>BROKER_NAME_3_FORMATTED</ColNames>
+    </index>
+    <index id="161" parent="48" name="BROKER_NAME_4_FORMATTED">
+      <Position>29</Position>
+      <ColNames>BROKER_NAME_4_FORMATTED</ColNames>
+    </index>
+    <index id="162" parent="48" name="BROKER_NAME_5_FORMATTED">
+      <Position>30</Position>
+      <ColNames>BROKER_NAME_5_FORMATTED</ColNames>
+    </index>
+    <index id="163" parent="48" name="BROKER_NAME_6_FORMATTED">
+      <Position>31</Position>
+      <ColNames>BROKER_NAME_6_FORMATTED</ColNames>
+    </index>
+    <index id="164" parent="48" name="PAYLOCITY_ID">
+      <Position>32</Position>
+      <ColNames>PAYLOCITY_ID</ColNames>
+    </index>
+    <index id="165" parent="48" name="EMAIL">
+      <Position>33</Position>
+      <ColNames>EMAIL</ColNames>
+    </index>
+    <index id="166" parent="48" name="SECONDARY_EMAIL">
+      <Position>34</Position>
+      <ColNames>SECONDARY_EMAIL</ColNames>
+    </index>
+    <index id="167" parent="48" name="STATUS">
+      <Position>35</Position>
+      <ColNames>STATUS</ColNames>
+    </index>
+    <key id="168" parent="48" name="PK_Broker_i">
       <ObjectId>597577167</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.650</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.650</ModifiedTimestamp>
@@ -654,59 +780,59 @@
       <UnderlyingIndexName>PK_Broker_i</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="141" parent="49" name="ID">
+    <column id="169" parent="49" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="142" parent="49" name="BROKER_NAME">
+    <column id="170" parent="49" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="143" parent="49" name="BROKER_GROUP">
+    <column id="171" parent="49" name="BROKER_GROUP">
       <Position>3</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="144" parent="49" name="PREMIUM">
+    <column id="172" parent="49" name="PREMIUM">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="145" parent="49" name="CREATE_DATE">
+    <column id="173" parent="49" name="CREATE_DATE">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="146" parent="49" name="EMAIL">
+    <column id="174" parent="49" name="EMAIL">
       <Position>6</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="147" parent="49" name="STATUS">
+    <column id="175" parent="49" name="STATUS">
       <Position>7</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="148" parent="49" name="PREMIUM_TH">
+    <column id="176" parent="49" name="PREMIUM_TH">
       <Position>8</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="149" parent="49" name="NOTES">
+    <column id="177" parent="49" name="NOTES">
       <Position>9</Position>
       <DataType>nvarchar(max)|0s</DataType>
     </column>
-    <column id="150" parent="49" name="PAYLOCITY_ID">
+    <column id="178" parent="49" name="PAYLOCITY_ID">
       <Position>10</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="151" parent="49" name="BROKER_NAME_ID">
+    <column id="179" parent="49" name="BROKER_NAME_ID">
       <Position>11</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <index id="152" parent="49" name="PK_Broker">
+    <index id="180" parent="49" name="PK_Broker">
       <Position>1</Position>
       <ColNames>ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="153" parent="49" name="PK_Broker">
+    <key id="181" parent="49" name="PK_Broker">
       <ObjectId>1061578820</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.817</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.817</ModifiedTimestamp>
@@ -714,59 +840,79 @@
       <UnderlyingIndexName>PK_Broker</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="154" parent="50" name="CLIENT_ID">
+    <column id="182" parent="50" name="CLIENT_ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="155" parent="50" name="QB_CLIENT_NAME">
+    <column id="183" parent="50" name="QB_CLIENT_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="156" parent="50" name="CLIENT_NAME">
+    <column id="184" parent="50" name="CLIENT_NAME">
       <Position>3</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="157" parent="50" name="BROKER_ID">
+    <column id="185" parent="50" name="BROKER_ID">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="158" parent="50" name="QB_FEE">
+    <column id="186" parent="50" name="QB_FEE">
       <Position>5</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="159" parent="50" name="FEE_MEMO">
+    <column id="187" parent="50" name="FEE_MEMO">
       <Position>6</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="160" parent="50" name="COMMISSION_RATE">
+    <column id="188" parent="50" name="COMMISSION_RATE">
       <Position>7</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="161" parent="50" name="UNIT">
+    <column id="189" parent="50" name="UNIT">
       <Position>8</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="162" parent="50" name="STATUS">
+    <column id="190" parent="50" name="STATUS">
       <Position>9</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="163" parent="50" name="FEE">
+    <column id="191" parent="50" name="FEE">
       <Position>10</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="164" parent="50" name="START_DATE">
+    <column id="192" parent="50" name="START_DATE">
       <Position>11</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <index id="165" parent="50" name="PK_CLIENT_IMPORT_10222021">
+    <column id="193" parent="50" name="QB_CLIENT_NAME_FORMATTED">
+      <Position>12</Position>
+      <Computed>1</Computed>
+      <DefaultExpression>replace(replace(replace(replace(replace(replace(ltrim(rtrim(upper([QB_CLIENT_NAME]))),&apos;&amp;&apos;,&apos;&apos;),&apos;,&apos;,&apos;&apos;),&apos;.&apos;,&apos;&apos;),&apos; - &apos;,&apos;-&apos;),&apos;- &apos;,&apos;-&apos;),&apos;-&apos;,&apos;&apos;)</DefaultExpression>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="194" parent="50" name="QB_FEE_FORMATTED">
+      <Position>13</Position>
+      <Computed>1</Computed>
+      <DefaultExpression>ltrim(rtrim(upper([QB_FEE])))</DefaultExpression>
+      <DataType>nvarchar(500 char)|0s</DataType>
+    </column>
+    <index id="195" parent="50" name="PK_CLIENT_IMPORT_10222021">
       <Position>1</Position>
       <ColNames>CLIENT_ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="166" parent="50" name="PK_CLIENT_IMPORT_10222021">
+    <index id="196" parent="50" name="QB_CLIENT_NAME_FORMATTED">
+      <Position>12</Position>
+      <ColNames>QB_CLIENT_NAME_FORMATTED</ColNames>
+    </index>
+    <index id="197" parent="50" name="QB_FEE_FORMATTED_FORMATTED">
+      <Position>13</Position>
+      <ColNames>QB_FEE_FORMATTED</ColNames>
+    </index>
+    <key id="198" parent="50" name="PK_CLIENT_IMPORT_10222021">
       <ObjectId>629577281</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.657</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.657</ModifiedTimestamp>
@@ -774,47 +920,47 @@
       <UnderlyingIndexName>PK_CLIENT_IMPORT_10222021</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="167" parent="51" name="CLIENT_ID">
+    <column id="199" parent="51" name="CLIENT_ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="168" parent="51" name="CLIENT_NAME">
+    <column id="200" parent="51" name="CLIENT_NAME">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="169" parent="51" name="BROKER_ID">
+    <column id="201" parent="51" name="BROKER_ID">
       <Position>3</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="170" parent="51" name="FEE">
+    <column id="202" parent="51" name="FEE">
       <Position>4</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="171" parent="51" name="FEE_MEMO">
+    <column id="203" parent="51" name="FEE_MEMO">
       <Position>5</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="172" parent="51" name="COMMISSION_RATE">
+    <column id="204" parent="51" name="COMMISSION_RATE">
       <Position>6</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="173" parent="51" name="UNIT">
+    <column id="205" parent="51" name="UNIT">
       <Position>7</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="174" parent="51" name="STATUS">
+    <column id="206" parent="51" name="STATUS">
       <Position>8</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <index id="175" parent="51" name="PK_Agent_Master">
+    <index id="207" parent="51" name="PK_Agent_Master">
       <Position>1</Position>
       <ColNames>CLIENT_ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="176" parent="51" name="PK_Agent_Master">
+    <key id="208" parent="51" name="PK_Agent_Master">
       <ObjectId>1093578934</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.820</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.820</ModifiedTimestamp>
@@ -822,105 +968,105 @@
       <UnderlyingIndexName>PK_Agent_Master</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="177" parent="52" name="CLIENT_ID">
+    <column id="209" parent="52" name="CLIENT_ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="178" parent="52" name="QB_CLIENT_NAME">
+    <column id="210" parent="52" name="QB_CLIENT_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="179" parent="52" name="CLIENT_NAME">
+    <column id="211" parent="52" name="CLIENT_NAME">
       <Position>3</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="180" parent="52" name="BROKER_ID">
+    <column id="212" parent="52" name="BROKER_ID">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="181" parent="52" name="QB_FEE">
+    <column id="213" parent="52" name="QB_FEE">
       <Position>5</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="182" parent="52" name="FEE_MEMO">
+    <column id="214" parent="52" name="FEE_MEMO">
       <Position>6</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="183" parent="52" name="COMMISSION_RATE">
+    <column id="215" parent="52" name="COMMISSION_RATE">
       <Position>7</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="184" parent="52" name="UNIT">
+    <column id="216" parent="52" name="UNIT">
       <Position>8</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="185" parent="52" name="STATUS">
+    <column id="217" parent="52" name="STATUS">
       <Position>9</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="186" parent="52" name="FEE">
+    <column id="218" parent="52" name="FEE">
       <Position>10</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="187" parent="52" name="START_DATE">
+    <column id="219" parent="52" name="START_DATE">
       <Position>11</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="188" parent="53" name="ID">
+    <column id="220" parent="53" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="189" parent="53" name="Type">
+    <column id="221" parent="53" name="Type">
       <Position>2</Position>
       <DataType>nvarchar(255 char)|0s</DataType>
     </column>
-    <column id="190" parent="53" name="Date">
+    <column id="222" parent="53" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="191" parent="53" name="Num">
+    <column id="223" parent="53" name="Num">
       <Position>4</Position>
       <DataType>nvarchar(255 char)|0s</DataType>
     </column>
-    <column id="192" parent="53" name="Name">
+    <column id="224" parent="53" name="Name">
       <Position>5</Position>
       <DataType>nvarchar(255 char)|0s</DataType>
     </column>
-    <column id="193" parent="53" name="Memo">
+    <column id="225" parent="53" name="Memo">
       <Position>6</Position>
       <DataType>nvarchar(3000 char)|0s</DataType>
     </column>
-    <column id="194" parent="53" name="Agent">
+    <column id="226" parent="53" name="Agent">
       <Position>7</Position>
       <DataType>nvarchar(255 char)|0s</DataType>
     </column>
-    <column id="195" parent="53" name="Qty">
+    <column id="227" parent="53" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="196" parent="53" name="Sales Price">
+    <column id="228" parent="53" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="197" parent="53" name="Amount">
+    <column id="229" parent="53" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="198" parent="53" name="Open Balance">
+    <column id="230" parent="53" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <index id="199" parent="53" name="PK_Detail_Input">
+    <index id="231" parent="53" name="PK_Detail_Input">
       <Position>1</Position>
       <ColNames>ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="200" parent="53" name="PK_Detail_Input">
+    <key id="232" parent="53" name="PK_Detail_Input">
       <ObjectId>1125579048</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.823</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.823</ModifiedTimestamp>
@@ -928,31 +1074,31 @@
       <UnderlyingIndexName>PK_Detail_Input</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="201" parent="54" name="ID">
+    <column id="233" parent="54" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="202" parent="54" name="Flat File Source Error Output Column">
+    <column id="234" parent="54" name="Flat File Source Error Output Column">
       <Position>2</Position>
       <DataType>varchar(max)|0s</DataType>
     </column>
-    <column id="203" parent="54" name="ErrorCode">
+    <column id="235" parent="54" name="ErrorCode">
       <Position>3</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="204" parent="54" name="ErrorColumn">
+    <column id="236" parent="54" name="ErrorColumn">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <index id="205" parent="54" name="PK_Error_Msg">
+    <index id="237" parent="54" name="PK_Error_Msg">
       <Position>1</Position>
       <ColNames>ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="206" parent="54" name="PK_Error_Msg">
+    <key id="238" parent="54" name="PK_Error_Msg">
       <ObjectId>1157579162</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.837</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.837</ModifiedTimestamp>
@@ -960,39 +1106,39 @@
       <UnderlyingIndexName>PK_Error_Msg</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="207" parent="55" name="ID">
+    <column id="239" parent="55" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="208" parent="55" name="MEMO">
+    <column id="240" parent="55" name="MEMO">
       <Position>2</Position>
       <DataType>nvarchar(255 char)|0s</DataType>
     </column>
-    <column id="209" parent="55" name="COMMISIONABLE">
+    <column id="241" parent="55" name="COMMISIONABLE">
       <Position>3</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="210" parent="55" name="CLIENT_ID">
+    <column id="242" parent="55" name="CLIENT_ID">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="211" parent="55" name="NOTE">
+    <column id="243" parent="55" name="NOTE">
       <Position>5</Position>
       <DataType>nvarchar(255 char)|0s</DataType>
     </column>
-    <column id="212" parent="55" name="RATE">
+    <column id="244" parent="55" name="RATE">
       <Position>6</Position>
       <DataType>decimal(18,2)|0s</DataType>
     </column>
-    <index id="213" parent="55" name="PK_Memo_Name">
+    <index id="245" parent="55" name="PK_Memo_Name">
       <Position>1</Position>
       <ColNames>ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="214" parent="55" name="PK_Memo_Name">
+    <key id="246" parent="55" name="PK_Memo_Name">
       <ObjectId>1189579276</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.840</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.840</ModifiedTimestamp>
@@ -1000,703 +1146,703 @@
       <UnderlyingIndexName>PK_Memo_Name</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="215" parent="56" name="ID">
+    <column id="247" parent="56" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="216" parent="56" name="Type">
+    <column id="248" parent="56" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="217" parent="56" name="Date">
+    <column id="249" parent="56" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="218" parent="56" name="Num">
+    <column id="250" parent="56" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="219" parent="56" name="Name">
+    <column id="251" parent="56" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="220" parent="56" name="Memo">
+    <column id="252" parent="56" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="221" parent="56" name="Agent">
+    <column id="253" parent="56" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="222" parent="56" name="Qty">
+    <column id="254" parent="56" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="223" parent="56" name="Sales Price">
+    <column id="255" parent="56" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="224" parent="56" name="Amount">
+    <column id="256" parent="56" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="225" parent="56" name="Open Balance">
+    <column id="257" parent="56" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="226" parent="57" name="ID">
+    <column id="258" parent="57" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="227" parent="57" name="Type">
+    <column id="259" parent="57" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="228" parent="57" name="Date">
+    <column id="260" parent="57" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="229" parent="57" name="Num">
+    <column id="261" parent="57" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="230" parent="57" name="Name">
+    <column id="262" parent="57" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="231" parent="57" name="Memo">
+    <column id="263" parent="57" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="232" parent="57" name="Agent">
+    <column id="264" parent="57" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="233" parent="57" name="Qty">
+    <column id="265" parent="57" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="234" parent="57" name="Sales Price">
+    <column id="266" parent="57" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="235" parent="57" name="Amount">
+    <column id="267" parent="57" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="236" parent="57" name="Open Balance">
+    <column id="268" parent="57" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="237" parent="58" name="ID">
+    <column id="269" parent="58" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="238" parent="58" name="Type">
+    <column id="270" parent="58" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="239" parent="58" name="Date">
+    <column id="271" parent="58" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="240" parent="58" name="Num">
+    <column id="272" parent="58" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="241" parent="58" name="Name">
+    <column id="273" parent="58" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="242" parent="58" name="Memo">
+    <column id="274" parent="58" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="243" parent="58" name="Agent">
+    <column id="275" parent="58" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="244" parent="58" name="Qty">
+    <column id="276" parent="58" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="245" parent="58" name="Sales Price">
+    <column id="277" parent="58" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="246" parent="58" name="Amount">
+    <column id="278" parent="58" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="247" parent="58" name="Open Balance">
+    <column id="279" parent="58" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="248" parent="59" name="ID">
+    <column id="280" parent="59" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="249" parent="59" name="Type">
+    <column id="281" parent="59" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="250" parent="59" name="Date">
+    <column id="282" parent="59" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="251" parent="59" name="Num">
+    <column id="283" parent="59" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="252" parent="59" name="Name">
+    <column id="284" parent="59" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="253" parent="59" name="Memo">
+    <column id="285" parent="59" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="254" parent="59" name="Agent">
+    <column id="286" parent="59" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="255" parent="59" name="Qty">
+    <column id="287" parent="59" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="256" parent="59" name="Sales Price">
+    <column id="288" parent="59" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="257" parent="59" name="Amount">
+    <column id="289" parent="59" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="258" parent="59" name="Open Balance">
+    <column id="290" parent="59" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="259" parent="60" name="ID">
+    <column id="291" parent="60" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="260" parent="60" name="Type">
+    <column id="292" parent="60" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="261" parent="60" name="Date">
+    <column id="293" parent="60" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="262" parent="60" name="Num">
+    <column id="294" parent="60" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="263" parent="60" name="Name">
+    <column id="295" parent="60" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="264" parent="60" name="Memo">
+    <column id="296" parent="60" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="265" parent="60" name="Agent">
+    <column id="297" parent="60" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="266" parent="60" name="Qty">
+    <column id="298" parent="60" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="267" parent="60" name="Sales Price">
+    <column id="299" parent="60" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="268" parent="60" name="Amount">
+    <column id="300" parent="60" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="269" parent="60" name="Open Balance">
+    <column id="301" parent="60" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="270" parent="61" name="ID">
+    <column id="302" parent="61" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="271" parent="61" name="Type">
+    <column id="303" parent="61" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="272" parent="61" name="Date">
+    <column id="304" parent="61" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="273" parent="61" name="Num">
+    <column id="305" parent="61" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="274" parent="61" name="Name">
+    <column id="306" parent="61" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="275" parent="61" name="Memo">
+    <column id="307" parent="61" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="276" parent="61" name="Agent">
+    <column id="308" parent="61" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="277" parent="61" name="Qty">
+    <column id="309" parent="61" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="278" parent="61" name="Sales Price">
+    <column id="310" parent="61" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="279" parent="61" name="Amount">
+    <column id="311" parent="61" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="280" parent="61" name="Open Balance">
+    <column id="312" parent="61" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="281" parent="62" name="ID">
+    <column id="313" parent="62" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="282" parent="62" name="Type">
+    <column id="314" parent="62" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="283" parent="62" name="Date">
+    <column id="315" parent="62" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="284" parent="62" name="Num">
+    <column id="316" parent="62" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="285" parent="62" name="Name">
+    <column id="317" parent="62" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="286" parent="62" name="Memo">
+    <column id="318" parent="62" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="287" parent="62" name="Agent">
+    <column id="319" parent="62" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="288" parent="62" name="Qty">
+    <column id="320" parent="62" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="289" parent="62" name="Sales Price">
+    <column id="321" parent="62" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="290" parent="62" name="Amount">
+    <column id="322" parent="62" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="291" parent="62" name="Open Balance">
+    <column id="323" parent="62" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="292" parent="63" name="ID">
+    <column id="324" parent="63" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="293" parent="63" name="Type">
+    <column id="325" parent="63" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="294" parent="63" name="Date">
+    <column id="326" parent="63" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="295" parent="63" name="Num">
+    <column id="327" parent="63" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="296" parent="63" name="Name">
+    <column id="328" parent="63" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="297" parent="63" name="Memo">
+    <column id="329" parent="63" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="298" parent="63" name="Agent">
+    <column id="330" parent="63" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="299" parent="63" name="Qty">
+    <column id="331" parent="63" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="300" parent="63" name="Sales Price">
+    <column id="332" parent="63" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="301" parent="63" name="Amount">
+    <column id="333" parent="63" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="302" parent="63" name="Open Balance">
+    <column id="334" parent="63" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="303" parent="64" name="ID">
+    <column id="335" parent="64" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="304" parent="64" name="Type">
+    <column id="336" parent="64" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="305" parent="64" name="Date">
+    <column id="337" parent="64" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="306" parent="64" name="Num">
+    <column id="338" parent="64" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="307" parent="64" name="Name">
+    <column id="339" parent="64" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="308" parent="64" name="Memo">
+    <column id="340" parent="64" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="309" parent="64" name="Agent">
+    <column id="341" parent="64" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="310" parent="64" name="Qty">
+    <column id="342" parent="64" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="311" parent="64" name="Sales Price">
+    <column id="343" parent="64" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="312" parent="64" name="Amount">
+    <column id="344" parent="64" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="313" parent="64" name="Open Balance">
+    <column id="345" parent="64" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="314" parent="65" name="ID">
+    <column id="346" parent="65" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="315" parent="65" name="Type">
+    <column id="347" parent="65" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="316" parent="65" name="Date">
+    <column id="348" parent="65" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="317" parent="65" name="Num">
+    <column id="349" parent="65" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="318" parent="65" name="Name">
+    <column id="350" parent="65" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="319" parent="65" name="Memo">
+    <column id="351" parent="65" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="320" parent="65" name="Agent">
+    <column id="352" parent="65" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="321" parent="65" name="Qty">
+    <column id="353" parent="65" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="322" parent="65" name="Sales Price">
+    <column id="354" parent="65" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="323" parent="65" name="Amount">
+    <column id="355" parent="65" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="324" parent="65" name="Open Balance">
+    <column id="356" parent="65" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="325" parent="66" name="ID">
+    <column id="357" parent="66" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="326" parent="66" name="Type">
+    <column id="358" parent="66" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="327" parent="66" name="Date">
+    <column id="359" parent="66" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="328" parent="66" name="Num">
+    <column id="360" parent="66" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="329" parent="66" name="Name">
+    <column id="361" parent="66" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="330" parent="66" name="Memo">
+    <column id="362" parent="66" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="331" parent="66" name="Agent">
+    <column id="363" parent="66" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="332" parent="66" name="Qty">
+    <column id="364" parent="66" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="333" parent="66" name="Sales Price">
+    <column id="365" parent="66" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="334" parent="66" name="Amount">
+    <column id="366" parent="66" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="335" parent="66" name="Open Balance">
+    <column id="367" parent="66" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="336" parent="67" name="ID">
+    <column id="368" parent="67" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="337" parent="67" name="Type">
+    <column id="369" parent="67" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="338" parent="67" name="Date">
+    <column id="370" parent="67" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="339" parent="67" name="Num">
+    <column id="371" parent="67" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="340" parent="67" name="Name">
+    <column id="372" parent="67" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="341" parent="67" name="Memo">
+    <column id="373" parent="67" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="342" parent="67" name="Agent">
+    <column id="374" parent="67" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="343" parent="67" name="Qty">
+    <column id="375" parent="67" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="344" parent="67" name="Sales Price">
+    <column id="376" parent="67" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="345" parent="67" name="Amount">
+    <column id="377" parent="67" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="346" parent="67" name="Open Balance">
+    <column id="378" parent="67" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="347" parent="68" name="ID">
+    <column id="379" parent="68" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="348" parent="68" name="Type">
+    <column id="380" parent="68" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="349" parent="68" name="Date">
+    <column id="381" parent="68" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="350" parent="68" name="Num">
+    <column id="382" parent="68" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="351" parent="68" name="Name">
+    <column id="383" parent="68" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="352" parent="68" name="Memo">
+    <column id="384" parent="68" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="353" parent="68" name="Agent">
+    <column id="385" parent="68" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="354" parent="68" name="Qty">
+    <column id="386" parent="68" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="355" parent="68" name="Sales Price">
+    <column id="387" parent="68" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="356" parent="68" name="Amount">
+    <column id="388" parent="68" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="357" parent="68" name="Open Balance">
+    <column id="389" parent="68" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="358" parent="69" name="ID">
+    <column id="390" parent="69" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="359" parent="69" name="Type">
+    <column id="391" parent="69" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="360" parent="69" name="Date">
+    <column id="392" parent="69" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="361" parent="69" name="Num">
+    <column id="393" parent="69" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="362" parent="69" name="Name">
+    <column id="394" parent="69" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="363" parent="69" name="Memo">
+    <column id="395" parent="69" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="364" parent="69" name="Agent">
+    <column id="396" parent="69" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="365" parent="69" name="Qty">
+    <column id="397" parent="69" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="366" parent="69" name="Sales Price">
+    <column id="398" parent="69" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="367" parent="69" name="Amount">
+    <column id="399" parent="69" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="368" parent="69" name="Open Balance">
+    <column id="400" parent="69" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="369" parent="70" name="ID">
+    <column id="401" parent="70" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="370" parent="70" name="Type">
+    <column id="402" parent="70" name="Type">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="371" parent="70" name="Date">
+    <column id="403" parent="70" name="Date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="372" parent="70" name="Num">
+    <column id="404" parent="70" name="Num">
       <Position>4</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="373" parent="70" name="Name">
+    <column id="405" parent="70" name="Name">
       <Position>5</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="374" parent="70" name="Memo">
+    <column id="406" parent="70" name="Memo">
       <Position>6</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="375" parent="70" name="Agent">
+    <column id="407" parent="70" name="Agent">
       <Position>7</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="376" parent="70" name="Qty">
+    <column id="408" parent="70" name="Qty">
       <Position>8</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="377" parent="70" name="Sales Price">
+    <column id="409" parent="70" name="Sales Price">
       <Position>9</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="378" parent="70" name="Amount">
+    <column id="410" parent="70" name="Amount">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="379" parent="70" name="Open Balance">
+    <column id="411" parent="70" name="Open Balance">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <index id="380" parent="70" name="PK_Import_OCT_2">
+    <index id="412" parent="70" name="PK_Import_OCT_2">
       <Position>1</Position>
       <ColNames>ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="381" parent="70" name="PK_Import_OCT_2">
+    <key id="413" parent="70" name="PK_Import_OCT_2">
       <ObjectId>677577452</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.677</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.677</ModifiedTimestamp>
@@ -1704,34 +1850,34 @@
       <UnderlyingIndexName>PK_Import_OCT_2</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="382" parent="71" name="ID">
+    <column id="414" parent="71" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="383" parent="71" name="INVOICE_NUM">
+    <column id="415" parent="71" name="INVOICE_NUM">
       <Position>2</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="384" parent="71" name="OPEN_BALANCE">
+    <column id="416" parent="71" name="OPEN_BALANCE">
       <Position>3</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="385" parent="71" name="DATE_ENTER">
+    <column id="417" parent="71" name="DATE_ENTER">
       <Position>4</Position>
       <Computed>1</Computed>
       <DefaultExpression>getdate()</DefaultExpression>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="386" parent="71" name="PK_SENT_INVOICE">
+    <index id="418" parent="71" name="PK_SENT_INVOICE">
       <Position>1</Position>
       <ColNames>ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="387" parent="71" name="PK_SENT_INVOICE">
+    <key id="419" parent="71" name="PK_SENT_INVOICE">
       <ObjectId>853578079</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.753</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.753</ModifiedTimestamp>
@@ -1739,92 +1885,92 @@
       <UnderlyingIndexName>PK_SENT_INVOICE</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="388" parent="72" name="DETAIL_ID">
+    <column id="420" parent="72" name="DETAIL_ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="389" parent="72" name="HEADER_ID">
+    <column id="421" parent="72" name="HEADER_ID">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="390" parent="72" name="INVOICE_DATE">
+    <column id="422" parent="72" name="INVOICE_DATE">
       <Position>3</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="391" parent="72" name="INVOICE_NUM">
+    <column id="423" parent="72" name="INVOICE_NUM">
       <Position>4</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="392" parent="72" name="QB_CLIENT_NAME">
+    <column id="424" parent="72" name="QB_CLIENT_NAME">
       <Position>5</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="393" parent="72" name="CLIENT_NAME">
+    <column id="425" parent="72" name="CLIENT_NAME">
       <Position>6</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="394" parent="72" name="BROKER_ID">
+    <column id="426" parent="72" name="BROKER_ID">
       <Position>7</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="395" parent="72" name="BROKER_NAME">
+    <column id="427" parent="72" name="BROKER_NAME">
       <Position>8</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="396" parent="72" name="QB_FEE">
+    <column id="428" parent="72" name="QB_FEE">
       <Position>9</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="397" parent="72" name="FEE_MEMO">
+    <column id="429" parent="72" name="FEE_MEMO">
       <Position>10</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="398" parent="72" name="QUANTITY">
+    <column id="430" parent="72" name="QUANTITY">
       <Position>11</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="399" parent="72" name="COMMISSION_RATE">
+    <column id="431" parent="72" name="COMMISSION_RATE">
       <Position>12</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="400" parent="72" name="UNIT">
+    <column id="432" parent="72" name="UNIT">
       <Position>13</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="401" parent="72" name="STATUS">
+    <column id="433" parent="72" name="STATUS">
       <Position>14</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="402" parent="72" name="SALES_PRICE">
+    <column id="434" parent="72" name="SALES_PRICE">
       <Position>15</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="403" parent="72" name="TOTAL_PRICE">
+    <column id="435" parent="72" name="TOTAL_PRICE">
       <Position>16</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="404" parent="72" name="START_DATE">
+    <column id="436" parent="72" name="START_DATE">
       <Position>17</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="405" parent="72" name="BROKER_STATUS">
+    <column id="437" parent="72" name="BROKER_STATUS">
       <Position>18</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="406" parent="72" name="OPEN_BALANCE">
+    <column id="438" parent="72" name="OPEN_BALANCE">
       <Position>19</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <index id="407" parent="72" name="PK_STATEMENT_DETAILS">
+    <index id="439" parent="72" name="PK_STATEMENT_DETAILS">
       <Position>1</Position>
       <ColNames>DETAIL_ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="408" parent="72" name="PK_STATEMENT_DETAILS">
+    <key id="440" parent="72" name="PK_STATEMENT_DETAILS">
       <ObjectId>965578478</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.800</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.800</ModifiedTimestamp>
@@ -1832,88 +1978,88 @@
       <UnderlyingIndexName>PK_STATEMENT_DETAILS</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="409" parent="73" name="DETAIL_ID">
+    <column id="441" parent="73" name="DETAIL_ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="410" parent="73" name="HEADER_ID">
+    <column id="442" parent="73" name="HEADER_ID">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="411" parent="73" name="QB_CLIENT_NAME">
+    <column id="443" parent="73" name="QB_CLIENT_NAME">
       <Position>3</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="412" parent="73" name="CLIENT_NAME">
+    <column id="444" parent="73" name="CLIENT_NAME">
       <Position>4</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="413" parent="73" name="BROKER_ID">
+    <column id="445" parent="73" name="BROKER_ID">
       <Position>5</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="414" parent="73" name="BROKER_NAME">
+    <column id="446" parent="73" name="BROKER_NAME">
       <Position>6</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="415" parent="73" name="QB_FEE">
+    <column id="447" parent="73" name="QB_FEE">
       <Position>7</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="416" parent="73" name="FEE_MEMO">
+    <column id="448" parent="73" name="FEE_MEMO">
       <Position>8</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="417" parent="73" name="QUANTITY">
+    <column id="449" parent="73" name="QUANTITY">
       <Position>9</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="418" parent="73" name="COMMISSION_RATE">
+    <column id="450" parent="73" name="COMMISSION_RATE">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="419" parent="73" name="UNIT">
+    <column id="451" parent="73" name="UNIT">
       <Position>11</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="420" parent="73" name="STATUS">
+    <column id="452" parent="73" name="STATUS">
       <Position>12</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="421" parent="73" name="SALES_PRICE">
+    <column id="453" parent="73" name="SALES_PRICE">
       <Position>13</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="422" parent="73" name="TOTAL_PRICE">
+    <column id="454" parent="73" name="TOTAL_PRICE">
       <Position>14</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="423" parent="73" name="START_DATE">
+    <column id="455" parent="73" name="START_DATE">
       <Position>15</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="424" parent="73" name="BROKER_STATUS">
+    <column id="456" parent="73" name="BROKER_STATUS">
       <Position>16</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="425" parent="73" name="PAYLOCITY_ID">
+    <column id="457" parent="73" name="PAYLOCITY_ID">
       <Position>17</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="426" parent="73" name="RESULTID">
+    <column id="458" parent="73" name="RESULTID">
       <Position>18</Position>
       <DataType>int|0s</DataType>
     </column>
-    <index id="427" parent="73" name="PK_STATEMENT_DETAILS_ADD">
+    <index id="459" parent="73" name="PK_STATEMENT_DETAILS_ADD">
       <Position>1</Position>
       <ColNames>DETAIL_ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="428" parent="73" name="PK_STATEMENT_DETAILS_ADD">
+    <key id="460" parent="73" name="PK_STATEMENT_DETAILS_ADD">
       <ObjectId>821577965</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.750</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.750</ModifiedTimestamp>
@@ -1921,159 +2067,159 @@
       <UnderlyingIndexName>PK_STATEMENT_DETAILS_ADD</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="429" parent="74" name="DETAIL_ID">
+    <column id="461" parent="74" name="DETAIL_ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="430" parent="74" name="HEADER_ID">
+    <column id="462" parent="74" name="HEADER_ID">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="431" parent="74" name="INVOICE_DATE">
+    <column id="463" parent="74" name="INVOICE_DATE">
       <Position>3</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="432" parent="74" name="INVOICE_NUM">
+    <column id="464" parent="74" name="INVOICE_NUM">
       <Position>4</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="433" parent="74" name="QB_CLIENT_NAME">
+    <column id="465" parent="74" name="QB_CLIENT_NAME">
       <Position>5</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="434" parent="74" name="CLIENT_NAME">
+    <column id="466" parent="74" name="CLIENT_NAME">
       <Position>6</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="435" parent="74" name="BROKER_ID">
+    <column id="467" parent="74" name="BROKER_ID">
       <Position>7</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="436" parent="74" name="BROKER_NAME">
+    <column id="468" parent="74" name="BROKER_NAME">
       <Position>8</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="437" parent="74" name="QB_FEE">
+    <column id="469" parent="74" name="QB_FEE">
       <Position>9</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="438" parent="74" name="FEE_MEMO">
+    <column id="470" parent="74" name="FEE_MEMO">
       <Position>10</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="439" parent="74" name="QUANTITY">
+    <column id="471" parent="74" name="QUANTITY">
       <Position>11</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="440" parent="74" name="COMMISSION_RATE">
+    <column id="472" parent="74" name="COMMISSION_RATE">
       <Position>12</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="441" parent="74" name="UNIT">
+    <column id="473" parent="74" name="UNIT">
       <Position>13</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="442" parent="74" name="STATUS">
+    <column id="474" parent="74" name="STATUS">
       <Position>14</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="443" parent="74" name="SALES_PRICE">
+    <column id="475" parent="74" name="SALES_PRICE">
       <Position>15</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="444" parent="74" name="TOTAL_PRICE">
+    <column id="476" parent="74" name="TOTAL_PRICE">
       <Position>16</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="445" parent="74" name="START_DATE">
+    <column id="477" parent="74" name="START_DATE">
       <Position>17</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="446" parent="74" name="BROKER_STATUS">
+    <column id="478" parent="74" name="BROKER_STATUS">
       <Position>18</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="447" parent="74" name="OPEN_BALANCE">
+    <column id="479" parent="74" name="OPEN_BALANCE">
       <Position>19</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="448" parent="75" name="DETAIL_ID">
+    <column id="480" parent="75" name="DETAIL_ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="449" parent="75" name="HEADER_ID">
+    <column id="481" parent="75" name="HEADER_ID">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="450" parent="75" name="QB_CLIENT_NAME">
+    <column id="482" parent="75" name="QB_CLIENT_NAME">
       <Position>3</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="451" parent="75" name="CLIENT_NAME">
+    <column id="483" parent="75" name="CLIENT_NAME">
       <Position>4</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="452" parent="75" name="BROKER_ID">
+    <column id="484" parent="75" name="BROKER_ID">
       <Position>5</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="453" parent="75" name="BROKER_NAME">
+    <column id="485" parent="75" name="BROKER_NAME">
       <Position>6</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="454" parent="75" name="QB_FEE">
+    <column id="486" parent="75" name="QB_FEE">
       <Position>7</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="455" parent="75" name="FEE_MEMO">
+    <column id="487" parent="75" name="FEE_MEMO">
       <Position>8</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="456" parent="75" name="QUANTITY">
+    <column id="488" parent="75" name="QUANTITY">
       <Position>9</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="457" parent="75" name="COMMISSION_RATE">
+    <column id="489" parent="75" name="COMMISSION_RATE">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="458" parent="75" name="UNIT">
+    <column id="490" parent="75" name="UNIT">
       <Position>11</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="459" parent="75" name="STATUS">
+    <column id="491" parent="75" name="STATUS">
       <Position>12</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="460" parent="75" name="SALES_PRICE">
+    <column id="492" parent="75" name="SALES_PRICE">
       <Position>13</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="461" parent="75" name="TOTAL_PRICE">
+    <column id="493" parent="75" name="TOTAL_PRICE">
       <Position>14</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="462" parent="75" name="START_DATE">
+    <column id="494" parent="75" name="START_DATE">
       <Position>15</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="463" parent="75" name="BROKER_STATUS">
+    <column id="495" parent="75" name="BROKER_STATUS">
       <Position>16</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <index id="464" parent="75" name="PK_STATEMENT_DETAILS_Old">
+    <index id="496" parent="75" name="PK_STATEMENT_DETAILS_Old">
       <Position>1</Position>
       <ColNames>DETAIL_ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="465" parent="75" name="PK_STATEMENT_DETAILS_Old">
+    <key id="497" parent="75" name="PK_STATEMENT_DETAILS_Old">
       <ObjectId>1221579390</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.843</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.843</ModifiedTimestamp>
@@ -2081,50 +2227,50 @@
       <UnderlyingIndexName>PK_STATEMENT_DETAILS_Old</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="466" parent="76" name="HEADER_ID">
+    <column id="498" parent="76" name="HEADER_ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="467" parent="76" name="MONTH">
+    <column id="499" parent="76" name="MONTH">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="468" parent="76" name="YEAR">
+    <column id="500" parent="76" name="YEAR">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="469" parent="76" name="BROKER_ID">
+    <column id="501" parent="76" name="BROKER_ID">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="470" parent="76" name="BROKER_NAME">
+    <column id="502" parent="76" name="BROKER_NAME">
       <Position>5</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="471" parent="76" name="FLAG">
+    <column id="503" parent="76" name="FLAG">
       <Position>6</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="472" parent="76" name="STATEMENT_TOTAL">
+    <column id="504" parent="76" name="STATEMENT_TOTAL">
       <Position>7</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="473" parent="76" name="Change_Date">
+    <column id="505" parent="76" name="Change_Date">
       <Position>8</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <index id="474" parent="76" name="PK_STATEMENT_HEADER">
+    <index id="506" parent="76" name="PK_STATEMENT_HEADER">
       <Position>1</Position>
       <ColNames>HEADER_ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="475" parent="76" name="PK_STATEMENT_HEADER">
+    <key id="507" parent="76" name="PK_STATEMENT_HEADER">
       <ObjectId>917578307</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.790</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.790</ModifiedTimestamp>
@@ -2132,50 +2278,50 @@
       <UnderlyingIndexName>PK_STATEMENT_HEADER</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="476" parent="77" name="HEADER_ID">
+    <column id="508" parent="77" name="HEADER_ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="477" parent="77" name="MONTH">
+    <column id="509" parent="77" name="MONTH">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="478" parent="77" name="YEAR">
+    <column id="510" parent="77" name="YEAR">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="479" parent="77" name="BROKER_ID">
+    <column id="511" parent="77" name="BROKER_ID">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="480" parent="77" name="BROKER_NAME">
+    <column id="512" parent="77" name="BROKER_NAME">
       <Position>5</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="481" parent="77" name="FLAG">
+    <column id="513" parent="77" name="FLAG">
       <Position>6</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="482" parent="77" name="STATEMENT_TOTAL">
+    <column id="514" parent="77" name="STATEMENT_TOTAL">
       <Position>7</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="483" parent="77" name="Change_Date">
+    <column id="515" parent="77" name="Change_Date">
       <Position>8</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <index id="484" parent="77" name="PK_STATEMENT_HEADER_Old">
+    <index id="516" parent="77" name="PK_STATEMENT_HEADER_Old">
       <Position>1</Position>
       <ColNames>HEADER_ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="485" parent="77" name="PK_STATEMENT_HEADER_Old">
+    <key id="517" parent="77" name="PK_STATEMENT_HEADER_Old">
       <ObjectId>1253579504</ObjectId>
       <CreatedTimestamp>2022-02-24.14:03:27.847</CreatedTimestamp>
       <ModifiedTimestamp>2022-02-24.14:03:27.847</ModifiedTimestamp>
@@ -2183,48 +2329,48 @@
       <UnderlyingIndexName>PK_STATEMENT_HEADER_Old</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="486" parent="78" name="Broker">
+    <column id="518" parent="78" name="Broker">
       <Position>1</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="487" parent="78" name="Client">
+    <column id="519" parent="78" name="Client">
       <Position>2</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="488" parent="78" name="Fee_Type">
+    <column id="520" parent="78" name="Fee_Type">
       <Position>3</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="489" parent="78" name="Commission_Rate">
+    <column id="521" parent="78" name="Commission_Rate">
       <Position>4</Position>
       <DataType>numeric(18,2)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="490" parent="78" name="Type">
+    <column id="522" parent="78" name="Type">
       <Position>5</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="491" parent="79" name="ID">
+    <column id="523" parent="79" name="ID">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="492" parent="79" name="TestFlag">
+    <column id="524" parent="79" name="TestFlag">
       <Position>2</Position>
       <DataType>int|0s</DataType>
     </column>
-    <index id="493" parent="79" name="PK_test_Flag">
+    <index id="525" parent="79" name="PK_test_Flag">
       <Position>1</Position>
       <ColNames>ID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="494" parent="79" name="PK_test_Flag">
+    <key id="526" parent="79" name="PK_test_Flag">
       <ObjectId>418100530</ObjectId>
       <CreatedTimestamp>2022-04-13.18:39:32.340</CreatedTimestamp>
       <ModifiedTimestamp>2022-04-13.18:39:32.340</ModifiedTimestamp>
@@ -2232,1420 +2378,1452 @@
       <UnderlyingIndexName>PK_test_Flag</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="495" parent="80" name="ID">
+    <column id="527" parent="80" name="ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="496" parent="80" name="BROKER_NAME">
+    <column id="528" parent="80" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="497" parent="80" name="QB_BROKER_NAME">
+    <column id="529" parent="80" name="QB_BROKER_NAME">
       <Position>3</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="498" parent="80" name="CLIENT_NAME">
+    <column id="530" parent="80" name="CLIENT_NAME">
       <Position>4</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="499" parent="80" name="QB_FEE">
+    <column id="531" parent="80" name="QB_FEE">
       <Position>5</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="500" parent="80" name="BROKER_STATUS">
+    <column id="532" parent="80" name="QB_FEE_FORMATTED">
       <Position>6</Position>
-      <DataType>nvarchar(50 char)|0s</DataType>
-    </column>
-    <column id="501" parent="80" name="EMAIL">
-      <Position>7</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="502" parent="80" name="QB_CLIENT_NAME">
+    <column id="533" parent="80" name="BROKER_STATUS">
+      <Position>7</Position>
+      <DataType>nvarchar(50 char)|0s</DataType>
+    </column>
+    <column id="534" parent="80" name="EMAIL">
       <Position>8</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="503" parent="80" name="FEE_MEMO">
+    <column id="535" parent="80" name="QB_CLIENT_NAME">
       <Position>9</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="504" parent="80" name="COMMISSION_RATE">
+    <column id="536" parent="80" name="QB_CLIENT_NAME_FORMATTED">
       <Position>10</Position>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="537" parent="80" name="FEE_MEMO">
+      <Position>11</Position>
+      <DataType>nvarchar(500 char)|0s</DataType>
+    </column>
+    <column id="538" parent="80" name="COMMISSION_RATE">
+      <Position>12</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="505" parent="80" name="UNIT">
-      <Position>11</Position>
+    <column id="539" parent="80" name="UNIT">
+      <Position>13</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="506" parent="80" name="PAYLOCITY_ID">
-      <Position>12</Position>
-      <DataType>nvarchar(500 char)|0s</DataType>
-    </column>
-    <column id="507" parent="80" name="SECONDARY_EMAIL">
-      <Position>13</Position>
-      <DataType>nvarchar(500 char)|0s</DataType>
-    </column>
-    <column id="508" parent="80" name="BROKER_NAME_1">
+    <column id="540" parent="80" name="PAYLOCITY_ID">
       <Position>14</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="509" parent="80" name="BROKER_NAME_2">
+    <column id="541" parent="80" name="SECONDARY_EMAIL">
       <Position>15</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="510" parent="80" name="BROKER_NAME_3">
+    <column id="542" parent="80" name="BROKER_NAME_1">
       <Position>16</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="511" parent="80" name="BROKER_NAME_4">
+    <column id="543" parent="80" name="BROKER_NAME_2">
       <Position>17</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="512" parent="80" name="BROKER_NAME_5">
+    <column id="544" parent="80" name="BROKER_NAME_3">
       <Position>18</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="513" parent="80" name="BROKER_NAME_6">
+    <column id="545" parent="80" name="BROKER_NAME_4">
       <Position>19</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="514" parent="80" name="START_DATE">
+    <column id="546" parent="80" name="BROKER_NAME_5">
       <Position>20</Position>
+      <DataType>nvarchar(500 char)|0s</DataType>
+    </column>
+    <column id="547" parent="80" name="BROKER_NAME_6">
+      <Position>21</Position>
+      <DataType>nvarchar(500 char)|0s</DataType>
+    </column>
+    <column id="548" parent="80" name="BROKER_NAME_FORMATTED">
+      <Position>22</Position>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="549" parent="80" name="BROKER_NAME_1_FORMATTED">
+      <Position>23</Position>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="550" parent="80" name="BROKER_NAME_2_FORMATTED">
+      <Position>24</Position>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="551" parent="80" name="BROKER_NAME_3_FORMATTED">
+      <Position>25</Position>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="552" parent="80" name="BROKER_NAME_4_FORMATTED">
+      <Position>26</Position>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="553" parent="80" name="BROKER_NAME_5_FORMATTED">
+      <Position>27</Position>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="554" parent="80" name="BROKER_NAME_6_FORMATTED">
+      <Position>28</Position>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="555" parent="80" name="START_DATE">
+      <Position>29</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="515" parent="80" name="CLIENT_ID">
-      <Position>21</Position>
-      <DataType>int|0s</DataType>
-    </column>
-    <column id="516" parent="81" name="ID">
+    <column id="556" parent="81" name="ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="517" parent="81" name="BROKER_NAME">
+    <column id="557" parent="81" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="518" parent="81" name="QB_BROKER_NAME">
+    <column id="558" parent="81" name="QB_BROKER_NAME">
       <Position>3</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="519" parent="81" name="QB_AGENT">
+    <column id="559" parent="81" name="QB_AGENT">
       <Position>4</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="520" parent="81" name="CLIENT_NAME">
+    <column id="560" parent="81" name="CLIENT_NAME">
       <Position>5</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="521" parent="81" name="QB_CLIENT">
+    <column id="561" parent="81" name="QB_CLIENT">
       <Position>6</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="522" parent="81" name="QB_FEE">
+    <column id="562" parent="81" name="QB_FEE">
       <Position>7</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="523" parent="81" name="MEMO">
+    <column id="563" parent="81" name="MEMO">
       <Position>8</Position>
       <DataType>nvarchar(3000 char)|0s</DataType>
     </column>
-    <column id="524" parent="81" name="Qty">
+    <column id="564" parent="81" name="Qty">
       <Position>9</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="525" parent="81" name="Sales Price">
+    <column id="565" parent="81" name="Sales Price">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="526" parent="81" name="Amount">
+    <column id="566" parent="81" name="Amount">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="527" parent="81" name="Open Balance">
+    <column id="567" parent="81" name="Open Balance">
       <Position>12</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="528" parent="81" name="COMMISSION_RATE">
+    <column id="568" parent="81" name="COMMISSION_RATE">
       <Position>13</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="529" parent="81" name="UNIT">
+    <column id="569" parent="81" name="UNIT">
       <Position>14</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="530" parent="81" name="COMMISSION AMOUNT">
+    <column id="570" parent="81" name="COMMISSION AMOUNT">
       <Position>15</Position>
       <DataType>numeric(37,4)|0s</DataType>
     </column>
-    <column id="531" parent="81" name="BROKER_STATUS">
+    <column id="571" parent="81" name="BROKER_STATUS">
       <Position>16</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="532" parent="81" name="EMAIL">
+    <column id="572" parent="81" name="EMAIL">
       <Position>17</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="533" parent="81" name="QB_CLIENT_NAME">
+    <column id="573" parent="81" name="QB_CLIENT_NAME">
       <Position>18</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="534" parent="81" name="FEE_MEMO">
+    <column id="574" parent="81" name="FEE_MEMO">
       <Position>19</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="535" parent="81" name="BROKER_ID">
+    <column id="575" parent="81" name="BROKER_ID">
       <Position>20</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="536" parent="81" name="Date">
+    <column id="576" parent="81" name="Date">
       <Position>21</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="537" parent="81" name="PAYLOCITY_ID">
+    <column id="577" parent="81" name="PAYLOCITY_ID">
       <Position>22</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="538" parent="81" name="START_DATE">
+    <column id="578" parent="81" name="START_DATE">
       <Position>23</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="539" parent="81" name="Num">
+    <column id="579" parent="81" name="Num">
       <Position>24</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="540" parent="81" name="INVOICE_DATE">
+    <column id="580" parent="81" name="INVOICE_DATE">
       <Position>25</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="541" parent="81" name="CLIENT_ID">
+    <column id="581" parent="81" name="CLIENT_ID">
       <Position>26</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="542" parent="82" name="ID">
+    <column id="582" parent="82" name="ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="543" parent="82" name="BROKER_NAME">
+    <column id="583" parent="82" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="544" parent="82" name="QB_BROKER_NAME">
+    <column id="584" parent="82" name="QB_BROKER_NAME">
       <Position>3</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="545" parent="82" name="QB_AGENT">
+    <column id="585" parent="82" name="QB_AGENT">
       <Position>4</Position>
       <DataType>varchar(8000 char)|0s</DataType>
     </column>
-    <column id="546" parent="82" name="CLIENT_NAME">
+    <column id="586" parent="82" name="CLIENT_NAME">
       <Position>5</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="547" parent="82" name="QB_CLIENT">
+    <column id="587" parent="82" name="QB_CLIENT">
       <Position>6</Position>
       <DataType>varchar(8000 char)|0s</DataType>
     </column>
-    <column id="548" parent="82" name="QB_FEE">
+    <column id="588" parent="82" name="QB_FEE">
       <Position>7</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="549" parent="82" name="MEMO">
+    <column id="589" parent="82" name="MEMO">
       <Position>8</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="550" parent="82" name="Qty">
+    <column id="590" parent="82" name="Qty">
       <Position>9</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="551" parent="82" name="Sales Price">
+    <column id="591" parent="82" name="Sales Price">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="552" parent="82" name="Amount">
+    <column id="592" parent="82" name="Amount">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="553" parent="82" name="Open Balance">
+    <column id="593" parent="82" name="Open Balance">
       <Position>12</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="554" parent="82" name="COMMISSION_RATE">
+    <column id="594" parent="82" name="COMMISSION_RATE">
       <Position>13</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="555" parent="82" name="UNIT">
+    <column id="595" parent="82" name="UNIT">
       <Position>14</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="556" parent="82" name="COMMISSION AMOUNT">
+    <column id="596" parent="82" name="COMMISSION AMOUNT">
       <Position>15</Position>
       <DataType>numeric(37,4)|0s</DataType>
     </column>
-    <column id="557" parent="82" name="BROKER_STATUS">
+    <column id="597" parent="82" name="BROKER_STATUS">
       <Position>16</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="558" parent="82" name="EMAIL">
+    <column id="598" parent="82" name="EMAIL">
       <Position>17</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="559" parent="82" name="QB_CLIENT_NAME">
+    <column id="599" parent="82" name="QB_CLIENT_NAME">
       <Position>18</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="560" parent="82" name="FEE_MEMO">
+    <column id="600" parent="82" name="FEE_MEMO">
       <Position>19</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="561" parent="82" name="BROKER_ID">
+    <column id="601" parent="82" name="BROKER_ID">
       <Position>20</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="562" parent="82" name="Date">
+    <column id="602" parent="82" name="Date">
       <Position>21</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="563" parent="82" name="PAYLOCITY_ID">
+    <column id="603" parent="82" name="PAYLOCITY_ID">
       <Position>22</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="564" parent="82" name="START_DATE">
+    <column id="604" parent="82" name="START_DATE">
       <Position>23</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="565" parent="82" name="Num">
+    <column id="605" parent="82" name="Num">
       <Position>24</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="566" parent="82" name="INVOICE_DATE">
+    <column id="606" parent="82" name="INVOICE_DATE">
       <Position>25</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="567" parent="82" name="CLIENT_ID">
+    <column id="607" parent="82" name="CLIENT_ID">
       <Position>26</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="568" parent="83" name="ID">
+    <column id="608" parent="83" name="ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="569" parent="83" name="BROKER_NAME">
+    <column id="609" parent="83" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="570" parent="83" name="QB_BROKER_NAME">
+    <column id="610" parent="83" name="QB_BROKER_NAME">
       <Position>3</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="571" parent="83" name="QB_AGENT">
-      <Position>4</Position>
-      <DataType>varchar(500 char)|0s</DataType>
-    </column>
-    <column id="572" parent="83" name="CLIENT_NAME">
-      <Position>5</Position>
-      <DataType>nvarchar(4000 char)|0s</DataType>
-    </column>
-    <column id="573" parent="83" name="QB_CLIENT">
-      <Position>6</Position>
-      <DataType>varchar(8000 char)|0s</DataType>
-    </column>
-    <column id="574" parent="83" name="QB_FEE">
-      <Position>7</Position>
-      <DataType>nvarchar(500 char)|0s</DataType>
-    </column>
-    <column id="575" parent="83" name="MEMO">
-      <Position>8</Position>
-      <DataType>varchar(3000 char)|0s</DataType>
-    </column>
-    <column id="576" parent="83" name="Qty">
-      <Position>9</Position>
-      <DataType>int|0s</DataType>
-    </column>
-    <column id="577" parent="83" name="Sales Price">
-      <Position>10</Position>
-      <DataType>numeric(18,2)|0s</DataType>
-    </column>
-    <column id="578" parent="83" name="Amount">
-      <Position>11</Position>
-      <DataType>numeric(18,2)|0s</DataType>
-    </column>
-    <column id="579" parent="83" name="Open Balance">
-      <Position>12</Position>
-      <DataType>numeric(18,2)|0s</DataType>
-    </column>
-    <column id="580" parent="83" name="COMMISSION_RATE">
-      <Position>13</Position>
-      <DataType>numeric(18,2)|0s</DataType>
-    </column>
-    <column id="581" parent="83" name="UNIT">
-      <Position>14</Position>
-      <DataType>nvarchar(50 char)|0s</DataType>
-    </column>
-    <column id="582" parent="83" name="COMMISSION AMOUNT">
-      <Position>15</Position>
-      <DataType>numeric(37,4)|0s</DataType>
-    </column>
-    <column id="583" parent="83" name="BROKER_STATUS">
-      <Position>16</Position>
-      <DataType>nvarchar(50 char)|0s</DataType>
-    </column>
-    <column id="584" parent="83" name="EMAIL">
-      <Position>17</Position>
-      <DataType>nvarchar(500 char)|0s</DataType>
-    </column>
-    <column id="585" parent="83" name="QB_CLIENT_NAME">
-      <Position>18</Position>
-      <DataType>nvarchar(500 char)|0s</DataType>
-    </column>
-    <column id="586" parent="83" name="FEE_MEMO">
-      <Position>19</Position>
-      <DataType>nvarchar(500 char)|0s</DataType>
-    </column>
-    <column id="587" parent="83" name="BROKER_ID">
-      <Position>20</Position>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="588" parent="83" name="Date">
-      <Position>21</Position>
-      <DataType>datetime|0s</DataType>
-    </column>
-    <column id="589" parent="83" name="PAYLOCITY_ID">
-      <Position>22</Position>
-      <DataType>nvarchar(500 char)|0s</DataType>
-    </column>
-    <column id="590" parent="83" name="START_DATE">
-      <Position>23</Position>
-      <DataType>nvarchar(50 char)|0s</DataType>
-    </column>
-    <column id="591" parent="83" name="Num">
-      <Position>24</Position>
-      <DataType>varchar(3000 char)|0s</DataType>
-    </column>
-    <column id="592" parent="83" name="INVOICE_DATE">
-      <Position>25</Position>
-      <DataType>datetime|0s</DataType>
-    </column>
-    <column id="593" parent="83" name="CLIENT_ID">
-      <Position>26</Position>
-      <DataType>int|0s</DataType>
-    </column>
-    <column id="594" parent="84" name="ID">
-      <Position>1</Position>
-      <DataType>int|0s</DataType>
-    </column>
-    <column id="595" parent="84" name="BROKER_NAME">
-      <Position>2</Position>
-      <DataType>nvarchar(500 char)|0s</DataType>
-    </column>
-    <column id="596" parent="84" name="QB_BROKER_NAME">
-      <Position>3</Position>
-      <DataType>nvarchar(4000 char)|0s</DataType>
-    </column>
-    <column id="597" parent="84" name="QB_AGENT">
+    <column id="611" parent="83" name="QB_AGENT">
       <Position>4</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="598" parent="84" name="CLIENT_NAME">
+    <column id="612" parent="83" name="CLIENT_NAME">
       <Position>5</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="599" parent="84" name="QB_CLIENT">
+    <column id="613" parent="83" name="QB_CLIENT">
       <Position>6</Position>
       <DataType>varchar(8000 char)|0s</DataType>
     </column>
-    <column id="600" parent="84" name="QB_FEE">
+    <column id="614" parent="83" name="QB_FEE">
       <Position>7</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="601" parent="84" name="MEMO">
+    <column id="615" parent="83" name="MEMO">
       <Position>8</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="602" parent="84" name="Qty">
+    <column id="616" parent="83" name="Qty">
       <Position>9</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="603" parent="84" name="Sales Price">
+    <column id="617" parent="83" name="Sales Price">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="604" parent="84" name="Amount">
+    <column id="618" parent="83" name="Amount">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="605" parent="84" name="Open Balance">
+    <column id="619" parent="83" name="Open Balance">
       <Position>12</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="606" parent="84" name="COMMISSION_RATE">
+    <column id="620" parent="83" name="COMMISSION_RATE">
       <Position>13</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="607" parent="84" name="UNIT">
+    <column id="621" parent="83" name="UNIT">
       <Position>14</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="608" parent="84" name="COMMISSION AMOUNT">
+    <column id="622" parent="83" name="COMMISSION AMOUNT">
       <Position>15</Position>
       <DataType>numeric(37,4)|0s</DataType>
     </column>
-    <column id="609" parent="84" name="BROKER_STATUS">
+    <column id="623" parent="83" name="BROKER_STATUS">
       <Position>16</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="610" parent="84" name="EMAIL">
+    <column id="624" parent="83" name="EMAIL">
       <Position>17</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="611" parent="84" name="QB_CLIENT_NAME">
+    <column id="625" parent="83" name="QB_CLIENT_NAME">
       <Position>18</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="612" parent="84" name="FEE_MEMO">
+    <column id="626" parent="83" name="FEE_MEMO">
       <Position>19</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="613" parent="84" name="BROKER_ID">
+    <column id="627" parent="83" name="BROKER_ID">
       <Position>20</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="614" parent="84" name="Date">
+    <column id="628" parent="83" name="Date">
       <Position>21</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="615" parent="84" name="PAYLOCITY_ID">
+    <column id="629" parent="83" name="PAYLOCITY_ID">
       <Position>22</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="616" parent="84" name="START_DATE">
+    <column id="630" parent="83" name="START_DATE">
       <Position>23</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="617" parent="84" name="Num">
+    <column id="631" parent="83" name="Num">
       <Position>24</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="618" parent="84" name="INVOICE_DATE">
+    <column id="632" parent="83" name="INVOICE_DATE">
       <Position>25</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="619" parent="84" name="CLIENT_ID">
+    <column id="633" parent="83" name="CLIENT_ID">
       <Position>26</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="620" parent="85" name="ID">
+    <column id="634" parent="84" name="ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="621" parent="85" name="BROKER_NAME">
+    <column id="635" parent="84" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="622" parent="85" name="QB_BROKER_NAME">
+    <column id="636" parent="84" name="QB_BROKER_NAME">
       <Position>3</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="623" parent="85" name="QB_AGENT">
+    <column id="637" parent="84" name="QB_AGENT">
       <Position>4</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="624" parent="85" name="CLIENT_NAME">
+    <column id="638" parent="84" name="CLIENT_NAME">
       <Position>5</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="625" parent="85" name="QB_CLIENT">
+    <column id="639" parent="84" name="QB_CLIENT">
       <Position>6</Position>
       <DataType>varchar(8000 char)|0s</DataType>
     </column>
-    <column id="626" parent="85" name="QB_FEE">
+    <column id="640" parent="84" name="QB_FEE">
       <Position>7</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="627" parent="85" name="MEMO">
+    <column id="641" parent="84" name="MEMO">
       <Position>8</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="628" parent="85" name="Qty">
+    <column id="642" parent="84" name="Qty">
       <Position>9</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="629" parent="85" name="Sales Price">
+    <column id="643" parent="84" name="Sales Price">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="630" parent="85" name="Amount">
+    <column id="644" parent="84" name="Amount">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="631" parent="85" name="Open Balance">
+    <column id="645" parent="84" name="Open Balance">
       <Position>12</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="632" parent="85" name="COMMISSION_RATE">
+    <column id="646" parent="84" name="COMMISSION_RATE">
       <Position>13</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="633" parent="85" name="UNIT">
+    <column id="647" parent="84" name="UNIT">
       <Position>14</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="634" parent="85" name="COMMISSION AMOUNT">
+    <column id="648" parent="84" name="COMMISSION AMOUNT">
       <Position>15</Position>
       <DataType>numeric(37,4)|0s</DataType>
     </column>
-    <column id="635" parent="85" name="BROKER_STATUS">
+    <column id="649" parent="84" name="BROKER_STATUS">
       <Position>16</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="636" parent="85" name="EMAIL">
+    <column id="650" parent="84" name="EMAIL">
       <Position>17</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="637" parent="85" name="QB_CLIENT_NAME">
+    <column id="651" parent="84" name="QB_CLIENT_NAME">
       <Position>18</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="638" parent="85" name="FEE_MEMO">
+    <column id="652" parent="84" name="FEE_MEMO">
       <Position>19</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="639" parent="85" name="BROKER_ID">
+    <column id="653" parent="84" name="BROKER_ID">
       <Position>20</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="640" parent="85" name="Date">
+    <column id="654" parent="84" name="Date">
       <Position>21</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="641" parent="85" name="PAYLOCITY_ID">
+    <column id="655" parent="84" name="PAYLOCITY_ID">
       <Position>22</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="642" parent="85" name="START_DATE">
+    <column id="656" parent="84" name="START_DATE">
       <Position>23</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="643" parent="85" name="Num">
+    <column id="657" parent="84" name="Num">
       <Position>24</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="644" parent="85" name="INVOICE_DATE">
+    <column id="658" parent="84" name="INVOICE_DATE">
       <Position>25</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="645" parent="85" name="CLIENT_ID">
+    <column id="659" parent="84" name="CLIENT_ID">
       <Position>26</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="646" parent="86" name="ID">
+    <column id="660" parent="85" name="ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="647" parent="86" name="BROKER_NAME">
+    <column id="661" parent="85" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="648" parent="86" name="QB_BROKER_NAME">
+    <column id="662" parent="85" name="QB_BROKER_NAME">
       <Position>3</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="649" parent="86" name="QB_AGENT">
+    <column id="663" parent="85" name="QB_AGENT">
       <Position>4</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="650" parent="86" name="CLIENT_NAME">
+    <column id="664" parent="85" name="CLIENT_NAME">
       <Position>5</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="651" parent="86" name="QB_CLIENT">
+    <column id="665" parent="85" name="QB_CLIENT">
       <Position>6</Position>
       <DataType>varchar(8000 char)|0s</DataType>
     </column>
-    <column id="652" parent="86" name="QB_FEE">
+    <column id="666" parent="85" name="QB_FEE">
       <Position>7</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="653" parent="86" name="MEMO">
+    <column id="667" parent="85" name="MEMO">
       <Position>8</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="654" parent="86" name="Qty">
+    <column id="668" parent="85" name="Qty">
       <Position>9</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="655" parent="86" name="Sales Price">
+    <column id="669" parent="85" name="Sales Price">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="656" parent="86" name="Amount">
+    <column id="670" parent="85" name="Amount">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="657" parent="86" name="Open Balance">
+    <column id="671" parent="85" name="Open Balance">
       <Position>12</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="658" parent="86" name="COMMISSION_RATE">
+    <column id="672" parent="85" name="COMMISSION_RATE">
       <Position>13</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="659" parent="86" name="UNIT">
+    <column id="673" parent="85" name="UNIT">
       <Position>14</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="660" parent="86" name="COMMISSION AMOUNT">
+    <column id="674" parent="85" name="COMMISSION AMOUNT">
       <Position>15</Position>
       <DataType>numeric(37,4)|0s</DataType>
     </column>
-    <column id="661" parent="86" name="BROKER_STATUS">
+    <column id="675" parent="85" name="BROKER_STATUS">
       <Position>16</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="662" parent="86" name="EMAIL">
+    <column id="676" parent="85" name="EMAIL">
       <Position>17</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="663" parent="86" name="QB_CLIENT_NAME">
+    <column id="677" parent="85" name="QB_CLIENT_NAME">
       <Position>18</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="664" parent="86" name="FEE_MEMO">
+    <column id="678" parent="85" name="FEE_MEMO">
       <Position>19</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="665" parent="86" name="BROKER_ID">
+    <column id="679" parent="85" name="BROKER_ID">
       <Position>20</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="666" parent="86" name="Date">
+    <column id="680" parent="85" name="Date">
       <Position>21</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="667" parent="86" name="PAYLOCITY_ID">
+    <column id="681" parent="85" name="PAYLOCITY_ID">
       <Position>22</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="668" parent="86" name="START_DATE">
+    <column id="682" parent="85" name="START_DATE">
       <Position>23</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="669" parent="86" name="Num">
+    <column id="683" parent="85" name="Num">
       <Position>24</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="670" parent="86" name="INVOICE_DATE">
+    <column id="684" parent="85" name="INVOICE_DATE">
       <Position>25</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="671" parent="86" name="CLIENT_ID">
+    <column id="685" parent="85" name="CLIENT_ID">
       <Position>26</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="672" parent="87" name="ID">
+    <column id="686" parent="86" name="ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="673" parent="87" name="BROKER_NAME">
+    <column id="687" parent="86" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="674" parent="87" name="QB_BROKER_NAME">
+    <column id="688" parent="86" name="QB_BROKER_NAME">
       <Position>3</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="675" parent="87" name="QB_AGENT">
+    <column id="689" parent="86" name="QB_AGENT">
       <Position>4</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="676" parent="87" name="CLIENT_NAME">
+    <column id="690" parent="86" name="CLIENT_NAME">
       <Position>5</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="677" parent="87" name="QB_CLIENT">
+    <column id="691" parent="86" name="QB_CLIENT">
       <Position>6</Position>
       <DataType>varchar(8000 char)|0s</DataType>
     </column>
-    <column id="678" parent="87" name="QB_FEE">
+    <column id="692" parent="86" name="QB_FEE">
       <Position>7</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="679" parent="87" name="MEMO">
+    <column id="693" parent="86" name="MEMO">
       <Position>8</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="680" parent="87" name="Qty">
+    <column id="694" parent="86" name="Qty">
       <Position>9</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="681" parent="87" name="Sales Price">
+    <column id="695" parent="86" name="Sales Price">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="682" parent="87" name="Amount">
+    <column id="696" parent="86" name="Amount">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="683" parent="87" name="Open Balance">
+    <column id="697" parent="86" name="Open Balance">
       <Position>12</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="684" parent="87" name="COMMISSION_RATE">
+    <column id="698" parent="86" name="COMMISSION_RATE">
       <Position>13</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="685" parent="87" name="UNIT">
+    <column id="699" parent="86" name="UNIT">
       <Position>14</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="686" parent="87" name="COMMISSION AMOUNT">
+    <column id="700" parent="86" name="COMMISSION AMOUNT">
       <Position>15</Position>
       <DataType>numeric(37,4)|0s</DataType>
     </column>
-    <column id="687" parent="87" name="BROKER_STATUS">
+    <column id="701" parent="86" name="BROKER_STATUS">
       <Position>16</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="688" parent="87" name="EMAIL">
+    <column id="702" parent="86" name="EMAIL">
       <Position>17</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="689" parent="87" name="QB_CLIENT_NAME">
+    <column id="703" parent="86" name="QB_CLIENT_NAME">
       <Position>18</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="690" parent="87" name="FEE_MEMO">
+    <column id="704" parent="86" name="FEE_MEMO">
       <Position>19</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="691" parent="87" name="BROKER_ID">
+    <column id="705" parent="86" name="BROKER_ID">
       <Position>20</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="692" parent="87" name="Date">
+    <column id="706" parent="86" name="Date">
       <Position>21</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="693" parent="87" name="PAYLOCITY_ID">
+    <column id="707" parent="86" name="PAYLOCITY_ID">
       <Position>22</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="694" parent="87" name="START_DATE">
+    <column id="708" parent="86" name="START_DATE">
       <Position>23</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="695" parent="87" name="Num">
+    <column id="709" parent="86" name="Num">
       <Position>24</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="696" parent="87" name="INVOICE_DATE">
+    <column id="710" parent="86" name="INVOICE_DATE">
       <Position>25</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="697" parent="87" name="CLIENT_ID">
+    <column id="711" parent="86" name="CLIENT_ID">
       <Position>26</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="698" parent="88" name="ID">
+    <column id="712" parent="87" name="ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="699" parent="88" name="BROKER_NAME">
+    <column id="713" parent="87" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="700" parent="88" name="QB_BROKER_NAME">
+    <column id="714" parent="87" name="QB_BROKER_NAME">
       <Position>3</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="701" parent="88" name="QB_AGENT">
+    <column id="715" parent="87" name="QB_AGENT">
       <Position>4</Position>
       <DataType>varchar(500 char)|0s</DataType>
     </column>
-    <column id="702" parent="88" name="CLIENT_NAME">
+    <column id="716" parent="87" name="CLIENT_NAME">
       <Position>5</Position>
       <DataType>nvarchar(4000 char)|0s</DataType>
     </column>
-    <column id="703" parent="88" name="QB_CLIENT">
+    <column id="717" parent="87" name="QB_CLIENT">
       <Position>6</Position>
       <DataType>varchar(8000 char)|0s</DataType>
     </column>
-    <column id="704" parent="88" name="QB_FEE">
+    <column id="718" parent="87" name="QB_FEE">
       <Position>7</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="705" parent="88" name="MEMO">
+    <column id="719" parent="87" name="MEMO">
       <Position>8</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="706" parent="88" name="Qty">
+    <column id="720" parent="87" name="Qty">
       <Position>9</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="707" parent="88" name="Sales Price">
+    <column id="721" parent="87" name="Sales Price">
       <Position>10</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="708" parent="88" name="Amount">
+    <column id="722" parent="87" name="Amount">
       <Position>11</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="709" parent="88" name="Open Balance">
+    <column id="723" parent="87" name="Open Balance">
       <Position>12</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="710" parent="88" name="COMMISSION_RATE">
+    <column id="724" parent="87" name="COMMISSION_RATE">
       <Position>13</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="711" parent="88" name="UNIT">
+    <column id="725" parent="87" name="UNIT">
       <Position>14</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="712" parent="88" name="COMMISSION AMOUNT">
+    <column id="726" parent="87" name="COMMISSION AMOUNT">
       <Position>15</Position>
       <DataType>numeric(37,4)|0s</DataType>
     </column>
-    <column id="713" parent="88" name="BROKER_STATUS">
+    <column id="727" parent="87" name="BROKER_STATUS">
       <Position>16</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="714" parent="88" name="EMAIL">
+    <column id="728" parent="87" name="EMAIL">
       <Position>17</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="715" parent="88" name="QB_CLIENT_NAME">
+    <column id="729" parent="87" name="QB_CLIENT_NAME">
       <Position>18</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="716" parent="88" name="FEE_MEMO">
+    <column id="730" parent="87" name="FEE_MEMO">
       <Position>19</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="717" parent="88" name="BROKER_ID">
+    <column id="731" parent="87" name="BROKER_ID">
       <Position>20</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="718" parent="88" name="Date">
+    <column id="732" parent="87" name="Date">
       <Position>21</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="719" parent="88" name="PAYLOCITY_ID">
+    <column id="733" parent="87" name="PAYLOCITY_ID">
       <Position>22</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="720" parent="88" name="START_DATE">
+    <column id="734" parent="87" name="START_DATE">
       <Position>23</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="721" parent="88" name="Num">
+    <column id="735" parent="87" name="Num">
       <Position>24</Position>
       <DataType>varchar(3000 char)|0s</DataType>
     </column>
-    <column id="722" parent="88" name="INVOICE_DATE">
+    <column id="736" parent="87" name="INVOICE_DATE">
       <Position>25</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="723" parent="88" name="CLIENT_ID">
+    <column id="737" parent="87" name="CLIENT_ID">
       <Position>26</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="724" parent="89" name="BROKER_ID">
+    <column id="738" parent="88" name="ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="725" parent="89" name="BROKER_NAME">
+    <column id="739" parent="88" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="726" parent="89" name="PAYLOCITY_ID">
+    <column id="740" parent="88" name="QB_BROKER_NAME">
+      <Position>3</Position>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="741" parent="88" name="QB_AGENT">
+      <Position>4</Position>
+      <DataType>varchar(500 char)|0s</DataType>
+    </column>
+    <column id="742" parent="88" name="CLIENT_NAME">
+      <Position>5</Position>
+      <DataType>nvarchar(4000 char)|0s</DataType>
+    </column>
+    <column id="743" parent="88" name="QB_CLIENT">
+      <Position>6</Position>
+      <DataType>varchar(8000 char)|0s</DataType>
+    </column>
+    <column id="744" parent="88" name="QB_FEE">
+      <Position>7</Position>
+      <DataType>nvarchar(500 char)|0s</DataType>
+    </column>
+    <column id="745" parent="88" name="MEMO">
+      <Position>8</Position>
+      <DataType>varchar(3000 char)|0s</DataType>
+    </column>
+    <column id="746" parent="88" name="Qty">
+      <Position>9</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="747" parent="88" name="Sales Price">
+      <Position>10</Position>
+      <DataType>numeric(18,2)|0s</DataType>
+    </column>
+    <column id="748" parent="88" name="Amount">
+      <Position>11</Position>
+      <DataType>numeric(18,2)|0s</DataType>
+    </column>
+    <column id="749" parent="88" name="Open Balance">
+      <Position>12</Position>
+      <DataType>numeric(18,2)|0s</DataType>
+    </column>
+    <column id="750" parent="88" name="COMMISSION_RATE">
+      <Position>13</Position>
+      <DataType>numeric(18,2)|0s</DataType>
+    </column>
+    <column id="751" parent="88" name="UNIT">
+      <Position>14</Position>
+      <DataType>nvarchar(50 char)|0s</DataType>
+    </column>
+    <column id="752" parent="88" name="COMMISSION AMOUNT">
+      <Position>15</Position>
+      <DataType>numeric(37,4)|0s</DataType>
+    </column>
+    <column id="753" parent="88" name="BROKER_STATUS">
+      <Position>16</Position>
+      <DataType>nvarchar(50 char)|0s</DataType>
+    </column>
+    <column id="754" parent="88" name="EMAIL">
+      <Position>17</Position>
+      <DataType>nvarchar(500 char)|0s</DataType>
+    </column>
+    <column id="755" parent="88" name="QB_CLIENT_NAME">
+      <Position>18</Position>
+      <DataType>nvarchar(500 char)|0s</DataType>
+    </column>
+    <column id="756" parent="88" name="FEE_MEMO">
+      <Position>19</Position>
+      <DataType>nvarchar(500 char)|0s</DataType>
+    </column>
+    <column id="757" parent="88" name="BROKER_ID">
+      <Position>20</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="758" parent="88" name="Date">
+      <Position>21</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="759" parent="88" name="PAYLOCITY_ID">
+      <Position>22</Position>
+      <DataType>nvarchar(500 char)|0s</DataType>
+    </column>
+    <column id="760" parent="88" name="START_DATE">
+      <Position>23</Position>
+      <DataType>nvarchar(50 char)|0s</DataType>
+    </column>
+    <column id="761" parent="88" name="Num">
+      <Position>24</Position>
+      <DataType>varchar(3000 char)|0s</DataType>
+    </column>
+    <column id="762" parent="88" name="INVOICE_DATE">
+      <Position>25</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="763" parent="88" name="CLIENT_ID">
+      <Position>26</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="764" parent="89" name="BROKER_ID">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="765" parent="89" name="BROKER_NAME">
+      <Position>2</Position>
+      <DataType>nvarchar(500 char)|0s</DataType>
+    </column>
+    <column id="766" parent="89" name="PAYLOCITY_ID">
       <Position>3</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="727" parent="89" name="TOTAL">
+    <column id="767" parent="89" name="TOTAL">
       <Position>4</Position>
       <DataType>numeric(38,4)|0s</DataType>
     </column>
-    <column id="728" parent="90" name="BROKER_ID">
+    <column id="768" parent="90" name="BROKER_ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="729" parent="90" name="BROKER_NAME">
+    <column id="769" parent="90" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="730" parent="90" name="PAYLOCITY_ID">
+    <column id="770" parent="90" name="PAYLOCITY_ID">
       <Position>3</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="731" parent="90" name="TOTAL">
+    <column id="771" parent="90" name="TOTAL">
       <Position>4</Position>
       <DataType>numeric(38,4)|0s</DataType>
     </column>
-    <column id="732" parent="91" name="ID">
+    <column id="772" parent="91" name="ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="733" parent="91" name="BROKER_NAME">
+    <column id="773" parent="91" name="BROKER_NAME">
       <Position>2</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="734" parent="91" name="PAYLOCITY_ID">
+    <column id="774" parent="91" name="PAYLOCITY_ID">
       <Position>3</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="735" parent="91" name="PREMIUM">
+    <column id="775" parent="91" name="PREMIUM">
       <Position>4</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="736" parent="91" name="EMAIL">
+    <column id="776" parent="91" name="EMAIL">
       <Position>5</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="737" parent="91" name="SECONDARY_EMAIL">
+    <column id="777" parent="91" name="SECONDARY_EMAIL">
       <Position>6</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="738" parent="91" name="STATUS">
+    <column id="778" parent="91" name="STATUS">
       <Position>7</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="739" parent="91" name="PREMIUM_TH">
+    <column id="779" parent="91" name="PREMIUM_TH">
       <Position>8</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="740" parent="91" name="NOTES">
+    <column id="780" parent="91" name="NOTES">
       <Position>9</Position>
       <DataType>nvarchar(3000 char)|0s</DataType>
     </column>
-    <column id="741" parent="91" name="BROKER_STATUS">
+    <column id="781" parent="91" name="BROKER_STATUS">
       <Position>10</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="742" parent="91" name="BROKER_NAME_ID">
+    <column id="782" parent="91" name="BROKER_NAME_ID">
       <Position>11</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="743" parent="91" name="BROKER_NAME_1">
+    <column id="783" parent="91" name="BROKER_NAME_1">
       <Position>12</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="744" parent="91" name="BROKER_NAME_2">
+    <column id="784" parent="91" name="BROKER_NAME_2">
       <Position>13</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="745" parent="91" name="BROKER_NAME_3">
+    <column id="785" parent="91" name="BROKER_NAME_3">
       <Position>14</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="746" parent="91" name="BROKER_NAME_4">
+    <column id="786" parent="91" name="BROKER_NAME_4">
       <Position>15</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="747" parent="91" name="BROKER_NAME_5">
+    <column id="787" parent="91" name="BROKER_NAME_5">
       <Position>16</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="748" parent="91" name="BROKER_NAME_6">
+    <column id="788" parent="91" name="BROKER_NAME_6">
       <Position>17</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="749" parent="91" name="TOTAL_AMOUNT">
+    <column id="789" parent="91" name="TOTAL_AMOUNT">
       <Position>18</Position>
       <DataType>numeric(38,2)|0s</DataType>
     </column>
-    <column id="750" parent="92" name="HEADER_ID">
+    <column id="790" parent="92" name="HEADER_ID">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="751" parent="92" name="PID">
+    <column id="791" parent="92" name="PID">
       <Position>2</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="752" parent="92" name="MONTH">
+    <column id="792" parent="92" name="MONTH">
       <Position>3</Position>
       <DataType>varchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="753" parent="92" name="YEAR">
+    <column id="793" parent="92" name="YEAR">
       <Position>4</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="754" parent="92" name="BROKER_ID">
+    <column id="794" parent="92" name="BROKER_ID">
       <Position>5</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="755" parent="92" name="BROKER_NAME">
+    <column id="795" parent="92" name="BROKER_NAME">
       <Position>6</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="756" parent="92" name="FLAG">
+    <column id="796" parent="92" name="FLAG">
       <Position>7</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="757" parent="92" name="STATEMENT_TOTAL">
+    <column id="797" parent="92" name="STATEMENT_TOTAL">
       <Position>8</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="758" parent="92" name="Change_Date">
+    <column id="798" parent="92" name="Change_Date">
       <Position>9</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="759" parent="92" name="QB_CLIENT_NAME">
+    <column id="799" parent="92" name="QB_CLIENT_NAME">
       <Position>10</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="760" parent="92" name="CLIENT_NAME">
+    <column id="800" parent="92" name="CLIENT_NAME">
       <Position>11</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="761" parent="92" name="QB_FEE">
+    <column id="801" parent="92" name="QB_FEE">
       <Position>12</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="762" parent="92" name="FEE_MEMO">
+    <column id="802" parent="92" name="FEE_MEMO">
       <Position>13</Position>
       <DataType>nvarchar(500 char)|0s</DataType>
     </column>
-    <column id="763" parent="92" name="QUANTITY">
+    <column id="803" parent="92" name="QUANTITY">
       <Position>14</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="764" parent="92" name="COMMISSION_RATE">
+    <column id="804" parent="92" name="COMMISSION_RATE">
       <Position>15</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="765" parent="92" name="UNIT">
+    <column id="805" parent="92" name="UNIT">
       <Position>16</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="766" parent="92" name="SALES_PRICE">
+    <column id="806" parent="92" name="SALES_PRICE">
       <Position>17</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="767" parent="92" name="TOTAL_PRICE">
+    <column id="807" parent="92" name="TOTAL_PRICE">
       <Position>18</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="768" parent="92" name="OPEN_BALANCE">
+    <column id="808" parent="92" name="OPEN_BALANCE">
       <Position>19</Position>
       <DataType>numeric(18,2)|0s</DataType>
     </column>
-    <column id="769" parent="92" name="START_DATE">
+    <column id="809" parent="92" name="START_DATE">
       <Position>20</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="770" parent="92" name="BROKER_STATUS">
+    <column id="810" parent="92" name="BROKER_STATUS">
       <Position>21</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <argument id="771" parent="93" name="@bid">
+    <argument id="811" parent="93" name="@bid">
       <Position>1</Position>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="772" parent="96" name="@Month">
+    <argument id="812" parent="96" name="@Month">
       <Position>1</Position>
       <DataType>nvarchar(30 char)|0s</DataType>
     </argument>
-    <argument id="773" parent="96" name="@Year">
+    <argument id="813" parent="96" name="@Year">
       <Position>2</Position>
       <DataType>int|0s</DataType>
     </argument>
-    <column id="774" parent="99" name="optname">
+    <column id="814" parent="99" name="optname">
       <Position>1</Position>
       <DataType>sysname|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="775" parent="99" name="value">
+    <column id="815" parent="99" name="value">
       <Position>2</Position>
       <DataType>bit|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="776" parent="99" name="major_version">
+    <column id="816" parent="99" name="major_version">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="777" parent="99" name="minor_version">
+    <column id="817" parent="99" name="minor_version">
       <Position>4</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="778" parent="99" name="revision">
+    <column id="818" parent="99" name="revision">
       <Position>5</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="779" parent="99" name="install_failures">
+    <column id="819" parent="99" name="install_failures">
       <Position>6</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="780" parent="100" name="RECNO">
+    <column id="820" parent="100" name="RECNO">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="781" parent="100" name="ACCT_NO">
+    <column id="821" parent="100" name="ACCT_NO">
       <Position>2</Position>
       <DataType>varchar(16 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="782" parent="100" name="COMPANY">
+    <column id="822" parent="100" name="COMPANY">
       <Position>3</Position>
       <DataType>varchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="783" parent="100" name="ADDRESS1">
+    <column id="823" parent="100" name="ADDRESS1">
       <Position>4</Position>
       <DataType>varchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="784" parent="100" name="ADDRESS2">
+    <column id="824" parent="100" name="ADDRESS2">
       <Position>5</Position>
       <DataType>varchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="785" parent="100" name="CITY">
+    <column id="825" parent="100" name="CITY">
       <Position>6</Position>
       <DataType>varchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="786" parent="100" name="STATE">
+    <column id="826" parent="100" name="STATE">
       <Position>7</Position>
       <DataType>varchar(30 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="787" parent="100" name="ZIP">
+    <column id="827" parent="100" name="ZIP">
       <Position>8</Position>
       <DataType>varchar(12 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="788" parent="100" name="DATE_ADDED">
+    <column id="828" parent="100" name="DATE_ADDED">
       <Position>9</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="789" parent="101" name="xserver_name">
+    <column id="829" parent="101" name="xserver_name">
       <Position>1</Position>
       <DataType>varchar(30 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="790" parent="101" name="xdttm_ins">
+    <column id="830" parent="101" name="xdttm_ins">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="791" parent="101" name="xdttm_last_ins_upd">
+    <column id="831" parent="101" name="xdttm_last_ins_upd">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="792" parent="101" name="xfallback_dbid">
+    <column id="832" parent="101" name="xfallback_dbid">
       <Position>4</Position>
       <DataType>smallint|0s</DataType>
     </column>
-    <column id="793" parent="101" name="name">
+    <column id="833" parent="101" name="name">
       <Position>5</Position>
       <DataType>varchar(30 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="794" parent="101" name="dbid">
+    <column id="834" parent="101" name="dbid">
       <Position>6</Position>
       <DataType>smallint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="795" parent="101" name="status">
+    <column id="835" parent="101" name="status">
       <Position>7</Position>
       <DataType>smallint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="796" parent="101" name="version">
+    <column id="836" parent="101" name="version">
       <Position>8</Position>
       <DataType>smallint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="797" parent="102" name="xserver_name">
+    <column id="837" parent="102" name="xserver_name">
       <Position>1</Position>
       <DataType>varchar(30 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="798" parent="102" name="xdttm_ins">
+    <column id="838" parent="102" name="xdttm_ins">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="799" parent="102" name="xdttm_last_ins_upd">
+    <column id="839" parent="102" name="xdttm_last_ins_upd">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="800" parent="102" name="xfallback_low">
+    <column id="840" parent="102" name="xfallback_low">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="801" parent="102" name="xfallback_drive">
+    <column id="841" parent="102" name="xfallback_drive">
       <Position>5</Position>
       <DataType>char(2 char)|0s</DataType>
     </column>
-    <column id="802" parent="102" name="low">
+    <column id="842" parent="102" name="low">
       <Position>6</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="803" parent="102" name="high">
+    <column id="843" parent="102" name="high">
       <Position>7</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="804" parent="102" name="status">
+    <column id="844" parent="102" name="status">
       <Position>8</Position>
       <DataType>smallint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="805" parent="102" name="name">
+    <column id="845" parent="102" name="name">
       <Position>9</Position>
       <DataType>varchar(30 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="806" parent="102" name="phyname">
+    <column id="846" parent="102" name="phyname">
       <Position>10</Position>
       <DataType>varchar(127 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="807" parent="103" name="xserver_name">
+    <column id="847" parent="103" name="xserver_name">
       <Position>1</Position>
       <DataType>varchar(30 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="808" parent="103" name="xdttm_ins">
+    <column id="848" parent="103" name="xdttm_ins">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="809" parent="103" name="xdttm_last_ins_upd">
+    <column id="849" parent="103" name="xdttm_last_ins_upd">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="810" parent="103" name="xfallback_vstart">
+    <column id="850" parent="103" name="xfallback_vstart">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="811" parent="103" name="dbid">
+    <column id="851" parent="103" name="dbid">
       <Position>5</Position>
       <DataType>smallint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="812" parent="103" name="segmap">
+    <column id="852" parent="103" name="segmap">
       <Position>6</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="813" parent="103" name="lstart">
+    <column id="853" parent="103" name="lstart">
       <Position>7</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="814" parent="103" name="sizepg">
+    <column id="854" parent="103" name="sizepg">
       <Position>8</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="815" parent="103" name="vstart">
+    <column id="855" parent="103" name="vstart">
       <Position>9</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="816" parent="104" name="lastrun">
+    <column id="856" parent="104" name="lastrun">
       <Position>1</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="817" parent="104" name="cpu_busy">
+    <column id="857" parent="104" name="cpu_busy">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="818" parent="104" name="io_busy">
+    <column id="858" parent="104" name="io_busy">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="819" parent="104" name="idle">
+    <column id="859" parent="104" name="idle">
       <Position>4</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="820" parent="104" name="pack_received">
+    <column id="860" parent="104" name="pack_received">
       <Position>5</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="821" parent="104" name="pack_sent">
+    <column id="861" parent="104" name="pack_sent">
       <Position>6</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="822" parent="104" name="connections">
+    <column id="862" parent="104" name="connections">
       <Position>7</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="823" parent="104" name="pack_errors">
+    <column id="863" parent="104" name="pack_errors">
       <Position>8</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="824" parent="104" name="total_read">
+    <column id="864" parent="104" name="total_read">
       <Position>9</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="825" parent="104" name="total_write">
+    <column id="865" parent="104" name="total_write">
       <Position>10</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="826" parent="104" name="total_errors">
+    <column id="866" parent="104" name="total_errors">
       <Position>11</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="827" parent="105" name="name">
+    <column id="867" parent="105" name="name">
       <Position>1</Position>
       <DataType>nvarchar(35 char)|0s</DataType>
     </column>
-    <column id="828" parent="105" name="number">
+    <column id="868" parent="105" name="number">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="829" parent="105" name="type">
+    <column id="869" parent="105" name="type">
       <Position>3</Position>
       <DataType>nchar(3 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="830" parent="105" name="low">
+    <column id="870" parent="105" name="low">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="831" parent="105" name="high">
+    <column id="871" parent="105" name="high">
       <Position>5</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="832" parent="105" name="status">
+    <column id="872" parent="105" name="status">
       <Position>6</Position>
       <DataType>int|0s</DataType>
     </column>
