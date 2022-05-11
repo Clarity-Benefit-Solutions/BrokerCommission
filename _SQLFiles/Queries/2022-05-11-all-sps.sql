@@ -1,7 +1,7 @@
 use Broker_Commission;
 go
 
-CREATE PROCEDURE [dbo].[GET_TOTAL]( @bid AS int )
+alter PROCEDURE [dbo].[GET_TOTAL]( @bid AS int )
     -- Add the parameters for the stored procedure here
 
 AS
@@ -26,7 +26,7 @@ go
 
 -- Author:		<Author,,Name>
 
-CREATE PROCEDURE [dbo].[SP_BU_PREVIOUSTABLE]
+alter PROCEDURE [dbo].[SP_BU_PREVIOUSTABLE]
     -- Add the parameters for the stored procedure here
 
 AS
@@ -72,7 +72,7 @@ go
 
 -- Author:		<Author,,Name>
 
-CREATE PROCEDURE [dbo].[SP_FILE_IMPORT_SSIS]
+alter PROCEDURE [dbo].[SP_FILE_IMPORT_SSIS]
     -- Add the parameters for the stored procedure here
 
 AS
@@ -94,7 +94,7 @@ go
 
 -- Description: <Description,,>
 
-CREATE PROCEDURE [dbo].[SP_IMPORT_FILE_SENT_SSIS]
+alter PROCEDURE [dbo].[SP_IMPORT_FILE_SENT_SSIS]
     
     -- Add the parameters for the stored procedure here
 
@@ -150,7 +150,7 @@ go
 -- Author:		<Zhu,,Alfred>
 -- Create date: <01/27/2022>
 
-CREATE PROCEDURE [dbo].[SP_STATEMENT_DETAIL_UPDATE]
+alter PROCEDURE [dbo].[SP_STATEMENT_DETAIL_UPDATE]
     -- Add the parameters for the stored procedure here
 AS
 BEGIN
@@ -239,7 +239,7 @@ go
 
 -- Author:		<Author,,Name>
 
-CREATE PROCEDURE [dbo].[SP_UPLODADFILE]
+alter PROCEDURE [dbo].[SP_UPLODADFILE]
     -- Add the parameters for the stored procedure here
 
 AS

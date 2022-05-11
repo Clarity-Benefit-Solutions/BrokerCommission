@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{BEB8FCA1-6F9C-4E10-9A78-F62FFAD318C2}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{AE9A84A2-7708-4CE3-B13C-3D7B36663CC3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -39,7 +39,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Type"
-              DTS:DTSID="{BADEA2AB-EF31-4E32-9B13-7D540EAA9FC7}"
+              DTS:DTSID="{F81F41D5-3A6E-46C5-AAF6-D29A61309A70}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -47,7 +47,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="Date"
-              DTS:DTSID="{32CE5C36-7F8B-4A29-9168-6D8EA856614A}"
+              DTS:DTSID="{CB5385EB-9F8D-4DB5-85A8-6C66AF96E442}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -56,7 +56,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Num"
-              DTS:DTSID="{AD622545-0BC4-47FB-A907-A80064690B94}"
+              DTS:DTSID="{40592770-0122-40AB-8207-D5383843CA0F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -65,7 +65,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Name"
-              DTS:DTSID="{0CA751CE-28D1-41C7-9C85-74072BEFECFC}"
+              DTS:DTSID="{8612CE87-FC83-4D7A-8B2F-FBED7D57F407}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -74,7 +74,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Memo"
-              DTS:DTSID="{7FFB02B3-CC25-40CC-BA9B-F13C4B4BF4F6}"
+              DTS:DTSID="{1992F578-8546-4D1A-B531-63D6DA46DDAE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -83,7 +83,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Agent"
-              DTS:DTSID="{EC295A2F-E4FA-4D99-BE3B-CAC432DBAF66}"
+              DTS:DTSID="{838DDD3D-B2C4-46AC-9AB7-97CE4D0D62A0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -91,7 +91,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="Qty"
-              DTS:DTSID="{91CECB76-042A-4633-B94A-E2171A597D4A}"
+              DTS:DTSID="{BA6B4844-6040-49DC-8ADF-2963F4311403}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -101,7 +101,7 @@
               DTS:DataScale="2"
               DTS:TextQualified="True"
               DTS:ObjectName="Sales Price"
-              DTS:DTSID="{7467CA58-D936-4117-9747-D26103D3C66A}"
+              DTS:DTSID="{D8D18E54-83E4-408C-BB95-4B55693733FD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -111,7 +111,7 @@
               DTS:DataScale="2"
               DTS:TextQualified="True"
               DTS:ObjectName="Amount"
-              DTS:DTSID="{F62AB21F-0E46-424A-A7B6-7F3DD3B5B9C4}"
+              DTS:DTSID="{8B9E28C1-3CAD-47F5-99C5-DAFB3B4FEDBF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -121,27 +121,22 @@
               DTS:DataScale="2"
               DTS:TextQualified="True"
               DTS:ObjectName="Open Balance"
-              DTS:DTSID="{9765F5F5-8317-45C7-AA59-2B3E92C082AF}"
+              DTS:DTSID="{B43B2257-6C7D-45D1-9769-974401F0C74A}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LAPTOP-KA1OH2R3.Broker_Commission]"
+      DTS:refId="Package.ConnectionManagers[localhost.Broker_Commission]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{B1F82966-B0F2-478B-8B67-F2C395124CF7}"
-      DTS:ObjectName="LAPTOP-KA1OH2R3.Broker_Commission">
+      DTS:ObjectName="localhost.Broker_Commission">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=BE015;User ID=sa;Initial Catalog=Broker_Commission;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7H1D403xyEKCpdKzP9Bs3gAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABe0fvH5oCl7rw6Ub1w+YiXAAAAAASAAACgAAAAEAAAAEyyiAhhm8cOfj3O2IPx9s8gAAAAAmBK9ibCrbPI474hj5Ef3ckLzIM9xQLoN50szy+UR70UAAAAoOusPEjDYVjTFP7GKZcWHTkj8xM</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Broker_Commission;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -557,8 +552,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LAPTOP-KA1OH2R3.Broker_Commission]"
-                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-KA1OH2R3.Broker_Commission]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.Broker_Commission]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.Broker_Commission]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -709,6 +704,34 @@
                       name="Open Balance"
                       precision="18"
                       scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NUM_FORMATTED]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3000"
+                      name="NUM_FORMATTED" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[memo_FORMATTED]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3000"
+                      name="memo_FORMATTED" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Agent_FORMATTED]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8000"
+                      name="Agent_FORMATTED" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name_FORMATTED]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8000"
+                      name="Name_FORMATTED" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
                   </externalMetadataColumns>
                 </input>
               </inputs>

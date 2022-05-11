@@ -163,8 +163,6 @@ namespace Broker_Commission
                     string month = cmb_month.Text.ToUpper(); //util.GetCustomAbbreviatedMonthNames(int.Parse());  
                     int year = int.Parse(cmb_Year.Text);
 
-                    //"EXEC [dbo].[SP_IMPORT_FILE_SENT_SSIS] @Month='" + Month + "', @Year='" + year+"'";
-                    //EXEC msdb..sp_start_job @job_name='Broker_Commission'
                     //Make statement headers from [dbo].[COMMISSION_SUMMARY] AS R 
                     util.statement_process(month, year);
                     #endregion

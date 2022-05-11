@@ -220,7 +220,8 @@ namespace Broker_Commission
         public static DataTable datatable(string bid)
         {
             DataTable dt = new DataTable();
-            string queryString = "SELECT * FROM [dbo].[COMMISSION_RESULT] WHERE BROKER_ID = " + bid + " ORDER BY QB_CLIENT_NAME";
+            //todo: memo added to order by
+            string queryString = "SELECT * FROM [dbo].[COMMISSION_RESULT] WHERE BROKER_ID = " + bid + " ORDER BY QB_CLIENT_NAME, MEMO";
             string conn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ToString();
             var table = new DataTable();
             using (SqlConnection sql = new SqlConnection(conn))
@@ -241,8 +242,8 @@ namespace Broker_Commission
             string output = "";
 
             Document doc = new Document();
-
-            var statement_Header = db.STATEMENT_HEADER.Where(x => x.BROKER_ID == brokerID && x.FLAG == 0).FirstOrDefault();
+            //todo: sumeet - walways generate a statement for now.&& x.FLAG == 0 commneted below
+            var statement_Header = db.STATEMENT_HEADER.Where(x => x.BROKER_ID == brokerID/* && x.FLAG == 0*/).FirstOrDefault();
             if (statement_Header != null)
             {
                 string paylocity_ID = "";

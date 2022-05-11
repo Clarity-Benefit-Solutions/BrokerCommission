@@ -118,7 +118,9 @@ namespace Broker_Commission
                     broker_name_list.Add(dataM.Rows[0]["BROKER_NAME_4"].ToString());
                 }
 
-            } 
+                //todo: not using BROKER_NAME_5 & 6?
+
+            }
             if (broker_name_list.Count > 0)
             {
 
@@ -445,7 +447,7 @@ namespace Broker_Commission
             {
                 string bid = Request.QueryString["BID"].ToString();
                 int brokerID = int.Parse(bid);
-                string FilePath = ReportHelper.CreatedWord_fromResult(brokerID);
+                string FilePath = ReportHelper.CreatedWord_fromResult(brokerID); 
                 WebClient User = new WebClient();
                 Byte[] FileBuffer = User.DownloadData(FilePath);
                 if (FileBuffer != null)
