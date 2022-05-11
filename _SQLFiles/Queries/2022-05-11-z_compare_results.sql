@@ -20,6 +20,12 @@ select
   , sum( [COMMISSION AMOUNT] ) TotalAmount
 from
     dbo.COMMISSION_RESULT_NAME0
+/*union
+select
+    'Test'
+  , sum( [COMMISSION AMOUNT] ) TotalAmount
+from
+    dbo.COMMISSION_RESULT_NAME0_test*/
 union
 select
     'Prv'

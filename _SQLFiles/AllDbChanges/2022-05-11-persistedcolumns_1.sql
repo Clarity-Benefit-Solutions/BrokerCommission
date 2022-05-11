@@ -4,7 +4,22 @@ Go;
 alter table [BROKER_MASTER]
     add BROKER_NAME_ID_FORMATTED
         as
-            REPLACE( BROKER_NAME_ID , '&' , '' );
+            REPLACE(
+                    REPLACE(
+                            REPLACE(
+                                    REPLACE(
+                                            REPLACE(
+                                                    REPLACE(
+                                                            LTRIM(
+                                                                    RTRIM(
+                                                                            UPPER( BROKER_NAME_ID )
+                                                                        )
+                                                                ) , '&' , '' ) ,
+                                                    ',' , '' ) ,
+                                            '.' , '' ) ,
+                                    ' - ' , '-' ) ,
+                            '- ' , '-' ) ,
+                    '-' , '' );
 ;
 alter table [BROKER_MASTER]
     add BROKER_NAME_FORMATTED

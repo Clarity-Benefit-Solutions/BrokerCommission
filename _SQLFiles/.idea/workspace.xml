@@ -74,20 +74,20 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="GenericSQL" />
     <property name="database.data.extractors.current.export.id" value="Tab-separated (TSV)_id" />
     <property name="database.data.extractors.current.id" value="Tab-separated (TSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Queries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AllDbChanges" />
     <property name="settings.editor.selected.configurable" value="SQL Dialects" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\Queries" />
       <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\AllDbChanges" />
       <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\Analysis" />
       <recent name="$PROJECT_DIR$/../../db_dev/_prv" />
       <recent name="$PROJECT_DIR$/../../db_dev/db_changes" />
-      <recent name="C:\___Clarity\clarity_dev\r1_documents\db_dev" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\Queries" />
       <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\AllDbChanges" />
+      <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\Queries" />
       <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles" />
       <recent name="C:\___Clarity\clarity_dev\r1_documents\db_dev\db_changes" />
       <recent name="$PROJECT_DIR$/../../db_dev/db_changes" />
@@ -207,38 +207,38 @@
       <screen x="0" y="0" width="1536" height="930" />
     </state>
     <state x="549" y="220" key="FileChooserDialogImpl/0.0.1536.930@0.0.1536.930" timestamp="1650714183158" />
-    <state width="786" height="140" key="GridCell.Tab.0.bottom" timestamp="1652239651770">
+    <state width="974" height="277" key="GridCell.Tab.0.bottom" timestamp="1652241143102">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state width="1070" height="275" key="GridCell.Tab.0.bottom/0.0.1536.930@0.0.1536.930" timestamp="1643614463729" />
-    <state width="786" height="140" key="GridCell.Tab.0.bottom/62.0.1474.960@62.0.1474.960" timestamp="1652239651770" />
-    <state width="786" height="140" key="GridCell.Tab.0.center" timestamp="1652239651770">
+    <state width="974" height="277" key="GridCell.Tab.0.bottom/62.0.1474.960@62.0.1474.960" timestamp="1652241143102" />
+    <state width="974" height="277" key="GridCell.Tab.0.center" timestamp="1652241143101">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state width="1070" height="275" key="GridCell.Tab.0.center/0.0.1536.930@0.0.1536.930" timestamp="1643614463729" />
-    <state width="786" height="140" key="GridCell.Tab.0.center/62.0.1474.960@62.0.1474.960" timestamp="1652239651770" />
-    <state width="786" height="140" key="GridCell.Tab.0.left" timestamp="1652239651770">
+    <state width="974" height="277" key="GridCell.Tab.0.center/62.0.1474.960@62.0.1474.960" timestamp="1652241143101" />
+    <state width="974" height="277" key="GridCell.Tab.0.left" timestamp="1652241143101">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state width="1070" height="275" key="GridCell.Tab.0.left/0.0.1536.930@0.0.1536.930" timestamp="1643614463729" />
-    <state width="786" height="140" key="GridCell.Tab.0.left/62.0.1474.960@62.0.1474.960" timestamp="1652239651770" />
-    <state width="786" height="140" key="GridCell.Tab.0.right" timestamp="1652239651770">
+    <state width="974" height="277" key="GridCell.Tab.0.left/62.0.1474.960@62.0.1474.960" timestamp="1652241143101" />
+    <state width="974" height="277" key="GridCell.Tab.0.right" timestamp="1652241143101">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state width="1070" height="275" key="GridCell.Tab.0.right/0.0.1536.930@0.0.1536.930" timestamp="1643614463729" />
-    <state width="786" height="140" key="GridCell.Tab.0.right/62.0.1474.960@62.0.1474.960" timestamp="1652239651770" />
+    <state width="974" height="277" key="GridCell.Tab.0.right/62.0.1474.960@62.0.1474.960" timestamp="1652241143101" />
     <state x="300" y="124" key="SettingsEditor" timestamp="1652233263848">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state x="300" y="124" key="SettingsEditor/62.0.1474.960@62.0.1474.960" timestamp="1652233263848" />
-    <state x="593" y="347" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1652239211282">
+    <state x="593" y="347" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1652240857841">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state x="593" y="347" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/62.0.1474.960@62.0.1474.960" timestamp="1652239211282" />
-    <state x="524" y="79" width="549" height="801" key="find.popup" timestamp="1652238461260">
+    <state x="593" y="347" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/62.0.1474.960@62.0.1474.960" timestamp="1652240857841" />
+    <state x="524" y="79" width="549" height="801" key="find.popup" timestamp="1652240582919">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state x="524" y="79" width="549" height="801" key="find.popup/62.0.1474.960@62.0.1474.960" timestamp="1652238461260" />
+    <state x="524" y="79" width="549" height="801" key="find.popup/62.0.1474.960@62.0.1474.960" timestamp="1652240582919" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
