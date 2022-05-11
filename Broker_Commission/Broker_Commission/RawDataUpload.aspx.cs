@@ -155,19 +155,18 @@ namespace Broker_Commission
             {
                 try
                 {
-
-                    //"[dbo].[SP_FILE_IMPORT_SSIS]" ( Empty ) 
-                    execute_ssis();
+                    
+                    import_new_qb_file();
 
                     #region add satement to sql
                     string month = cmb_month.Text.ToUpper(); //util.GetCustomAbbreviatedMonthNames(int.Parse());  
                     int year = int.Parse(cmb_Year.Text);
 
                     //Make statement headers from [dbo].[COMMISSION_SUMMARY] AS R 
-                    util.statement_process(month, year);
+                    util.clear_trn_tables_and_process_imported_file(month, year);
                     #endregion
 
-
+                    // redirect to showing result of import and allowing user toi view indiviodual statement, and generate and process all
                     Response.Redirect("Upload_Result.aspx?YEAR=" + cmb_Year.Text + "&&MONTH=" + (cmb_month.SelectedIndex).ToString());
                 }
                 catch (Exception exception)
@@ -207,8 +206,12 @@ namespace Broker_Commission
 
 
         //FRS_SSIS_PaymentFile
-        protected void execute_ssis()
+        protected void import_new_qb_file()
         {
+            //todo: use sql bulk copy to iomport
+            //todo: show num of rows imported on success
+            //todo: show error in case of error
+            // 
             string sum = "";
             string query = "";
 

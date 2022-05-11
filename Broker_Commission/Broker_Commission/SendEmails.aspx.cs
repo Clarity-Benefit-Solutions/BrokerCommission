@@ -52,8 +52,7 @@ namespace Broker_Commission
                 #region email statement
 
                 // setup statement header list
-                var list = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID != null /*&& ( x.FLAG == 0 || x.FLAG == 4 )*/)
-                //todo: uncoment next line 
+                //tod: uncoment next line
                 var list = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID != null /*&& ( x.FLAG == 0 || x.FLAG == 4 )*/)
                     .OrderBy(x => x.BROKER_ID).ToList();
                 int current = 0;
@@ -84,6 +83,8 @@ namespace Broker_Commission
                     {
                         //to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
                     }
+
+                    
 
                     util.email_send_with_attachment(from, to, outputPath, item.BROKER_NAME, item.MONTH, item.YEAR);
 

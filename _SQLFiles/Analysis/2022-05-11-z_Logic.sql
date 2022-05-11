@@ -1,7 +1,15 @@
 use Broker_Commission
 go
 
+select
+    "make COMMISSION_RESULT and commission_summary materialzed views";
+
 truncate table dbo.Import_OCT;
+go
+select
+    "convert dtsx import to sql bulk copy and wait till finished. Give error message if error or rows dont match";
+select
+    "log operation in table using shared DataProcessing lib";
 
 /* UI-1. import file using import raw data using UI */
 
@@ -13,7 +21,7 @@ truncate table dbo.Import_OCT;
 --  DELETE FROM  [dbo].[STATEMENT_HEADER] for month & year
 -- INSERT INTO [dbo].[STATEMENT_HEADER] select @Month       , @Year      , R.[BROKER_ID]      , R.[BROKER_NAME]      , 0      , R.[TOTAL]      , GETDATE( ) FROM [dbo].[COMMISSION_SUMMARY]
 select
-    "BUG: it totals amount for ALL months as it does not restrict query to passed month and date";
+    "BUG?: it totals amount for ALL months as it does not restrict query to passed month and date";
 -- so statement headers will have one line for each broker to be billed
 /* 2. clear sent invoices for dates after the previous month */
 
@@ -30,7 +38,7 @@ select *
 from
     dbo.STATEMENT_HEADER
 order by
-    BROKER_NAME;
+    BROKER_NAME, date;
 
 /* delete all sent invoices that are part of this uplpad for testing ONLY*/
 delete
@@ -76,7 +84,7 @@ ORDER BY
     A.BROKER_NAME;
 
 --  UI 3: click on statement next to anny broker
--- redirects to http://localhost:59291/ViewFile.aspx?BID=26&MONTH=March&YEAR=2002&StatementID=1558
+-- redirects to http://localhost:59291/ViewFile.aspx?BID=26&MONTH=March&YEAR=2002&StatementID=1633
 -- A. raw data grid is bound to :
 select *
 from
@@ -145,8 +153,6 @@ select
     "the filename is generated wrongly - it just takes the first date in table for the statement headerid! "
 select
     "the totals are wrong as it is just outputting each month which was in the excel file! "
-select
-    "are we supposed to take only the last invoice date for each client?  "
 
 -- UI 5: Button: Email All and Archive
 --  calls UploadResults.btn_Approve_Email_OnClick

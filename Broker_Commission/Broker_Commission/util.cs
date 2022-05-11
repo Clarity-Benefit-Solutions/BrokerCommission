@@ -199,7 +199,7 @@ namespace Broker_Commission
             return monthtext;
         }
 
-        public static void statement_process(string Month, int year)
+        public static void clear_trn_tables_and_process_imported_file(string Month, int year)
         {
 
             string query = "";

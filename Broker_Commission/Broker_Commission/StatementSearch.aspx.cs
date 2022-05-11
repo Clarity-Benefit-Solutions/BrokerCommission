@@ -37,7 +37,7 @@ namespace Broker_Commission
                     #region add satement to sql
                     string month = lbl_month.Text;
                     int year = int.Parse(lbl_year.Text);
-                    util.statement_process(month, year);
+                    util.clear_trn_tables_and_process_imported_file(month, year);
                     #endregion
                 }
                 DataLoad();

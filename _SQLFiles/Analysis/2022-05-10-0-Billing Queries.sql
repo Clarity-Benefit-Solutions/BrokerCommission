@@ -38,11 +38,14 @@ order by
     name
   , Import_OCT.Memo;
 
-select *
+select
+    ID, BROKER_NAME, CLIENT_NAME, date,  MEMO, Qty, [Sales Price], Amount, [Open Balance], COMMISSION_RATE, UNIT, [COMMISSION AMOUNT],  PAYLOCITY_ID, START_DATE, Num, INVOICE_DATE, CLIENT_ID, Total_Invoice_Sent_Open_Balance
 from
     dbo.COMMISSION_RESULT
 where
-    BROKER_ID = 26;
+    BROKER_ID = 26
+order by COMMISSION_RESULT.BROKER_NAME, COMMISSION_RESULT.CLIENT_NAME, [date], COMMISSION_RESULT.MEMO
+;
 
 select *
 from

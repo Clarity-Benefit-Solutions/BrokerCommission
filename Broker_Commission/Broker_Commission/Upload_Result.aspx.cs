@@ -39,7 +39,7 @@ namespace Broker_Commission
                     #region add satement to sql
                     string month = lbl_month.Text;
                     int year = int.Parse(lbl_year.Text);
-                    util.statement_process(month, year);
+                    util.clear_trn_tables_and_process_imported_file(month, year);
                     #endregion
                 }
                 DataLoad();
@@ -119,7 +119,7 @@ namespace Broker_Commission
 
             cmb_broker.Items.Clear();
             cmb_broker.Items.Add(new ListEditItem("All"));
-            DataTable dt_first = GRIDTABLE();
+            DataTable dt_first = LoadDataForBrokersCombo();
 
             foreach (DataRow row in dt_first.Rows)
             {
@@ -229,6 +229,7 @@ namespace Broker_Commission
 
         protected DataTable getLastUpload()
         {
+            //todo: what is the purpose of this - it will show the first invoice date in the file!
             DataTable table = new DataTable();
 
             string query = "SELECT TOP(1) H.MONTH, H.YEAR FROM [dbo].[STATEMENT_HEADER] AS H ORDER BY FLAG, MONTH";
@@ -254,7 +255,7 @@ namespace Broker_Commission
         }
 
 
-        protected DataTable GRIDTABLE()
+        protected DataTable LoadDataForBrokersCombo()
         {
             DataTable table = new DataTable();
             string query = "SELECT * FROM  [dbo].[COMMISSION_SUMMARY]";
