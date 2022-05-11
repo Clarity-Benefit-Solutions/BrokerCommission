@@ -25,7 +25,7 @@ namespace Broker_Commission
 
         Broker_CommissionEntities db = new Broker_CommissionEntities();
 
-        
+
         public static string receive =
            System.Web.Configuration.WebConfigurationManager.AppSettings["receive_emails"].ToString();
 
@@ -41,7 +41,7 @@ namespace Broker_Commission
                     int year = int.Parse(lbl_year.Text);
                     util.statement_process(month, year);
                     #endregion
-                } 
+                }
                 DataLoad();
 
 
@@ -65,18 +65,29 @@ namespace Broker_Commission
 
         protected void DataLoad()
         {
-          
 
-            string query = "SELECT H.HEADER_ID, A.BROKER_ID, A.BROKER_NAME,A.PAYLOCITY_ID, A.TOTAL " +
-                "FROM [dbo].[COMMISSION_SUMMARY] AS A LEFT JOIN " +
-                "[dbo].[STATEMENT_HEADER] AS H ON A.BROKER_ID = H.BROKER_ID WHERE H.FLAG!=3 ";
-   
+            string query = "SELECT max(H.HEADER_ID) HEADER_ID " +
+                " , A.BROKER_ID " +
+                " , A.BROKER_NAME " +
+                " , A.PAYLOCITY_ID " +
+                " , A.TOTAL " +
+                " FROM " +
+                "   [dbo].[COMMISSION_SUMMARY] AS A " +
+                "     LEFT JOIN[dbo].[STATEMENT_HEADER] AS H ON A.BROKER_ID = H.BROKER_ID ";
+            query += " WHERE 1=1 ";
+
+            // todo: commented. add checkbox for all or only not yet emailed. ?show all statements not only those which have been emailed by default
+            //query += " AND H.FLAG!=3 ";
+
 
             if (cmb_broker.SelectedIndex > 0)
             {
-                query += " AND  A.BROKER_NAME = '" + cmb_broker.SelectedItem.Text+ "'";
+                query += " AND  A.BROKER_NAME = '" + cmb_broker.SelectedItem.Text + "'";
 
             }
+
+            query += " GROUP BY A.BROKER_ID , A.BROKER_NAME , A.PAYLOCITY_ID , A.TOTAL ";
+            query += " ORDER BY A.BROKER_NAME ";
 
             SqlDataSource1.SelectCommand = query;
             //lbl_count.Text = q
@@ -132,13 +143,13 @@ namespace Broker_Commission
                 if (model != null)
                 {
                     int brokerID = model.BROKER_ID == null ? 0 : int.Parse(model.BROKER_ID.ToString());
-                    string url = "ViewFile.aspx?BID=" + brokerID + "&MONTH=" + lbl_month.Text + "&YEAR=" 
-                        + lbl_year.Text + "&TOTAL= &&StatementID="+headerID;
-                     Page.ClientScript.RegisterStartupScript(this.GetType(), "popup_window", "popupwindow('" + url + "','" + "View Download Files" + "','" + "1600" + "','" + "1000" + "');", true);
+                    string url = "ViewFile.aspx?BID=" + brokerID + "&MONTH=" + lbl_month.Text + "&YEAR="
+                        + lbl_year.Text + "&TOTAL= &&StatementID=" + headerID;
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "popup_window", "popupwindow('" + url + "','" + "View Download Files" + "','" + "1600" + "','" + "1000" + "');", true);
                     //Response.Redirect (url);
-                
+
                 }
-               
+
             }
             else if (e.CommandArgs.CommandName == "email")
             {
@@ -146,7 +157,7 @@ namespace Broker_Commission
                 string month = lbl_month.Text;
                 int year = int.Parse(lbl_year.Text);
                 int bid = int.Parse(e.CommandArgs.CommandArgument.ToString());
-                var model = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID == bid ).FirstOrDefault();
+                var model = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID == bid).FirstOrDefault();
 
                 if (model != null)
                 {
@@ -175,11 +186,11 @@ namespace Broker_Commission
         }
 
 
-        
+
 
         protected void btn_Approve_Email_OnClick(object sender, EventArgs e)
         {
-            string url = "SendEmails.aspx?Month=" + lbl_month.Text + "&Year=" + lbl_year.Text ;
+            string url = "SendEmails.aspx?Month=" + lbl_month.Text + "&Year=" + lbl_year.Text;
             Page.ClientScript.RegisterStartupScript(this.GetType(), "popup_window", "popupwindow('" + url + "','" + "View Download Files" + "','" + "1200" + "','" + "800" + "');", true);
         }
 
@@ -215,7 +226,7 @@ namespace Broker_Commission
             con.Close();
 
         }
-        
+
         protected DataTable getLastUpload()
         {
             DataTable table = new DataTable();
@@ -234,9 +245,6 @@ namespace Broker_Commission
                         sda.SelectCommand = cmd;
 
                         sda.Fill(table);
-
-
-
                     }
                 }
             }
@@ -250,7 +258,8 @@ namespace Broker_Commission
         {
             DataTable table = new DataTable();
             string query = "SELECT * FROM  [dbo].[COMMISSION_SUMMARY]";
-          
+            query += " Order by BROKER_NAME ";
+
             string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"]
                 .ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
@@ -261,11 +270,11 @@ namespace Broker_Commission
                     {
                         cmd.Connection = con;
                         sda.SelectCommand = cmd;
-                       
-                         sda.Fill(table);
-                           
 
-                        
+                        sda.Fill(table);
+
+
+
                     }
                 }
             }
