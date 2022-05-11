@@ -2,6 +2,11 @@ use Broker_Commission;
 Go;
 
 alter table [BROKER_MASTER]
+    add BROKER_NAME_ID_FORMATTED
+        as
+            REPLACE( BROKER_NAME_ID , '&' , '' );
+;
+alter table [BROKER_MASTER]
     add BROKER_NAME_FORMATTED
         as
             REPLACE(
@@ -149,6 +154,7 @@ create index EMAIL on dbo.BROKER_MASTER (EMAIL);
 create index SECONDARY_EMAIL on dbo.BROKER_MASTER (SECONDARY_EMAIL);
 create index STATUS on dbo.BROKER_MASTER (STATUS);
 
+create index BROKER_NAME_ID_FORMATTED on dbo.BROKER_MASTER (BROKER_NAME_ID_FORMATTED);
 create index BROKER_NAME on dbo.BROKER_MASTER (BROKER_NAME);
 create index BROKER_NAME_1 on dbo.BROKER_MASTER (BROKER_NAME_1);
 create index BROKER_NAME_2 on dbo.BROKER_MASTER (BROKER_NAME_2);
@@ -193,7 +199,6 @@ ALTER TABLE CLIENT
                         '- ' , '-' ) ,
                 '-' , '' );
 
-
 ALTER TABLE CLIENT
     ADD QB_FEE_FORMATTED AS
         LTRIM(
@@ -205,4 +210,12 @@ ALTER TABLE CLIENT
 create index QB_FEE_FORMATTED_FORMATTED on dbo.CLIENT (QB_FEE_FORMATTED);
 create index QB_CLIENT_NAME_FORMATTED on dbo.CLIENT (QB_CLIENT_NAME_FORMATTED);
 
+ALTER TABLE CLIENT
+    ADD QB_FEE_FORMATTED AS
+        LTRIM(
+                RTRIM(
+                        UPPER( QB_FEE )
+                    )
+            );
 
+create index QB_FEE_FORMATTED_FORMATTED on dbo.CLIENT (QB_FEE_FORMATTED);
