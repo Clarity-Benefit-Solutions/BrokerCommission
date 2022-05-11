@@ -15,8 +15,15 @@ alter VIEW [dbo].[COMMISSION_SUMMARY]
           , RT.PAYLOCITY_ID
 go
 
-
-
+create PROCEDURE [dbo].[SP_CALC_STATEMENT_LINE_PAYMENT_STATUS]
+@month nvarchar(30),
+@year int
+AS
+BEGIN
+    select
+        '';
+end;
+go
 alter PROCEDURE [dbo].[SP_IMPORT_FILE_SENT_SSIS]
 @month nvarchar(30),
 @year int
@@ -66,7 +73,8 @@ BEGIN
                                    Name_FORMATTED,
                                    created_at,
                                    statement_month,
-                                   statement_year
+                                   statement_year,
+                                   is_deleted
     )
     select
         ID
@@ -87,6 +95,7 @@ BEGIN
       , created_at
       , statement_month
       , statement_year
+      , is_deleted
     from
         dbo.Import_OCT
     where
@@ -184,6 +193,15 @@ BEGIN
           month = @Month
       and year = @Year;
     
+    /* run sp that will update line payment status based on open_balance and sent_invoices*/
+    exec SP_CALC_STATEMENT_LINE_PAYMENT_STATUS @month , @year;
+    
+    /* update total commissions per statement */
+    update dbo.STATEMENT_HEADER
+    set
+        STATEMENT_TOTAL        = dbo.get_broker_commission_paid_amount( BROKER_ID , MONTH , YEAR ),
+        STATEMENT_PENDING_TOTAL= dbo.get_broker_commission_pending_amount( BROKER_ID , MONTH , YEAR );
+    
     -- delete from statement details archive
     delete
     from
@@ -249,7 +267,8 @@ BEGIN
     BROKER_STATUS,
     OPEN_BALANCE,
     month,
-    year
+    year,
+    line_payment_status
     )
     SELECT
         DETAIL_ID
@@ -273,6 +292,7 @@ BEGIN
       , OPEN_BALANCE
       , month
       , year
+      , line_payment_status
     FROM
         [dbo].[STATEMENT_DETAILS]
     where
@@ -284,3 +304,4 @@ go
 
 
 exec [dbo].[SP_IMPORT_FILE_SENT_SSIS] 'MARCH' , 2020
+
