@@ -15,7 +15,7 @@ alter VIEW [dbo].[COMMISSION_SUMMARY]
           , RT.PAYLOCITY_ID
 go
 
-create PROCEDURE [dbo].[SP_CALC_STATEMENT_LINE_PAYMENT_STATUS]
+create or alter PROCEDURE [dbo].[SP_CALC_STATEMENT_LINE_PAYMENT_STATUS]
 @month nvarchar(30),
 @year int
 AS
@@ -24,7 +24,7 @@ BEGIN
         '';
 end;
 go
-alter PROCEDURE [dbo].[SP_IMPORT_FILE_SENT_SSIS]
+create or alter PROCEDURE [dbo].[SP_IMPORT_FILE_SENT_SSIS]
 @month nvarchar(30),
 @year int
 AS

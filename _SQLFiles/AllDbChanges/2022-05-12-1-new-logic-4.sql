@@ -35,6 +35,11 @@ BEGIN
     EXEC db_log_message 'SP_CALC_STATEMENT_LINE_PAYMENT_STATUS' , ' OPENING CURSOR' ,
          'INFO';
     
+    /* update all lines to null */
+    UPDATE dbo.[STATEMENT_DETAILS]
+    SET
+        line_payment_status = null
+    
     /**/
     OPEN db_cursor
     /**/
@@ -53,11 +58,11 @@ BEGIN
         
         SET @rowno = @rowno + 1;
         BEGIN TRY
-            SET @msg1 =
-                    CONCAT( '#RowNo ' , @rowno , 'Processing Header id: ' , @header_id , ' Broker ID: ' , @broker_id ,
-                            ' CLIENT: ' , @client_name )
-            EXEC db_log_message 'SP_CALC_STATEMENT_LINE_PAYMENT_STATUS' , @msg1 , 'INFO';
-            
+            /*  SET @msg1 =
+                      CONCAT( '#RowNo ' , @rowno , 'Processing Header id: ' , @header_id , ' Broker ID: ' , @broker_id ,
+                              ' CLIENT: ' , @client_name )
+              EXEC db_log_message 'SP_CALC_STATEMENT_LINE_PAYMENT_STATUS' , @msg1 , 'INFO';
+             */
             exec SP_CALC_STATEMENT_LINE_PAYMENT_STATUS_FOR_HEADER @header_id , @broker_id , @client_name;
             
             /**/
@@ -99,16 +104,20 @@ BEGIN
     DECLARE @continue int = 0
     /**/
     
+    DECLARE @DETAIL_ID int;
     DECLARE @INVOICE_DATE datetime;
     DECLARE @INVOICE_NUM nvarchar(1000);
     DECLARE @OPEN_BALANCE numeric(18, 2);
     DECLARE @QB_FEE nvarchar(1000);
+    DECLARE @NEW_LINE_STATUS nvarchar(100);
+    DECLARE @PRV_INV_SENT_AMOUNT numeric(18, 2);
     
     SET @continue = 1
     
     DECLARE db_cursor2 CURSOR FOR
         SELECT
-            INVOICE_DATE
+            DETAIL_ID
+          , INVOICE_DATE
           , INVOICE_NUM
           , OPEN_BALANCE
           , QB_FEE
@@ -127,19 +136,13 @@ BEGIN
     EXEC db_log_message 'SP_CALC_STATEMENT_LINE_PAYMENT_STATUS_FOR_HEADER' , ' OPENING CURSOR' ,
          'INFO';
     
-    /* update org employer name where null */
-    UPDATE dbo.[STATEMENT_DETAILS]
-    SET
-        line_payment_status = null
-    where
-        HEADER_ID = @header_id;
-    
     /**/
     OPEN db_cursor2
     /**/
     
     WHILE @continue = 1 BEGIN
         FETCH NEXT FROM db_cursor2 INTO
+            @DETAIL_ID,
             @INVOICE_DATE, @INVOICE_NUM
             , @OPEN_BALANCE, @QB_FEE;
         /**/
@@ -152,8 +155,35 @@ BEGIN
         
         SET @rowno = @rowno + 1;
         BEGIN TRY
-            SET @msg1 = CONCAT( '#RowNo ' , @rowno , 'Processing Client : ' , @client_name , ', Inv No: ' ,
-                                @INVOICE_NUM , ', OPEN_BALANCE: ' , @OPEN_BALANCE , ', QB_FEE PEPM: ' , @QB_FEE )
+            set @PRV_INV_SENT_AMOUNT = dbo.get_invoice_sent_total_paid( @INVOICE_NUM );
+            
+            if isnull( @OPEN_BALANCE , 0 ) > 0
+                begin
+                    set @NEW_LINE_STATUS = 'pending';
+                end
+            else
+                begin
+                    if isnull( @PRV_INV_SENT_AMOUNT , 0 ) = 0
+                        begin
+                            set @NEW_LINE_STATUS = 'paid';
+                        end
+                    else
+                        begin
+                            set @NEW_LINE_STATUS = concat( 'already paid' , @PRV_INV_SENT_AMOUNT );
+                        end
+                end
+            
+            /* update org employer name where null */
+            UPDATE dbo.[STATEMENT_DETAILS]
+            SET
+                line_payment_status = @NEW_LINE_STATUS
+            where
+                DETAIL_ID = @DETAIL_ID;
+            
+            SET @msg1 = CONCAT( '#RowNo ' , @rowno , 'Setting Status "' , @NEW_LINE_STATUS , '" FOR Client ' ,
+                                @client_name , ', Inv No: ' ,
+                                @INVOICE_NUM , ', OPEN_BALANCE: ' , @OPEN_BALANCE , ', PRV_INV_SENT_AMOUNT: ' ,
+                                @PRV_INV_SENT_AMOUNT )
             
             EXEC db_log_message 'SP_CALC_STATEMENT_LINE_PAYMENT_STATUS_FOR_HEADER' , @msg1 , 'INFO';
             
@@ -183,3 +213,6 @@ GO
 
 
 exec [dbo].[SP_CALC_STATEMENT_LINE_PAYMENT_STATUS] 'MARCH' , 2022;
+
+select
+    dbo.get_invoice_sent_total_paid( '032322EPENN' );

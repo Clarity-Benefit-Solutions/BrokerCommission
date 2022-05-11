@@ -182,5 +182,10 @@ alter table dbo.SENT_INVOICE add STATEMENT_TOTAL numeric default 0 not null;
 create index INVOICE_NUM_FORMATTED on dbo.SENT_INVOICE(INVOICE_NUM_FORMATTED);
 go
 alter table dbo.STATEMENT_HEADER add STATEMENT_PENDING_TOTAL numeric(18, 2) null ;
-alter table dbo.STATEMENT_DETAILS add line_payment_status varchar(50) null default null;
+alter table dbo.STATEMENT_DETAILS add line_payment_status varchar(100) null default null;
 alter table dbo.STATEMENT_DETAILS_ARCHIVE add line_payment_status varchar(50) null default null;
+
+alter table STATEMENT_DETAILS alter column line_payment_status varchar(100) null
+alter table STATEMENT_DETAILS_ARCHIVE alter column line_payment_status varchar(100) null
+go
+
