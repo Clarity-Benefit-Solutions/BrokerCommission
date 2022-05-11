@@ -169,3 +169,23 @@ order by
 
 
 --  5B: EXEC [dbo].[SP_STATEMENT_DETAIL_UPDATE];
+/*
+1. while there are rows in STATEMENT_HEADER where flag = 0
+2.  select top 1 @id = header id  where flag = 0
+3. insert rows into
+ INSERT INTO [dbo].[STATEMENT_DETAILS]
+    FROM
+                [dbo].[STATEMENT_HEADER] AS HEADER
+                    LEFT JOIN [dbo].[COMMISSION_RESULT] AS R
+    ON HEADER.[BROKER_ID] = R.[BROKER_ID]
+            WHERE
+                  R.[QB_CLIENT_NAME] IS NOT NULL
+              AND HEADER.HEADER_ID = @Id
+4. update statement_header
+ Update [dbo].[STATEMENT_HEADER] Set FLAG = 4  Where HEADER_ID = @Id
+ */
+
+-- at the end, all rows in STATEMENT_HEADER will be set to 4
+-- all statement_headers brokers which were in 0 are not set to 4 ioe.e. details added to STATEMENT_DETAILS
+select "how do we ensure no dups get inserted into STATEMENT_DETAILS or STATEMENT_DETAILS or Sent_invoices in case a file is imported more than once ?";
+

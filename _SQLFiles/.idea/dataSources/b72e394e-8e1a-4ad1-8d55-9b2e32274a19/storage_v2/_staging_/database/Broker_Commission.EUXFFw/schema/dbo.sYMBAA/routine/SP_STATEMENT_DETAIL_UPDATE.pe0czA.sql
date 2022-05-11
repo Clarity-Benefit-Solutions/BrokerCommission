@@ -1,19 +1,13 @@
--- =============================================
--- Author:		<Zhu,,Alfred>
--- Create date: <01/27/2022>
--- Description:	<Description,,>
--- =============================================
-CREATE PROCEDURE [dbo].[SP_STATEMENT_DETAIL_UPDATE]
-    -- Add the parameters for the stored procedure here
+alter PROCEDURE [dbo].[SP_STATEMENT_DETAIL_UPDATE]
 AS
 BEGIN
     -- SET NOCOUNT ON added to prevent extra result sets from
     -- interfering with SELECT statements.
     SET NOCOUNT ON;
-
+    
     -- Insert statements for procedure here
     Declare @Id int
-
+    
     While (
               SELECT
                   COUNT( * )
@@ -29,7 +23,7 @@ BEGIN
                 [dbo].[STATEMENT_HEADER]
             Where
                 FLAG = 0
-
+            
             INSERT INTO [dbo].[STATEMENT_DETAILS]
             (
                 [HEADER_ID]
@@ -70,22 +64,22 @@ BEGIN
               , R.[Open Balance]
               , RTRIM( LTRIM( R.[Num] ) )
               , [INVOICE_DATE]
-
+            
             FROM
                 [dbo].[STATEMENT_HEADER] AS HEADER
                     LEFT JOIN [dbo].[COMMISSION_RESULT] AS R ON HEADER.[BROKER_ID] = R.[BROKER_ID]
-
+            
             WHERE
                   R.[QB_CLIENT_NAME] IS NOT NULL
               AND HEADER.HEADER_ID = @Id
-
+            
             Update [dbo].[STATEMENT_HEADER]
             Set
                 FLAG = 4
             Where
                 HEADER_ID = @Id
         End
-
+    
     TRUNCATE TABLE [dbo].[STATEMENT_DETAILS_ADD]
 END
 go
