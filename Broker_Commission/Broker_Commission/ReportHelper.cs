@@ -72,6 +72,7 @@ namespace Broker_Commission
                 string paylocity_ID = "";
                 string broker_Status = "";
 
+                //todo: also order by memo within clientname
                 var list = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE == 0).OrderBy(x => x.CLIENT_NAME).ToList();
                 var list_pending = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE != 0).OrderBy(x => x.CLIENT_NAME).ToList();
                 int broker_Id = int.Parse(statement_Header.BROKER_ID.ToString());
@@ -366,8 +367,23 @@ namespace Broker_Commission
 
                 MemoryStream ms = new MemoryStream();
                 doc.Save(ms, SaveFormat.Doc);
-              
-                string savedUrl = PDFOutPut + paylocity_ID + "_" + statement_Header.BROKER_NAME + "_" + statement_Header.MONTH + "_" + statement_Header.YEAR + ".pdf"; 
+
+                //todo: modified as we DONT want to replace prod statements when working in TEST mode!
+                //string savedUrl = PDFOutPut + paylocity_ID + "_" + statement_Header.BROKER_NAME + "_" + statement_Header.MONTH + "_" + statement_Header.YEAR + ".pdf";
+
+                string pdfPath = PDFOutPut + paylocity_ID + "_" + statement_Header.BROKER_NAME + "_" + statement_Header.MONTH + "_" + statement_Header.YEAR + ".pdf";
+                string pdfPath_Test = PDFOutPut_Test + paylocity_ID + "_" + statement_Header.BROKER_NAME + "_" + statement_Header.MONTH + "_" + statement_Header.YEAR + ".pdf";
+                string savedUrl = "";
+
+                if (debugMode == "True")
+                {
+                    savedUrl = pdfPath_Test;
+                }
+                else
+                {
+                    savedUrl = pdfPath;
+                }
+                                
                    
                 doc.Save(savedUrl);
                 ms.Close();

@@ -85,8 +85,6 @@ namespace Broker_Commission
                         //to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
                     }
 
-                    
-
                     util.email_send_with_attachment(from, to, outputPath, item.BROKER_NAME, item.MONTH, item.YEAR);
 
                     decimal totalAmount = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == headerID && x.OPEN_BALANCE == 0).Sum(x => x.TOTAL_PRICE) == null ? 0 : db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == headerID && x.OPEN_BALANCE == 0).Sum(x => x.TOTAL_PRICE).Value;
