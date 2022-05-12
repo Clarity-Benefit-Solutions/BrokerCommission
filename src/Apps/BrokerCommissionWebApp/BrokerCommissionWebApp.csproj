@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -26,6 +27,8 @@
     <UseGlobalApplicationHostFile />
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,8 +71,11 @@
     <Reference Include="DevExpress.XtraCharts.v21.2.Web, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v21.2.Web.WebForms, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
@@ -135,6 +141,16 @@
     <Content Include="Content\Images\PlasticBlueHeader.jpg" />
     <Content Include="Content\Images\RedWineHeader.jpg" />
     <Content Include="Content\Site.css" />
+    <Content Include="DataModel\Broker_CommissionEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Broker_CommissionEntities.edmx</DependentUpon>
+      <LastGenOutput>Broker_CommissionEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataModel\Broker_CommissionEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Broker_CommissionEntities.edmx</DependentUpon>
+      <LastGenOutput>Broker_CommissionEntities.cs</LastGenOutput>
+    </Content>
     <Content Include="Default.aspx" />
     <Content Include="feetype.aspx" />
     <Content Include="feetype_add.aspx" />
@@ -148,16 +164,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="StatementSearch.aspx" />
-    <Content Include="DataModel\system_model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>system_model.edmx</DependentUpon>
-      <LastGenOutput>system_model.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DataModel\system_model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>system_model.edmx</DependentUpon>
-      <LastGenOutput>system_model.cs</LastGenOutput>
-    </Content>
     <Content Include="SendEmails.aspx" />
     <Content Include="WebForm2.aspx" />
   </ItemGroup>
@@ -193,14 +199,14 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <None Include="FolderProfile.pubxml" />
-    <EntityDeploy Include="DataModel\system_model.edmx">
+    <EntityDeploy Include="DataModel\Broker_CommissionEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>system_model.Designer.cs</LastGenOutput>
+      <LastGenOutput>Broker_CommissionEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="DataModel\system_model.edmx.diagram">
-      <DependentUpon>system_model.edmx</DependentUpon>
+    <Content Include="DataModel\Broker_CommissionEntities.edmx.diagram">
+      <DependentUpon>Broker_CommissionEntities.edmx</DependentUpon>
     </Content>
+    <None Include="FolderProfile.pubxml" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bootstrap.min.js.map" />
@@ -267,94 +273,109 @@
       <DependentUpon>client_add.aspx</DependentUpon>
     </Compile>
     <Compile Include="DataModel\BROKER_CLIENT.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\BROKER_COMMISSION.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Broker_CommissionEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Broker_CommissionEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Broker_CommissionEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Broker_CommissionEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Broker_CommissionEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataModel\BROKER_GROUP.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\BROKER_MASTER.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\BROKER_MASTER_.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\CLIENT.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\CLIENT_.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\COMMISSION_RESULT_NAME0.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\COMMISSION_RESULT_NAME1.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\COMMISSION_RESULT_NAME2.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\COMMISSION_RESULT_NAME3.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\COMMISSION_RESULT_NAME4.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\COMMISSION_RESULT_NAME5.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\COMMISSION_RESULT_NAME6.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\DASH_BOARD.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\db_error_log.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\db_message_log.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Detail_Input.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Error_Msg.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\FEE_MEMO.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Import_Archive.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Import_OCT.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\SENT_INVOICE.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\STATEMENT_DETAILS.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\STATEMENT_DETAILS_ADD.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\STATEMENT_DETAILS_ARCHIVE.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\STATEMENT_HEADER.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\STATEMENT_HEADER_ARCHIVE.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\VW_STATEMENT_DETAILS_ADD.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\VW_STATEMENT_HEADER.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -417,30 +438,12 @@
     <Compile Include="Root.master.designer.cs">
       <DependentUpon>Root.master</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\SP_FILE_IMPORT_SSIS_Result.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
     <Compile Include="StatementSearch.aspx.cs">
       <DependentUpon>StatementSearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="StatementSearch.aspx.designer.cs">
       <DependentUpon>StatementSearch.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\system_model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>system_model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\system_model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\system_model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>system_model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Upload_Result.aspx.cs">
       <DependentUpon>Upload_Result.aspx</DependentUpon>
@@ -520,6 +523,14 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
