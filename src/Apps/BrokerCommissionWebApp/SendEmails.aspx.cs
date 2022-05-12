@@ -107,11 +107,10 @@ namespace BrokerCommissionWebApp
                             {
                                 var invoiceMode = new SENT_INVOICE()
                                 {
-                                    INVOICE_NUM = statement_dtl.INVOICE_NUM
-                                   ,
-                                    OPEN_BALANCE = statement_dtl.OPEN_BALANCE
-                                    ,
-                                    STATEMENT_TOTAL = Utils.ToDecimal(statement_dtl.TOTAL_PRICE)
+                                    INVOICE_NUM = statement_dtl.INVOICE_NUM,
+                                    OPEN_BALANCE = statement_dtl.OPEN_BALANCE,
+                                    STATEMENT_TOTAL = Utils.ToDecimal(statement_dtl.TOTAL_PRICE),
+                                    DATE_ENTER = DateTime.Now
 
                                 };
                                 // add to collection

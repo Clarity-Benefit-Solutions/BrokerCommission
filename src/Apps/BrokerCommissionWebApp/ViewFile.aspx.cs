@@ -202,11 +202,16 @@ namespace BrokerCommissionWebApp
                 /*
                   string FilePath = ReportHelper.CreatedWord_fromResult(brokerID);
                  */
-                int statementID = ReportHelper.GetStatementIdForBrokerId(brokerID);
-                string FilePath = ReportHelper.CreatedWord(statementID);
+                int headerID = ReportHelper.GetStatementIdForBrokerId(brokerID);
+                PdfGenerationResults pdfGenerationResults = ReportHelper.CreatedWord(headerID);
+                if (!pdfGenerationResults.success)
+                {
+                    throw pdfGenerationResults.error;
+                }
+                ;
                 //
                 WebClient User = new WebClient();
-                Byte[] FileBuffer = User.DownloadData(FilePath);
+                Byte[] FileBuffer = User.DownloadData(pdfGenerationResults.outputPath);
                 if (FileBuffer != null)
                 {
                     Response.ContentType = "application/pdf";
