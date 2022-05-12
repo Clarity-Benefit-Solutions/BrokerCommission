@@ -175,8 +175,8 @@
                                 <div style="width: 100%; text-align: center; margin-top: 80px">
                                     <%--    <dx:ASPxButton runat="server" ID="ASPxButton2" Text="REFRESH" Theme="Moderno" OnClick="ASPxButton2_Click"></dx:ASPxButton>
                                     &nbsp;&nbsp;--%>
-                                    <dx:ASPxButton runat="server" ID="btn_edit" Text="VIEW/DOWNLOAD STATEMENT" Theme="Moderno"
-                                        OnClick="btn_edit_OnClick">
+                                    <dx:ASPxButton runat="server" ID="btn_view_statement" Text="VIEW/DOWNLOAD STATEMENT" Theme="Moderno"
+                                        OnClick="btn_view_statement_OnClick">
                                     </dx:ASPxButton>
                                 </div>
 

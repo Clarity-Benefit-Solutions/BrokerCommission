@@ -114,13 +114,13 @@ namespace BrokerCommissionWebApp
         protected global::DevExpress.Web.ASPxButton btn_addNew;
 
         /// <summary>
-        /// btn_edit control.
+        /// btn_view_statement control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btn_edit;
+        protected global::DevExpress.Web.ASPxButton btn_view_statement;
 
         /// <summary>
         /// ASPxButton3 control.

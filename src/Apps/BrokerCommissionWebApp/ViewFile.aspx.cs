@@ -420,10 +420,13 @@ namespace BrokerCommissionWebApp
             //stringb(dtp).ToString();
         }
 
-        protected void btn_edit_OnClick(object sender, EventArgs e)
+        protected void btn_view_statement_OnClick(object sender, EventArgs e)
         {
-            //ToDo: check how button works when editing rawdata or statements
-            if (Request.QueryString["Flag"] != null)
+            
+            if (
+                /*Note: Sumeet - always regenrate the statement pdf*/
+                false &&
+                Request.QueryString["Flag"] != null)
             {
                 string bid = Request.QueryString["BID"].ToString();
                 int brokerID = int.Parse(bid);
