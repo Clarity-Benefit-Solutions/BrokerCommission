@@ -207,7 +207,7 @@ namespace BrokerCommissionWebApp
         public static void clear_trn_tables_and_process_imported_file(string Month, int year)
         {
             Vars Vars = new Vars();
-            var fileLogParams = Vars.dbFileProcessingLogParams;
+            var fileLogParams = Vars.GetDbFileProcessingLogParams("BrokerCommission");
             var dbConn = Vars.dbConnBrokerCommission;
 
 

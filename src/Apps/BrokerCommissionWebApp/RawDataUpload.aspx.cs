@@ -244,7 +244,7 @@ namespace BrokerCommissionWebApp
 
             //todo: use sql bulk copy to iomport
             Vars Vars = new Vars();
-            var fileLogParams = Vars.dbFileProcessingLogParams;
+            var fileLogParams = Vars.GetDbFileProcessingLogParams("BrokerCommission");
             var dbConn = Vars.dbConnBrokerCommission;
 
             try
