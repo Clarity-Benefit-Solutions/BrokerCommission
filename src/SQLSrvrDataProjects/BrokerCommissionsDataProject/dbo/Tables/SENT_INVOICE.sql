@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[SENT_INVOICE] (
+    [ID]                    INT             IDENTITY (1, 1) NOT NULL,
+    [INVOICE_NUM]           VARCHAR (500)   NULL,
+    [OPEN_BALANCE]          NUMERIC (18, 2) NULL,
+    [DATE_ENTER]            AS              (getdate()),
+    [INVOICE_NUM_FORMATTED] AS              (ltrim(rtrim(upper([INVOICE_NUM])))) PERSISTED,
+    [STATEMENT_TOTAL]       NUMERIC (18)    DEFAULT ((0)) NOT NULL,
+    CONSTRAINT [PK_SENT_INVOICE] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [INVOICE_NUM_FORMATTED]
+    ON [dbo].[SENT_INVOICE]([INVOICE_NUM_FORMATTED] ASC);
+
