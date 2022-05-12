@@ -36,18 +36,7 @@ namespace BrokerCommissionWebApp
             if (!IsPostBack)
             {
                 LoadList();
-                if (Request.QueryString["Test"] != null)
-                {
-                    #region add satement to sql
-                    string month = lbl_month.Text;
-                    int year = int.Parse(lbl_year.Text);
-                    util.clear_trn_tables_and_process_imported_file(month, year);
-                    #endregion
-                }
                 DataLoad();
-
-
-
             }
         }
         protected void ASPxMenu1_ItemClick(object source, MenuItemEventArgs e)
@@ -130,9 +119,6 @@ namespace BrokerCommissionWebApp
             }
 
             cmb_broker.SelectedIndex = 0;
-
-
-
 
         }
 
@@ -275,9 +261,6 @@ namespace BrokerCommissionWebApp
                         sda.SelectCommand = cmd;
 
                         sda.Fill(table);
-
-
-
                     }
                 }
             }
