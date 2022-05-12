@@ -28,31 +28,6 @@ namespace BrokerCommissionWebApp.DataModel
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<BROKER_COMMISSION> BROKER_COMMISSION { get; set; }
-        public DbSet<BROKER_MASTER> BROKER_MASTER { get; set; }
-        public DbSet<BROKER_MASTER_> BROKER_MASTER_ { get; set; }
-        public DbSet<CLIENT> CLIENTs { get; set; }
-        public DbSet<FEE_MEMO> FEE_MEMO { get; set; }
-        public DbSet<STATEMENT_HEADER> STATEMENT_HEADER { get; set; }
-        public DbSet<BROKER_GROUP> BROKER_GROUP { get; set; }
-        public DbSet<BROKER_CLIENT> BROKER_CLIENT { get; set; }
-        public DbSet<COMMISSION_RESULT_NAME0> COMMISSION_RESULT_NAME0 { get; set; }
-        public DbSet<COMMISSION_RESULT_NAME1> COMMISSION_RESULT_NAME1 { get; set; }
-        public DbSet<COMMISSION_RESULT_NAME2> COMMISSION_RESULT_NAME2 { get; set; }
-        public DbSet<COMMISSION_RESULT_NAME3> COMMISSION_RESULT_NAME3 { get; set; }
-        public DbSet<COMMISSION_RESULT_NAME4> COMMISSION_RESULT_NAME4 { get; set; }
-        public DbSet<COMMISSION_RESULT_NAME5> COMMISSION_RESULT_NAME5 { get; set; }
-        public DbSet<COMMISSION_RESULT_NAME6> COMMISSION_RESULT_NAME6 { get; set; }
-        public DbSet<COMMISSION_SUMMARY> COMMISSION_SUMMARY { get; set; }
-        public DbSet<DASH_BOARD> DASH_BOARD { get; set; }
-        public DbSet<VW_STATEMENT> VW_STATEMENT { get; set; }
-        public DbSet<CLIENT_> CLIENT_ { get; set; }
-        public DbSet<STATEMENT_DETAILS_ADD> STATEMENT_DETAILS_ADD { get; set; }
-        public DbSet<Import_OCT> Import_OCT { get; set; }
-        public DbSet<Error_Msg> Error_Msg { get; set; }
-        public DbSet<Detail_Input> Detail_Input { get; set; }
-        public DbSet<SENT_INVOICE> SENT_INVOICE { get; set; }
-        public DbSet<STATEMENT_DETAILS> STATEMENT_DETAILS { get; set; }
     
         public virtual ObjectResult<Nullable<decimal>> GET_TOTAL(Nullable<int> bid)
         {
@@ -79,6 +54,21 @@ namespace BrokerCommissionWebApp.DataModel
                 new ObjectParameter("Year", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_IMPORT_FILE_SENT_SSIS", monthParameter, yearParameter);
+        }
+    
+        public virtual int SP_BU_PREVIOUSTABLE()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_BU_PREVIOUSTABLE");
+        }
+    
+        public virtual int SP_STATEMENT_DETAIL_UPDATE()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_STATEMENT_DETAIL_UPDATE");
+        }
+    
+        public virtual int SP_UPLODADFILE()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPLODADFILE");
         }
     }
 }

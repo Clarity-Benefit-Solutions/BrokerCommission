@@ -192,3 +192,31 @@ alter table STATEMENT_DETAILS alter column line_payment_status varchar(100) null
 alter table STATEMENT_DETAILS_ARCHIVE alter column line_payment_status varchar(100) null
 go
 
+
+alter table STATEMENT_DETAILS
+    add constraint STATEMENT_DETAILS_broker__fk
+        foreign key (BROKER_ID)
+            references BROKER_MASTER
+go
+
+alter table STATEMENT_DETAILS
+    add constraint STATEMENT_DETAILS__header_fk
+        foreign key (HEADER_ID)
+            references STATEMENT_HEADER
+go
+
+/* todo: could not create these FKs due to key conflicts*/
+alter table CLIENT
+    add constraint CLIENT_BROKER_MASTER_broker_fk
+        foreign key (BROKER_ID)
+            references BROKER_MASTER
+go
+
+
+
+alter table BROKER_COMMISSION
+    add constraint [BROKER_COMMISSION_BROKER_MASTER_ID_fk]
+        foreign key (BROKER_ID)
+            references BROKER_MASTER
+go
+
