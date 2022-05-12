@@ -1,4 +1,4 @@
-<%@ Master Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="Light.master.cs" Inherits="Broker_Commission.LightMaster" %>
+<%@ Master Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="Light.master.cs" Inherits="BrokerCommissionWebApp.LightMaster" %>
 
 <%-- DXCOMMENT: Page Light.master is a master page for Account pages --%>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
