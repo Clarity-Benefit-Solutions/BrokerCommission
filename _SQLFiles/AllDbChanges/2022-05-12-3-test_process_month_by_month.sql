@@ -75,6 +75,12 @@ go
 /* 3.how much would we pay the broker */
 select *
 from
+    dbo.Import_OCT
+order by
+    Import_OCT.Agent, name, date;
+/* 3.how much would we pay the broker */
+select *
+from
     dbo.STATEMENT_HEADER
 where
     BROKER_ID = 26

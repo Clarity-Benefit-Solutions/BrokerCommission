@@ -14,6 +14,9 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Web.UI;
 using System.Globalization;
+using DataProcessing;
+using CoreUtils;
+using CoreUtils.Classes;
 
 namespace BrokerCommissionWebApp
 {
@@ -201,11 +204,20 @@ namespace BrokerCommissionWebApp
 
         public static void clear_trn_tables_and_process_imported_file(string Month, int year)
         {
+            Vars Vars = new Vars();
+            var fileLogParams = Vars.dbFileProcessingLogParams;
+            var dbConn = Vars.dbConnBrokerCommission;
 
+
+            //todo: show starting message
+
+            // run SP
             string query = "";
+            query = "EXEC [dbo].[SP_IMPORT_FILE_SENT_SSIS] @Month='" + Month + "', @Year=" + year + "";
+            object rowsAffected = DbUtils.DbQuery(DbOperation.ExecuteScalar, dbConn, query, null, fileLogParams.DbMessageLogParams, false, false);
 
-            query = "EXEC [dbo].[SP_IMPORT_FILE_SENT_SSIS] @Month='" + Month + "', @Year='" + year + "'";
-
+            //todo: show completion message
+            /*
 
             string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
 
@@ -222,6 +234,7 @@ namespace BrokerCommissionWebApp
             int rowsAffected = cmd.ExecuteNonQuery();
 
             con.Close();
+            */
 
         }
 
@@ -621,7 +634,7 @@ namespace BrokerCommissionWebApp
 
 
             SmtpClient smtp = new SmtpClient();
-       
+
             smtp.Host = from_host;
             smtp.Port = Int32.Parse(from_port);
             smtp.EnableSsl = from_enablessl != "false" ? true : false;

@@ -10,13 +10,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
+using DataProcessing;
+using CoreUtils;
+using CoreUtils.Classes;
+using System.Reflection;
 
 namespace BrokerCommissionWebApp
 {
     public partial class RawDataUpload : System.Web.UI.Page
     {
-        string file_import =
-            System.Web.Configuration.WebConfigurationManager.AppSettings["import"].ToString();
+        static string file_import =
+             System.Web.Configuration.WebConfigurationManager.AppSettings["import"].ToString();
+
+        static string rawDataUploadedFilePath = file_import + "\\file_import.csv";
 
         Broker_CommissionEntities db = new Broker_CommissionEntities();
 
@@ -35,14 +41,14 @@ namespace BrokerCommissionWebApp
             cmb_month.Items.Clear();
 
 
-            
+
             foreach (var items in GetCustomAbbreviatedMonthNames())
             {
-                cmb_month.Items.Add(new ListEditItem(items.ToString())); 
+                cmb_month.Items.Add(new ListEditItem(items.ToString()));
             }
 
 
-            for (int i = DateTime.Now.Year-2; i <= DateTime.Now.Year + 2; i++)
+            for (int i = DateTime.Now.Year - 2; i <= DateTime.Now.Year + 2; i++)
             {
                 cmb_Year.Items.Add(new ListEditItem(i.ToString()));
             }
@@ -125,20 +131,19 @@ namespace BrokerCommissionWebApp
 
         #endregion
 
-        protected bool saveFile()
+        protected bool uploadRawDataFile()
         {
             bool uploaded = false;
 
-            if (upload_Excel.HasFile )
+            if (upload_Excel.HasFile)
             {
-                string filePath = file_import + "\\file_import.csv";
-                upload_Excel.SaveAs(filePath);
-               
-                lbl_error.Text = "File Uploaded: " + upload_Excel.FileName  ;
+                upload_Excel.SaveAs(rawDataUploadedFilePath);
+
+                lbl_error.Text = "File Uploaded: " + upload_Excel.FileName;
                 lbl_error.CssClass = "text-success";
 
                 uploaded = true;
-                 
+
             }
             else
             {
@@ -148,23 +153,26 @@ namespace BrokerCommissionWebApp
 
             return uploaded;
         }
-        
+
         protected void btn_process_paymentfile_OnClick(object sender, EventArgs e)
         {
-            if (saveFile())
+            if (uploadRawDataFile())
             {
                 try
                 {
-                    
-                    import_new_qb_file();
-
-                    #region add satement to sql
                     string month = cmb_month.Text.ToUpper(); //util.GetCustomAbbreviatedMonthNames(int.Parse());  
                     int year = int.Parse(cmb_Year.Text);
 
-                    //Make statement headers from [dbo].[COMMISSION_SUMMARY] AS R 
+                    // import raw data using sqlBulkCopy
+                    import_new_qb_file(rawDataUploadedFilePath);
+
+                    // process imported data
+                    //todo: show message: processing
+
+                    // process imported data and generate statement tables
                     util.clear_trn_tables_and_process_imported_file(month, year);
-                    #endregion
+
+                    //todo: show message: processed
 
                     // redirect to showing result of import and allowing user toi view indiviodual statement, and generate and process all
                     Response.Redirect("Upload_Result.aspx?YEAR=" + cmb_Year.Text + "&&MONTH=" + (cmb_month.SelectedIndex).ToString());
@@ -173,7 +181,7 @@ namespace BrokerCommissionWebApp
                 {
                     var list = db.Error_Msg.ToList();
                     string text = "";
-                    foreach(var item in list)
+                    foreach (var item in list)
                     {
                         text += item.ErrorColumn + " " + item.ErrorCode + "<br/>";
                     }
@@ -182,57 +190,89 @@ namespace BrokerCommissionWebApp
 
                     Response.Write(exception);
 
-                    
+
                     throw;
                 }
             }
-           
-            
+
+
         }
 
-       
-      
-      
+
+
+
         protected string[] GetCustomAbbreviatedMonthNames()
         {
             string monthtext = "";
             string[] template = CultureInfo.InvariantCulture.DateTimeFormat.MonthNames;
             // replace the september but also you might want to do it with the other months as well
-            
+
             return template;
         }
-       
+
 
 
 
         //FRS_SSIS_PaymentFile
-        protected void import_new_qb_file()
+        protected void import_new_qb_file(string srcFilePath)
         {
+            /* 
+             // 
+             string sum = "";
+             string query = "";
+
+             query = "[dbo].[SP_FILE_IMPORT_SSIS]";
+
+
+             string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
+
+             // Define the ADO.NET Objects
+
+
+             SqlConnection con = new SqlConnection(constr);
+
+             SqlCommand cmd = new SqlCommand(query, con);
+
+             cmd.CommandType = CommandType.Text;
+             con.Open();
+
+             int rowsAffected = cmd.ExecuteNonQuery();
+
+             con.Close();*/
+
             //todo: use sql bulk copy to iomport
-            //todo: show num of rows imported on success
-            //todo: show error in case of error
-            // 
-            string sum = "";
-            string query = "";
+            Vars Vars = new Vars();
+            var fileLogParams = Vars.dbFileProcessingLogParams;
+            var dbConn = Vars.dbConnBrokerCommission;
 
-            query = "[dbo].[SP_FILE_IMPORT_SSIS]";
+            try
+            {
+                //
+                fileLogParams.SetFileNames("", Path.GetFileName(srcFilePath), srcFilePath,
+                    Path.GetFileName(srcFilePath), srcFilePath, "RawDataUpload-ImportNewQuickBooksFile", "Starting",
+                    "Starting: Import New QuickBooks File");
+                DbUtils.LogFileOperation(fileLogParams);
 
+                //2. import file
+                Import.ImportBrokerCommissionFile(dbConn, srcFilePath, true, fileLogParams, null);
 
-            string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
+                   // 
+                fileLogParams.SetFileNames("", Path.GetFileName(srcFilePath), srcFilePath,
+                       Path.GetFileName(srcFilePath), srcFilePath, "RawDataUpload-ImportNewQuickBooksFile", "Success",
+                             "Starting: Import New QuickBooks File");
+                DbUtils.LogFileOperation(fileLogParams);
 
-            // Define the ADO.NET Objects
+                //todo: show num of rows imported on success
+            }
+            catch (Exception ex)
+            {
+                DbUtils.LogError(srcFilePath, srcFilePath, ex, fileLogParams);
 
-
-            SqlConnection con = new SqlConnection(constr);
-
-            SqlCommand cmd = new SqlCommand(query, con);
-
-            cmd.CommandType = CommandType.Text;
-            con.Open();
-
-            int rowsAffected = cmd.ExecuteNonQuery();
-
-            con.Close();
+                //todo: show error in case of error
+                string message =
+                                $"ERROR: {MethodBase.GetCurrentMethod()?.Name} : Could Not Determine Header Type for  {srcFilePath}";
+                throw new IncorrectFileFormatException(message);
+            }
 
         }
     }
