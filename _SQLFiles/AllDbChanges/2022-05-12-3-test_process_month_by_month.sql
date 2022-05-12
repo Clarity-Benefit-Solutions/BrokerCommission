@@ -23,6 +23,21 @@ order by
 /*
 truncate table dbo.SENT_INVOICE;
 */
+/* check invoices added */
+select *
+from
+    dbo.SENT_INVOICE
+order by
+    SENT_INVOICE.INVOICE_NUM_FORMATTED;
+
+
+select count(*)
+from
+    dbo.SENT_INVOICE;
+
+select count(distinct  INVOICE_NUM_FORMATTED)
+from
+    dbo.SENT_INVOICE;
 
 /*1. import new file*/
 exec dbo.SP_FILE_IMPORT_SSIS;

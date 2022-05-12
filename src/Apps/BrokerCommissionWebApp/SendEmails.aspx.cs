@@ -101,11 +101,14 @@ namespace BrokerCommissionWebApp
                     // save Invoices that were paid so we dont pay them again
                     if (pdfGenerationResults.statementLinesAddedToPdf.Count > 0)
                     {
-                        foreach (var statement_dtl in pdfGenerationResults.statementLinesAddedToPdf)
+                        IEnumerable<STATEMENT_DETAILS> distintLines = pdfGenerationResults.statementLinesAddedToPdf.GroupBy(p => p.INVOICE_NUM).Select(g => g.First());
+  
+                        //todo: get distinct inv numbers
+                        foreach (var statement_dtl in distintLines)
                         {
                             if (statement_dtl.line_payment_status == "paid")
                             {
-                                var invoiceMode = new SENT_INVOICE()
+                                var sentInvoice = new SENT_INVOICE()
                                 {
                                     INVOICE_NUM = statement_dtl.INVOICE_NUM,
                                     OPEN_BALANCE = statement_dtl.OPEN_BALANCE,
@@ -113,11 +116,16 @@ namespace BrokerCommissionWebApp
                                     DATE_ENTER = DateTime.Now
 
                                 };
+
                                 // add to collection
-                                db.SENT_INVOICE.Add(invoiceMode);
+                                db.SENT_INVOICE.Add(sentInvoice);
                             }
-                            db.SaveChanges();
+                            else
+                            {
+                                Console.WriteLine($"Statement Item was not paid: {statement_dtl}");
+                            }
                         }
+                        db.SaveChanges();
                     }
 
                     //
