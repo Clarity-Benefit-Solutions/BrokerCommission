@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="ViewFile.aspx.cs" Inherits="BrokerCommissionWebApp.ViewFile" %>
- 
- 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         function CloseTheFreakingWindow() {
@@ -29,7 +29,7 @@
                     <dx:TabPage Name="DESIGN VIEW" Text="DESIGN VIEW">
                         <ContentCollection>
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
-                            
+
                                 <dx:ASPxGridView ID="ASPxGridView1" runat="server" Width="100%" Theme="MaterialCompact" OnPageIndexChanged="ASPxGridView1_PageIndexChanged" OnRowCommand="ASPxGridView1_RowCommand">
                                     <Columns>
                                         <dx:GridViewDataTextColumn FieldName="QB_CLIENT_NAME" ShowInCustomizationForm="True" VisibleIndex="2" Caption="NAME" Width="20%">
@@ -46,21 +46,24 @@
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="TOTAL_PRICE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="COMMISSION AMOUNT" Width="10%">
                                         </dx:GridViewDataTextColumn>
-                                     <%--      <dx:GridViewDataTextColumn FieldName="START_DATE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="START_DATE" Width="10%">
+                                        <%--      <dx:GridViewDataTextColumn FieldName="START_DATE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="START_DATE" Width="10%">
                                         </dx:GridViewDataTextColumn>--%>
                                         <dx:GridViewDataColumn Caption="Edit" VisibleIndex="10" Width="120px">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                             </SettingsHeaderFilter>
                                             <DataItemTemplate>
-                                                <dx:ASPxButton runat="server" ID="btn_detlete" 
+                                                <%--
+                                                    ToDo: How do these buttons work - will they work now that we regerante statements  directly from Imports-OCT
+                                                --%>
+                                                <dx:ASPxButton runat="server" ID="btn_delete"
                                                     Visible='<%# Eval("STATUS") == null ? true: Eval("STATUS").ToString() == "" ?true:false %>'
                                                     Text="DELETE" Theme="Mulberry" CommandName="delete"
                                                     CommandArgument='<%# Eval("INVOICE_NUM") %>'>
                                                 </dx:ASPxButton>
 
 
-                                                 <dx:ASPxButton runat="server" ID="ASPxButton1" 
+                                                <dx:ASPxButton runat="server" ID="ASPxButton1"
                                                     Visible='<%# Eval("STATUS") == null ? false: Eval("STATUS").ToString() == "" ?false:true %>'
                                                     Text="DELETE" Theme="Mulberry" CommandName="delete_client"
                                                     CommandArgument='<%# Eval("OPEN_BALANCE") %>'>
@@ -81,8 +84,9 @@
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <dx:ASPxTextBox ID="txt_name" runat="server" Width="100%" Theme="Mulberry">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
-                                                                    ErrorFrameStyle-ForeColor="Red"></ValidationSettings>
-                                                            
+                                                                    ErrorFrameStyle-ForeColor="Red">
+                                                                </ValidationSettings>
+
                                                             </dx:ASPxTextBox>
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
@@ -91,9 +95,10 @@
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <dx:ASPxTextBox ID="txt_item" runat="server" Width="100%" Theme="Mulberry">
-                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
-                                                                    ErrorFrameStyle-ForeColor="Red"></ValidationSettings>
-                                                            
+                                                                <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
+                                                                    ErrorFrameStyle-ForeColor="Red">
+                                                                </ValidationSettings>
+
                                                             </dx:ASPxTextBox>
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
@@ -102,9 +107,10 @@
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <dx:ASPxTextBox ID="txt_qt" runat="server" Width="100%" Theme="Mulberry">
-                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
-                                                                    ErrorFrameStyle-ForeColor="Red"></ValidationSettings>
-                                                              <MaskSettings Mask="<0..9999>" />
+                                                                <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
+                                                                    ErrorFrameStyle-ForeColor="Red">
+                                                                </ValidationSettings>
+                                                                <MaskSettings Mask="<0..9999>" />
                                                             </dx:ASPxTextBox>
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
@@ -113,9 +119,10 @@
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <dx:ASPxTextBox ID="txt_sales" runat="server" Width="100%" Theme="Mulberry">
-                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
-                                                                    ErrorFrameStyle-ForeColor="Red"></ValidationSettings>
-                                                              <MaskSettings Mask="<0..999999>.<0..99>" />
+                                                                <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
+                                                                    ErrorFrameStyle-ForeColor="Red">
+                                                                </ValidationSettings>
+                                                                <MaskSettings Mask="<0..999999>.<0..99>" />
                                                             </dx:ASPxTextBox>
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
@@ -124,12 +131,12 @@
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <dx:ASPxTextBox ID="txt_commissionrate" runat="server" Width="100%" Theme="Mulberry">
-                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
-                                                                    ErrorFrameStyle-ForeColor="Red"></ValidationSettings> 
+                                                                <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
+                                                                    ErrorFrameStyle-ForeColor="Red">
+                                                                </ValidationSettings>
                                                             </dx:ASPxTextBox>
 
-                                                                <%--<MaskSettings Mask="<0..0>.<0..99>" />--%>
-
+                                                            <%--<MaskSettings Mask="<0..0>.<0..99>" />--%>
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
                                                 </dx:LayoutItem>
@@ -137,17 +144,18 @@
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <dx:ASPxTextBox ID="txt_commission_amount" runat="server" Width="100%" Theme="Mulberry" ClientInstanceName="txtWCNSerialFrom">
-                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
-                                                                    ErrorFrameStyle-ForeColor="Red"></ValidationSettings>
-                                                            <MaskSettings Mask="<0..999999>.<0..99>" />
+                                                                <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
+                                                                    ErrorFrameStyle-ForeColor="Red">
+                                                                </ValidationSettings>
+                                                                <MaskSettings Mask="<0..999999>.<0..99>" />
                                                             </dx:ASPxTextBox>
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
                                                 </dx:LayoutItem>
-                                                  <dx:LayoutItem  ShowCaption="False" VerticalAlign="Middle" ColSpan="3" HorizontalAlign="Right">
+                                                <dx:LayoutItem ShowCaption="False" VerticalAlign="Middle" ColSpan="3" HorizontalAlign="Right">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
-                                                           <dx:ASPxButton runat="server" ID="btn_addNew" Text="ADD NEW LINE" Theme="MaterialCompact" OnClick="btn_addNew_Click" ValidationGroup="al"></dx:ASPxButton>
+                                                            <dx:ASPxButton runat="server" ID="btn_addNew" Text="ADD NEW LINE" Theme="MaterialCompact" OnClick="btn_addNew_Click" ValidationGroup="al"></dx:ASPxButton>
 
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
@@ -156,24 +164,24 @@
                                         </dx:LayoutGroup>
                                     </Items>
                                 </dx:ASPxFormLayout>
-                           
+
 
                             </dx:ContentControl>
                         </ContentCollection>
-                    </dx:TabPage> 
+                    </dx:TabPage>
                     <dx:TabPage Name="STATEMENT VIEW" Text="STATEMENT VIEW">
                         <ContentCollection>
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
-                                <div style="width: 100%; text-align: center; margin-top:80px">
-                                <%--    <dx:ASPxButton runat="server" ID="ASPxButton2" Text="REFRESH" Theme="Moderno" OnClick="ASPxButton2_Click"></dx:ASPxButton>
+                                <div style="width: 100%; text-align: center; margin-top: 80px">
+                                    <%--    <dx:ASPxButton runat="server" ID="ASPxButton2" Text="REFRESH" Theme="Moderno" OnClick="ASPxButton2_Click"></dx:ASPxButton>
                                     &nbsp;&nbsp;--%>
-                                    <dx:ASPxButton runat="server" ID="btn_edit" Text="VIEW/DOWNLOAD STATEMENT" Theme="Moderno" 
+                                    <dx:ASPxButton runat="server" ID="btn_edit" Text="VIEW/DOWNLOAD STATEMENT" Theme="Moderno"
                                         OnClick="btn_edit_OnClick">
                                     </dx:ASPxButton>
                                 </div>
 
-                            <%--    <dx:ASPxImage ID="ASPxImage1" runat="server" ShowLoadingImage="true" Height="600" Width="600"  ></dx:ASPxImage>
-                              --%>
+                                <%--    <dx:ASPxImage ID="ASPxImage1" runat="server" ShowLoadingImage="true" Height="600" Width="600"  ></dx:ASPxImage>
+                                --%>
                             </dx:ContentControl>
                         </ContentCollection>
                     </dx:TabPage>
@@ -216,7 +224,7 @@
                                             </SettingsHeaderFilter>
                                             <DataItemTemplate>
                                                 <asp:HiddenField runat="server" ID="hid_id" Value='<%# Eval("broker_id") %>' />
-                                                   <asp:HiddenField runat="server" ID="hid_clientID" Value='<%# Eval("broker_id") %>' />
+                                                <asp:HiddenField runat="server" ID="hid_clientID" Value='<%# Eval("broker_id") %>' />
                                                 <%# Container.ItemIndex + 1 %>
                                             </DataItemTemplate>
 
@@ -368,7 +376,7 @@
                                             </DataItemTemplate>
                                         </dx:GridViewDataColumn>--%>
                                     </Columns>
-                                </dx:ASPxGridView> 
+                                </dx:ASPxGridView>
                             </dx:ContentControl>
                         </ContentCollection>
                     </dx:TabPage>

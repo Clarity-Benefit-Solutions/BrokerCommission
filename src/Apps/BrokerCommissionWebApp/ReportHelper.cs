@@ -220,7 +220,7 @@ namespace BrokerCommissionWebApp
 
             return dt;
         }
-        public static DataTable datatable(string bid)
+        public static DataTable GetCommissionResultForBroker(string bid)
         {
             DataTable dt = new DataTable();
             //todo: memo added to order by
@@ -253,7 +253,7 @@ namespace BrokerCommissionWebApp
                 string broker_Status = "";
                 int statementID = statement_Header.HEADER_ID; 
 
-                DataTable datat = datatable(brokerID.ToString());
+                DataTable datat = GetCommissionResultForBroker(brokerID.ToString());
                 List<STATEMENT_DETAILS> list = new List<STATEMENT_DETAILS>();
                 list = (from DataRow dr in datat.Rows
                         select new STATEMENT_DETAILS()

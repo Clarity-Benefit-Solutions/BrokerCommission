@@ -28,7 +28,7 @@ namespace BrokerCommissionWebApp
                 if (Request.QueryString["BID"] != null)
                 {
                     string bid = Request.QueryString["BID"].ToString();
-                    DataLoad();
+                    LoadRawDataTable();
                     LoadEditTable(bid);
                 }
                 if (Request.QueryString["statement"] != null)
@@ -37,8 +37,9 @@ namespace BrokerCommissionWebApp
                     ASPxPageControl1.TabPages[2].Visible = false;
                     //ASPxButton1.Visible = false;
                     string bid = Request.QueryString["BID"].ToString();
-                    DataLoad();
-                    LoadEditTable( bid );
+                    //
+                    LoadRawDataTable();
+                    LoadEditTable(bid);
                 }
             }
 
@@ -48,39 +49,39 @@ namespace BrokerCommissionWebApp
         {
 
             //string bid = Request.QueryString["BID"].ToString();
-            DataTable datat = ReportHelper.datatable(headerID);
+            DataTable datat = ReportHelper.GetCommissionResultForBroker(headerID);
             List<STATEMENT_DETAILS> list = new List<STATEMENT_DETAILS>();
             list = (from DataRow dr in datat.Rows
-                           select new STATEMENT_DETAILS()
-                           {
-                               STATUS = dr["EMAIL"].ToString(),
-                               QB_CLIENT_NAME =  dr["CLIENT_NAME"].ToString(),
-                               QB_FEE =  dr["QB_FEE"].ToString() ,
-                               BROKER_NAME =  dr["QB_BROKER_NAME"].ToString() ,
-                               QUANTITY = int.Parse(dr["Qty"].ToString()),
-                               COMMISSION_RATE = Convert.ToDecimal(dr["COMMISSION_RATE"].ToString()),
-                               SALES_PRICE = Convert.ToDecimal(dr["Sales Price"].ToString()), 
-                               TOTAL_PRICE = Convert.ToDecimal(dr["COMMISSION AMOUNT"].ToString()),
-                               BROKER_STATUS = dr["BROKER_STATUS"].ToString(),
-                               DETAIL_ID = int.Parse(dr["ID"].ToString()),
-                               START_DATE = dr["START_DATE"].ToString(),
-                               INVOICE_NUM = dr["Num"].ToString(),
-                               OPEN_BALANCE = decimal.Parse( dr["CLIENT_ID"].ToString() )
-                             
+                    select new STATEMENT_DETAILS()
+                    {
+                        STATUS = dr["EMAIL"].ToString(),
+                        QB_CLIENT_NAME = dr["CLIENT_NAME"].ToString(),
+                        QB_FEE = dr["QB_FEE"].ToString(),
+                        BROKER_NAME = dr["QB_BROKER_NAME"].ToString(),
+                        QUANTITY = int.Parse(dr["Qty"].ToString()),
+                        COMMISSION_RATE = Convert.ToDecimal(dr["COMMISSION_RATE"].ToString()),
+                        SALES_PRICE = Convert.ToDecimal(dr["Sales Price"].ToString()),
+                        TOTAL_PRICE = Convert.ToDecimal(dr["COMMISSION AMOUNT"].ToString()),
+                        BROKER_STATUS = dr["BROKER_STATUS"].ToString(),
+                        DETAIL_ID = int.Parse(dr["ID"].ToString()),
+                        START_DATE = dr["START_DATE"].ToString(),
+                        INVOICE_NUM = dr["Num"].ToString(),
+                        OPEN_BALANCE = decimal.Parse(dr["CLIENT_ID"].ToString())
 
-                           }).ToList();
+
+                    }).ToList();
 
 
             ASPxGridView1.DataSource = list;
             ASPxGridView1.DataBind();
         }
 
-        protected void DataLoad()
+        protected void LoadRawDataTable()
         {
             string bid = Request.QueryString["BID"].ToString();
             int brokerID = int.Parse(bid);
-            DataTable datat = ReportHelper.datatable(bid); 
-          
+            DataTable datat = ReportHelper.GetCommissionResultForBroker(bid);
+
 
             DataTable dataM = ReportHelper.dataTable_master(bid);
             List<string> broker_name_list = new List<string>();
@@ -137,7 +138,7 @@ namespace BrokerCommissionWebApp
                     model.Name = qb_client;
                     model.Agent = item.Agent;
                     model.Memo = qb_memo;
-                    model.Sales_Price = item.Sales_Price == null? 0 : Convert.ToDecimal(item.Sales_Price.ToString());
+                    model.Sales_Price = item.Sales_Price == null ? 0 : Convert.ToDecimal(item.Sales_Price.ToString());
                     model.Amount = item.Amount == null ? 0 : Convert.ToDecimal(item.Amount.ToString());
                     model.Qty = item.Qty == null ? 0 : int.Parse(item.Qty.ToString());
                     var client_model = db.CLIENTs.Where(x => x.QB_CLIENT_NAME == qb_client && x.QB_FEE == qb_memo).FirstOrDefault();
@@ -156,13 +157,13 @@ namespace BrokerCommissionWebApp
 
                     combine_list.Add(model);
                 }
-                grid_import.DataSource = combine_list.OrderByDescending(x=>x.exist).ThenBy(x=>x.Name).ToList();
+                grid_import.DataSource = combine_list.OrderByDescending(x => x.exist).ThenBy(x => x.Name).ToList();
                 grid_import.DataBind();
-            } 
+            }
         }
-       
-      
-      
+
+
+
 
         #region old conversion
         //protected StringBuilder stringb(DataTable dtp)
@@ -415,12 +416,13 @@ namespace BrokerCommissionWebApp
         protected void LoadHtml(DataTable dtp)
         {
             //lbl_literal.Text = 
-                
-                //stringb(dtp).ToString();
+
+            //stringb(dtp).ToString();
         }
 
         protected void btn_edit_OnClick(object sender, EventArgs e)
         {
+            //ToDo: check how button works when editing rawdata or statements
             if (Request.QueryString["Flag"] != null)
             {
                 string bid = Request.QueryString["BID"].ToString();
@@ -434,7 +436,7 @@ namespace BrokerCommissionWebApp
                    + "_" + Request.QueryString["YEAR"] + ".pdf";
 
 
-                   WebClient User = new WebClient();
+                    WebClient User = new WebClient();
                     Byte[] FileBuffer = User.DownloadData(FilePath);
                     if (FileBuffer != null)
                     {
@@ -443,13 +445,13 @@ namespace BrokerCommissionWebApp
                         Response.BinaryWrite(FileBuffer);
                     }
                 }
-               
+
             }
             else
             {
                 string bid = Request.QueryString["BID"].ToString();
                 int brokerID = int.Parse(bid);
-                string FilePath = ReportHelper.CreatedWord_fromResult(brokerID); 
+                string FilePath = ReportHelper.CreatedWord_fromResult(brokerID);
                 WebClient User = new WebClient();
                 Byte[] FileBuffer = User.DownloadData(FilePath);
                 if (FileBuffer != null)
@@ -459,7 +461,7 @@ namespace BrokerCommissionWebApp
                     Response.BinaryWrite(FileBuffer);
                 }
             }
-           
+
             #region
             //Document pdfDocument = new Document();
             //string pdffilename = DateTime.Now.Ticks.ToString() + ".pdf";
@@ -491,35 +493,34 @@ namespace BrokerCommissionWebApp
 
         protected void btn_save_OnClick(object sender, EventArgs e)
         {
-
-            save_all();
-            DataLoad();
-
-
+            //ToDo: check how button works when editing rawdata or statements
+            SaveAllChanges();
+            LoadRawDataTable();
         }
 
-        protected void save_all()
+        protected void SaveAllChanges()
         {
+            //ToDo: check how save_all works when editing rawdata or statements
             int bid = 0;
             if (Request.QueryString["BID"] != null)
             {
                 bid = int.Parse(Request.QueryString["BID"].ToString());
             }
-                for (int i = 0; i < grid_import.VisibleRowCount; i++)
+            for (int i = 0; i < grid_import.VisibleRowCount; i++)
             {
-                
-               ASPxCheckBox cb = grid_import.FindRowCellTemplateControl(i, null, "cb") as ASPxCheckBox; 
-               HiddenField  hid_id = grid_import.FindRowCellTemplateControl(i, null, "hid_id") as HiddenField;
-               ASPxLabel lbl_qb_clientName = grid_import.FindRowCellTemplateControl(i, null, "lbl_qb_clientName") as ASPxLabel;
-               ASPxLabel lbl_QB_FEE = grid_import.FindRowCellTemplateControl(i, null, "lbl_QB_FEE") as ASPxLabel;
-               //ASPxLabel lbl_QB_FEE = grid_import.FindRowCellTemplateControl(i, null, "lbl_QB_FEE") as ASPxLabel;
-               ASPxTextBox txt_rate = grid_import.FindRowCellTemplateControl(i, null, "txt_rate") as ASPxTextBox;
+
+                ASPxCheckBox cb = grid_import.FindRowCellTemplateControl(i, null, "cb") as ASPxCheckBox;
+                HiddenField hid_id = grid_import.FindRowCellTemplateControl(i, null, "hid_id") as HiddenField;
+                ASPxLabel lbl_qb_clientName = grid_import.FindRowCellTemplateControl(i, null, "lbl_qb_clientName") as ASPxLabel;
+                ASPxLabel lbl_QB_FEE = grid_import.FindRowCellTemplateControl(i, null, "lbl_QB_FEE") as ASPxLabel;
+                //ASPxLabel lbl_QB_FEE = grid_import.FindRowCellTemplateControl(i, null, "lbl_QB_FEE") as ASPxLabel;
+                ASPxTextBox txt_rate = grid_import.FindRowCellTemplateControl(i, null, "txt_rate") as ASPxTextBox;
 
                 ASPxComboBox txt_UNIT = grid_import.FindRowCellTemplateControl(i, null, "txt_UNIT") as ASPxComboBox;
 
                 if (cb != null && cb.Enabled == true && cb.Checked == true)
                 {
-                    if(!string.IsNullOrEmpty(txt_UNIT.Text) && !string.IsNullOrEmpty(txt_rate.Text))
+                    if (!string.IsNullOrEmpty(txt_UNIT.Text) && !string.IsNullOrEmpty(txt_rate.Text))
                     {
                         //int bid = int.Parse(hid_id.Value == null ? "0" : hid_id.Value);
                         string text = txt_rate.Text.Replace("$", "");
@@ -540,13 +541,13 @@ namespace BrokerCommissionWebApp
                         db.CLIENTs.Add(cl);
                         db.SaveChanges();
                     }
-                      
+
                     else
                     {
                         string message = "Please Fill Out the QTY and Unit";
                         ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + message + "');", true);
                     }
-                   
+
 
 
 
@@ -581,7 +582,7 @@ namespace BrokerCommissionWebApp
             }
 
 
-           
+
         }
 
         public static string receive =
@@ -589,11 +590,13 @@ namespace BrokerCommissionWebApp
 
         protected void btn_state_OnClick(object sender, EventArgs e)
         {
+            //ToDo: check how button works when editing rawdata or statements
             if (Request.QueryString["BID"] != null && Request.QueryString["MONTH"] != null && Request.QueryString["YEAR"] != null)
             {
                 int bid = int.Parse(Request.QueryString["BID"].ToString());
                 int year = int.Parse(Request.QueryString["YEAR"].ToString());
                 string month = (Request.QueryString["MONTH"].ToString());
+
                 #region email statement
 
                 var model = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID == bid).FirstOrDefault();
@@ -606,8 +609,7 @@ namespace BrokerCommissionWebApp
                     db.SaveChanges();
                 }
 
-
-                DataLoad();
+                LoadRawDataTable();
 
                 #endregion
 
@@ -622,12 +624,12 @@ namespace BrokerCommissionWebApp
             var pageIndex = view.PageIndex;
             ASPxGridView1.PageIndex = pageIndex;
             string bid = Request.QueryString["BID"].ToString();
-            LoadEditTable( bid) ;
+            LoadEditTable(bid);
         }
 
         protected void ASPxGridView1_RowCommand(object sender, ASPxGridViewRowCommandEventArgs e)
         {
-            if(e.CommandArgs.CommandName.ToString() == "delete")
+            if (e.CommandArgs.CommandName.ToString() == "delete")
             {
                 int detailID = int.Parse(e.CommandArgs.CommandArgument.ToString());
                 //Response.Write(detailID);
@@ -657,10 +659,12 @@ namespace BrokerCommissionWebApp
 
         protected void btn_addNew_Click(object sender, EventArgs e)
         {
+            //ToDo: check how button works when editing rawdata or statements
+
             string bid = Request.QueryString["BID"].ToString();
             int statementID = int.Parse(bid);//brokerID
 
-            if (Request.QueryString["StatementID"] != null) 
+            if (Request.QueryString["StatementID"] != null)
             {
                 int sid = int.Parse(Request.QueryString["StatementID"].ToString());
 
@@ -692,7 +696,7 @@ namespace BrokerCommissionWebApp
 
             }//? 0 : int.Parse(Request.QueryString["StatementID"].ToString())
 
-          
+
         }
 
 
@@ -700,9 +704,9 @@ namespace BrokerCommissionWebApp
         {
             int id = 0;
             var statementModel = db.STATEMENT_HEADER.Where(x => x.HEADER_ID == statementID).FirstOrDefault();
-            if(statementModel != null)
+            if (statementModel != null)
             {
-                id = statementModel.BROKER_ID == null? 0:int.Parse(statementModel.BROKER_ID.ToString());
+                id = statementModel.BROKER_ID == null ? 0 : int.Parse(statementModel.BROKER_ID.ToString());
 
             }
 
@@ -716,7 +720,7 @@ namespace BrokerCommissionWebApp
             var statementModel = db.BROKER_MASTER.Where(x => x.ID == brokerID).FirstOrDefault();
             if (statementModel != null)
             {
-                id = statementModel.PAYLOCITY_ID == null ? "" :  statementModel.PAYLOCITY_ID.ToString();
+                id = statementModel.PAYLOCITY_ID == null ? "" : statementModel.PAYLOCITY_ID.ToString();
 
             }
 
@@ -744,15 +748,15 @@ namespace BrokerCommissionWebApp
             {
                 id = statementModel.BROKER_NAME == null ? "" : statementModel.BROKER_NAME;
 
-            } 
+            }
             return id;
         }
 
-       
+
 
         protected void ASPxButton2_Click(object sender, EventArgs e)
         {
-            DataLoad();
+            LoadRawDataTable();
         }
     }
 
@@ -765,7 +769,7 @@ namespace BrokerCommissionWebApp
         public int Qty { get; set; }
         public decimal COMMISSION_RATE { get; set; }
         public string UNIT { get; set; }
-        public string START_DATE { get; set; } 
+        public string START_DATE { get; set; }
         public decimal Sales_Price { get; set; }
         public decimal Amount { get; set; }
         public bool exist { get; set; }
