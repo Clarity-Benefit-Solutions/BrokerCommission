@@ -32,5 +32,13 @@ namespace BrokerCommissionWebApp.DataModel
         public string BROKER_NAME_5 { get; set; }
         public string BROKER_NAME_6 { get; set; }
         public Nullable<decimal> TOTAL_AMOUNT { get; set; }
+        public string BROKER_NAME_ID_FORMATTED { get; set; }
+        public string BROKER_NAME_FORMATTED { get; set; }
+        public string BROKER_NAME_1_FORMATTED { get; set; }
+        public string BROKER_NAME_2_FORMATTED { get; set; }
+        public string BROKER_NAME_3_FORMATTED { get; set; }
+        public string BROKER_NAME_4_FORMATTED { get; set; }
+        public string BROKER_NAME_5_FORMATTED { get; set; }
+        public string BROKER_NAME_6_FORMATTED { get; set; }
     }
 }

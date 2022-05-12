@@ -30,6 +30,7 @@ namespace BrokerCommissionWebApp.DataModel
         public Nullable<System.DateTime> Change_Date { get; set; }
         public Nullable<decimal> STATEMENT_PENDING_TOTAL { get; set; }
         public Nullable<decimal> STATEMENT_ALREADY_PAID_TOTAL { get; set; }
+        public Nullable<decimal> TOTAL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STATEMENT_DETAILS> STATEMENT_DETAILS { get; set; }

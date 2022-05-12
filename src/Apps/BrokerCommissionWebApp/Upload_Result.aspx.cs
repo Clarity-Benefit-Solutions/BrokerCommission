@@ -56,28 +56,18 @@ namespace BrokerCommissionWebApp
 
         protected void DataLoad()
         {
-                
-            string query = "SELECT MAX(H.HEADER_ID) HEADER_ID " +
-                " , A.BROKER_ID " +
-                " , A.BROKER_NAME " +
-                " , A.PAYLOCITY_ID " +
-                " , A.TOTAL " +
-                " FROM " +
-                "   [dbo].[COMMISSION_SUMMARY] AS A " +
-                "     LEFT JOIN[dbo].[STATEMENT_HEADER] AS H ON A.BROKER_ID = H.BROKER_ID ";
+
+            string query = "select * from dbo.STATEMENT_HEADER A ";
             query += " WHERE 1=1 ";
 
-            // todo: commented. add checkbox for all or only not yet emailed. ?show all statements not only those which have been emailed by default
+            // todo: need specs. commented. add checkbox for all or only not yet emailed. show all statements not only those which have been emailed by default
             //query += " AND H.FLAG!=3 ";
-
 
             if (cmb_broker.SelectedIndex > 0)
             {
                 query += " AND  A.BROKER_NAME = '" + cmb_broker.SelectedItem.Text + "'";
 
             }
-
-            query += " GROUP BY A.BROKER_ID , A.BROKER_NAME , A.PAYLOCITY_ID , A.TOTAL ";
             query += " ORDER BY A.BROKER_NAME ";
 
             SqlDataSource1.SelectCommand = query;

@@ -1,35 +1,22 @@
+alter table dbo.STATEMENT_HEADER
+    add TOTAL numeric(18, 2);
+
+select *
+from
+    dbo.STATEMENT_HEADER A
+ORDER BY
+    A.BROKER_NAME;
 CREATE VIEW [dbo].[COMMISSION_SUMMARY]
 AS
-    WITH
-        CTE_ALLRESULT AS
-            (
-                SELECT
-                    --DISTINCT
-                    RT.[BROKER_ID]
-                  , RT.[BROKER_NAME]
-                  , RT.PAYLOCITY_ID
-                  , (
-                        SELECT
-                            SUM( R.[COMMISSION AMOUNT] )
-                        FROM
-                            [dbo].[COMMISSION_RESULT] AS R
-
-                        WHERE
-                            --R.[Open Balance] = 0 AND
-                            RT.BROKER_ID = R.BROKER_ID
-                    ) TOTAL
-
-                FROM
-                    [dbo].[COMMISSION_RESULT] AS RT
-                GROUP BY
-                    RT.[BROKER_ID]
-                  , RT.[BROKER_NAME]
-                  , RT.PAYLOCITY_ID
-            )
-
-    SELECT *
+    SELECT DISTINCT
+        RT.[BROKER_ID]
+      , RT.[BROKER_NAME]
+      , RT.PAYLOCITY_ID
     FROM
-        CTE_ALLRESULT
---WHERE TOTAL != 0
+        [dbo].[COMMISSION_RESULT] AS RT
+    GROUP BY
+        RT.[BROKER_ID]
+      , RT.[BROKER_NAME]
+      , RT.PAYLOCITY_ID
 go
 
