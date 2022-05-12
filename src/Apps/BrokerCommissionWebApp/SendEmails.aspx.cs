@@ -29,11 +29,13 @@ namespace BrokerCommissionWebApp
                 {
                     lbl_month.Text = Request.QueryString["Month"].ToString();
                     lbl_year.Text = Request.QueryString["Year"].ToString();
+                    //
                     string month = lbl_month.Text;
                     int year = int.Parse(lbl_year.Text); 
                     lbl_status.Text = "In Progress"; 
                     lbl_not_sent.Text = "0"; 
                     ASPxProgressBar1.Position = 0;
+                    //
                     sendEmails(); 
                 }
             }
@@ -51,8 +53,6 @@ namespace BrokerCommissionWebApp
             try
             { 
 
-                #region email statement
-
                 // setup statement header list
                 //tod: uncoment next line
                 var list = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID != null /*&& ( x.FLAG == 0 || x.FLAG == 4 )*/)
@@ -69,25 +69,27 @@ namespace BrokerCommissionWebApp
                 foreach (var item in list)
                 {
                     int headerID = item.HEADER_ID;
+
                     // Create PDF Statement with PDF string output
                     string outputPath = ReportHelper.CreatedWord(headerID);
 
-
+                    // set email from/to/etc
                     string from = util.from_email;
                     string to = "";
 
                     if(debugMode == "True")
                     {
-                        to = "aidubor@claritybenefitsolutions.com";
+                        //to = "aidubor@claritybenefitsolutions.com";
                         //to = "azhu@claritybenefitsolutions.com" ;
+                        to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); 
                     }
                     else
                     {
-                        //to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
+                        // todo: remove comment when we are ready to go live
+                       // to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
                     }
 
-                    
-
+                    // send the email with pdf attached
                     util.email_send_with_attachment(from, to, outputPath, item.BROKER_NAME, item.MONTH, item.YEAR);
 
                     decimal totalAmount = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == headerID && x.OPEN_BALANCE == 0).Sum(x => x.TOTAL_PRICE) == null ? 0 : db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == headerID && x.OPEN_BALANCE == 0).Sum(x => x.TOTAL_PRICE).Value;
@@ -111,8 +113,6 @@ namespace BrokerCommissionWebApp
                 watch.Stop();
 
                 lbl_time_execution.Text = Math.Round(Convert.ToDouble((watch.ElapsedMilliseconds) / 1000), 2) + " Seconds"; 
-
-                #endregion
 
             }
             catch (Exception exception)
