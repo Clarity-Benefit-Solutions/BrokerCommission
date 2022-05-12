@@ -210,7 +210,6 @@ namespace BrokerCommissionWebApp
             var fileLogParams = Vars.GetDbFileProcessingLogParams("BrokerCommission");
             var dbConn = Vars.dbConnBrokerCommission;
 
-
             //todo: show starting message
 
             // run SP
@@ -219,24 +218,6 @@ namespace BrokerCommissionWebApp
             object rowsAffected = DbUtils.DbQuery(DbOperation.ExecuteScalar, dbConn, query, null, fileLogParams.DbMessageLogParams, false, false);
 
             //todo: show completion message
-            /*
-
-            string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
-
-            // Define the ADO.NET Objects
-
-
-            SqlConnection con = new SqlConnection(constr);
-
-            SqlCommand cmd = new SqlCommand(query, con);
-
-            cmd.CommandType = CommandType.Text;
-            con.Open();
-
-            int rowsAffected = cmd.ExecuteNonQuery();
-
-            con.Close();
-            */
 
         }
 

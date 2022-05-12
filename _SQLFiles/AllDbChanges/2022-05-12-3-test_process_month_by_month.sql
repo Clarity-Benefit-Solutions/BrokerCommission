@@ -23,7 +23,7 @@ order by
 select
     sum( TOTAL_PRICE )
 from
-    (
+    (;
         select distinct
             QB_CLIENT_NAME
           , CLIENT_NAME
@@ -33,6 +33,7 @@ from
           , INVOICE_NUM
           , TOTAL_PRICE
           , SALES_PRICE
+        , line_payment_status
         from
             dbo.STATEMENT_DETAILS_ARCHIVE
         where
@@ -50,7 +51,7 @@ from
             , STATEMENT_DETAILS_ARCHIVE.CLIENT_NAME
             , STATEMENT_DETAILS_ARCHIVE.INVOICE_NUM
             , STATEMENT_DETAILS_ARCHIVE.QB_FEE*/
-    ) t;
+  ;  ) t;
 
 /* clear all sent invoices*/
 /*

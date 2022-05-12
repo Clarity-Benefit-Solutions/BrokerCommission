@@ -42,8 +42,6 @@ namespace BrokerCommissionWebApp
             cmb_Year.Items.Clear();
             cmb_month.Items.Clear();
 
-
-
             foreach (var items in GetCustomAbbreviatedMonthNames())
             {
                 cmb_month.Items.Add(new ListEditItem(items.ToString()));
@@ -221,30 +219,7 @@ namespace BrokerCommissionWebApp
         //FRS_SSIS_PaymentFile
         protected void import_new_qb_file(string srcFilePath)
         {
-            /* 
-             // 
-             string sum = "";
-             string query = "";
-
-             query = "[dbo].[SP_FILE_IMPORT_SSIS]";
-
-
-             string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
-
-             // Define the ADO.NET Objects
-
-
-             SqlConnection con = new SqlConnection(constr);
-
-             SqlCommand cmd = new SqlCommand(query, con);
-
-             cmd.CommandType = CommandType.Text;
-             con.Open();
-
-             int rowsAffected = cmd.ExecuteNonQuery();
-
-             con.Close();*/
-
+           
             //todo: use sql bulk copy to iomport
             Vars Vars = new Vars();
             var fileLogParams = Vars.GetDbFileProcessingLogParams("BrokerCommission");
