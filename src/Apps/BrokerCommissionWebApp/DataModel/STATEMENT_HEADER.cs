@@ -7,18 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrokerCommissionWebApp
+namespace BrokerCommissionWebApp.DataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class BROKER_COMMISSION
+    public partial class STATEMENT_HEADER
     {
-        public int ID { get; set; }
-        public string PERIOD { get; set; }
+        public int HEADER_ID { get; set; }
+        public string MONTH { get; set; }
+        public int YEAR { get; set; }
         public Nullable<int> BROKER_ID { get; set; }
         public string BROKER_NAME { get; set; }
-        public Nullable<int> PAYLOCITY_NUMBER { get; set; }
-        public Nullable<decimal> PAYMENT_AMOUNT { get; set; }
+        public int FLAG { get; set; }
+        public Nullable<decimal> STATEMENT_TOTAL { get; set; }
+        public Nullable<System.DateTime> Change_Date { get; set; }
     }
 }

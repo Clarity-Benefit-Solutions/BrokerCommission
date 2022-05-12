@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrokerCommissionWebApp
+namespace BrokerCommissionWebApp.DataModel
 {
     using System;
     using System.Collections.Generic;

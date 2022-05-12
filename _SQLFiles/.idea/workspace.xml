@@ -207,30 +207,30 @@
       <screen x="0" y="0" width="1536" height="930" />
     </state>
     <state x="549" y="220" key="FileChooserDialogImpl/0.0.1536.930@0.0.1536.930" timestamp="1650714183158" />
-    <state width="965" height="167" key="GridCell.Tab.0.bottom" timestamp="1652336304448">
+    <state width="965" height="167" key="GridCell.Tab.0.bottom" timestamp="1652338220613">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state width="965" height="167" key="GridCell.Tab.0.bottom/62.0.1474.960@62.0.1474.960" timestamp="1652336304448" />
-    <state width="965" height="167" key="GridCell.Tab.0.center" timestamp="1652336304448">
+    <state width="965" height="167" key="GridCell.Tab.0.bottom/62.0.1474.960@62.0.1474.960" timestamp="1652338220613" />
+    <state width="965" height="167" key="GridCell.Tab.0.center" timestamp="1652338220612">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state width="965" height="167" key="GridCell.Tab.0.center/62.0.1474.960@62.0.1474.960" timestamp="1652336304448" />
-    <state width="965" height="167" key="GridCell.Tab.0.left" timestamp="1652336304448">
+    <state width="965" height="167" key="GridCell.Tab.0.center/62.0.1474.960@62.0.1474.960" timestamp="1652338220612" />
+    <state width="965" height="167" key="GridCell.Tab.0.left" timestamp="1652338220612">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state width="965" height="167" key="GridCell.Tab.0.left/62.0.1474.960@62.0.1474.960" timestamp="1652336304448" />
-    <state width="965" height="167" key="GridCell.Tab.0.right" timestamp="1652336304448">
+    <state width="965" height="167" key="GridCell.Tab.0.left/62.0.1474.960@62.0.1474.960" timestamp="1652338220612" />
+    <state width="965" height="167" key="GridCell.Tab.0.right" timestamp="1652338220612">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state width="965" height="167" key="GridCell.Tab.0.right/62.0.1474.960@62.0.1474.960" timestamp="1652336304448" />
+    <state width="965" height="167" key="GridCell.Tab.0.right/62.0.1474.960@62.0.1474.960" timestamp="1652338220612" />
     <state x="300" y="124" key="SettingsEditor" timestamp="1652233263848">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state x="300" y="124" key="SettingsEditor/62.0.1474.960@62.0.1474.960" timestamp="1652233263848" />
-    <state x="593" y="0" width="316" height="265" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1652309592022">
+    <state x="593" y="0" width="316" height="265" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1652338258770">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state x="593" y="0" width="316" height="265" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/62.0.1474.960@62.0.1474.960" timestamp="1652309592022" />
+    <state x="593" y="0" width="316" height="265" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/62.0.1474.960@62.0.1474.960" timestamp="1652338258770" />
     <state x="595" y="295" width="407" height="349" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1652303245583">
       <screen x="62" y="0" width="1474" height="960" />
     </state>

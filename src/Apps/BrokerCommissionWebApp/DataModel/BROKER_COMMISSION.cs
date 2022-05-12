@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrokerCommissionWebApp
+namespace BrokerCommissionWebApp.DataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class FEE_MEMO
+    public partial class BROKER_COMMISSION
     {
         public int ID { get; set; }
-        public string MEMO { get; set; }
-        public Nullable<int> COMMISIONABLE { get; set; }
-        public Nullable<int> CLIENT_ID { get; set; }
-        public string NOTE { get; set; }
-        public Nullable<decimal> RATE { get; set; }
+        public string PERIOD { get; set; }
+        public Nullable<int> BROKER_ID { get; set; }
+        public string BROKER_NAME { get; set; }
+        public Nullable<int> PAYLOCITY_NUMBER { get; set; }
+        public Nullable<decimal> PAYMENT_AMOUNT { get; set; }
     }
 }

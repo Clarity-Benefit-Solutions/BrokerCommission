@@ -7,12 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrokerCommissionWebApp
+namespace BrokerCommissionWebApp.DataModel
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class DASH_BOARD
+    public partial class SP_FILE_IMPORT_SSIS_Result
     {
         public int ID { get; set; }
         public string BROKER_NAME { get; set; }

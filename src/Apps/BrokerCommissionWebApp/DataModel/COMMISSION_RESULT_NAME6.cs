@@ -7,12 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrokerCommissionWebApp
+namespace BrokerCommissionWebApp.DataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class COMMISSION_RESULT_NAME2
+    public partial class COMMISSION_RESULT_NAME6
     {
         public Nullable<int> ID { get; set; }
         public string BROKER_NAME { get; set; }

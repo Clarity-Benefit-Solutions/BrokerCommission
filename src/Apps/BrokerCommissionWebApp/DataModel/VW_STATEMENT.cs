@@ -7,14 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrokerCommissionWebApp
+namespace BrokerCommissionWebApp.DataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class STATEMENT_HEADER
+    public partial class VW_STATEMENT
     {
         public int HEADER_ID { get; set; }
+        public string PID { get; set; }
         public string MONTH { get; set; }
         public int YEAR { get; set; }
         public Nullable<int> BROKER_ID { get; set; }
@@ -22,5 +23,17 @@ namespace BrokerCommissionWebApp
         public int FLAG { get; set; }
         public Nullable<decimal> STATEMENT_TOTAL { get; set; }
         public Nullable<System.DateTime> Change_Date { get; set; }
+        public string QB_CLIENT_NAME { get; set; }
+        public string CLIENT_NAME { get; set; }
+        public string QB_FEE { get; set; }
+        public string FEE_MEMO { get; set; }
+        public Nullable<int> QUANTITY { get; set; }
+        public Nullable<decimal> COMMISSION_RATE { get; set; }
+        public string UNIT { get; set; }
+        public Nullable<decimal> SALES_PRICE { get; set; }
+        public Nullable<decimal> TOTAL_PRICE { get; set; }
+        public string START_DATE { get; set; }
+        public string BROKER_STATUS { get; set; }
+        public Nullable<decimal> OPEN_BALANCE { get; set; }
     }
 }

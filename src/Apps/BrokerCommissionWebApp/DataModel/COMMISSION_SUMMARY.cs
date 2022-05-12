@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrokerCommissionWebApp
+namespace BrokerCommissionWebApp.DataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Error_Msg
+    public partial class COMMISSION_SUMMARY
     {
-        public int ID { get; set; }
-        public string Flat_File_Source_Error_Output_Column { get; set; }
-        public Nullable<int> ErrorCode { get; set; }
-        public Nullable<int> ErrorColumn { get; set; }
+        public int BROKER_ID { get; set; }
+        public string BROKER_NAME { get; set; }
+        public Nullable<decimal> TOTAL { get; set; }
+        public string PAYLOCITY_ID { get; set; }
     }
 }

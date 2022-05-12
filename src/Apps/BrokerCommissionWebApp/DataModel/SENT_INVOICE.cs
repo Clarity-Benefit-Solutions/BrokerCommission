@@ -7,20 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrokerCommissionWebApp
+namespace BrokerCommissionWebApp.DataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class CLIENT_
+    public partial class SENT_INVOICE
     {
-        public int CLIENT_ID { get; set; }
-        public string CLIENT_NAME { get; set; }
-        public Nullable<int> BROKER_ID { get; set; }
-        public string FEE { get; set; }
-        public string FEE_MEMO { get; set; }
-        public Nullable<decimal> COMMISSION_RATE { get; set; }
-        public string UNIT { get; set; }
-        public string STATUS { get; set; }
+        public int ID { get; set; }
+        public string INVOICE_NUM { get; set; }
+        public Nullable<decimal> OPEN_BALANCE { get; set; }
+        public System.DateTime DATE_ENTER { get; set; }
     }
 }

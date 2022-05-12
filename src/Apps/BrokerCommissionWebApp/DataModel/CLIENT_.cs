@@ -7,23 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrokerCommissionWebApp
+namespace BrokerCommissionWebApp.DataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class CLIENT
+    public partial class CLIENT_
     {
         public int CLIENT_ID { get; set; }
-        public string QB_CLIENT_NAME { get; set; }
         public string CLIENT_NAME { get; set; }
         public Nullable<int> BROKER_ID { get; set; }
-        public string QB_FEE { get; set; }
+        public string FEE { get; set; }
         public string FEE_MEMO { get; set; }
         public Nullable<decimal> COMMISSION_RATE { get; set; }
         public string UNIT { get; set; }
         public string STATUS { get; set; }
-        public string FEE { get; set; }
-        public string START_DATE { get; set; }
     }
 }

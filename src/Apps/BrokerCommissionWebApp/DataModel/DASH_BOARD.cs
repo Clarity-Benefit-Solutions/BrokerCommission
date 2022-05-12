@@ -7,32 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrokerCommissionWebApp
+namespace BrokerCommissionWebApp.DataModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class BROKER_CLIENT
+    public partial class DASH_BOARD
     {
         public int ID { get; set; }
         public string BROKER_NAME { get; set; }
-        public string QB_BROKER_NAME { get; set; }
-        public string CLIENT_NAME { get; set; }
-        public string QB_FEE { get; set; }
-        public string BROKER_STATUS { get; set; }
-        public string EMAIL { get; set; }
-        public string QB_CLIENT_NAME { get; set; }
-        public string FEE_MEMO { get; set; }
-        public Nullable<decimal> COMMISSION_RATE { get; set; }
-        public string UNIT { get; set; }
         public string PAYLOCITY_ID { get; set; }
+        public Nullable<decimal> PREMIUM { get; set; }
+        public string EMAIL { get; set; }
         public string SECONDARY_EMAIL { get; set; }
+        public string STATUS { get; set; }
+        public Nullable<decimal> PREMIUM_TH { get; set; }
+        public string NOTES { get; set; }
+        public string BROKER_STATUS { get; set; }
+        public string BROKER_NAME_ID { get; set; }
         public string BROKER_NAME_1 { get; set; }
         public string BROKER_NAME_2 { get; set; }
         public string BROKER_NAME_3 { get; set; }
         public string BROKER_NAME_4 { get; set; }
         public string BROKER_NAME_5 { get; set; }
         public string BROKER_NAME_6 { get; set; }
-        public string START_DATE { get; set; }
+        public Nullable<decimal> TOTAL_AMOUNT { get; set; }
     }
 }
