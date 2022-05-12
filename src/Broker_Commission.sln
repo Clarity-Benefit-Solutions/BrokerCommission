@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SSIS", "SSIS", "{7C9EB28E-E39F-4BD0-86E5-5F9A6654295B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataProjects", "DataProjects", "{A8568F77-A896-440D-9F27-203F2EA7A990}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLSrvrDataProjects", "SQLSrvrDataProjects", "{A8568F77-A896-440D-9F27-203F2EA7A990}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrokerCommissionWebApp", "Apps\BrokerCommissionWebApp\BrokerCommissionWebApp.csproj", "{90733F9E-0EBB-40E7-A646-C789CEC8270D}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProcessing", "..\..\..\FileAndDataProcessingAndErrorLog\src\Libraries\DataProcessing\DataProcessing.csproj", "{210BDED8-F04E-4CAE-A085-587FF35C5344}"
 EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "BrokerCommissionSSIS", "SSIS\BrokerCommissionSSIS\BrokerCommissionSSIS.dtproj", "{816BBE06-88CE-4451-B1AF-6BBD91B7D57F}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "BrokerCommissionsDataProject", "SQLSrvrDataProjects\BrokerCommissionsDataProject\BrokerCommissionsDataProject.sqlproj", "{391DF0E1-4441-4CD4-90B0-499963B82FD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,24 @@ Global
 		{816BBE06-88CE-4451-B1AF-6BBD91B7D57F}.Release|Any CPU.Build.0 = Development
 		{816BBE06-88CE-4451-B1AF-6BBD91B7D57F}.Release|x64.ActiveCfg = Development
 		{816BBE06-88CE-4451-B1AF-6BBD91B7D57F}.Release|x64.Build.0 = Development
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Debug|x64.Build.0 = Debug|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Debug|x64.Deploy.0 = Debug|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Development|Any CPU.Deploy.0 = Debug|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Development|x64.ActiveCfg = Debug|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Development|x64.Build.0 = Debug|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Development|x64.Deploy.0 = Debug|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Release|x64.ActiveCfg = Release|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Release|x64.Build.0 = Release|Any CPU
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4}.Release|x64.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +108,7 @@ Global
 		{9346BFEC-A5CA-4FC9-87C1-09B39FB1A207} = {A6277BA5-4D7C-4981-A8BD-04D5BABCCC13}
 		{210BDED8-F04E-4CAE-A085-587FF35C5344} = {A6277BA5-4D7C-4981-A8BD-04D5BABCCC13}
 		{816BBE06-88CE-4451-B1AF-6BBD91B7D57F} = {7C9EB28E-E39F-4BD0-86E5-5F9A6654295B}
+		{391DF0E1-4441-4CD4-90B0-499963B82FD4} = {A8568F77-A896-440D-9F27-203F2EA7A990}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D3AD3E8D-9F6E-4F4A-82E0-17D86002F5AC}
