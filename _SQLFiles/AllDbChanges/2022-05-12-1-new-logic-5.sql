@@ -1,5 +1,6 @@
 use Broker_Commission;
 go
+
 create or
 alter function get_current_statement_year( ) returns int as
 begin

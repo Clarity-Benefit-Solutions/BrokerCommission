@@ -1,6 +1,12 @@
 use Broker_Commission;
 Go;
 
+alter table dbo.STATEMENT_HEADER add PAYLOCITY_ID int;
+alter table dbo.STATEMENT_HEADER_ARCHIVE add PAYLOCITY_ID int;
+
+alter table dbo.STATEMENT_HEADER add TOTAL numeric(18,2);
+alter table dbo.STATEMENT_HEADER_ARCHIVE add TOTAL numeric(18,2);
+
 create or
 alter
     PROCEDURE [dbo].[SP_CALC_STATEMENT_LINE_PAYMENT_STATUS_FOR_HEADER]

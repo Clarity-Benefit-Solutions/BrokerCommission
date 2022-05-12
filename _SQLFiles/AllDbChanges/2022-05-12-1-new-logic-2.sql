@@ -116,8 +116,6 @@ BEGIN
     FROM
         [dbo].[STATEMENT_HEADER];
     
-  
-    
     /* 4. generate new statements header and details fr om imported data joiniong imported data agent witgh various possible broker names in master */
     -- create distinct statement header
     INSERT INTO [dbo].[STATEMENT_HEADER]
@@ -127,8 +125,8 @@ BEGIN
     [BROKER_ID],
     [BROKER_NAME],
     [FLAG],
-    [STATEMENT_TOTAL],
-    [Change_Date]
+    [Change_Date],
+    PAYLOCITY_ID
     )
     SELECT
         @Month
@@ -136,8 +134,8 @@ BEGIN
       , RT.[BROKER_ID]
       , RT.[BROKER_NAME]
       , 0
-      , 0
       , getdate( )
+      , RT.PAYLOCITY_ID
     FROM
         [dbo].[COMMISSION_RESULT] AS RT
     WHERE
@@ -233,6 +231,8 @@ BEGIN
                                                 STATEMENT_TOTAL,
                                                 STATEMENT_PENDING_TOTAL,
                                                 STATEMENT_ALREADY_PAID_TOTAL,
+                                                TOTAL,
+                                                PAYLOCITY_ID,
                                                 Change_Date
     )
     SELECT
@@ -245,6 +245,8 @@ BEGIN
       , STATEMENT_TOTAL
       , STATEMENT_PENDING_TOTAL
       , STATEMENT_ALREADY_PAID_TOTAL
+      , TOTAL
+      , PAYLOCITY_ID
       , Change_Date
     FROM
         [dbo].[STATEMENT_HEADER]

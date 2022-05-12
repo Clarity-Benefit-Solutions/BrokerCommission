@@ -20,7 +20,9 @@ order by
     log_id desc;
 
 /* clear all sent invoices*/
+/*
 truncate table dbo.SENT_INVOICE;
+*/
 
 /*1. import new file*/
 exec dbo.SP_FILE_IMPORT_SSIS;
@@ -49,7 +51,7 @@ where
 order by
     BROKER_NAME;
 
-/* insert jan paid invoices to sent_invoices for month 1  */
+/* insert jan paid invoices to sent_invoices for month 1 - should be done as each statement is emailed out  */
 insert into dbo.SENT_INVOICE (
                              INVOICE_NUM,
                              OPEN_BALANCE,

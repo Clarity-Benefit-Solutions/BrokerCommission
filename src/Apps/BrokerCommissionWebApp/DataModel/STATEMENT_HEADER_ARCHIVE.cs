@@ -25,5 +25,7 @@ namespace BrokerCommissionWebApp.DataModel
         public Nullable<System.DateTime> Change_Date { get; set; }
         public Nullable<decimal> STATEMENT_ALREADY_PAID_TOTAL { get; set; }
         public Nullable<decimal> STATEMENT_PENDING_TOTAL { get; set; }
+        public Nullable<int> PAYLOCITY_ID { get; set; }
+        public Nullable<decimal> TOTAL { get; set; }
     }
 }
