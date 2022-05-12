@@ -74,7 +74,7 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="GenericSQL" />
     <property name="database.data.extractors.current.export.id" value="Tab-separated (TSV)_id" />
     <property name="database.data.extractors.current.id" value="Tab-separated (TSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AllDbChanges" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../FileAndDataProcessingAndErrorLog/_SQLFiles" />
     <property name="settings.editor.selected.configurable" value="SQL Dialects" />
   </component>
   <component name="RecentsManager">
@@ -198,31 +198,32 @@
     <option name="LAST_COMMIT_MESSAGE" value="Nov 9 - WIP 1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="408" y="127" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1652199177202">
+    <state x="408" y="127" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1652348405691">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state x="361" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.930@0.0.1536.930" timestamp="1650714218274" />
-    <state x="408" y="127" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1474.960@62.0.1474.960" timestamp="1652199177202" />
-    <state x="549" y="220" key="FileChooserDialogImpl" timestamp="1650714183158">
-      <screen x="0" y="0" width="1536" height="930" />
+    <state x="408" y="127" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1474.960@62.0.1474.960" timestamp="1652348405691" />
+    <state x="589" y="227" key="FileChooserDialogImpl" timestamp="1652348439373">
+      <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state x="549" y="220" key="FileChooserDialogImpl/0.0.1536.930@0.0.1536.930" timestamp="1650714183158" />
-    <state width="605" height="167" key="GridCell.Tab.0.bottom" timestamp="1652339230484">
+    <state x="589" y="227" key="FileChooserDialogImpl/62.0.1474.960@62.0.1474.960" timestamp="1652348439373" />
+    <state width="605" height="167" key="GridCell.Tab.0.bottom" timestamp="1652348834998">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state width="605" height="167" key="GridCell.Tab.0.bottom/62.0.1474.960@62.0.1474.960" timestamp="1652339230484" />
-    <state width="605" height="167" key="GridCell.Tab.0.center" timestamp="1652339230484">
+    <state width="605" height="167" key="GridCell.Tab.0.bottom/62.0.1474.960@62.0.1474.960" timestamp="1652348834998" />
+    <state width="605" height="167" key="GridCell.Tab.0.center" timestamp="1652348834998">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state width="605" height="167" key="GridCell.Tab.0.center/62.0.1474.960@62.0.1474.960" timestamp="1652339230484" />
-    <state width="605" height="167" key="GridCell.Tab.0.left" timestamp="1652339230483">
+    <state width="605" height="167" key="GridCell.Tab.0.center/62.0.1474.960@62.0.1474.960" timestamp="1652348834998" />
+    <state width="605" height="167" key="GridCell.Tab.0.left" timestamp="1652348834998">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state width="605" height="167" key="GridCell.Tab.0.left/62.0.1474.960@62.0.1474.960" timestamp="1652339230483" />
-    <state width="605" height="167" key="GridCell.Tab.0.right" timestamp="1652339230484">
+    <state width="605" height="167" key="GridCell.Tab.0.left/62.0.1474.960@62.0.1474.960" timestamp="1652348834998" />
+    <state width="605" height="167" key="GridCell.Tab.0.right" timestamp="1652348834998">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state width="605" height="167" key="GridCell.Tab.0.right/62.0.1474.960@62.0.1474.960" timestamp="1652339230484" />
+    <state width="605" height="167" key="GridCell.Tab.0.right/62.0.1474.960@62.0.1474.960" timestamp="1652348834998" />
     <state x="300" y="124" key="SettingsEditor" timestamp="1652233263848">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
@@ -239,10 +240,10 @@
       <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state x="158" y="252" width="1277" height="565" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/62.0.1474.960@62.0.1474.960" timestamp="1652338763186" />
-    <state x="524" y="79" width="549" height="801" key="find.popup" timestamp="1652336312276">
+    <state x="524" y="79" width="549" height="801" key="find.popup" timestamp="1652348891168">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state x="524" y="79" width="549" height="801" key="find.popup/62.0.1474.960@62.0.1474.960" timestamp="1652336312276" />
+    <state x="524" y="79" width="549" height="801" key="find.popup/62.0.1474.960@62.0.1474.960" timestamp="1652348891168" />
     <state x="462" y="205" width="672" height="678" key="search.everywhere.popup" timestamp="1652269012469">
       <screen x="62" y="0" width="1474" height="960" />
     </state>

@@ -32,6 +32,7 @@ alter PROCEDURE [dbo].[SP_IMPORT_FILE_SENT_SSIS]
 AS
 BEGIN
     /* 0. check args are valid*/
+    /* 0. check args are valid*/
     if isnull( @month , '' ) = ''
         begin
             THROW 51000, 'Month Cannot be Empty', 1;
@@ -105,15 +106,17 @@ BEGIN
       and statement_year = @Year;
     
     /* 3. clear current statements header and details - DONT truncate so we opreserve header id over month by month iterations*/
+    -- delete first curent statement details due to FK
+    DELETE
+    FROM
+        [dbo].[STATEMENT_DETAILS];
+    
     -- delete curent statement header
     DELETE
     FROM
         [dbo].[STATEMENT_HEADER];
     
-    -- delete curent statement details
-    DELETE
-    FROM
-        [dbo].[STATEMENT_DETAILS];
+  
     
     /* 4. generate new statements header and details fr om imported data joiniong imported data agent witgh various possible broker names in master */
     -- create distinct statement header
