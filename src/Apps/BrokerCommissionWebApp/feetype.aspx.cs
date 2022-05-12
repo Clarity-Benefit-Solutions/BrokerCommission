@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using DevExpress.Web;
 using DevExpress.Web.Data;
 
+using BrokerCommissionWebApp.DataModel;
+
 namespace BrokerCommissionWebApp
 {
     public partial class feetype : System.Web.UI.Page

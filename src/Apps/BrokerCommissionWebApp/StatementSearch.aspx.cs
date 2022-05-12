@@ -15,6 +15,7 @@ using DevExpress.Export;
 
 using DevExpress.XtraPrinting;
 
+using BrokerCommissionWebApp.DataModel;
 
 namespace BrokerCommissionWebApp
 {

@@ -287,9 +287,6 @@
     <Compile Include="DataModel\CLIENT_.cs">
       <DependentUpon>system_model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\CLIENT_BK.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataModel\COMMISSION_RESULT_NAME0.cs">
       <DependentUpon>system_model.tt</DependentUpon>
     </Compile>
@@ -314,6 +311,12 @@
     <Compile Include="DataModel\DASH_BOARD.cs">
       <DependentUpon>system_model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\db_error_log.cs">
+      <DependentUpon>system_model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\db_message_log.cs">
+      <DependentUpon>system_model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\Detail_Input.cs">
       <DependentUpon>system_model.tt</DependentUpon>
     </Compile>
@@ -323,52 +326,10 @@
     <Compile Include="DataModel\FEE_MEMO.cs">
       <DependentUpon>system_model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\Import_Archive.cs">
+      <DependentUpon>system_model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\Import_OCT.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_02242022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_02252022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_03022022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_03032022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_03102022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_03112022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_03152022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_03282022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_04282022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_05042022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_05052022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_05062022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_05082022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\IMPORT_OCT_05092022.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\newClients_03112022.cs">
       <DependentUpon>system_model.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\SENT_INVOICE.cs">
@@ -380,22 +341,19 @@
     <Compile Include="DataModel\STATEMENT_DETAILS_ADD.cs">
       <DependentUpon>system_model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\STATEMENT_DETAILS_BK.cs">
-      <DependentUpon>system_model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\STATEMENT_DETAILS_Old.cs">
+    <Compile Include="DataModel\STATEMENT_DETAILS_ARCHIVE.cs">
       <DependentUpon>system_model.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\STATEMENT_HEADER.cs">
       <DependentUpon>system_model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\STATEMENT_HEADER_Old.cs">
+    <Compile Include="DataModel\STATEMENT_HEADER_ARCHIVE.cs">
       <DependentUpon>system_model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\test_Flag.cs">
+    <Compile Include="DataModel\VW_STATEMENT_DETAILS_ADD.cs">
       <DependentUpon>system_model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\VW_STATEMENT.cs">
+    <Compile Include="DataModel\VW_STATEMENT_HEADER.cs">
       <DependentUpon>system_model.tt</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">

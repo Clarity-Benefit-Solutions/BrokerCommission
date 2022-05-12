@@ -9,6 +9,8 @@ using DevExpress.Web;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.Parameters;
 
+using BrokerCommissionWebApp.DataModel;
+
 namespace BrokerCommissionWebApp
 {
     public partial class brokerMaster : System.Web.UI.Page

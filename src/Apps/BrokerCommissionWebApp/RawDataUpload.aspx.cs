@@ -15,6 +15,8 @@ using CoreUtils;
 using CoreUtils.Classes;
 using System.Reflection;
 
+using BrokerCommissionWebApp.DataModel;
+
 namespace BrokerCommissionWebApp
 {
     public partial class RawDataUpload : System.Web.UI.Page

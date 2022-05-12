@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -15,6 +16,7 @@ using DevExpress.Export;
 
 using DevExpress.XtraPrinting;
 
+using BrokerCommissionWebApp.DataModel;
 
 
 namespace BrokerCommissionWebApp

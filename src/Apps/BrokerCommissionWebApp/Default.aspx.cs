@@ -14,6 +14,8 @@ using System.Web.UI.WebControls;
 using DevExpress.XtraCharts;
 using DevExpress.XtraRichEdit.Commands.Internal;
 
+using BrokerCommissionWebApp.DataModel;
+
 namespace BrokerCommissionWebApp {
     public partial class _Default : System.Web.UI.Page
     {

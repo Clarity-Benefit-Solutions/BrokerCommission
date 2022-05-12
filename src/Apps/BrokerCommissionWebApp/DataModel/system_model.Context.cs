@@ -28,6 +28,36 @@ namespace BrokerCommissionWebApp.DataModel
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<BROKER_COMMISSION> BROKER_COMMISSION { get; set; }
+        public DbSet<BROKER_MASTER> BROKER_MASTER { get; set; }
+        public DbSet<CLIENT> CLIENTs { get; set; }
+        public DbSet<db_error_log> db_error_log { get; set; }
+        public DbSet<db_message_log> db_message_log { get; set; }
+        public DbSet<Detail_Input> Detail_Input { get; set; }
+        public DbSet<Error_Msg> Error_Msg { get; set; }
+        public DbSet<FEE_MEMO> FEE_MEMO { get; set; }
+        public DbSet<Import_Archive> Import_Archive { get; set; }
+        public DbSet<Import_OCT> Import_OCT { get; set; }
+        public DbSet<SENT_INVOICE> SENT_INVOICE { get; set; }
+        public DbSet<STATEMENT_DETAILS> STATEMENT_DETAILS { get; set; }
+        public DbSet<STATEMENT_DETAILS_ADD> STATEMENT_DETAILS_ADD { get; set; }
+        public DbSet<STATEMENT_DETAILS_ARCHIVE> STATEMENT_DETAILS_ARCHIVE { get; set; }
+        public DbSet<STATEMENT_HEADER> STATEMENT_HEADER { get; set; }
+        public DbSet<STATEMENT_HEADER_ARCHIVE> STATEMENT_HEADER_ARCHIVE { get; set; }
+        public DbSet<BROKER_GROUP> BROKER_GROUP { get; set; }
+        public DbSet<BROKER_CLIENT> BROKER_CLIENT { get; set; }
+        public DbSet<COMMISSION_RESULT_NAME0> COMMISSION_RESULT_NAME0 { get; set; }
+        public DbSet<COMMISSION_RESULT_NAME1> COMMISSION_RESULT_NAME1 { get; set; }
+        public DbSet<COMMISSION_RESULT_NAME2> COMMISSION_RESULT_NAME2 { get; set; }
+        public DbSet<COMMISSION_RESULT_NAME3> COMMISSION_RESULT_NAME3 { get; set; }
+        public DbSet<COMMISSION_RESULT_NAME4> COMMISSION_RESULT_NAME4 { get; set; }
+        public DbSet<COMMISSION_RESULT_NAME5> COMMISSION_RESULT_NAME5 { get; set; }
+        public DbSet<COMMISSION_RESULT_NAME6> COMMISSION_RESULT_NAME6 { get; set; }
+        public DbSet<DASH_BOARD> DASH_BOARD { get; set; }
+        public DbSet<VW_STATEMENT_DETAILS_ADD> VW_STATEMENT_DETAILS_ADD { get; set; }
+        public DbSet<VW_STATEMENT_HEADER> VW_STATEMENT_HEADER { get; set; }
+        public DbSet<BROKER_MASTER_> BROKER_MASTER_ { get; set; }
+        public DbSet<CLIENT_> CLIENT_ { get; set; }
     
         public virtual ObjectResult<Nullable<decimal>> GET_TOTAL(Nullable<int> bid)
         {
@@ -46,12 +76,12 @@ namespace BrokerCommissionWebApp.DataModel
         public virtual int SP_IMPORT_FILE_SENT_SSIS(string month, Nullable<int> year)
         {
             var monthParameter = month != null ?
-                new ObjectParameter("Month", month) :
-                new ObjectParameter("Month", typeof(string));
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(string));
     
             var yearParameter = year.HasValue ?
-                new ObjectParameter("Year", year) :
-                new ObjectParameter("Year", typeof(int));
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_IMPORT_FILE_SENT_SSIS", monthParameter, yearParameter);
         }
@@ -69,6 +99,99 @@ namespace BrokerCommissionWebApp.DataModel
         public virtual int SP_UPLODADFILE()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPLODADFILE");
+        }
+    
+        public virtual int db_log_error(string err_no, string err_source, string err_msg, string sqlstate)
+        {
+            var err_noParameter = err_no != null ?
+                new ObjectParameter("err_no", err_no) :
+                new ObjectParameter("err_no", typeof(string));
+    
+            var err_sourceParameter = err_source != null ?
+                new ObjectParameter("err_source", err_source) :
+                new ObjectParameter("err_source", typeof(string));
+    
+            var err_msgParameter = err_msg != null ?
+                new ObjectParameter("err_msg", err_msg) :
+                new ObjectParameter("err_msg", typeof(string));
+    
+            var sqlstateParameter = sqlstate != null ?
+                new ObjectParameter("sqlstate", sqlstate) :
+                new ObjectParameter("sqlstate", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("db_log_error", err_noParameter, err_sourceParameter, err_msgParameter, sqlstateParameter);
+        }
+    
+        public virtual int db_log_message(string msg_source, string msg, string log_level, Nullable<int> recsaffected, Nullable<int> print)
+        {
+            var msg_sourceParameter = msg_source != null ?
+                new ObjectParameter("msg_source", msg_source) :
+                new ObjectParameter("msg_source", typeof(string));
+    
+            var msgParameter = msg != null ?
+                new ObjectParameter("msg", msg) :
+                new ObjectParameter("msg", typeof(string));
+    
+            var log_levelParameter = log_level != null ?
+                new ObjectParameter("log_level", log_level) :
+                new ObjectParameter("log_level", typeof(string));
+    
+            var recsaffectedParameter = recsaffected.HasValue ?
+                new ObjectParameter("recsaffected", recsaffected) :
+                new ObjectParameter("recsaffected", typeof(int));
+    
+            var printParameter = print.HasValue ?
+                new ObjectParameter("print", print) :
+                new ObjectParameter("print", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("db_log_message", msg_sourceParameter, msgParameter, log_levelParameter, recsaffectedParameter, printParameter);
+        }
+    
+        public virtual int db_throw_error(string err_no, string err_source, string err_msg)
+        {
+            var err_noParameter = err_no != null ?
+                new ObjectParameter("err_no", err_no) :
+                new ObjectParameter("err_no", typeof(string));
+    
+            var err_sourceParameter = err_source != null ?
+                new ObjectParameter("err_source", err_source) :
+                new ObjectParameter("err_source", typeof(string));
+    
+            var err_msgParameter = err_msg != null ?
+                new ObjectParameter("err_msg", err_msg) :
+                new ObjectParameter("err_msg", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("db_throw_error", err_noParameter, err_sourceParameter, err_msgParameter);
+        }
+    
+        public virtual int SP_CALC_STATEMENT_LINE_PAYMENT_STATUS(string month, Nullable<int> year)
+        {
+            var monthParameter = month != null ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(string));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CALC_STATEMENT_LINE_PAYMENT_STATUS", monthParameter, yearParameter);
+        }
+    
+        public virtual int SP_CALC_STATEMENT_LINE_PAYMENT_STATUS_FOR_HEADER(Nullable<int> header_id, Nullable<int> broker_id, string client_name)
+        {
+            var header_idParameter = header_id.HasValue ?
+                new ObjectParameter("header_id", header_id) :
+                new ObjectParameter("header_id", typeof(int));
+    
+            var broker_idParameter = broker_id.HasValue ?
+                new ObjectParameter("broker_id", broker_id) :
+                new ObjectParameter("broker_id", typeof(int));
+    
+            var client_nameParameter = client_name != null ?
+                new ObjectParameter("client_name", client_name) :
+                new ObjectParameter("client_name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CALC_STATEMENT_LINE_PAYMENT_STATUS_FOR_HEADER", header_idParameter, broker_idParameter, client_nameParameter);
         }
     }
 }

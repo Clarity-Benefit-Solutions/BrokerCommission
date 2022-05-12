@@ -18,6 +18,8 @@ using DataProcessing;
 using CoreUtils;
 using CoreUtils.Classes;
 
+using BrokerCommissionWebApp.DataModel;
+
 namespace BrokerCommissionWebApp
 {
     public class util
