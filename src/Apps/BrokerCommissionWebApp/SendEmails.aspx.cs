@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CoreUtils.Classes;
 
 using BrokerCommissionWebApp.DataModel;
 
@@ -31,27 +32,27 @@ namespace BrokerCommissionWebApp
                     lbl_year.Text = Request.QueryString["Year"].ToString();
                     //
                     string month = lbl_month.Text;
-                    int year = int.Parse(lbl_year.Text); 
-                    lbl_status.Text = "In Progress"; 
-                    lbl_not_sent.Text = "0"; 
+                    int year = int.Parse(lbl_year.Text);
+                    lbl_status.Text = "In Progress";
+                    lbl_not_sent.Text = "0";
                     ASPxProgressBar1.Position = 0;
                     //
-                    sendEmails(); 
+                    sendEmails();
                 }
             }
-           
+
         }
 
         protected void sendEmails()
         {
-            
+
             var watch = new System.Diagnostics.Stopwatch();
             watch.Start();
             string month = lbl_month.Text;
             int year = int.Parse(lbl_year.Text);
 
             try
-            { 
+            {
 
                 // setup statement header list
                 //tod: uncoment next line
@@ -71,29 +72,58 @@ namespace BrokerCommissionWebApp
                     int headerID = item.HEADER_ID;
 
                     // Create PDF Statement with PDF string output
-                    string outputPath = ReportHelper.CreatedWord(headerID);
+                    PdfGenerationResults pdfGenerationResults = ReportHelper.CreatedWord(headerID);
+                    if (!pdfGenerationResults.success)
+                    {
+                        //todo: display error
+                        continue;
+                    }
 
                     // set email from/to/etc
                     string from = util.from_email;
                     string to = "";
 
-                    if(debugMode == "True")
+                    if (debugMode == "True")
                     {
                         //to = "aidubor@claritybenefitsolutions.com";
                         //to = "azhu@claritybenefitsolutions.com" ;
-                        to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); 
+                        to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString()));
                     }
                     else
                     {
                         // todo: remove comment when we are ready to go live
-                       // to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
+                        // to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
                     }
 
                     // send the email with pdf attached
-                    util.email_send_with_attachment(from, to, outputPath, item.BROKER_NAME, item.MONTH, item.YEAR);
+                    util.email_send_with_attachment(from, to, pdfGenerationResults.outputPath, item.BROKER_NAME, item.MONTH, item.YEAR);
 
+                    // save Invoices that were paid so we dont pay them again
+                    if (pdfGenerationResults.statementLinesAddedToPdf.Count > 0)
+                    {
+                        foreach (var statement_dtl in pdfGenerationResults.statementLinesAddedToPdf)
+                        {
+                            if (statement_dtl.line_payment_status == "paid")
+                            {
+                                var invoiceMode = new SENT_INVOICE()
+                                {
+                                    INVOICE_NUM = statement_dtl.INVOICE_NUM
+                                   ,
+                                    OPEN_BALANCE = statement_dtl.OPEN_BALANCE
+                                    ,
+                                    STATEMENT_TOTAL = Utils.ToDecimal(statement_dtl.TOTAL_PRICE)
+
+                                };
+                                // add to collection
+                                db.SENT_INVOICE.Add(invoiceMode);
+                            }
+                            db.SaveChanges();
+                        }
+                    }
+
+                    //
                     decimal totalAmount = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == headerID && x.OPEN_BALANCE == 0).Sum(x => x.TOTAL_PRICE) == null ? 0 : db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == headerID && x.OPEN_BALANCE == 0).Sum(x => x.TOTAL_PRICE).Value;
- 
+                    //
                     item.STATEMENT_TOTAL = totalAmount;
                     item.FLAG = 3;
                     db.SaveChanges();
@@ -104,15 +134,17 @@ namespace BrokerCommissionWebApp
                     int position = util.getPercentage(current, totalCount);
                     ASPxProgressBar1.Position = position;
 
-                    if (position == 100)
+                    if (position == 10)
                     {
-                        lbl_status.Text = "Complete";
+                        lbl_status.Text = "Processing";
                     }
-                } 
+
+
+                } // for each
 
                 watch.Stop();
 
-                lbl_time_execution.Text = Math.Round(Convert.ToDouble((watch.ElapsedMilliseconds) / 1000), 2) + " Seconds"; 
+                lbl_time_execution.Text = Math.Round(Convert.ToDouble((watch.ElapsedMilliseconds) / 1000), 2) + " Seconds";
 
             }
             catch (Exception exception)
@@ -121,7 +153,7 @@ namespace BrokerCommissionWebApp
                 //Response.Redirect("Upload_Result.aspx", false);
                 //// note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
                 //Context.ApplicationInstance.CompleteRequest();
-                watch.Stop(); 
+                watch.Stop();
                 Response.Write(exception.Message);
                 //string executionTime = "Execution Time: " + Math.Round(Convert.ToDouble((watch.ElapsedMilliseconds) / 1000), 2) + " Seconds";
                 //string emai_sent = "Total Email Sent Out: " + util.getCompleteCount(month, year).ToString();
