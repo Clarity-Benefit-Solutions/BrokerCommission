@@ -205,7 +205,9 @@ namespace BrokerCommissionWebApp {
             {
                 string id = e.CommandArgs.CommandArgument.ToString();
                 string url = "BROKER_VIEW.aspx?ID=" + id;
-                Response.Redirect(url);
+                Response.Redirect(url, false);
+                // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+                Context.ApplicationInstance.CompleteRequest();
             }
         }
 

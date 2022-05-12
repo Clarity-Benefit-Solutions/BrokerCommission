@@ -102,7 +102,9 @@ namespace BrokerCommissionWebApp
 
         protected void btn_Back_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("brokerMaster.aspx");
+            Response.Redirect("brokerMaster.aspx", false);
+            // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         protected void save()

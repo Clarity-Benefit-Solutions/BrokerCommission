@@ -176,8 +176,11 @@ namespace BrokerCommissionWebApp
 
                     //todo: show message: processed
 
-                    // redirect to showing result of import and allowing user toi view indiviodual statement, and generate and process all
-                    Response.Redirect("Upload_Result.aspx?YEAR=" + cmb_Year.Text + "&&MONTH=" + (cmb_month.SelectedIndex).ToString());
+                    // redirect to showing result of import and allowing user to view indiviodual statement, and generate and process all
+                    Response.Redirect("Upload_Result.aspx?YEAR=" + cmb_Year.Text + "&&MONTH=" + (cmb_month.SelectedIndex).ToString(), false);
+                    // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+                    Context.ApplicationInstance.CompleteRequest();
+
                 }
                 catch (Exception exception)
                 {
@@ -258,7 +261,7 @@ namespace BrokerCommissionWebApp
                 //2. import file
                 Import.ImportBrokerCommissionFile(dbConn, srcFilePath, true, fileLogParams, null);
 
-                   // 
+                // 
                 fileLogParams.SetFileNames("", Path.GetFileName(srcFilePath), srcFilePath,
                        Path.GetFileName(srcFilePath), srcFilePath, "RawDataUpload-ImportNewQuickBooksFile", "Success",
                              "Starting: Import New QuickBooks File");

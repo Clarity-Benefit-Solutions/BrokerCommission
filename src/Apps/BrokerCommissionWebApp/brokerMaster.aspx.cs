@@ -100,7 +100,9 @@ namespace BrokerCommissionWebApp
             else if (e.Item.GroupName == "New")
             {
                 string url = "brokerAdd.aspx";
-                Response.Redirect(url);
+                Response.Redirect(url, false);
+                // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+                Context.ApplicationInstance.CompleteRequest();
             }
 
         }
@@ -120,14 +122,18 @@ namespace BrokerCommissionWebApp
             {
                 string id = e.CommandArgs.CommandArgument.ToString();
                 string url = "brokerAdd.aspx?ID=" + id;
-                Response.Redirect(url);
+                Response.Redirect(url, false);
+                // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+                Context.ApplicationInstance.CompleteRequest();
             }
         }
 
         protected void btn_add_OnClick(object sender, EventArgs e)
         {
             string url = "brokerAdd.aspx";
-            Response.Redirect(url);
+            Response.Redirect(url, false);
+            // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

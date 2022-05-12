@@ -113,7 +113,9 @@ namespace BrokerCommissionWebApp
 
         protected void btn_Back_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("feetype.aspx");
+            Response.Redirect("feetype.aspx", false);
+            // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+            Context.ApplicationInstance.CompleteRequest();
         }
 
         protected void btn_delete_OnClick(object sender, EventArgs e)
@@ -122,7 +124,9 @@ namespace BrokerCommissionWebApp
             string message = "Deleted Successfully!";
             ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + message + "');", true);
 
-            Response.Redirect("feetype.aspx");
+            Response.Redirect("feetype.aspx", false);
+            // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

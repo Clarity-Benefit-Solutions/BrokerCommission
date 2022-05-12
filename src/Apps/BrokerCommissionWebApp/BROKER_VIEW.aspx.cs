@@ -97,7 +97,9 @@ namespace BrokerCommissionWebApp
 
         protected void btn_back_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Default.aspx", false);
+            // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

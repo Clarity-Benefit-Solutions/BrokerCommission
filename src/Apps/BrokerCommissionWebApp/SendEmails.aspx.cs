@@ -118,7 +118,9 @@ namespace BrokerCommissionWebApp
             catch (Exception exception)
             {
                 //Response.Write(exception);
-                //Response.Redirect("Upload_Result.aspx");
+                //Response.Redirect("Upload_Result.aspx", false);
+                //// note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+                //Context.ApplicationInstance.CompleteRequest();
                 watch.Stop(); 
                 Response.Write(exception.Message);
                 //string executionTime = "Execution Time: " + Math.Round(Convert.ToDouble((watch.ElapsedMilliseconds) / 1000), 2) + " Seconds";

@@ -109,7 +109,9 @@ namespace BrokerCommissionWebApp
 
         protected void btn_new_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("feetype_add.aspx");
+            Response.Redirect("feetype_add.aspx", false);
+            // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

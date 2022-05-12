@@ -66,7 +66,9 @@ namespace BrokerCommissionWebApp
             {
                 string id = e.CommandArgs.CommandArgument.ToString();
                 string url = "client_add.aspx?ID=" + id;
-                Response.Redirect(url);
+                Response.Redirect(url, false);
+                // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+                Context.ApplicationInstance.CompleteRequest();
 
             }
         }
@@ -78,7 +80,9 @@ namespace BrokerCommissionWebApp
 
         protected void btn_new_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("client_add.aspx");
+            Response.Redirect("client_add.aspx", false);
+            // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }
