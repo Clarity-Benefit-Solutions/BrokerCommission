@@ -94,6 +94,9 @@ select
   , TOTAL_PRICE
 from
     dbo.STATEMENT_DETAILS
+Project Mx, Broker Commissions,
+
+
 where
       INVOICE_DATE = '2022-04-01'
   and line_payment_status = 'paid';
