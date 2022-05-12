@@ -16,6 +16,7 @@ using Document = Aspose.Words.Document;
 using CoreUtils.Classes;
 
 using BrokerCommissionWebApp.DataModel;
+using System.Reflection;
 
 namespace BrokerCommissionWebApp
 {
@@ -33,7 +34,7 @@ namespace BrokerCommissionWebApp
 
         private static void WriteCell(int tableindex, int rowindex, int colindex, string str, Document document)
         {
-          
+
             DocumentBuilder builder = new DocumentBuilder(document);
             builder.MoveToCell(tableindex, rowindex, colindex, 0);
             builder.Write(str);
@@ -59,10 +60,20 @@ namespace BrokerCommissionWebApp
             builder.Document.Range.Bookmarks[guid].Remove();
         }
         #region Request Form
+        public static int GetStatementIdForBrokerId(int brokerID)
+        {
+            var statement_Header = db.STATEMENT_HEADER.Where(x => x.BROKER_ID == brokerID).FirstOrDefault();
+            if (statement_Header != null)
+            {
+                return statement_Header.HEADER_ID;
+            }
+            return 0;
+        }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="sq"></param>
+        /// 
         public static string CreatedWord(int statementID)
         {
             string output = "";
@@ -70,14 +81,23 @@ namespace BrokerCommissionWebApp
             Document doc = new Document();
 
             var statement_Header = db.STATEMENT_HEADER.Where(x => x.HEADER_ID == statementID).FirstOrDefault();
-            if (statement_Header != null)
+            if (statementID <= 0 || statement_Header == null)
+            {
+                var message = $"ERROR: {MethodBase.GetCurrentMethod()?.Name} : Cannot Create Statement for HeadeId : {statementID} as no such Header was found";
+                throw new Exception(message);
+            }
+            else
             {
                 string paylocity_ID = "";
                 string broker_Status = "";
 
-                //todo: also order by memo within clientname
-                var list = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE == 0).OrderBy(x => x.CLIENT_NAME).ToList();
-                var list_pending = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE != 0).OrderBy(x => x.CLIENT_NAME).ToList();
+                //note: use line status to determine paid, pending and already paid
+                /*   var list_paid = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE == 0).OrderBy(x => x.CLIENT_NAME).ToList();
+                   var list_pending = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE != 0).OrderBy(x => x.CLIENT_NAME).ToList();
+                */
+                var list_paid = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.line_payment_status == "paid").OrderBy(x => x.CLIENT_NAME).OrderBy(x => x.QB_FEE).ToList();
+                var list_pending = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.line_payment_status == "pending").OrderBy(x => x.CLIENT_NAME).OrderBy(x => x.QB_FEE).ToList();
+                //
                 int broker_Id = int.Parse(statement_Header.BROKER_ID.ToString());
 
                 var broker_Master = db.BROKER_MASTER.Where(x => x.ID == broker_Id).FirstOrDefault();
@@ -105,9 +125,9 @@ namespace BrokerCommissionWebApp
                 int CurrentRow = 9;//starting line
                 int tableindex = 0;//table col index
                 decimal total_1 = 0.00m;
-                foreach (var a in list)
+                foreach (var a in list_paid)
                 {
-                    if (list.Count() != i)
+                    if (list_paid.Count() != i)
                     {
                         InsertRow(tableindex, CurrentRow, 0, doc);
                     }
@@ -125,14 +145,15 @@ namespace BrokerCommissionWebApp
                     WriteCell(tableindex, CurrentRow, 8, a.COMMISSION_RATE == null ? "0.00" : (Utils.ToDecimal(a.COMMISSION_RATE).ToString("C3", CultureInfo.CurrentCulture)), doc); // a.COMMISSION_RATE.ToString(), doc);
                     WriteCell(tableindex, CurrentRow, 9, a.TOTAL_PRICE == null ? "$0.00" : (Utils.ToDecimal(a.TOTAL_PRICE).ToString("C3", CultureInfo.CurrentCulture)), doc);
                     total_1 += a.TOTAL_PRICE == null ? 0 : Utils.ToDecimal(a.TOTAL_PRICE.ToString());
-                  
+
                     i++;
                     CurrentRow++;
 
                     var invoiceMode = new SENT_INVOICE()
                     {
                         INVOICE_NUM = a.INVOICE_NUM
-                        , OPEN_BALANCE = a.BROKER_ID
+                        ,
+                        OPEN_BALANCE = a.BROKER_ID
 
                     };
                     db.SENT_INVOICE.Add(invoiceMode);
@@ -149,7 +170,7 @@ namespace BrokerCommissionWebApp
                     {
                         InsertRow(tableindex, CurrentRow, 0, doc);
                     }
-                   
+
                     WriteCell(tableindex, CurrentRow, 1, Convert.ToDateTime(a.INVOICE_DATE).ToString("MM/dd/yyyy"), doc);
 
                     WriteCell(tableindex, CurrentRow, 2, a.CLIENT_NAME, doc);
@@ -241,6 +262,7 @@ namespace BrokerCommissionWebApp
 
             return dt;
         }
+        //note: now that staement details are always generated and up to date, can we use same function to replace CreatedWord_fromResult and 
         public static string CreatedWord_fromResult(int brokerID)
         {
             string output = "";
@@ -255,7 +277,7 @@ namespace BrokerCommissionWebApp
             {
                 string paylocity_ID = "";
                 string broker_Status = "";
-                int statementID = statement_Header.HEADER_ID; 
+                int statementID = statement_Header.HEADER_ID;
 
                 DataTable datat = GetCommissionResultForBroker(brokerID.ToString());
 
@@ -279,11 +301,18 @@ namespace BrokerCommissionWebApp
                             HEADER_ID = statementID,
                             INVOICE_DATE = Utils.ToDateTime(dr["INVOICE_DATE"].ToString()),
                             INVOICE_NUM = dr["Num"].ToString(),
-                            OPEN_BALANCE = Utils.ToDecimal(dr["Open Balance"].ToString()) 
+                            OPEN_BALANCE = Utils.ToDecimal(dr["Open Balance"].ToString())
 
                         }).ToList();
-                var list_paid = list.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE == 0).OrderBy(x => x.CLIENT_NAME).ToList();
-                var list_pending = list.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE != 0).OrderBy(x => x.CLIENT_NAME).ToList();
+
+                //note: use line status to determine paid, pending and already paid
+                /*  
+                    var list_paid = list.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE == 0).OrderBy(x => x.CLIENT_NAME).ToList();
+                    var list_pending = list.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE != 0).OrderBy(x => x.CLIENT_NAME).ToList();
+                */
+                var list_paid = list.Where(x => x.HEADER_ID == statementID && x.line_payment_status == "paid").OrderBy(x => x.CLIENT_NAME).OrderBy(x => x.QB_FEE).ToList();
+                var list_pending = list.Where(x => x.HEADER_ID == statementID && x.line_payment_status == "pending").OrderBy(x => x.CLIENT_NAME).OrderBy(x => x.QB_FEE).ToList();
+
                 int broker_Id = int.Parse(statement_Header.BROKER_ID.ToString());
 
                 var broker_Master = db.BROKER_MASTER.Where(x => x.ID == broker_Id).FirstOrDefault();
@@ -390,8 +419,8 @@ namespace BrokerCommissionWebApp
                 {
                     savedUrl = pdfPath;
                 }
-                                
-                   
+
+
                 doc.Save(savedUrl);
                 ms.Close();
 
@@ -433,6 +462,6 @@ namespace BrokerCommissionWebApp
             }
             return value;
         }
-     
+
     }
 }

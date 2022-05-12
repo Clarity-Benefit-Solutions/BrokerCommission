@@ -422,7 +422,7 @@ namespace BrokerCommissionWebApp
 
         protected void btn_view_statement_OnClick(object sender, EventArgs e)
         {
-            
+
             if (
                 /*Note: Sumeet - always regenrate the statement pdf*/
                 false &&
@@ -454,7 +454,14 @@ namespace BrokerCommissionWebApp
             {
                 string bid = Request.QueryString["BID"].ToString();
                 int brokerID = int.Parse(bid);
-                string FilePath = ReportHelper.CreatedWord_fromResult(brokerID);
+                //note: now that statement details are always generated and up to date, we can try and use same function to replace CreatedWord_fromResult 
+                //toDo: check now that statement details are always generated and up to date, we can try and use same function to replace CreatedWord_fromResult 
+                /*
+                  string FilePath = ReportHelper.CreatedWord_fromResult(brokerID);
+                 */
+                int statementID = ReportHelper.GetStatementIdForBrokerId(brokerID);
+                string FilePath = ReportHelper.CreatedWord(statementID);
+                //
                 WebClient User = new WebClient();
                 Byte[] FileBuffer = User.DownloadData(FilePath);
                 if (FileBuffer != null)

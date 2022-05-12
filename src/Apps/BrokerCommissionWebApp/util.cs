@@ -269,9 +269,11 @@ namespace BrokerCommissionWebApp
 
             return table;
         }
-
+        
         public static void Statement_Detail_Updates()
         {
+            //todo: check this function is not needed - statement details are always up to date
+            return;
 
             string query = "";
 
