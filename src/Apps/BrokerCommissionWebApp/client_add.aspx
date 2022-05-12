@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="client_add.aspx.cs" Inherits="Broker_Commission.client_add" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="client_add.aspx.cs" Inherits="BrokerCommissionWebApp.client_add" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
     

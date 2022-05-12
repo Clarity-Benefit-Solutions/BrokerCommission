@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Broker_Commission
+namespace BrokerCommissionWebApp
 {
     public partial class feetype_add : System.Web.UI.Page
     {

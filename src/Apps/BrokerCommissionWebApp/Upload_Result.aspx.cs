@@ -17,7 +17,7 @@ using DevExpress.XtraPrinting;
 
 
 
-namespace Broker_Commission
+namespace BrokerCommissionWebApp
 {
 
     public partial class Upload_Result : System.Web.UI.Page

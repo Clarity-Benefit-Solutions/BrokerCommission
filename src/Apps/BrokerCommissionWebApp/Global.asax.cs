@@ -6,7 +6,7 @@ using System;
     using System.Web.SessionState;
     using DevExpress.Web;
 
-    namespace Broker_Commission {
+    namespace BrokerCommissionWebApp {
         public class Global_asax : System.Web.HttpApplication {
             void Application_Start(object sender, EventArgs e) {
                 DevExpress.Web.ASPxWebControl.CallbackError += new EventHandler(Application_Error);

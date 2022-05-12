@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.master" CodeBehind="Default.aspx.cs" Inherits="Broker_Commission._Default" %>
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Main.master" CodeBehind="Default.aspx.cs" Inherits="BrokerCommissionWebApp._Default" %>
 
 <%@ Register Assembly="DevExpress.XtraCharts.v21.2.Web, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraCharts.Web" TagPrefix="dx" %>
 <%@ Import Namespace="System.Globalization" %>

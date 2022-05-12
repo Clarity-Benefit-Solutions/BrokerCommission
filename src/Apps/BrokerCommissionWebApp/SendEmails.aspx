@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Light.master" AutoEventWireup="true" CodeBehind="SendEmails.aspx.cs" Inherits="Broker_Commission.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Light.master" AutoEventWireup="true" CodeBehind="SendEmails.aspx.cs" Inherits="BrokerCommissionWebApp.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
     function CloseTheFreakingWindow() {

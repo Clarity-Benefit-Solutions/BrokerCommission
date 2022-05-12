@@ -14,7 +14,7 @@ using Aspose.Words.Tables;
 using iTextSharp.text;
 using Document = Aspose.Words.Document;
 
-namespace Broker_Commission
+namespace BrokerCommissionWebApp
 {
     public class ReportHelper
     {

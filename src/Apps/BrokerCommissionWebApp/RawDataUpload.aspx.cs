@@ -11,7 +11,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
 
-namespace Broker_Commission
+namespace BrokerCommissionWebApp
 {
     public partial class RawDataUpload : System.Web.UI.Page
     {

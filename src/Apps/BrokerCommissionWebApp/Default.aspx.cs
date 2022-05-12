@@ -14,7 +14,7 @@ using System.Web.UI.WebControls;
 using DevExpress.XtraCharts;
 using DevExpress.XtraRichEdit.Commands.Internal;
 
-namespace Broker_Commission {
+namespace BrokerCommissionWebApp {
     public partial class _Default : System.Web.UI.Page
     {
         Broker_CommissionEntities db = new Broker_CommissionEntities();

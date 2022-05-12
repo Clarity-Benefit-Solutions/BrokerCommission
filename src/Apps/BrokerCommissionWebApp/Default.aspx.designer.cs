@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Broker_Commission {
+namespace BrokerCommissionWebApp {
     
     
     public partial class _Default {

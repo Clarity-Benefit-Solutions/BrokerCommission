@@ -14,7 +14,7 @@ using DevExpress.Web;
 using System.Web.UI.WebControls;
 using System.Net;
 
-namespace Broker_Commission
+namespace BrokerCommissionWebApp
 {
     public partial class ViewFile : System.Web.UI.Page
     {

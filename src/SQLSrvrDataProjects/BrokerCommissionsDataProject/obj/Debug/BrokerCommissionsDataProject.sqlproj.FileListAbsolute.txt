@@ -1,0 +1,8 @@
+E:\BROKERCOMMISSION\Broker_Commission\src\SQLSrvrDataProjects\BrokerCommissionsDataProject\bin\Debug\BrokerCommissionsDataProject.dacpac
+E:\BROKERCOMMISSION\Broker_Commission\src\SQLSrvrDataProjects\BrokerCommissionsDataProject\obj\Debug\BrokerCommissionsDataProject.sqlproj.AssemblyReference.cache
+E:\BROKERCOMMISSION\Broker_Commission\src\SQLSrvrDataProjects\BrokerCommissionsDataProject\obj\Debug\Model.xml
+E:\BROKERCOMMISSION\Broker_Commission\src\SQLSrvrDataProjects\BrokerCommissionsDataProject\obj\Debug\refactor.xml
+E:\BROKERCOMMISSION\Broker_Commission\src\SQLSrvrDataProjects\BrokerCommissionsDataProject\obj\Debug\postdeploy.sql
+E:\BROKERCOMMISSION\Broker_Commission\src\SQLSrvrDataProjects\BrokerCommissionsDataProject\obj\Debug\predeploy.sql
+E:\BROKERCOMMISSION\Broker_Commission\src\SQLSrvrDataProjects\BrokerCommissionsDataProject\obj\Debug\BrokerCommissionsDataProject.dll
+E:\BROKERCOMMISSION\Broker_Commission\src\SQLSrvrDataProjects\BrokerCommissionsDataProject\obj\Debug\BrokerCommissionsDataProject.pdb

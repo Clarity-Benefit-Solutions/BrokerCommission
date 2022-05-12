@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="feetype.aspx.cs" Inherits="Broker_Commission.feetype" MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="feetype.aspx.cs" Inherits="BrokerCommissionWebApp.feetype" MaintainScrollPositionOnPostback="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-sm-1"></div>

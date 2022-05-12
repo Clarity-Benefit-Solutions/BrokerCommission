@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="BROKER_VIEW.aspx.cs" Inherits="Broker_Commission.BROKER_VIEW" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="BROKER_VIEW.aspx.cs" Inherits="BrokerCommissionWebApp.BROKER_VIEW" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         function popupwindow(url, title, w, h) {

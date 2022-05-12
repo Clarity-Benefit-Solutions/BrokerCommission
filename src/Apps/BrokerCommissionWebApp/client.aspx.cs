@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
 
-namespace Broker_Commission
+namespace BrokerCommissionWebApp
 {
     public partial class client : System.Web.UI.Page
     {

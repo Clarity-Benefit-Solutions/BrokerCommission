@@ -16,7 +16,7 @@ using DevExpress.Export;
 using DevExpress.XtraPrinting;
 
 
-namespace Broker_Commission
+namespace BrokerCommissionWebApp
 {
     public partial class StatementSearch : System.Web.UI.Page
     {

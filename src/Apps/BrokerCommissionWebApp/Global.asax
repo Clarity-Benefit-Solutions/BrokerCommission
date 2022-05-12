@@ -1,1 +1,1 @@
-<%@ Application Codebehind="Global.asax.cs" Inherits="Broker_Commission.Global_asax" Language="C#" %>
+<%@ Application Codebehind="Global.asax.cs" Inherits="BrokerCommissionWebApp.Global_asax" Language="C#" %>

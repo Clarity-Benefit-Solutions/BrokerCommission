@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web.Internal;
 
-namespace Broker_Commission {
+namespace BrokerCommissionWebApp {
     public partial class LightMaster : System.Web.UI.MasterPage {
         protected void Page_Load(object sender, EventArgs e) {
         }

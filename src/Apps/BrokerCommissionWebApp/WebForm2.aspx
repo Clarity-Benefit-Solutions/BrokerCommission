@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="Broker_Commission.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="BrokerCommissionWebApp.WebForm2" %>
 
 <!DOCTYPE html>
 

@@ -15,7 +15,7 @@ using System.IO;
 using System.Web.UI;
 using System.Globalization;
 
-namespace Broker_Commission
+namespace BrokerCommissionWebApp
 {
     public class util
     {
