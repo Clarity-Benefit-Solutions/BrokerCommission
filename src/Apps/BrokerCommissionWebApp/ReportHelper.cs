@@ -82,7 +82,7 @@ namespace BrokerCommissionWebApp
         /// </summary>
         /// <param name="sq"></param>
         /// 
-        public static PdfGenerationResults CreatedWord(int statementID)
+        public static PdfGenerationResults CreatedWord(int statementID, Boolean generateToTempPath)
         {
             //
             PdfGenerationResults pdfGenerationResults = new PdfGenerationResults();
@@ -202,10 +202,19 @@ namespace BrokerCommissionWebApp
                     MemoryStream ms = new MemoryStream();
                     doc.Save(ms, SaveFormat.Doc);
 
+                    // 
+                    string tempPath = generateToTempPath ? "TEMP\\" : "";
+
+                    //
+                    string filename = statement_Header.BROKER_NAME + "_" + statement_Header.MONTH + "_" + statement_Header.YEAR + ".pdf";
+
                     // calculate output path
-                    string pdfPath = PDFOutPut + paylocity_ID + "_" + statement_Header.BROKER_NAME + "_" + statement_Header.MONTH + "_" + statement_Header.YEAR + ".pdf";
-                    string pdfPath_Test = PDFOutPut_Test + paylocity_ID + "_" + statement_Header.BROKER_NAME + "_" + statement_Header.MONTH + "_" + statement_Header.YEAR + ".pdf";
+                    string pdfPath = PDFOutPut + tempPath;
+                    string pdfPath_Test = PDFOutPut_Test + tempPath;
+
                     string savedUrl = "";
+                    string savedArchive = "";
+                    // also archive with broker name first for easier sorting by finance
                     if (debugMode == "True")
                     {
                         savedUrl = pdfPath_Test;
@@ -215,8 +224,23 @@ namespace BrokerCommissionWebApp
                         savedUrl = pdfPath;
                     }
 
+                    savedArchive = savedUrl + "BY_BROKER_NAME\\";
+
+                    Directory.CreateDirectory(savedUrl);
+                    Directory.CreateDirectory(savedArchive);
+
+                    // add filename with id
+                    savedUrl += paylocity_ID + "_" + filename;
+
+                    // add filename without id
+                    savedArchive += filename;
+
+                    // save the doc
                     doc.Save(savedUrl);
                     ms.Close();
+
+                    // also archive with broker name first for easier sorting by finance
+                    FileUtils.CopyFile(savedUrl, savedArchive, null, null);
 
                     //
                     pdfGenerationResults.outputPath = savedUrl;

@@ -203,7 +203,9 @@ namespace BrokerCommissionWebApp
                   string FilePath = ReportHelper.CreatedWord_fromResult(brokerID);
                  */
                 int headerID = ReportHelper.GetStatementIdForBrokerId(brokerID);
-                PdfGenerationResults pdfGenerationResults = ReportHelper.CreatedWord(headerID);
+
+                // ensure adhoc generated pdfs (e.g. to view a siongle pdf) dont overwrite the ones ghenerated by Send Email Batch
+                PdfGenerationResults pdfGenerationResults = ReportHelper.CreatedWord(headerID, true);
                 if (!pdfGenerationResults.success)
                 {
                     throw pdfGenerationResults.error;

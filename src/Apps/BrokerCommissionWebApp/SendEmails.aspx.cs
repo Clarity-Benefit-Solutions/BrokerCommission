@@ -72,7 +72,7 @@ namespace BrokerCommissionWebApp
                     int headerID = item.HEADER_ID;
 
                     // Create PDF Statement with PDF string output
-                    PdfGenerationResults pdfGenerationResults = ReportHelper.CreatedWord(headerID);
+                    PdfGenerationResults pdfGenerationResults = ReportHelper.CreatedWord(headerID, false);
                     if (!pdfGenerationResults.success)
                     {
                         //todo: display error
