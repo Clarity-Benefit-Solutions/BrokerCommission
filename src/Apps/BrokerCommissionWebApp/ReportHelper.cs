@@ -214,7 +214,8 @@ namespace BrokerCommissionWebApp
 
                     string savedUrl = "";
                     string savedArchive = "";
-                    // also archive with broker name first for easier sorting by finance
+                    
+                    
                     if (debugMode == "True")
                     {
                         savedUrl = pdfPath_Test;
@@ -224,8 +225,10 @@ namespace BrokerCommissionWebApp
                         savedUrl = pdfPath;
                     }
 
+                    // also archive with broker name first for easier sorting by finance
                     savedArchive = savedUrl + "BY_BROKER_NAME\\";
 
+                    // ensure paths exist
                     Directory.CreateDirectory(savedUrl);
                     Directory.CreateDirectory(savedArchive);
 

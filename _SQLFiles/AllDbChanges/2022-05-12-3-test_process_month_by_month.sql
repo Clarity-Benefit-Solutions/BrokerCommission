@@ -19,6 +19,39 @@ from
 order by
     log_id desc;
 
+/* show all already paid lines for a broker */
+select
+    sum( TOTAL_PRICE )
+from
+    (
+        select distinct
+            QB_CLIENT_NAME
+          , CLIENT_NAME
+          , BROKER_ID
+          , QB_FEE
+          , INVOICE_DATE
+          , INVOICE_NUM
+          , TOTAL_PRICE
+          , SALES_PRICE
+        from
+            dbo.STATEMENT_DETAILS_ARCHIVE
+        where
+              BROKER_ID = 26
+          and line_payment_status like 'already paid%'
+        /* and INVOICE_DATE < '2022-03-01'*/
+      /*    and rtrim(ltrim(upper(INVOICE_NUM)))  in (
+                                     select distinct
+                                         rtrim(ltrim(upper(INVOICE_NUM)))
+                                     from
+                                         dbo.STATEMENT_HEADER
+                                 )*/
+        /*  order by
+              STATEMENT_DETAILS_ARCHIVE.BROKER_ID
+            , STATEMENT_DETAILS_ARCHIVE.CLIENT_NAME
+            , STATEMENT_DETAILS_ARCHIVE.INVOICE_NUM
+            , STATEMENT_DETAILS_ARCHIVE.QB_FEE*/
+    ) t;
+
 /* clear all sent invoices*/
 /*
 truncate table dbo.SENT_INVOICE;
@@ -30,12 +63,13 @@ from
 order by
     SENT_INVOICE.INVOICE_NUM_FORMATTED;
 
-
-select count(*)
+select
+    count( * )
 from
     dbo.SENT_INVOICE;
 
-select count(distinct  INVOICE_NUM_FORMATTED)
+select
+    count( distinct INVOICE_NUM_FORMATTED )
 from
     dbo.SENT_INVOICE;
 
@@ -156,3 +190,4 @@ where
     BROKER_ID = 26
 order by
     BROKER_NAME;
+
