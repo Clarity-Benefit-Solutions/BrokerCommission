@@ -66,7 +66,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DBE.Init.BalloonShown" value="true" />
-    <property name="DatabaseDriversLRU" value="mariadb&#10;sqlserver.jtds" />
+    <property name="DatabaseDriversLRU" value="mariadb&#10;sqlserver.jtds&#10;sqlserver" />
     <property name="GoToClass.toSaveIncludeLibraries" value="true" />
     <property name="RunConfigurationTargetLRU" value="b2522701-3b0e-4411-9582-468293372d7a/schema/&quot;api&quot;" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -78,19 +78,19 @@
     <property name="settings.editor.selected.configurable" value="SQL Dialects" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\AllDbChanges" />
-      <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\Analysis" />
-      <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\Queries" />
-      <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles" />
-      <recent name="C:\___Clarity\clarity_dev\r1_documents\db_dev\db_changes" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\Analysis" />
       <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\Queries" />
       <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\AllDbChanges" />
       <recent name="$PROJECT_DIR$/../../db_dev/_prv" />
       <recent name="$PROJECT_DIR$/../../db_dev/db_changes" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\AllDbChanges" />
+      <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\Analysis" />
+      <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles\Queries" />
+      <recent name="E:\BROKERCOMMISSION\Broker_Commission\_SQLFiles" />
+      <recent name="C:\___Clarity\clarity_dev\r1_documents\db_dev\db_changes" />
     </key>
   </component>
   <component name="RunManager" selected="Database Script.registration_log.sql">
@@ -111,6 +111,13 @@
         <item itemvalue="Database Script.2020-12-19-fix-data-1.sql" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SQLScriptSettings">
+    <option name="matrix">
+      <map>
+        <entry key="MSSQL.CreateComplete" value="UseCompactDef=1" />
+      </map>
+    </option>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="Vcs.Log.History.Properties">
@@ -198,48 +205,48 @@
     <option name="LAST_COMMIT_MESSAGE" value="Nov 9 - WIP 1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="408" y="127" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1652348405691">
+    <state x="408" y="127" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1652432550157">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state x="361" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.930@0.0.1536.930" timestamp="1650714218274" />
-    <state x="408" y="127" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1474.960@62.0.1474.960" timestamp="1652348405691" />
+    <state x="408" y="127" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1474.960@62.0.1474.960" timestamp="1652432550157" />
     <state x="589" y="227" key="FileChooserDialogImpl" timestamp="1652348439373">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state x="549" y="220" key="FileChooserDialogImpl/0.0.1536.930@0.0.1536.930" timestamp="1650714183158" />
     <state x="589" y="227" key="FileChooserDialogImpl/62.0.1474.960@62.0.1474.960" timestamp="1652348439373" />
-    <state width="991" height="386" key="GridCell.Tab.0.bottom" timestamp="1652371538158">
+    <state width="712" height="246" key="GridCell.Tab.0.bottom" timestamp="1652433282383">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state width="991" height="386" key="GridCell.Tab.0.bottom/62.0.1474.960@62.0.1474.960" timestamp="1652371538158" />
-    <state width="991" height="386" key="GridCell.Tab.0.center" timestamp="1652371538158">
+    <state width="712" height="246" key="GridCell.Tab.0.bottom/62.0.1474.960@62.0.1474.960" timestamp="1652433282383" />
+    <state width="712" height="246" key="GridCell.Tab.0.center" timestamp="1652433282382">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state width="991" height="386" key="GridCell.Tab.0.center/62.0.1474.960@62.0.1474.960" timestamp="1652371538158" />
-    <state width="991" height="386" key="GridCell.Tab.0.left" timestamp="1652371538158">
+    <state width="712" height="246" key="GridCell.Tab.0.center/62.0.1474.960@62.0.1474.960" timestamp="1652433282382" />
+    <state width="712" height="246" key="GridCell.Tab.0.left" timestamp="1652433282382">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state width="991" height="386" key="GridCell.Tab.0.left/62.0.1474.960@62.0.1474.960" timestamp="1652371538158" />
-    <state width="991" height="386" key="GridCell.Tab.0.right" timestamp="1652371538158">
+    <state width="712" height="246" key="GridCell.Tab.0.left/62.0.1474.960@62.0.1474.960" timestamp="1652433282382" />
+    <state width="712" height="246" key="GridCell.Tab.0.right" timestamp="1652433282383">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state width="991" height="386" key="GridCell.Tab.0.right/62.0.1474.960@62.0.1474.960" timestamp="1652371538158" />
+    <state width="712" height="246" key="GridCell.Tab.0.right/62.0.1474.960@62.0.1474.960" timestamp="1652433282383" />
     <state x="300" y="124" key="SettingsEditor" timestamp="1652233263848">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state x="300" y="124" key="SettingsEditor/62.0.1474.960@62.0.1474.960" timestamp="1652233263848" />
-    <state x="593" y="0" width="316" height="265" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1652338820385">
+    <state x="593" y="0" width="316" height="265" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1652433174468">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state x="593" y="0" width="316" height="265" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/62.0.1474.960@62.0.1474.960" timestamp="1652338820385" />
+    <state x="593" y="0" width="316" height="265" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/62.0.1474.960@62.0.1474.960" timestamp="1652433174468" />
     <state x="595" y="295" width="407" height="349" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1652303245583">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
     <state x="595" y="295" width="407" height="349" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/62.0.1474.960@62.0.1474.960" timestamp="1652303245583" />
-    <state x="158" y="252" width="1277" height="565" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1652338763186">
+    <state x="158" y="252" width="1277" height="565" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1652432467967">
       <screen x="62" y="0" width="1474" height="960" />
     </state>
-    <state x="158" y="252" width="1277" height="565" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/62.0.1474.960@62.0.1474.960" timestamp="1652338763186" />
+    <state x="158" y="252" width="1277" height="565" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/62.0.1474.960@62.0.1474.960" timestamp="1652432467967" />
     <state x="524" y="79" width="549" height="801" key="find.popup" timestamp="1652353013951">
       <screen x="62" y="0" width="1474" height="960" />
     </state>

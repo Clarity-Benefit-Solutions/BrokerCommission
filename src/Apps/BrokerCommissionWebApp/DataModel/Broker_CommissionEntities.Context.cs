@@ -192,5 +192,34 @@ namespace BrokerCommissionWebApp.DataModel
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPLODADFILE");
         }
+    
+        public virtual ObjectResult<Nullable<int>> SP_INSERT_SENT_INVOICE(string iNVOICE_NUM, Nullable<System.DateTime> dATE_PAID, Nullable<decimal> oPEN_BALANCE, Nullable<decimal> cOMMISSION_PAID, string month, Nullable<int> year)
+        {
+            var iNVOICE_NUMParameter = iNVOICE_NUM != null ?
+                new ObjectParameter("INVOICE_NUM", iNVOICE_NUM) :
+                new ObjectParameter("INVOICE_NUM", typeof(string));
+    
+            var dATE_PAIDParameter = dATE_PAID.HasValue ?
+                new ObjectParameter("DATE_PAID", dATE_PAID) :
+                new ObjectParameter("DATE_PAID", typeof(System.DateTime));
+    
+            var oPEN_BALANCEParameter = oPEN_BALANCE.HasValue ?
+                new ObjectParameter("OPEN_BALANCE", oPEN_BALANCE) :
+                new ObjectParameter("OPEN_BALANCE", typeof(decimal));
+    
+            var cOMMISSION_PAIDParameter = cOMMISSION_PAID.HasValue ?
+                new ObjectParameter("COMMISSION_PAID", cOMMISSION_PAID) :
+                new ObjectParameter("COMMISSION_PAID", typeof(decimal));
+    
+            var monthParameter = month != null ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(string));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_INSERT_SENT_INVOICE", iNVOICE_NUMParameter, dATE_PAIDParameter, oPEN_BALANCEParameter, cOMMISSION_PAIDParameter, monthParameter, yearParameter);
+        }
     }
 }

@@ -213,7 +213,7 @@ namespace BrokerCommissionWebApp
                 ;
                 //
                 WebClient User = new WebClient();
-                Byte[] FileBuffer = User.DownloadData(pdfGenerationResults.outputPath);
+                Byte[] FileBuffer = User.DownloadData(pdfGenerationResults.outputPath1);
                 if (FileBuffer != null)
                 {
                     Response.ContentType = "application/pdf";

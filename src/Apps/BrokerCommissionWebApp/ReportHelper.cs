@@ -23,7 +23,8 @@ namespace BrokerCommissionWebApp
 
     public class PdfGenerationResults
     {
-        public string outputPath = "";
+        public string outputPath1 = "";
+        public string outputPath2 = "";
         public List<STATEMENT_DETAILS> statementLinesAddedToPdf = new List<STATEMENT_DETAILS>();
         public Boolean success = false;
         public Exception error = null;
@@ -212,46 +213,51 @@ namespace BrokerCommissionWebApp
                     string pdfPath = PDFOutPut + tempPath;
                     string pdfPath_Test = PDFOutPut_Test + tempPath;
 
-                    string savedUrl = "";
-                    string savedArchive = "";
-                    
-                    
+                    string savedFilePath1 = "";
+                    string savedFilePath2 = "";
+
+
                     if (debugMode == "True")
                     {
-                        savedUrl = pdfPath_Test;
+                        savedFilePath1 = pdfPath_Test;
                     }
                     else
                     {
-                        savedUrl = pdfPath;
+                        savedFilePath1 = pdfPath;
                     }
 
                     // also archive with broker name first for easier sorting by finance
-                    savedArchive = savedUrl + "BY_BROKER_NAME\\";
+                    savedFilePath2 = savedFilePath1 + "BY_BROKER_NAME\\";
+
+                    // we will save to a rtemp path till caller verifies all went well
+                    savedFilePath2 += "RollbackOrCommit\\";
+                    savedFilePath1 += "RollbackOrCommit\\";
 
                     // ensure paths exist
-                    Directory.CreateDirectory(savedUrl);
-                    Directory.CreateDirectory(savedArchive);
+                    Directory.CreateDirectory(savedFilePath1);
+                    Directory.CreateDirectory(savedFilePath2);
 
                     // add filename with id
-                    savedUrl += paylocity_ID + "_" + filename;
+                    savedFilePath1 += paylocity_ID + "_" + filename;
 
                     // add filename without id
-                    savedArchive += filename;
+                    savedFilePath2 += filename;
 
                     // save the doc
-                    doc.Save(savedUrl);
+                    doc.Save(savedFilePath1);
                     ms.Close();
 
                     // also archive with broker name first for easier sorting by finance
-                    FileUtils.CopyFile(savedUrl, savedArchive, null, null);
+                    FileUtils.CopyFile(savedFilePath1, savedFilePath2, null, null);
 
                     //
-                    pdfGenerationResults.outputPath = savedUrl;
+                    pdfGenerationResults.outputPath1 = savedFilePath1;
+                    pdfGenerationResults.outputPath2 = savedFilePath2;
                     pdfGenerationResults.success = true;
 
                 }
 
-                if (!pdfGenerationResults.success || Utils.IsBlank(pdfGenerationResults.outputPath))
+                if (!pdfGenerationResults.success || Utils.IsBlank(pdfGenerationResults.outputPath1))
                 {
                     pdfGenerationResults.success = false;
                     var message = $"ERROR: {MethodBase.GetCurrentMethod()?.Name} : Error In Generating Pdf for HeaderId : {statement_Header.HEADER_ID} ";

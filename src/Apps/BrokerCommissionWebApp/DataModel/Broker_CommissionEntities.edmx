@@ -218,11 +218,13 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="INVOICE_NUM" Type="varchar" MaxLength="500" />
-          <Property Name="OPEN_BALANCE" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="DATE_ENTER" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="INVOICE_NUM" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="OPEN_BALANCE" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="COMMISSION_PAID" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="INVOICE_NUM_FORMATTED" Type="varchar" MaxLength="500" StoreGeneratedPattern="Computed" />
-          <Property Name="STATEMENT_TOTAL" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="month" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="DATE_PAID" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="STATEMENT_DETAILS">
           <Key>
@@ -752,6 +754,8 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Parameter Name="month" Type="varchar" Mode="In" />
           <Parameter Name="year" Type="int" Mode="In" />
         </Function>
+        <Function Name="get_current_statement_month" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+        <Function Name="get_current_statement_year" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="get_invoice_sent_total_open_balance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
           <Parameter Name="invNum" Type="nvarchar" Mode="In" />
         </Function>
@@ -774,6 +778,14 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
         <Function Name="SP_FILE_IMPORT_SSIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_IMPORT_FILE_SENT_SSIS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="month" Type="nvarchar" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERT_SENT_INVOICE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="INVOICE_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="DATE_PAID" Type="datetime" Mode="In" />
+          <Parameter Name="OPEN_BALANCE" Type="numeric" Mode="In" />
+          <Parameter Name="COMMISSION_PAID" Type="numeric" Mode="In" />
+          <Parameter Name="month" Type="varchar" Mode="In" />
           <Parameter Name="year" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_STATEMENT_DETAIL_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -1339,11 +1351,13 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="INVOICE_NUM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="OPEN_BALANCE" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="DATE_ENTER" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+          <Property Name="INVOICE_NUM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OPEN_BALANCE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="INVOICE_NUM_FORMATTED" Type="String" MaxLength="500" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="STATEMENT_TOTAL" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="COMMISSION_PAID" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="month" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="DATE_PAID" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="STATEMENT_DETAILS">
           <Key>
@@ -1908,6 +1922,14 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           </FunctionImport>
           <FunctionImport Name="SP_STATEMENT_DETAIL_UPDATE" />
           <FunctionImport Name="SP_UPLODADFILE" />
+          <FunctionImport Name="SP_INSERT_SENT_INVOICE" ReturnType="Collection(Int32)">
+            <Parameter Name="INVOICE_NUM" Mode="In" Type="String" />
+            <Parameter Name="DATE_PAID" Mode="In" Type="DateTime" />
+            <Parameter Name="OPEN_BALANCE" Mode="In" Type="Decimal" />
+            <Parameter Name="COMMISSION_PAID" Mode="In" Type="Decimal" />
+            <Parameter Name="month" Mode="In" Type="String" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -2126,12 +2148,14 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <EntitySetMapping Name="SENT_INVOICE">
             <EntityTypeMapping TypeName="Broker_CommissionModel.SENT_INVOICE">
               <MappingFragment StoreEntitySet="SENT_INVOICE">
+                <ScalarProperty Name="DATE_PAID" ColumnName="DATE_PAID" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="COMMISSION_PAID" ColumnName="COMMISSION_PAID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="INVOICE_NUM" ColumnName="INVOICE_NUM" />
                 <ScalarProperty Name="OPEN_BALANCE" ColumnName="OPEN_BALANCE" />
-                <ScalarProperty Name="DATE_ENTER" ColumnName="DATE_ENTER" />
                 <ScalarProperty Name="INVOICE_NUM_FORMATTED" ColumnName="INVOICE_NUM_FORMATTED" />
-                <ScalarProperty Name="STATEMENT_TOTAL" ColumnName="STATEMENT_TOTAL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2615,6 +2639,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <FunctionImportMapping FunctionImportName="SP_IMPORT_FILE_SENT_SSIS" FunctionName="Broker_CommissionModel.Store.SP_IMPORT_FILE_SENT_SSIS" />
           <FunctionImportMapping FunctionImportName="SP_STATEMENT_DETAIL_UPDATE" FunctionName="Broker_CommissionModel.Store.SP_STATEMENT_DETAIL_UPDATE" />
           <FunctionImportMapping FunctionImportName="SP_UPLODADFILE" FunctionName="Broker_CommissionModel.Store.SP_UPLODADFILE" />
+          <FunctionImportMapping FunctionImportName="SP_INSERT_SENT_INVOICE" FunctionName="Broker_CommissionModel.Store.SP_INSERT_SENT_INVOICE" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
