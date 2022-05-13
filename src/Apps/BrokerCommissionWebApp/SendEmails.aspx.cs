@@ -54,6 +54,9 @@ namespace BrokerCommissionWebApp
 
             try
             {
+                // recreate statements
+                util.processImportedRawData(month, year);
+
                 // setup statement header list
                 //tod: uncoment next line
                 var headers = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID != null /*&& ( x.FLAG == 0 || x.FLAG == 4 )*/)
@@ -64,9 +67,7 @@ namespace BrokerCommissionWebApp
                 // show statement count
                 lbl_TotalCount.Text = totalCount.ToString();
 
-                // recreate statements
-                util.processImportedRawData(month, year);
-
+             
                 // send email for each header
                 foreach (var header in headers)
                 {
