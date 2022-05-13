@@ -175,7 +175,7 @@ namespace BrokerCommissionWebApp
                     //todo: show message: processed
 
                     // redirect to showing result of import and allowing user to view indiviodual statement, and generate and process all
-                    Response.Redirect("Upload_Result.aspx?YEAR=" + cmb_Year.Text + "&&MONTH=" + (cmb_month.SelectedIndex).ToString(), false);
+                    Response.Redirect("Upload_Result.aspx", false);
                     // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
                     Context.ApplicationInstance.CompleteRequest();
 

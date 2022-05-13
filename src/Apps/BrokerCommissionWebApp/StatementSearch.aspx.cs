@@ -111,8 +111,7 @@ namespace BrokerCommissionWebApp
                 if (model != null)
                 {
                     int brokerID = model.BROKER_ID == null ? 0 : int.Parse(model.BROKER_ID.ToString());
-                    string url = "ViewFile.aspx?BID=" + brokerID + "&MONTH=" + lbl_month.Text + "&YEAR="
-                        + lbl_year.Text + "&TOTAL= &&StatementID=" + headerID + "&Flag=3";
+                    string url = "ViewFile.aspx?BID=" + brokerID + "&StatementID=" + headerID + "&Flag=3";
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "popup_window", "popupwindow('" + url + "','" + "View Download Files" + "','" + "1600" + "','" + "1000" + "');", true);
                     //Response.Redirect (url);
 
@@ -158,7 +157,7 @@ namespace BrokerCommissionWebApp
 
         protected void btn_Approve_Email_OnClick(object sender, EventArgs e)
         {
-            string url = "SendEmails.aspx?Month=" + lbl_month.Text + "&Year=" + lbl_year.Text;
+            string url = "SendEmails.aspx";
             Page.ClientScript.RegisterStartupScript(this.GetType(), "popup_window", "popupwindow('" + url + "','" + "View Download Files" + "','" + "1200" + "','" + "800" + "');", true);
         }
 

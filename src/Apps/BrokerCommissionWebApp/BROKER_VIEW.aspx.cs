@@ -18,12 +18,12 @@ namespace BrokerCommissionWebApp
         {
             if (!IsPostBack)
             {
-                
+
                 DataLoad();
             }
         }
 
-       
+
         protected void DataLoad()
         {
             if (Request.QueryString["ID"] != null)
@@ -43,7 +43,7 @@ namespace BrokerCommissionWebApp
                     txt_paylicity.Text = model.PAYLOCITY_ID;
 
 
-                    cmb_status.Text = string.IsNullOrWhiteSpace(model.STATUS)  ? "ACTIVE": model.STATUS;
+                    cmb_status.Text = string.IsNullOrWhiteSpace(model.STATUS) ? "ACTIVE" : model.STATUS;
 
                     loadClient_ByBrokerID(id);
                     loadhistory_ByBrokerID(id);
@@ -77,19 +77,19 @@ namespace BrokerCommissionWebApp
         }
 
 
-        
+
 
 
         protected void grid_history_OnRowCommand(object sender, ASPxGridViewRowCommandEventArgs e)
         {
             if (e.CommandArgs.CommandName == "statement")
             {
-               int id =  int.Parse(e.CommandArgs.CommandArgument.ToString());
-               var model = db.STATEMENT_HEADER.Where(x => x.HEADER_ID == id).FirstOrDefault();
-               if (model != null)
-               {
-                   string url = "ViewFile.aspx?BID=" + model.BROKER_ID + "&YEAR=" + model.YEAR+ "&MONTH="+model.MONTH +"&&statement=1&&Flag=3";
-                   Page.ClientScript.RegisterStartupScript(this.GetType(), "popup_window", "popupwindow('" + url + "','" + "View Download Files" + "','" + "1200" + "','" + "800" + "');", true);
+                int id = int.Parse(e.CommandArgs.CommandArgument.ToString());
+                var model = db.STATEMENT_HEADER.Where(x => x.HEADER_ID == id).FirstOrDefault();
+                if (model != null)
+                {
+                    string url = "ViewFile.aspx?BID=" + model.BROKER_ID + "&statement=1&&Flag=3";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "popup_window", "popupwindow('" + url + "','" + "View Download Files" + "','" + "1200" + "','" + "800" + "');", true);
                 }
 
             }
