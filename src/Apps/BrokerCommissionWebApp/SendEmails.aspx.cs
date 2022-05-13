@@ -27,19 +27,26 @@ namespace BrokerCommissionWebApp
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["Year"] != null && Request.QueryString["Month"] != null)
-                {
-                    lbl_month.Text = Request.QueryString["Month"].ToString();
-                    lbl_year.Text = Request.QueryString["Year"].ToString();
-                    //
-                    string month = lbl_month.Text;
-                    int year = int.Parse(lbl_year.Text);
-                    lbl_status.Text = "In Progress";
-                    lbl_not_sent.Text = "0";
-                    ASPxProgressBar1.Position = 0;
-                    //
-                    sendEmails();
-                }
+
+                // sumeet: always use month of last uploaded raw data
+                var month = "";
+                var year = "";
+                util.Period period = util.getLastUpload();
+
+                month = period.month;
+                year = period.year.ToString();
+
+                // todo: if we need to switch to view/process previops perreiod statements, we need to add a UI and method to swetch to the period
+
+                lbl_month.Text = month;
+                lbl_year.Text = year;
+                //
+
+                lbl_status.Text = "In Progress";
+                lbl_not_sent.Text = "0";
+                ASPxProgressBar1.Position = 0;
+                //
+                sendEmails();
             }
 
         }
@@ -54,8 +61,6 @@ namespace BrokerCommissionWebApp
 
             try
             {
-                // recreate statements
-                util.processImportedRawData(month, year);
 
                 // setup statement header list
                 //tod: uncoment next line
@@ -67,7 +72,7 @@ namespace BrokerCommissionWebApp
                 // show statement count
                 lbl_TotalCount.Text = totalCount.ToString();
 
-             
+
                 // send email for each header
                 foreach (var header in headers)
                 {

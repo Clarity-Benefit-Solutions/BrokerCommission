@@ -164,7 +164,7 @@ namespace BrokerCommissionWebApp
                     int year = int.Parse(cmb_Year.Text);
 
                     // import raw data using sqlBulkCopy
-                    import_new_qb_file(rawDataUploadedFilePath);
+                    util.ImportNewRawDataFile(rawDataUploadedFilePath);
 
                     // process imported data
                     //todo: show message: processing
@@ -217,43 +217,6 @@ namespace BrokerCommissionWebApp
 
 
         //FRS_SSIS_PaymentFile
-        protected void import_new_qb_file(string srcFilePath)
-        {
-           
-            //todo: use sql bulk copy to iomport
-            Vars Vars = new Vars();
-            var fileLogParams = Vars.GetDbFileProcessingLogParams("BrokerCommission");
-            var dbConn = Vars.dbConnBrokerCommission;
-
-            try
-            {
-                //
-                fileLogParams.SetFileNames("", Path.GetFileName(srcFilePath), srcFilePath,
-                    Path.GetFileName(srcFilePath), srcFilePath, "RawDataUpload-ImportNewQuickBooksFile", "Starting",
-                    "Starting: Import New QuickBooks File");
-                DbUtils.LogFileOperation(fileLogParams);
-
-                //2. import file
-                Import.ImportBrokerCommissionFile(dbConn, srcFilePath, true, fileLogParams, null);
-
-                // 
-                fileLogParams.SetFileNames("", Path.GetFileName(srcFilePath), srcFilePath,
-                       Path.GetFileName(srcFilePath), srcFilePath, "RawDataUpload-ImportNewQuickBooksFile", "Success",
-                             "Starting: Import New QuickBooks File");
-                DbUtils.LogFileOperation(fileLogParams);
-
-                //todo: show num of rows imported on success
-            }
-            catch (Exception ex)
-            {
-                DbUtils.LogError(srcFilePath, srcFilePath, ex, fileLogParams);
-
-                //todo: show error in case of error
-                string message =
-                                $"ERROR: {MethodBase.GetCurrentMethod()?.Name} : Could Not Determine Header Type for  {srcFilePath}";
-                throw new IncorrectFileFormatException(message);
-            }
-
-        }
+       
     }
 }

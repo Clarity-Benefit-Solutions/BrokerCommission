@@ -77,31 +77,18 @@ namespace BrokerCommissionWebApp
 
         protected void LoadList()
         {
+            // sumeet: always use month of last uploaded raw data
             var month = "";
             var year = "";
-            if (Request.QueryString["YEAR"] != null && Request.QueryString["MONTH"] != null)
-            {
-                month = util.GetCustomAbbreviatedMonthNames(int.Parse(Request.QueryString["MONTH"].ToString()));
-                year = Request.QueryString["YEAR"].ToString();
-            }
-            else
-            {
-                //lbl_month.Text = util.GetCustomAbbreviatedMonthNames(DateTime.Now.Month - 1);
-                //lbl_year.Text = DateTime.Now.Year.ToString();
+            util.Period period = util.getLastUpload();
 
-                DataTable last = getLastUpload();
+            month = period.month;
+            year = period.year.ToString();
 
-                foreach (DataRow row in last.Rows)
-                {
-                    month = row[0].ToString();
-                    year = row[1].ToString();
-
-                }
-
-            }
-
+            // todo: if we need to switch to view/process previops perreiod statements, we need to add a UI and method to swetch to the period
             lbl_month.Text = month;
-            lbl_year.Text = year;
+            lbl_year.Text = year.ToString();
+
 
             cmb_broker.Items.Clear();
             cmb_broker.Items.Add(new ListEditItem("All"));
@@ -115,15 +102,8 @@ namespace BrokerCommissionWebApp
 
             cmb_broker.SelectedIndex = 0;
 
-            // also reprocess data to show latest balances
-            util.processImportedRawData(month, int.Parse(year));
-
         }
 
-        protected void reprocessData()
-        {
-
-        }
         protected void grid_summary_OnRowCommand(object sender, ASPxGridViewRowCommandEventArgs e)
         {
             if (e.CommandArgs.CommandName == "statement")
@@ -186,6 +166,10 @@ namespace BrokerCommissionWebApp
 
         protected void btn_refresh_OnClick(object sender, EventArgs e)
         {
+            // reprocessa data
+            util.reProcessImportedRawData();
+
+            // load data
             DataLoad();
         }
 
@@ -217,32 +201,6 @@ namespace BrokerCommissionWebApp
 
         }
 
-        protected DataTable getLastUpload()
-        {
-            //todo: what is the purpose of this - it will show the first invoice date in the file!
-            DataTable table = new DataTable();
-
-            string query = "SELECT TOP(1) H.MONTH, H.YEAR FROM [dbo].[STATEMENT_HEADER] AS H ORDER BY FLAG, MONTH";
-
-            string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"]
-               .ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
-            {
-                using (SqlCommand cmd = new SqlCommand(query))
-                {
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
-                    {
-                        cmd.Connection = con;
-                        sda.SelectCommand = cmd;
-
-                        sda.Fill(table);
-                    }
-                }
-            }
-
-            return table;
-
-        }
 
 
         protected DataTable LoadDataForBrokersCombo()

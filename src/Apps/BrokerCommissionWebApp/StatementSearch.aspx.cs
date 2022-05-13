@@ -71,26 +71,18 @@ namespace BrokerCommissionWebApp
 
         protected void LoadList()
         {
-            if (Request.QueryString["YEAR"] != null && Request.QueryString["MONTH"] != null)
-            {
-                lbl_month.Text = util.GetCustomAbbreviatedMonthNames(int.Parse(Request.QueryString["MONTH"].ToString()));
-                lbl_year.Text = Request.QueryString["YEAR"].ToString();
-            }
-            else
-            {
-                //lbl_month.Text = util.GetCustomAbbreviatedMonthNames(DateTime.Now.Month - 1);
-                //lbl_year.Text = DateTime.Now.Year.ToString();
 
-                DataTable last = getLastUpload();
+            // sumeet: always use month of last uploaded raw data
+            var month = "";
+            var year = "";
+            util.Period period = util.getLastUpload();
 
-                foreach (DataRow row in last.Rows)
-                {
-                    lbl_month.Text = row[0].ToString();
-                    lbl_year.Text = row[1].ToString();
+            month = period.month;
+            year = period.year.ToString();
 
-                }
-
-            }
+            // todo: if we need to switch to view/process previops perreiod statements, we need to add a UI and method to swetch to the period
+            lbl_month.Text = month;
+            lbl_year.Text = year.ToString();
 
 
             cmb_broker.Items.Clear();
@@ -203,35 +195,7 @@ namespace BrokerCommissionWebApp
 
         }
 
-        protected DataTable getLastUpload()
-        {
-            DataTable table = new DataTable();
-
-            string query = "SELECT TOP(1) H.MONTH, H.YEAR FROM [dbo].[STATEMENT_HEADER] AS H ORDER BY FLAG, MONTH";
-
-            string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"]
-               .ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
-            {
-                using (SqlCommand cmd = new SqlCommand(query))
-                {
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
-                    {
-                        cmd.Connection = con;
-                        sda.SelectCommand = cmd;
-
-                        sda.Fill(table);
-
-
-
-                    }
-                }
-            }
-
-            return table;
-
-        }
-
+       
 
         protected DataTable GRIDTABLE()
         {

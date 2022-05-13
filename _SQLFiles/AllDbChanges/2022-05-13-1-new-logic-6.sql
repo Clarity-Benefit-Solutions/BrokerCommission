@@ -345,4 +345,4 @@ END
 go
 
 
-exec SP_IMPORT_FILE_SENT_SSIS  'MARCH', 2022;
+alter table SENT_INVOICE alter column OPEN_BALANCE numeric(18,2) null

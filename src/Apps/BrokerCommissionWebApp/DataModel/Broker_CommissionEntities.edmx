@@ -763,9 +763,6 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
         <Function Name="get_invoice_sent_total_paid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
           <Parameter Name="invNum" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="GET_TOTAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="bid" Type="int" Mode="In" />
-        </Function>
         <Function Name="SP_BU_PREVIOUSTABLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_CALC_STATEMENT_LINE_PAYMENT_STATUS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="month" Type="varchar" Mode="In" />
@@ -2636,7 +2633,6 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <FunctionImportMapping FunctionImportName="db_log_error" FunctionName="Broker_CommissionModel.Store.db_log_error" />
           <FunctionImportMapping FunctionImportName="db_log_message" FunctionName="Broker_CommissionModel.Store.db_log_message" />
           <FunctionImportMapping FunctionImportName="db_throw_error" FunctionName="Broker_CommissionModel.Store.db_throw_error" />
-          <FunctionImportMapping FunctionImportName="GET_TOTAL" FunctionName="Broker_CommissionModel.Store.GET_TOTAL" />
           <FunctionImportMapping FunctionImportName="SP_BU_PREVIOUSTABLE" FunctionName="Broker_CommissionModel.Store.SP_BU_PREVIOUSTABLE" />
           <FunctionImportMapping FunctionImportName="SP_CALC_STATEMENT_LINE_PAYMENT_STATUS" FunctionName="Broker_CommissionModel.Store.SP_CALC_STATEMENT_LINE_PAYMENT_STATUS" />
           <FunctionImportMapping FunctionImportName="SP_CALC_STATEMENT_LINE_PAYMENT_STATUS_FOR_HEADER" FunctionName="Broker_CommissionModel.Store.SP_CALC_STATEMENT_LINE_PAYMENT_STATUS_FOR_HEADER" />

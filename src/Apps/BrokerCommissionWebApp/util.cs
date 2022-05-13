@@ -19,6 +19,7 @@ using CoreUtils;
 using CoreUtils.Classes;
 
 using BrokerCommissionWebApp.DataModel;
+using System.Reflection;
 
 namespace BrokerCommissionWebApp
 {
@@ -204,8 +205,86 @@ namespace BrokerCommissionWebApp
             return monthtext;
         }
 
-        public static void processImportedRawData(string Month, int year)
+        public class Period
         {
+            public string month;
+            public int year;
+        }
+
+        public static void ImportNewRawDataFile(string srcFilePath)
+        {
+
+            //todo: use sql bulk copy to iomport
+            Vars Vars = new Vars();
+            var fileLogParams = Vars.GetDbFileProcessingLogParams("BrokerCommission");
+            var dbConn = Vars.dbConnBrokerCommission;
+
+            try
+            {
+                //
+                fileLogParams.SetFileNames("", Path.GetFileName(srcFilePath), srcFilePath,
+                    Path.GetFileName(srcFilePath), srcFilePath, "RawDataUpload-ImportNewQuickBooksFile", "Starting",
+                    "Starting: Import New QuickBooks File");
+                DbUtils.LogFileOperation(fileLogParams);
+
+                //2. import file
+                Import.ImportBrokerCommissionFile(dbConn, srcFilePath, true, fileLogParams, null);
+
+                // 
+                fileLogParams.SetFileNames("", Path.GetFileName(srcFilePath), srcFilePath,
+                       Path.GetFileName(srcFilePath), srcFilePath, "RawDataUpload-ImportNewQuickBooksFile", "Success",
+                             "Starting: Import New QuickBooks File");
+                DbUtils.LogFileOperation(fileLogParams);
+
+                //todo: show num of rows imported on success
+            }
+            catch (Exception ex)
+            {
+                DbUtils.LogError(srcFilePath, srcFilePath, ex, fileLogParams);
+
+                //todo: show error in case of error
+                string message =
+                                $"ERROR: {MethodBase.GetCurrentMethod()?.Name} : Could Not Determine Header Type for  {srcFilePath}";
+                throw new IncorrectFileFormatException(message);
+            }
+
+        }
+        public static Period getLastUpload()
+        {
+            var period = new Period();
+            DataTable table = new DataTable();
+
+            string query = "SELECT TOP(1) H.MONTH, H.YEAR FROM [dbo].[STATEMENT_HEADER] AS H ORDER BY FLAG, MONTH";
+
+            string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"]
+               .ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand(query))
+                {
+                    using (SqlDataAdapter sda = new SqlDataAdapter())
+                    {
+                        cmd.Connection = con;
+                        sda.SelectCommand = cmd;
+
+                        sda.Fill(table);
+                    }
+                }
+            }
+
+            foreach (DataRow row in table.Rows)
+            {
+                period.month = row[0].ToString();
+                period.year = Utils.ToInt(row[1].ToString());
+            }
+
+            return period;
+        }
+
+
+        public static void processImportedRawData(string month, int year)
+        {
+          
             Vars Vars = new Vars();
             var fileLogParams = Vars.GetDbFileProcessingLogParams("BrokerCommission");
             var dbConn = Vars.dbConnBrokerCommission;
@@ -214,7 +293,26 @@ namespace BrokerCommissionWebApp
 
             // run SP
             string query = "";
-            query = "EXEC [dbo].[SP_IMPORT_FILE_SENT_SSIS] @Month='" + Month + "', @Year=" + year + "";
+            query = "EXEC [dbo].[SP_IMPORT_FILE_SENT_SSIS] @Month='" + month + "', @Year=" + year + "";
+            object rowsAffected = DbUtils.DbQuery(DbOperation.ExecuteScalar, dbConn, query, null, fileLogParams.DbMessageLogParams, false, false);
+
+            //todo: show completion message
+
+        }
+        public static void reProcessImportedRawData()
+        {
+            // we take the period from the QB tabe
+            Period period = getLastUpload();
+
+            Vars Vars = new Vars();
+            var fileLogParams = Vars.GetDbFileProcessingLogParams("BrokerCommission");
+            var dbConn = Vars.dbConnBrokerCommission;
+
+            //todo: show starting message
+
+            // run SP
+            string query = "";
+            query = "EXEC [dbo].[SP_IMPORT_FILE_SENT_SSIS] @Month='" + period.month + "', @Year=" + period.year + "";
             object rowsAffected = DbUtils.DbQuery(DbOperation.ExecuteScalar, dbConn, query, null, fileLogParams.DbMessageLogParams, false, false);
 
             //todo: show completion message
@@ -250,7 +348,7 @@ namespace BrokerCommissionWebApp
 
             return table;
         }
-    
+
         public static int getMaxResult()
         {
             int id = 0;

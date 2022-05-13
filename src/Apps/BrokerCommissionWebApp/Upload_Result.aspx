@@ -161,11 +161,11 @@
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn FieldName="PAYLOCITY_ID" VisibleIndex="2" FixedStyle="Left" Width="10%" Caption="PAYLOCITY ID">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="STATEMENT_TOTAL" VisibleIndex="3" Width="20%" Caption="COMMISSION TO PAY ($)">
+                    <dx:GridViewDataTextColumn FieldName="STATEMENT_TOTAL" VisibleIndex="3" Width="20%" Caption="TO PAY ($)">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="STATEMENT_PENDING_TOTAL" VisibleIndex="3" Width="20%" Caption="COMMISSION PENDING ($)">
+                    <dx:GridViewDataTextColumn FieldName="STATEMENT_PENDING_TOTAL" VisibleIndex="3" Width="20%" Caption="PENDING ($)">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="STATEMENT_ALREADY_PAID_TOTAL" VisibleIndex="3" Width="20%" Caption="COMMISSION PAID YTD ($)">
+                    <dx:GridViewDataTextColumn FieldName="STATEMENT_ALREADY_PAID_TOTAL" VisibleIndex="3" Width="20%" Caption="PAID TILL DATE($)">
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataColumn Caption="VIEW STATEMENT" VisibleIndex="4" Width="20%">
                         <SettingsHeaderFilter>

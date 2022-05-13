@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1b163fcb6e63452aadf76a4d2dc00bcd" Name="Diagram1" ZoomLevel="95">
+      <Diagram DiagramId="1b163fcb6e63452aadf76a4d2dc00bcd" Name="Diagram1" ZoomLevel="91">
         <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_COMMISSION" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_MASTER" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_MASTER_" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
