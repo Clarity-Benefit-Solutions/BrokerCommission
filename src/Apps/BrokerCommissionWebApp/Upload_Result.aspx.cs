@@ -37,6 +37,7 @@ namespace BrokerCommissionWebApp
             {
                 LoadList();
                 DataLoad();
+
             }
         }
         protected void ASPxMenu1_ItemClick(object source, MenuItemEventArgs e)
@@ -76,10 +77,12 @@ namespace BrokerCommissionWebApp
 
         protected void LoadList()
         {
+            var month = "";
+            var year = "";
             if (Request.QueryString["YEAR"] != null && Request.QueryString["MONTH"] != null)
             {
-                lbl_month.Text = util.GetCustomAbbreviatedMonthNames(int.Parse(Request.QueryString["MONTH"].ToString()));
-                lbl_year.Text = Request.QueryString["YEAR"].ToString();
+                month = util.GetCustomAbbreviatedMonthNames(int.Parse(Request.QueryString["MONTH"].ToString()));
+                year = Request.QueryString["YEAR"].ToString();
             }
             else
             {
@@ -90,13 +93,15 @@ namespace BrokerCommissionWebApp
 
                 foreach (DataRow row in last.Rows)
                 {
-                    lbl_month.Text = row[0].ToString();
-                    lbl_year.Text = row[1].ToString();
+                    month = row[0].ToString();
+                    year = row[1].ToString();
 
                 }
 
             }
 
+            lbl_month.Text = month;
+            lbl_year.Text = year;
 
             cmb_broker.Items.Clear();
             cmb_broker.Items.Add(new ListEditItem("All"));
@@ -110,8 +115,15 @@ namespace BrokerCommissionWebApp
 
             cmb_broker.SelectedIndex = 0;
 
+            // also reprocess data to show latest balances
+            util.processImportedRawData(month, int.Parse(year));
+
         }
 
+        protected void reprocessData()
+        {
+
+        }
         protected void grid_summary_OnRowCommand(object sender, ASPxGridViewRowCommandEventArgs e)
         {
             if (e.CommandArgs.CommandName == "statement")
