@@ -204,7 +204,7 @@ namespace BrokerCommissionWebApp
             return monthtext;
         }
 
-        public static void clear_trn_tables_and_process_imported_file(string Month, int year)
+        public static void processImportedRawData(string Month, int year)
         {
             Vars Vars = new Vars();
             var fileLogParams = Vars.GetDbFileProcessingLogParams("BrokerCommission");
@@ -250,35 +250,7 @@ namespace BrokerCommissionWebApp
 
             return table;
         }
-        
-        public static void Statement_Detail_Updates()
-        {
-            //todo: check this function is not needed - statement details are always up to date
-            return;
-
-            string query = "";
-
-            query = "EXEC [dbo].[SP_STATEMENT_DETAIL_UPDATE]";
-
-
-            string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
-
-            // Define the ADO.NET Objects
-
-
-            SqlConnection con = new SqlConnection(constr);
-
-            SqlCommand cmd = new SqlCommand(query, con);
-
-            cmd.CommandType = CommandType.Text;
-            con.Open();
-
-            int rowsAffected = cmd.ExecuteNonQuery();
-
-            con.Close();
-
-        }
-
+    
         public static int getMaxResult()
         {
             int id = 0;

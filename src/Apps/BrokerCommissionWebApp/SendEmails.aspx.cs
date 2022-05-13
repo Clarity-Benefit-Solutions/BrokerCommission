@@ -52,23 +52,23 @@ namespace BrokerCommissionWebApp
             string month = lbl_month.Text;
             int year = int.Parse(lbl_year.Text);
 
-
             try
             {
                 // setup statement header list
                 //tod: uncoment next line
-                var list = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID != null /*&& ( x.FLAG == 0 || x.FLAG == 4 )*/)
+                var headers = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID != null /*&& ( x.FLAG == 0 || x.FLAG == 4 )*/)
                     .OrderBy(x => x.BROKER_ID).ToList();
                 int current = 0;
-                int totalCount = list.Count();
+                int totalCount = headers.Count();
 
                 // show statement count
                 lbl_TotalCount.Text = totalCount.ToString();
 
-                // populate statement details from statement headers
-                util.Statement_Detail_Updates();
+                // recreate statements
+                util.processImportedRawData(month, year);
 
-                foreach (var header in list)
+                // send email for each header
+                foreach (var header in headers)
                 {
                     int headerID = header.HEADER_ID;
 
@@ -163,7 +163,7 @@ namespace BrokerCommissionWebApp
                             if (statement_dtl.line_payment_status == "paid")
                             {
                                 // insert using SP - we can either merge or raise error if already present
-                                db.SP_INSERT_SENT_INVOICE(statement_dtl.INVOICE_NUM, DateTime.Now, statement_dtl.OPEN_BALANCE, statement_dtl.TOTAL_PRICE, statement_dtl.month, statement_dtl.year);
+                                db.SP_INSERT_SENT_INVOICE(statement_dtl.INVOICE_NUM, DateTime.Now, statement_dtl.OPEN_BALANCE, statement_dtl.TOTAL_PRICE, header.BROKER_ID, statement_dtl.month, statement_dtl.year);
                             }
                             else
                             {

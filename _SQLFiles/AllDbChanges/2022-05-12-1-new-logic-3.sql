@@ -24,7 +24,7 @@ begin
     declare @amount numeric;
     
     select
-        @amount = sum( [STATEMENT_TOTAL] )
+        @amount = sum( [COMMISSION_PAID] )
     from
         [dbo].[SENT_INVOICE]
     where

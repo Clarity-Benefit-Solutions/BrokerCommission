@@ -193,7 +193,7 @@ namespace BrokerCommissionWebApp.DataModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPLODADFILE");
         }
     
-        public virtual ObjectResult<Nullable<int>> SP_INSERT_SENT_INVOICE(string iNVOICE_NUM, Nullable<System.DateTime> dATE_PAID, Nullable<decimal> oPEN_BALANCE, Nullable<decimal> cOMMISSION_PAID, string month, Nullable<int> year)
+        public virtual ObjectResult<Nullable<int>> SP_INSERT_SENT_INVOICE(string iNVOICE_NUM, Nullable<System.DateTime> dATE_PAID, Nullable<decimal> oPEN_BALANCE, Nullable<decimal> cOMMISSION_PAID, Nullable<int> bROKER_ID, string month, Nullable<int> year)
         {
             var iNVOICE_NUMParameter = iNVOICE_NUM != null ?
                 new ObjectParameter("INVOICE_NUM", iNVOICE_NUM) :
@@ -211,6 +211,10 @@ namespace BrokerCommissionWebApp.DataModel
                 new ObjectParameter("COMMISSION_PAID", cOMMISSION_PAID) :
                 new ObjectParameter("COMMISSION_PAID", typeof(decimal));
     
+            var bROKER_IDParameter = bROKER_ID.HasValue ?
+                new ObjectParameter("BROKER_ID", bROKER_ID) :
+                new ObjectParameter("BROKER_ID", typeof(int));
+    
             var monthParameter = month != null ?
                 new ObjectParameter("month", month) :
                 new ObjectParameter("month", typeof(string));
@@ -219,7 +223,7 @@ namespace BrokerCommissionWebApp.DataModel
                 new ObjectParameter("year", year) :
                 new ObjectParameter("year", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_INSERT_SENT_INVOICE", iNVOICE_NUMParameter, dATE_PAIDParameter, oPEN_BALANCEParameter, cOMMISSION_PAIDParameter, monthParameter, yearParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_INSERT_SENT_INVOICE", iNVOICE_NUMParameter, dATE_PAIDParameter, oPEN_BALANCEParameter, cOMMISSION_PAIDParameter, bROKER_IDParameter, monthParameter, yearParameter);
         }
     }
 }

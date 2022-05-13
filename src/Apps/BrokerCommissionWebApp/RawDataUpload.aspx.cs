@@ -170,7 +170,7 @@ namespace BrokerCommissionWebApp
                     //todo: show message: processing
 
                     // process imported data and generate statement tables
-                    util.clear_trn_tables_and_process_imported_file(month, year);
+                    util.processImportedRawData(month, year);
 
                     //todo: show message: processed
 

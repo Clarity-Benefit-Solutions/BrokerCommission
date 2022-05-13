@@ -10,6 +10,8 @@ alter table dbo.SENT_INVOICE
 alter table dbo.SENT_INVOICE
     add year int not null;
 alter table dbo.SENT_INVOICE
+    add BROKER_ID int not null;
+alter table dbo.SENT_INVOICE
     add DATE_PAID datetime not null;
 alter table SENT_INVOICE
     drop column DATE_ENTER
@@ -58,6 +60,7 @@ alter procedure dbo.SP_INSERT_SENT_INVOICE(
                                        @DATE_PAID datetime,
                                        @OPEN_BALANCE numeric(18, 2),
                                        @COMMISSION_PAID numeric(18, 2),
+                                       @BROKER_ID int,
                                        @month varchar(50),
                                        @year int ) as
 begin
@@ -93,6 +96,7 @@ begin
                                 INVOICE_NUM,
                                 OPEN_BALANCE,
                                 COMMISSION_PAID,
+                                BROKER_ID,
                                 month,
                                 year,
                                 DATE_PAID
@@ -101,6 +105,7 @@ begin
            @INVOICE_NUM,
            @OPEN_BALANCE,
            @COMMISSION_PAID,
+           @BROKER_ID,
            @month,
            @year,
            @DATE_PAID
@@ -114,3 +119,4 @@ end;
 go
 
 exec SP_INSERT_SENT_INVOICE '1', '2022-05-13',1, 1, 'JANUARY', 2022;
+

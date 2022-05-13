@@ -157,11 +157,15 @@
                            <%# Container.ItemIndex + 1 %>
                         </DataItemTemplate>
                     </dx:GridViewDataColumn>
-                    <dx:GridViewDataTextColumn FieldName="BROKER_NAME" VisibleIndex="1" FixedStyle="Left" Width="40%" Caption="BROKER NAME">
+                    <dx:GridViewDataTextColumn FieldName="BROKER_NAME" VisibleIndex="1" FixedStyle="Left" Width="30%" Caption="BROKER NAME">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="PAYLOCITY_ID" VisibleIndex="2" FixedStyle="Left" Width="20%" Caption="PAYLOCITY ID">
+                    <dx:GridViewDataTextColumn FieldName="PAYLOCITY_ID" VisibleIndex="2" FixedStyle="Left" Width="10%" Caption="PAYLOCITY ID">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="TOTAL" VisibleIndex="3" Width="20%" Caption="COMMISSION AMOUNT($)">
+                    <dx:GridViewDataTextColumn FieldName="STATEMENT_TOTAL" VisibleIndex="3" Width="20%" Caption="COMMISSION TO PAY ($)">
+                    </dx:GridViewDataTextColumn>
+                    <dx:GridViewDataTextColumn FieldName="STATEMENT_PENDING_TOTAL" VisibleIndex="3" Width="20%" Caption="COMMISSION PENDING ($)">
+                    </dx:GridViewDataTextColumn>
+                    <dx:GridViewDataTextColumn FieldName="STATEMENT_ALREADY_PAID_TOTAL" VisibleIndex="3" Width="20%" Caption="COMMISSION PAID YTD ($)">
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataColumn Caption="VIEW STATEMENT" VisibleIndex="4" Width="20%">
                         <SettingsHeaderFilter>
