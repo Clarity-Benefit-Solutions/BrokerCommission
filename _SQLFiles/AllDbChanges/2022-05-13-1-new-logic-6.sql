@@ -346,3 +346,5 @@ go
 
 
 alter table SENT_INVOICE alter column OPEN_BALANCE numeric(18,2) null
+
+truncate table dbo.SENT_INVOICE

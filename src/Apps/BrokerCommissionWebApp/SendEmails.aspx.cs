@@ -66,7 +66,8 @@ namespace BrokerCommissionWebApp
                 //tod: uncoment next line
                 var headers = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID != null /*&& ( x.FLAG == 0 || x.FLAG == 4 )*/)
                     .OrderBy(x => x.BROKER_ID).ToList();
-                int current = 0;
+                int sent = 0;
+                int errors = 0;
                 int totalCount = headers.Count();
 
                 // show statement count
@@ -78,17 +79,30 @@ namespace BrokerCommissionWebApp
                 {
                     int headerID = header.HEADER_ID;
 
-                    // sendEmail
-                    sendEmailForStatement(header);
-
-                    //
-                    current++;
-
                     // 
-                    lbl_sent.Text = current.ToString();
+                    lbl_sent.Text = sent.ToString();
                     lbl_time_execution.Text = Math.Round(Convert.ToDouble((watch.ElapsedMilliseconds) / 1000), 2) + " Seconds";
-                    int position = util.getPercentage(current, totalCount);
+                    int position = util.getPercentage(sent, totalCount);
                     ASPxProgressBar1.Position = position;
+                    try
+                    {
+                        // sendEmail
+                        sendEmailForStatement(header);
+                        // 
+                        sent++;
+                        lbl_sent.Text = sent.ToString();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        // 
+                        errors++;
+                        lbl_not_sent.Text = errors.ToString();
+
+                    }
+                    //
+                    ASPxProgressBar1.Position = util.getPercentage(sent, totalCount);
+                    lbl_time_execution.Text = Math.Round(Convert.ToDouble((watch.ElapsedMilliseconds) / 1000), 2) + " Seconds";
 
                     if (position == 10)
                     {
@@ -127,38 +141,19 @@ namespace BrokerCommissionWebApp
             Broker_CommissionEntities db2 = new Broker_CommissionEntities();
 
             // try for each client
+            int headerID = header.HEADER_ID;
+
+            // Create PDF Statement with PDF string output
+            PdfGenerationResults pdfGenerationResults = ReportHelper.CreatedWord(headerID, false);
+            if (!pdfGenerationResults.success)
+            {
+                //todo: display error
+                return;
+            }
+
+            // save invoice sent lines
             try
             {
-                int headerID = header.HEADER_ID;
-
-                // Create PDF Statement with PDF string output
-                PdfGenerationResults pdfGenerationResults = ReportHelper.CreatedWord(headerID, false);
-                if (!pdfGenerationResults.success)
-                {
-                    //todo: display error
-                    return;
-                }
-
-                // set email from/to/etc
-                string from = util.from_email;
-                string to = "";
-
-                if (debugMode == "True")
-                {
-                    //to = "aidubor@claritybenefitsolutions.com";
-                    //to = "azhu@claritybenefitsolutions.com" ;
-                    to = util.getEmailAddress(int.Parse(header.BROKER_ID.ToString()));
-                }
-                else
-                {
-                    // todo: remove comment when we are ready to go live
-                    // to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
-                }
-
-                // send the email with pdf attached - use the one wiothout the paylocity code
-                var emailAttachmentPath = !Utils.IsBlank(pdfGenerationResults.outputPath2) ? pdfGenerationResults.outputPath2 : pdfGenerationResults.outputPath1;
-                util.email_send_with_attachment(from, to, emailAttachmentPath, header.BROKER_NAME, header.MONTH, header.YEAR);
-
                 // save Invoices that were paid so we dont pay them again
                 if (pdfGenerationResults.statementLinesAddedToPdf.Count > 0)
                 {
@@ -182,11 +177,10 @@ namespace BrokerCommissionWebApp
                             };
 
                             db2.SENT_INVOICE.Add(sentInvoice);
-
                         }
                         else
                         {
-                            Console.WriteLine($"Statement Item was not paid: {statement_dtl}");
+                            //Console.WriteLine($"Statement Item was not paid: {statement_dtl}");
                         }
                     }
                 }
@@ -194,29 +188,69 @@ namespace BrokerCommissionWebApp
                 //set header flag
                 header.FLAG = 3;
 
+
                 // commit transactiopn
                 db2.SaveChanges();
-
-                // move the 2 generated files from Rollback path top final path
-                string outputPath1 = pdfGenerationResults.outputPath1;
-                string outputPath2 = pdfGenerationResults.outputPath2;
-
-                // Move file to one directoty above
-                FileUtils.MoveFile(outputPath1, $"{Path.GetDirectoryName(Path.GetDirectoryName(outputPath1))}\\{Path.GetFileName(outputPath1)}", null, null);
-                if (!Utils.IsBlank(outputPath2))
-                {
-                    FileUtils.MoveFile(outputPath2, $"{Path.GetDirectoryName(Path.GetDirectoryName(outputPath2))}\\{Path.GetFileName(outputPath2)}", null, null);
-                }
-
-            } // try
+            }
             catch (Exception ex)
             {
                 // rollback all changes
                 db2.Dispose();
 
                 //todo: show error on UI by broker ideally in broker grid as well as below button
-                Response.Write(ex.Message);
+                var message = $"Error Generating Statement for {header.BROKER_NAME} as ";
+                message += $"{ex.Message}";
+                message += $"<br><br>{ex.StackTrace.ToString()}";
+                throw new EmailBrokerStatementsException(message);
             }
+
+            // if we could save the invoice sent (to avopid duplicate payments, try to send email
+
+            // set email from/to/etc
+            string from = util.from_email;
+            string to = "";
+
+            if (debugMode == "True")
+            {
+                //to = "aidubor@claritybenefitsolutions.com";
+                //to = "azhu@claritybenefitsolutions.com" ;
+                to = util.getEmailAddress(int.Parse(header.BROKER_ID.ToString()));
+            }
+            else
+            {
+                // todo: remove comment when we are ready to go live
+                // to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
+            }
+
+            // send the email with pdf attached - use the one wiothout the paylocity code
+            var emailAttachmentPath = !Utils.IsBlank(pdfGenerationResults.outputPath2) ? pdfGenerationResults.outputPath2 : pdfGenerationResults.outputPath1;
+            try
+            {
+                util.email_send_with_attachment(from, to, emailAttachmentPath, header.BROKER_NAME, header.MONTH, header.YEAR);
+            }
+            catch (Exception ex)
+            {
+                // todo: we could nt send the email - so we need to unsave the saved invouice sent lines
+
+                //
+                var message = $"Error Sending Email for Statement for {header.BROKER_NAME} as ";
+                message += $"{ex.Message}";
+                message += $"<br><br>{ex.StackTrace.ToString()}";
+                throw new EmailBrokerStatementsException(message);
+            }
+
+
+            // move the 2 generated files from Rollback path top final path
+            string outputPath1 = pdfGenerationResults.outputPath1;
+            string outputPath2 = pdfGenerationResults.outputPath2;
+
+            // Move file to one directoty above
+            FileUtils.MoveFile(outputPath1, $"{Path.GetDirectoryName(Path.GetDirectoryName(outputPath1))}\\{Path.GetFileName(outputPath1)}", null, null);
+            if (!Utils.IsBlank(outputPath2))
+            {
+                FileUtils.MoveFile(outputPath2, $"{Path.GetDirectoryName(Path.GetDirectoryName(outputPath2))}\\{Path.GetFileName(outputPath2)}", null, null);
+            }
+
 
         }
         protected void btn_exit_onclick(object sender, EventArgs e)
