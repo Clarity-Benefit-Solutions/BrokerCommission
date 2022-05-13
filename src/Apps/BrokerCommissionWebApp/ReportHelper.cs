@@ -92,7 +92,7 @@ namespace BrokerCommissionWebApp
                 //
                 Document doc = new Document();
 
-                var statement_Header = db.STATEMENT_HEADER.Where(x => x.HEADER_ID == statementID).FirstOrDefault();
+                var statement_Header = db.STATEMENT_HEADER.Where(x => x.HEADER_ID == statementID).ToList().FirstOrDefault();
                 if (statementID <= 0 || statement_Header == null)
                 {
                     var message = $"ERROR: {MethodBase.GetCurrentMethod()?.Name} : Cannot Create Statement for HeadeId : {statementID} as no such Header was found";
@@ -230,8 +230,8 @@ namespace BrokerCommissionWebApp
                     savedFilePath2 = savedFilePath1 + "BY_BROKER_NAME\\";
 
                     // we will save to a rtemp path till caller verifies all went well
-                    savedFilePath2 += "RollbackOrCommit\\";
-                    savedFilePath1 += "RollbackOrCommit\\";
+                    savedFilePath2 += "ToBeProcessed\\";
+                    savedFilePath1 += "ToBeProcessed\\";
 
                     // ensure paths exist
                     Directory.CreateDirectory(savedFilePath1);
@@ -244,14 +244,13 @@ namespace BrokerCommissionWebApp
                     savedFilePath2 += filename;
 
                     // save the doc
+                    ms.Close(); 
                     doc.Save(savedFilePath1);
-                    ms.Close();
+                    pdfGenerationResults.outputPath1 = savedFilePath1;
+
 
                     // also archive with broker name first for easier sorting by finance
                     FileUtils.CopyFile(savedFilePath1, savedFilePath2, null, null);
-
-                    //
-                    pdfGenerationResults.outputPath1 = savedFilePath1;
                     pdfGenerationResults.outputPath2 = savedFilePath2;
                     pdfGenerationResults.success = true;
 

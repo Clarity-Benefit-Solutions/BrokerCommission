@@ -284,7 +284,7 @@ namespace BrokerCommissionWebApp
 
         public static void processImportedRawData(string month, int year)
         {
-          
+
             Vars Vars = new Vars();
             var fileLogParams = Vars.GetDbFileProcessingLogParams("BrokerCommission");
             var dbConn = Vars.dbConnBrokerCommission;
@@ -496,6 +496,7 @@ namespace BrokerCommissionWebApp
 
 
                         }
+                        reader.Close();
                     }
                 }
             }
@@ -578,6 +579,7 @@ namespace BrokerCommissionWebApp
 
 
                         }
+                        reader.Close();
                     }
                 }
             }
@@ -616,6 +618,7 @@ namespace BrokerCommissionWebApp
 
 
                         }
+                        reader.Close();
                     }
                 }
             }
@@ -653,6 +656,7 @@ namespace BrokerCommissionWebApp
 
 
                         }
+                        reader.Close();
                     }
                 }
             }
@@ -686,8 +690,6 @@ namespace BrokerCommissionWebApp
 
             MailAddress copy = new MailAddress(cc_email);
 
-
-
             SmtpClient smtp = new SmtpClient();
 
             smtp.Host = from_host;
@@ -698,8 +700,12 @@ namespace BrokerCommissionWebApp
             NetworkCred.Password = from_email_pass;
             smtp.Credentials = NetworkCred;
 
+            // as sending wemail can keep the attchment source file open, copy to temp file and then attach
+            var tempFilePath = $"{Path.GetTempPath()}\\{Path.GetFileName(filePath)}";
+            FileUtils.CopyFile(filePath, tempFilePath, null, null);
+            //
             System.Net.Mail.Attachment attachment;
-            attachment = new System.Net.Mail.Attachment(filePath);
+            attachment = new System.Net.Mail.Attachment(tempFilePath);
             mail.From = new MailAddress(from_email);
 
             mail.Subject = Month + " " + year.ToString() + " " + "Commission Statement for " + BrokerName;// subject_line;

@@ -123,92 +123,101 @@ namespace BrokerCommissionWebApp
 
         protected void sendEmailForStatement(STATEMENT_HEADER header)
         {
-            // use explicit transactions to ensure consistency
-            using (var dbContextTransaction = db.Database.BeginTransaction())
+            // sumeet use new db context to avoid isolate entities being tracked from other queries
+            Broker_CommissionEntities db2 = new Broker_CommissionEntities();
+
+            // try for each client
+            try
             {
-                // try for each client
-                try
+                int headerID = header.HEADER_ID;
+
+                // Create PDF Statement with PDF string output
+                PdfGenerationResults pdfGenerationResults = ReportHelper.CreatedWord(headerID, false);
+                if (!pdfGenerationResults.success)
                 {
-                    int headerID = header.HEADER_ID;
-
-                    // Create PDF Statement with PDF string output
-                    PdfGenerationResults pdfGenerationResults = ReportHelper.CreatedWord(headerID, false);
-                    if (!pdfGenerationResults.success)
-                    {
-                        //todo: display error
-                        return;
-                    }
-
-                    // set email from/to/etc
-                    string from = util.from_email;
-                    string to = "";
-
-                    if (debugMode == "True")
-                    {
-                        //to = "aidubor@claritybenefitsolutions.com";
-                        //to = "azhu@claritybenefitsolutions.com" ;
-                        to = util.getEmailAddress(int.Parse(header.BROKER_ID.ToString()));
-                    }
-                    else
-                    {
-                        // todo: remove comment when we are ready to go live
-                        // to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
-                    }
-
-                    // send the email with pdf attached
-                    util.email_send_with_attachment(from, to, pdfGenerationResults.outputPath1, header.BROKER_NAME, header.MONTH, header.YEAR);
-
-                    // save Invoices that were paid so we dont pay them again
-                    if (pdfGenerationResults.statementLinesAddedToPdf.Count > 0)
-                    {
-                        IEnumerable<STATEMENT_DETAILS> distintLines = pdfGenerationResults.statementLinesAddedToPdf.GroupBy(p => p.INVOICE_NUM).Select(g => g.First());
-
-                        //todo: get distinct inv numbers
-                        foreach (var statement_dtl in distintLines)
-                        {
-                            if (statement_dtl.line_payment_status == "paid")
-                            {
-                                // insert using SP - we can either merge or raise error if already present
-                                db.SP_INSERT_SENT_INVOICE(statement_dtl.INVOICE_NUM, DateTime.Now, statement_dtl.OPEN_BALANCE, statement_dtl.TOTAL_PRICE, header.BROKER_ID, statement_dtl.month, statement_dtl.year);
-                            }
-                            else
-                            {
-                                Console.WriteLine($"Statement Item was not paid: {statement_dtl}");
-                            }
-                        }
-                    }
-
-                    //set header flag
-                    header.FLAG = 3;
-
-                    // commit transactiopn
-                    db.SaveChanges();
-                    dbContextTransaction.Commit();
-
-                    // move the 2 generated files from Rollback path top final path
-                    string outputPath1 = pdfGenerationResults.outputPath1;
-                    string outputPath2 = pdfGenerationResults.outputPath2;
-
-                    // Move file to one directoty above
-                    FileUtils.MoveFile(outputPath1, $"{Path.GetDirectoryName(Path.GetDirectoryName(outputPath1))}\\{Path.GetFileName(outputPath1)}", null, null);
-                    if (!Utils.IsBlank(outputPath2))
-                    {
-                        FileUtils.MoveFile(outputPath2, $"{Path.GetDirectoryName(Path.GetDirectoryName(outputPath2))}\\{Path.GetFileName(outputPath2)}", null, null);
-                    }
-
-
-                } // try
-
-
-                catch (Exception ex)
-                {
-                    // rollback
-                    dbContextTransaction.Rollback();
-                    //todo: show error on UI by broker ideally in broker grid as well as below button
-                    Response.Write(ex.Message);
+                    //todo: display error
+                    return;
                 }
 
-            } // using
+                // set email from/to/etc
+                string from = util.from_email;
+                string to = "";
+
+                if (debugMode == "True")
+                {
+                    //to = "aidubor@claritybenefitsolutions.com";
+                    //to = "azhu@claritybenefitsolutions.com" ;
+                    to = util.getEmailAddress(int.Parse(header.BROKER_ID.ToString()));
+                }
+                else
+                {
+                    // todo: remove comment when we are ready to go live
+                    // to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
+                }
+
+                // send the email with pdf attached - use the one wiothout the paylocity code
+                var emailAttachmentPath = !Utils.IsBlank(pdfGenerationResults.outputPath2) ? pdfGenerationResults.outputPath2 : pdfGenerationResults.outputPath1;
+                util.email_send_with_attachment(from, to, emailAttachmentPath, header.BROKER_NAME, header.MONTH, header.YEAR);
+
+                // save Invoices that were paid so we dont pay them again
+                if (pdfGenerationResults.statementLinesAddedToPdf.Count > 0)
+                {
+                    IEnumerable<STATEMENT_DETAILS> distintLines = pdfGenerationResults.statementLinesAddedToPdf.GroupBy(p => p.INVOICE_NUM).Select(g => g.First());
+
+                    //todo: get distinct inv numbers
+                    foreach (var statement_dtl in distintLines)
+                    {
+                        // tried insert using SP - we can either merge or raise error if already present - but got error in explicit transactions handling
+                        if (statement_dtl.line_payment_status == "paid")
+                        {
+                            var sentInvoice = new SENT_INVOICE()
+                            {
+                                INVOICE_NUM = statement_dtl.INVOICE_NUM,
+                                OPEN_BALANCE = Utils.ToDecimal(statement_dtl.OPEN_BALANCE),
+                                COMMISSION_PAID = Utils.ToDecimal(statement_dtl.TOTAL_PRICE),
+                                BROKER_ID = header.BROKER_ID ?? 0,
+                                month = header.MONTH,
+                                year = header.YEAR,
+                                DATE_PAID = DateTime.Now
+                            };
+
+                            db2.SENT_INVOICE.Add(sentInvoice);
+
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Statement Item was not paid: {statement_dtl}");
+                        }
+                    }
+                }
+
+                //set header flag
+                header.FLAG = 3;
+
+                // commit transactiopn
+                db2.SaveChanges();
+
+                // move the 2 generated files from Rollback path top final path
+                string outputPath1 = pdfGenerationResults.outputPath1;
+                string outputPath2 = pdfGenerationResults.outputPath2;
+
+                // Move file to one directoty above
+                FileUtils.MoveFile(outputPath1, $"{Path.GetDirectoryName(Path.GetDirectoryName(outputPath1))}\\{Path.GetFileName(outputPath1)}", null, null);
+                if (!Utils.IsBlank(outputPath2))
+                {
+                    FileUtils.MoveFile(outputPath2, $"{Path.GetDirectoryName(Path.GetDirectoryName(outputPath2))}\\{Path.GetFileName(outputPath2)}", null, null);
+                }
+
+            } // try
+            catch (Exception ex)
+            {
+                // rollback all changes
+                db2.Dispose();
+
+                //todo: show error on UI by broker ideally in broker grid as well as below button
+                Response.Write(ex.Message);
+            }
+
         }
         protected void btn_exit_onclick(object sender, EventArgs e)
         {
