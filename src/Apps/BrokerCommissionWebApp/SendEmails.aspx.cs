@@ -152,12 +152,13 @@ namespace BrokerCommissionWebApp
             int headerID = header.HEADER_ID;
 
             // Create PDF Statement with PDF string output
-            PdfGenerationResults pdfGenerationResults = ReportHelper.CreatedWord(headerID, false);
-            if (!pdfGenerationResults.success)
-            {
-                //todo: display error
-                return;
-            }
+            PdfGenerationResults pdfGenerationResults = ReportHelper.GenerateStatementPdf(headerID, false);
+
+            // move the 2 generated files from Rollback path top final path
+            string processingOutputPath1 = pdfGenerationResults.outputPath1;
+            string processingOutputPath2 = pdfGenerationResults.outputPath2;
+            string finalOutputPath1 = $"{Path.GetDirectoryName(Path.GetDirectoryName(processingOutputPath1))}\\{Path.GetFileName(processingOutputPath1)}";
+            string finalOutputPath2 = $"{Path.GetDirectoryName(Path.GetDirectoryName(processingOutputPath2))}\\{Path.GetFileName(processingOutputPath2)}";
 
             // save invoice sent lines
             try
@@ -186,16 +187,11 @@ namespace BrokerCommissionWebApp
 
                             db2.SENT_INVOICE.Add(sentInvoice);
                         }
-                        else
-                        {
-                            //Console.WriteLine($"Statement Item was not paid: {statement_dtl}");
-                        }
                     }
                 }
 
                 //set header flag
                 header.FLAG = 3;
-
 
                 // commit transactiopn
                 db2.SaveChanges();
@@ -209,10 +205,14 @@ namespace BrokerCommissionWebApp
                 var message = $"Error Generating Statement for {header.BROKER_NAME} as ";
                 message += $"{ex.Message}";
                 message += $"<br><br>{ex.StackTrace.ToString()}";
+
+                // save error message to both paths
+                FileUtils.WriteToFile($"{processingOutputPath1}.err", message, null);
+                FileUtils.WriteToFile($"{processingOutputPath2}.err", message, null);
+
+                //
                 throw new EmailBrokerStatementsException(message);
             }
-
-            // if we could save the invoice sent (to avopid duplicate payments, try to send email
 
             // set email from/to/etc
             string from = util.from_email;
@@ -226,7 +226,8 @@ namespace BrokerCommissionWebApp
             }
             else
             {
-                // todo: remove comment when we are ready to go live
+                // todo: change to actual email address when ready
+                to = "claritydev@claritybenefitsolutions.com";
                 // to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
             }
 
@@ -244,21 +245,25 @@ namespace BrokerCommissionWebApp
                 var message = $"Error Sending Email for Statement for {header.BROKER_NAME} as ";
                 message += $"{ex.Message}";
                 message += $"<br><br>{ex.StackTrace.ToString()}";
+
+                // save error message to both paths
+                FileUtils.WriteToFile($"{processingOutputPath1}.err", message, null);
+                FileUtils.WriteToFile($"{processingOutputPath2}.err", message, null);
+
                 throw new EmailBrokerStatementsException(message);
             }
 
 
-            // move the 2 generated files from Rollback path top final path
-            string outputPath1 = pdfGenerationResults.outputPath1;
-            string outputPath2 = pdfGenerationResults.outputPath2;
-
-            // Move file to one directoty above
-            FileUtils.MoveFile(outputPath1, $"{Path.GetDirectoryName(Path.GetDirectoryName(outputPath1))}\\{Path.GetFileName(outputPath1)}", null, null);
-            if (!Utils.IsBlank(outputPath2))
+            // Move file to one directory above if we reached here without any error. Other file will remain in ToBeProcessed subdirectory for examination
+            FileUtils.MoveFile(processingOutputPath1, finalOutputPath1, null, null);
+            if (!Utils.IsBlank(processingOutputPath2))
             {
-                FileUtils.MoveFile(outputPath2, $"{Path.GetDirectoryName(Path.GetDirectoryName(outputPath2))}\\{Path.GetFileName(outputPath2)}", null, null);
+                FileUtils.MoveFile(processingOutputPath2, finalOutputPath2, null, null);
             }
 
+            // as we processed it delete any previous err files
+            FileUtils.DeleteFileIfExists($"{processingOutputPath1}.err", null, null);
+            FileUtils.DeleteFileIfExists($"{processingOutputPath2}.err", null, null);
 
         }
         protected void btn_exit_onclick(object sender, EventArgs e)
