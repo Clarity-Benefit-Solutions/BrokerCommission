@@ -225,5 +225,18 @@ namespace BrokerCommissionWebApp.DataModel
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_INSERT_SENT_INVOICE", iNVOICE_NUMParameter, dATE_PAIDParameter, oPEN_BALANCEParameter, cOMMISSION_PAIDParameter, bROKER_IDParameter, monthParameter, yearParameter);
         }
+    
+        public virtual int SP_UPDATE_STATEMENT_PAYMENT_STATUS(string month, Nullable<int> year)
+        {
+            var monthParameter = month != null ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(string));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDATE_STATEMENT_PAYMENT_STATUS", monthParameter, yearParameter);
+        }
     }
 }

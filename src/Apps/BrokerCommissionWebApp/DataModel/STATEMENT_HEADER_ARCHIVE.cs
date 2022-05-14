@@ -21,12 +21,12 @@ namespace BrokerCommissionWebApp.DataModel
         public Nullable<int> BROKER_ID { get; set; }
         public string BROKER_NAME { get; set; }
         public int FLAG { get; set; }
-        public Nullable<decimal> STATEMENT_TOTAL { get; set; }
+        public decimal STATEMENT_TOTAL { get; set; }
         public Nullable<System.DateTime> Change_Date { get; set; }
-        public Nullable<decimal> STATEMENT_ALREADY_PAID_TOTAL { get; set; }
-        public Nullable<decimal> STATEMENT_PENDING_TOTAL { get; set; }
+        public decimal STATEMENT_ALREADY_PAID_TOTAL { get; set; }
+        public decimal STATEMENT_PENDING_TOTAL { get; set; }
         public Nullable<int> PAYLOCITY_ID { get; set; }
         public Nullable<decimal> TOTAL { get; set; }
-        public Nullable<decimal> STATEMENT_PROCESSED_THIS_PERIOD { get; set; }
+        public decimal STATEMENT_PROCESSED_THIS_PERIOD { get; set; }
     }
 }

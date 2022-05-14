@@ -36,7 +36,6 @@ namespace BrokerCommissionWebApp.DataModel
         public string month { get; set; }
         public Nullable<int> year { get; set; }
         public string line_payment_status { get; set; }
-        public Nullable<decimal> TOTAL_PRICE_PAID_THIS_PERIOD { get; set; }
     
         public virtual BROKER_MASTER BROKER_MASTER { get; set; }
         public virtual STATEMENT_HEADER STATEMENT_HEADER { get; set; }

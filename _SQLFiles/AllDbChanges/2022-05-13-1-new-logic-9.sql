@@ -1,5 +1,10 @@
 use Broker_Commission;
 go
+-- auto-generated definition
+create index INVOICE_NUM
+    on STATEMENT_DETAILS (INVOICE_NUM)
+go
+
 
 alter table STATEMENT_DETAILS
     drop column if exists TOTAL_PRICE_PAID_THIS_PERIOD
