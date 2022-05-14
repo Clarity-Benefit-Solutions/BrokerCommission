@@ -59,11 +59,11 @@ namespace BrokerCommissionWebApp
             query += " WHERE 1=1 ";
 
             // todo: need specs. commented. add checkbox for all or only not yet emailed. show all statements not only those which have been emailed by default
-            if (cboShowAllOrSome.Text == "Not Emailed")
+            if (cboShowAllOrSome.Text == "Not Paid")
             {
                 query += " AND STATEMENT_PROCESSED_THIS_PERIOD <= 0 ";
             }
-            else if (cboShowAllOrSome.Text == "Emailed")
+            else if (cboShowAllOrSome.Text == "Paid")
             {
                 query += " AND STATEMENT_PROCESSED_THIS_PERIOD > 0 ";
             }
@@ -96,8 +96,8 @@ namespace BrokerCommissionWebApp
             //
             cboShowAllOrSome.Items.Clear();
             cboShowAllOrSome.Items.Add(new ListEditItem("All"));
-            cboShowAllOrSome.Items.Add(new ListEditItem("Not Emailed"));
-            cboShowAllOrSome.Items.Add(new ListEditItem("Emailed"));
+            cboShowAllOrSome.Items.Add(new ListEditItem("Not Paid"));
+            cboShowAllOrSome.Items.Add(new ListEditItem("Paid"));
             cboShowAllOrSome.SelectedIndex = 0;
             //
 
