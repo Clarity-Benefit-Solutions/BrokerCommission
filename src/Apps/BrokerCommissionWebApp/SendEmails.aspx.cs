@@ -138,11 +138,14 @@ namespace BrokerCommissionWebApp
 
 
             } //try
-
+            // todo: inform user that we have started this operation
             // refresh data
             Response.Write("Refreshing Totals<BR><BR>");
             Response.Flush();
+
+            //
             util.reProcessImportedRawData();
+            //
             Response.Write("Refreshed Totals<BR><BR>");
             Response.Flush();
         }
