@@ -330,7 +330,7 @@ namespace BrokerCommissionWebApp
             var dbConn = Vars.dbConnBrokerCommission;
 
             //todo: show starting message
-
+            
             // run SP
             string query = "";
             query = "EXEC [dbo].[SP_UPDATE_STATEMENT_PAYMENT_STATUS] @Month='" + period.month + "', @Year=" + period.year + "";

@@ -2,6 +2,18 @@ use Broker_Commission;
 go
 -- auto-generated definition
 create index INVOICE_NUM
+    on SENT_INVOICE (INVOICE_NUM)
+go
+create index month
+    on SENT_INVOICE (month)
+go
+create index year
+    on SENT_INVOICE (year)
+go
+
+
+-- auto-generated definition
+create index INVOICE_NUM
     on STATEMENT_DETAILS (INVOICE_NUM)
 go
 

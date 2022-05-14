@@ -141,8 +141,10 @@ namespace BrokerCommissionWebApp
 
             // refresh data
             Response.Write("Refreshing Totals<BR><BR>");
+            Response.Flush();
             util.reProcessImportedRawData();
             Response.Write("Refreshed Totals<BR><BR>");
+            Response.Flush();
         }
 
         protected void sendEmailForStatement(STATEMENT_HEADER header)
