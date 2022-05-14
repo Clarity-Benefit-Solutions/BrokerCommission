@@ -170,11 +170,12 @@ namespace BrokerCommissionWebApp
             // save invoice sent lines
             try
             {
-                // save Invoices that were paid so we dont pay them again
-                if (pdfGenerationResults.statementLinesAddedToPdf.Count > 0)
-                {
-                    IEnumerable<STATEMENT_DETAILS> distintLines = pdfGenerationResults.statementLinesAddedToPdf.GroupBy(p => p.INVOICE_NUM?.Trim().ToUpper()).Select(g => g.First());
+                List<STATEMENT_DETAILS> distintLines = pdfGenerationResults.statementLinesAddedToPdf.GroupBy(p => p.INVOICE_NUM?.Trim().ToUpper()).Select(g => g.First()).ToList();
 
+                // save Invoices that were paid so we dont pay them again
+                if (distintLines.Count > 0)
+                {
+                   
                     //todo: get distinct inv numbers
                     foreach (var statement_dtl in distintLines)
                     {
