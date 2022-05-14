@@ -11,7 +11,6 @@ create index year
     on SENT_INVOICE (year)
 go
 
-
 -- auto-generated definition
 create index INVOICE_NUM
     on STATEMENT_DETAILS (INVOICE_NUM)
@@ -293,7 +292,7 @@ BEGIN
       and year = @Year;
     
     /* recalc totals*/
-    exec SP_UPDATE_STATEMENT_PAYMENT_STATUS @month, @year;
+    exec SP_UPDATE_STATEMENT_PAYMENT_STATUS @month , @year;
 
 END
 go
@@ -419,10 +418,36 @@ begin
     where
           month = @Month
       and year = @Year;
-
+    
+--      update header totals
+    exec sp_update_header_totals;
 end
 go
 
+create or
+alter procedure sp_update_header_totals as
+begin
+    /* update total commissions per statement by examing statement details line_payment_status */
+    /* not essential but it is nice to show users the totals for each broker for current months statements*/
+    update dbo.STATEMENT_HEADER
+    set
+        STATEMENT_TOTAL                = dbo.get_broker_commission_paid_amount( BROKER_ID , MONTH , YEAR ),
+        STATEMENT_PENDING_TOTAL= dbo.get_broker_commission_pending_amount( BROKER_ID , MONTH , YEAR ),
+        STATEMENT_ALREADY_PAID_TOTAL= dbo.get_broker_commission_already_paid_amount( BROKER_ID , MONTH , YEAR ),
+        STATEMENT_PROCESSED_THIS_PERIOD= dbo.get_total_processed_this_period( HEADER_ID );
+    
+    /* for comptablity with old code - use this column also*/
+    update dbo.STATEMENT_HEADER
+    set
+        TOTAL = isnull( STATEMENT_TOTAL + STATEMENT_PENDING_TOTAL , 0 );
+    
+    /**/
+    --
+    --     SET @msg1 = CONCAT( '**LOG** ' , 'SP_CALC_STATEMENT_LINE_PAYMENT_STATUS_FOR_HEADER' ,
+    --                         ' FINISHED ROW COUNT: ' , @rowno );
+    --     RAISERROR (@msg1, 0, 1) WITH NOWAIT
+end
+go
 create or
 alter
     PROCEDURE [dbo].[SP_CALC_STATEMENT_LINE_PAYMENT_STATUS_FOR_HEADER]
@@ -538,26 +563,6 @@ BEGIN
     /**/
     CLOSE db_cursor2
     DEALLOCATE db_cursor2
-    
-    /* update total commissions per statement by examing statement details line_payment_status */
-    /* not essential but it is nice to show users the totals for each broker for current months statements*/
-    update dbo.STATEMENT_HEADER
-    set
-        STATEMENT_TOTAL                = dbo.get_broker_commission_paid_amount( BROKER_ID , MONTH , YEAR ),
-        STATEMENT_PENDING_TOTAL= dbo.get_broker_commission_pending_amount( BROKER_ID , MONTH , YEAR ),
-        STATEMENT_ALREADY_PAID_TOTAL= dbo.get_broker_commission_already_paid_amount( BROKER_ID , MONTH , YEAR ),
-        STATEMENT_PROCESSED_THIS_PERIOD= dbo.get_total_processed_this_period( HEADER_ID );
-    
-    /* for comptablity with old code - use this column also*/
-    update dbo.STATEMENT_HEADER
-    set
-        TOTAL = isnull( STATEMENT_TOTAL + STATEMENT_PENDING_TOTAL , 0 );
-    
-    /**/
-    --
-    --     SET @msg1 = CONCAT( '**LOG** ' , 'SP_CALC_STATEMENT_LINE_PAYMENT_STATUS_FOR_HEADER' ,
-    --                         ' FINISHED ROW COUNT: ' , @rowno );
-    --     RAISERROR (@msg1, 0, 1) WITH NOWAIT
 
 END
 go

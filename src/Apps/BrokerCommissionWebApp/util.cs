@@ -21,6 +21,11 @@ using CoreUtils.Classes;
 using BrokerCommissionWebApp.DataModel;
 using System.Reflection;
 
+
+//todo: how can we show propgress during postbacks?
+/*
+ https://www.dotnetcurry.com/ShowArticle.aspx?ID=227
+ */
 namespace BrokerCommissionWebApp
 {
     public class util
