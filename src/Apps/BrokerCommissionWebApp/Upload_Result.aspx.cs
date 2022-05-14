@@ -28,9 +28,6 @@ namespace BrokerCommissionWebApp
         Broker_CommissionEntities db = new Broker_CommissionEntities();
 
 
-        public static string receive =
-           System.Web.Configuration.WebConfigurationManager.AppSettings["receive_emails"].ToString();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -147,13 +144,13 @@ namespace BrokerCommissionWebApp
                     string from = util.from_email;
                     //util.SendPDFEmail(from, receive, model.BROKER_NAME, month, year, int.Parse(model.BROKER_ID.ToString()));
 
-                    if (receive == "Broker")
+                    if (util.receive == "Broker")
                     {
                         util.SendPDFEmail(from, util.getEmailAddress(int.Parse(model.BROKER_ID.ToString())), model.BROKER_NAME, month, year, int.Parse(model.BROKER_ID.ToString()));
                     }
                     else
                     {
-                        util.SendPDFEmail(from, receive, model.BROKER_NAME, month, year, int.Parse(model.BROKER_ID.ToString()));
+                        util.SendPDFEmail(from, util.receive, model.BROKER_NAME, month, year, int.Parse(model.BROKER_ID.ToString()));
                     }
 
 

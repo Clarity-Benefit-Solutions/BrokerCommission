@@ -32,15 +32,7 @@ namespace BrokerCommissionWebApp
     public class ReportHelper
     {
         private static Broker_CommissionEntities db = new Broker_CommissionEntities();
-        public static string PDFOutPut =
-                System.Web.Configuration.WebConfigurationManager.AppSettings["PDFOutPut"].ToString();
-
-        public static string PDFOutPut_Test =
-               System.Web.Configuration.WebConfigurationManager.AppSettings["PDFOutPut_Test"].ToString();
-
-        private static string debugMode =
-          System.Web.Configuration.WebConfigurationManager.AppSettings["DebugMode"].ToString();
-
+      
         private static void WriteCell(int tableindex, int rowindex, int colindex, string str, Document document)
         {
 
@@ -113,12 +105,12 @@ namespace BrokerCommissionWebApp
             string filename = statement_Header.BROKER_NAME + "_" + statement_Header.MONTH + "_" + statement_Header.YEAR + ".pdf";
 
             // calculate output path
-            string pdfPath = PDFOutPut + tempPath;
-            string pdfPath_Test = PDFOutPut_Test + tempPath;
+            string pdfPath = util.PDFOutPut + tempPath;
+            string pdfPath_Test = util.PDFOutPut_Test + tempPath;
 
             string savedFilePath1 = "";
             string savedFilePath2 = "";
-            if (debugMode == "True")
+            if (util.debugMode == "True")
             {
                 savedFilePath1 = pdfPath_Test;
             }

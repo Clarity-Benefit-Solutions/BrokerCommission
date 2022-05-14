@@ -21,11 +21,8 @@ namespace BrokerCommissionWebApp
 {
     public partial class RawDataUpload : System.Web.UI.Page
     {
-        static string file_import =
-             System.Web.Configuration.WebConfigurationManager.AppSettings["import"].ToString();
 
-        static string rawDataUploadedFilePath = file_import + "\\file_import.csv";
-
+       
         Broker_CommissionEntities db = new Broker_CommissionEntities();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -137,7 +134,7 @@ namespace BrokerCommissionWebApp
 
             if (upload_Excel.HasFile)
             {
-                upload_Excel.SaveAs(rawDataUploadedFilePath);
+                upload_Excel.SaveAs(util.rawDataUploadedFilePath);
 
                 lbl_error.Text = "File Uploaded: " + upload_Excel.FileName;
                 lbl_error.CssClass = "text-success";
@@ -164,7 +161,7 @@ namespace BrokerCommissionWebApp
                     int year = int.Parse(cmb_Year.Text);
 
                     // import raw data using sqlBulkCopy
-                    util.ImportNewRawDataFile(rawDataUploadedFilePath);
+                    util.ImportNewRawDataFile(util.rawDataUploadedFilePath);
 
                     // process imported data
                     //todo: show message: processing

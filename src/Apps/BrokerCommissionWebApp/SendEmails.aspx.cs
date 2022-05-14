@@ -16,12 +16,7 @@ namespace BrokerCommissionWebApp
 
         Broker_CommissionEntities db = new Broker_CommissionEntities();
 
-        public static string receive =
-           System.Web.Configuration.WebConfigurationManager.AppSettings["receive_emails"].ToString();
-
-        private static string debugMode =
-          System.Web.Configuration.WebConfigurationManager.AppSettings["DebugMode"].ToString();
-
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -218,7 +213,7 @@ namespace BrokerCommissionWebApp
             string from = util.from_email;
             string to = "";
 
-            if (debugMode == "True")
+            if (util.debugMode == "True")
             {
                 //to = "aidubor@claritybenefitsolutions.com";
                 //to = "azhu@claritybenefitsolutions.com" ;

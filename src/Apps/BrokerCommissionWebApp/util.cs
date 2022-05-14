@@ -26,6 +26,13 @@ namespace BrokerCommissionWebApp
     public class util
     {
         protected static Broker_CommissionEntities db = new Broker_CommissionEntities();
+
+        public static string debugMode =
+          System.Web.Configuration.WebConfigurationManager.AppSettings["DebugMode"].ToString();
+
+        public static string receive =
+          System.Web.Configuration.WebConfigurationManager.AppSettings["receive_emails"].ToString();
+
         public static string subject_line = "Commission Statement";
         public static string from_email =
            System.Web.Configuration.WebConfigurationManager.AppSettings["from_email"].ToString();
@@ -46,6 +53,20 @@ namespace BrokerCommissionWebApp
 
         public static string cc_email =
            System.Web.Configuration.WebConfigurationManager.AppSettings["cc_email"].ToString();
+
+        public static string PDFOutPut =
+              System.Web.Configuration.WebConfigurationManager.AppSettings["PDFOutPut"].ToString();
+
+        public static string PDFOutPut_Test =
+               System.Web.Configuration.WebConfigurationManager.AppSettings["PDFOutPut_Test"].ToString();
+
+
+       public static string file_import =
+             System.Web.Configuration.WebConfigurationManager.AppSettings["import"].ToString();
+
+        public static string rawDataUploadedFilePath = file_import + "\\file_import.csv";
+
+
         public static StringBuilder stringPDF(DataTable dtp, string month, int year)
         {
             StringBuilder sb = new StringBuilder();
@@ -666,8 +687,7 @@ namespace BrokerCommissionWebApp
 
             return memberID;
         }
-        private static string debugMode =
-         System.Web.Configuration.WebConfigurationManager.AppSettings["DebugMode"].ToString();
+      
 
         protected static string secondemail(string brokerName)
         {
