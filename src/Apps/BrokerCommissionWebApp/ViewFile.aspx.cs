@@ -176,7 +176,7 @@ namespace BrokerCommissionWebApp
                 var model = db.BROKER_MASTER.Where(x => x.ID == brokerID).FirstOrDefault();
                 if (model != null)
                 {
-                    string FilePath = ReportHelper.PDFOutPut
+                    string FilePath = util.PDFOutPut
                    + "\\"
                    + model.PAYLOCITY_ID + "_" + model.BROKER_NAME + "_" + Request.QueryString["MONTH"]
                    + "_" + Request.QueryString["YEAR"] + ".pdf";

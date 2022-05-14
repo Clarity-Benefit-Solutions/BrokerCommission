@@ -16,8 +16,6 @@ namespace BrokerCommissionWebApp
 
         Broker_CommissionEntities db = new Broker_CommissionEntities();
 
-       
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -58,13 +56,20 @@ namespace BrokerCommissionWebApp
             {
 
                 // setup statement header list
-                //note: take only those invoices we have not already processed this month
+                //note: take only those invoices we have not already processed this month and have a pending amount
+                // this can still resend statements duplicate that have only pending amount for the broker for this period
                 var headers = db.STATEMENT_HEADER
-                    .Where(x => x.MONTH == month
+                    .Where(
+                            /*for current month*/
+                            x => x.MONTH == month
+                            /*for current yer*/
                             && x.YEAR == year
+                            /* for valid broker*/
                             && x.BROKER_ID != null
+                            /*to pay + pending > 0*/
+                            && x.TOTAL > 0
+                            /*statement not yet generated and emailed*/
                             && x.STATEMENT_PROCESSED_THIS_PERIOD <= 0
-                    /*&& ( x.FLAG == 0 || x.FLAG == 4 )*/
                     )
                     .OrderBy(x => x.BROKER_ID).ToList();
                 int sent = 0;
