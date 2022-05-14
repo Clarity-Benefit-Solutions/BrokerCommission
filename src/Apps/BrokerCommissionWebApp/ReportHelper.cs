@@ -35,7 +35,7 @@ namespace BrokerCommissionWebApp
       
         private static void WriteCell(int tableindex, int rowindex, int colindex, string str, Document document)
         {
-
+            str = str ?? "";
             DocumentBuilder builder = new DocumentBuilder(document);
             builder.MoveToCell(tableindex, rowindex, colindex, 0);
             builder.Write(str);

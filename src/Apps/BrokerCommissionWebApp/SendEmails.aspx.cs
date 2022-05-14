@@ -202,7 +202,7 @@ namespace BrokerCommissionWebApp
                 db2.Dispose();
 
                 //todo: show error on UI by broker ideally in broker grid as well as below button
-                var message = $"Error Generating Statement for {header.BROKER_NAME} as ";
+                var message = $"Error Saving Sent Invoices Or Other Database Error Statement for {header.BROKER_NAME} as ";
                 message += $"{ex.Message}";
                 message += $"<br><br>{ex.StackTrace.ToString()}";
 
