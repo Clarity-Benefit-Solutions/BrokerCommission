@@ -62,7 +62,14 @@ namespace BrokerCommissionWebApp
             query += " WHERE 1=1 ";
 
             // todo: need specs. commented. add checkbox for all or only not yet emailed. show all statements not only those which have been emailed by default
-            //query += " AND H.FLAG!=3 ";
+            if (cboShowAllOrSome.Text == "Not Emailed")
+            {
+                query += " AND STATEMENT_PROCESSED_THIS_PERIOD <= 0 ";
+            }
+            else if (cboShowAllOrSome.Text == "Emailed")
+            {
+                query += " AND STATEMENT_PROCESSED_THIS_PERIOD > 0 ";
+            }
 
             if (cmb_broker.SelectedIndex > 0)
             {
@@ -72,7 +79,7 @@ namespace BrokerCommissionWebApp
             query += " ORDER BY A.BROKER_NAME ";
 
             SqlDataSource1.SelectCommand = query;
-            //lbl_count.Text = q
+
         }
 
         protected void LoadList()
@@ -89,6 +96,13 @@ namespace BrokerCommissionWebApp
             lbl_month.Text = month;
             lbl_year.Text = year.ToString();
 
+            //
+            cboShowAllOrSome.Items.Clear();
+            cboShowAllOrSome.Items.Add(new ListEditItem("All"));
+            cboShowAllOrSome.Items.Add(new ListEditItem("Not Emailed"));
+            cboShowAllOrSome.Items.Add(new ListEditItem("Emailed"));
+            cboShowAllOrSome.SelectedIndex = 0;
+            //
 
             cmb_broker.Items.Clear();
             cmb_broker.Items.Add(new ListEditItem("All"));
@@ -234,6 +248,11 @@ namespace BrokerCommissionWebApp
 
         }
 
+
+        protected void cboShowAllOrSome_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataLoad();
+        }
 
 
 

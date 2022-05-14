@@ -16,7 +16,7 @@ namespace BrokerCommissionWebApp.DataModel
     {
         public int ID { get; set; }
         public string INVOICE_NUM { get; set; }
-        public decimal OPEN_BALANCE { get; set; }
+        public Nullable<decimal> OPEN_BALANCE { get; set; }
         public string INVOICE_NUM_FORMATTED { get; set; }
         public decimal COMMISSION_PAID { get; set; }
         public string month { get; set; }

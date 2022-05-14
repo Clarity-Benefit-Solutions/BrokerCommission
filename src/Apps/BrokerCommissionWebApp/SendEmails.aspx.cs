@@ -63,8 +63,14 @@ namespace BrokerCommissionWebApp
             {
 
                 // setup statement header list
-                //tod: uncoment next line
-                var headers = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID != null /*&& ( x.FLAG == 0 || x.FLAG == 4 )*/)
+                //note: take only those invoices we have not already processed this month
+                var headers = db.STATEMENT_HEADER
+                    .Where(x => x.MONTH == month
+                            && x.YEAR == year
+                            && x.BROKER_ID != null
+                            && x.STATEMENT_PROCESSED_THIS_PERIOD <= 0
+                    /*&& ( x.FLAG == 0 || x.FLAG == 4 )*/
+                    )
                     .OrderBy(x => x.BROKER_ID).ToList();
                 int sent = 0;
                 int errors = 0;
@@ -133,6 +139,8 @@ namespace BrokerCommissionWebApp
 
             } //try
 
+            // refresh data
+            util.reProcessImportedRawData();
         }
 
         protected void sendEmailForStatement(STATEMENT_HEADER header)

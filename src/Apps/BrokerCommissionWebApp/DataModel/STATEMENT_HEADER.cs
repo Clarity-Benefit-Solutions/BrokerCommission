@@ -32,6 +32,7 @@ namespace BrokerCommissionWebApp.DataModel
         public Nullable<decimal> STATEMENT_ALREADY_PAID_TOTAL { get; set; }
         public Nullable<decimal> TOTAL { get; set; }
         public Nullable<int> PAYLOCITY_ID { get; set; }
+        public Nullable<decimal> STATEMENT_PROCESSED_THIS_PERIOD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STATEMENT_DETAILS> STATEMENT_DETAILS { get; set; }

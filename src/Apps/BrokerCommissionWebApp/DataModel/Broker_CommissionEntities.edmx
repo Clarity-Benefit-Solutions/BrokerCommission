@@ -219,7 +219,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="INVOICE_NUM" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="OPEN_BALANCE" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OPEN_BALANCE" Type="numeric" Precision="18" Scale="2" />
           <Property Name="COMMISSION_PAID" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="INVOICE_NUM_FORMATTED" Type="varchar" MaxLength="500" StoreGeneratedPattern="Computed" />
           <Property Name="month" Type="varchar" MaxLength="50" Nullable="false" />
@@ -253,6 +253,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
           <Property Name="month" Type="varchar" MaxLength="50" />
           <Property Name="year" Type="int" />
           <Property Name="line_payment_status" Type="varchar" MaxLength="100" />
+          <Property Name="TOTAL_PRICE_PAID_THIS_PERIOD" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="STATEMENT_DETAILS_ADD">
           <Key>
@@ -304,6 +305,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
           <Property Name="month" Type="varchar" MaxLength="50" />
           <Property Name="year" Type="int" />
           <Property Name="line_payment_status" Type="varchar" MaxLength="100" />
+          <Property Name="TOTAL_PRICE_PAID_THIS_PERIOD" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="STATEMENT_HEADER">
           <Key>
@@ -321,6 +323,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
           <Property Name="STATEMENT_ALREADY_PAID_TOTAL" Type="numeric" Precision="18" Scale="2" />
           <Property Name="TOTAL" Type="numeric" Precision="18" Scale="2" />
           <Property Name="PAYLOCITY_ID" Type="int" />
+          <Property Name="STATEMENT_PROCESSED_THIS_PERIOD" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="STATEMENT_HEADER_ARCHIVE">
           <Key>
@@ -339,6 +342,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
           <Property Name="STATEMENT_PENDING_TOTAL" Type="numeric" Precision="18" Scale="2" />
           <Property Name="PAYLOCITY_ID" Type="int" />
           <Property Name="TOTAL" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="STATEMENT_PROCESSED_THIS_PERIOD" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Broker_Commission.dbo.BROKER_CLIENT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1351,7 +1355,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="INVOICE_NUM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="OPEN_BALANCE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OPEN_BALANCE" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="INVOICE_NUM_FORMATTED" Type="String" MaxLength="500" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="COMMISSION_PAID" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="month" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1387,6 +1391,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="line_payment_status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BROKER_MASTER" Relationship="Self.STATEMENT_DETAILS_broker__fk" FromRole="STATEMENT_DETAILS" ToRole="BROKER_MASTER" />
           <NavigationProperty Name="STATEMENT_HEADER" Relationship="Self.STATEMENT_DETAILS__header_fk" FromRole="STATEMENT_DETAILS" ToRole="STATEMENT_HEADER" />
+          <Property Name="TOTAL_PRICE_PAID_THIS_PERIOD" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="STATEMENT_DETAILS_ADD">
           <Key>
@@ -1438,6 +1443,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="month" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="year" Type="Int32" />
           <Property Name="line_payment_status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TOTAL_PRICE_PAID_THIS_PERIOD" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="STATEMENT_HEADER">
           <Key>
@@ -1456,6 +1462,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <NavigationProperty Name="STATEMENT_DETAILS" Relationship="Self.STATEMENT_DETAILS__header_fk" FromRole="STATEMENT_HEADER" ToRole="STATEMENT_DETAILS" />
           <Property Name="TOTAL" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="PAYLOCITY_ID" Type="Int32" />
+          <Property Name="STATEMENT_PROCESSED_THIS_PERIOD" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="STATEMENT_HEADER_ARCHIVE">
           <Key>
@@ -1474,6 +1481,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="STATEMENT_PENDING_TOTAL" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="PAYLOCITY_ID" Type="Int32" />
           <Property Name="TOTAL" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="STATEMENT_PROCESSED_THIS_PERIOD" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="BROKER_GROUP">
           <Key>
@@ -2164,6 +2172,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <EntitySetMapping Name="STATEMENT_DETAILS">
             <EntityTypeMapping TypeName="Broker_CommissionModel.STATEMENT_DETAILS">
               <MappingFragment StoreEntitySet="STATEMENT_DETAILS">
+                <ScalarProperty Name="TOTAL_PRICE_PAID_THIS_PERIOD" ColumnName="TOTAL_PRICE_PAID_THIS_PERIOD" />
                 <ScalarProperty Name="DETAIL_ID" ColumnName="DETAIL_ID" />
                 <ScalarProperty Name="HEADER_ID" ColumnName="HEADER_ID" />
                 <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
@@ -2216,6 +2225,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <EntitySetMapping Name="STATEMENT_DETAILS_ARCHIVE">
             <EntityTypeMapping TypeName="Broker_CommissionModel.STATEMENT_DETAILS_ARCHIVE">
               <MappingFragment StoreEntitySet="STATEMENT_DETAILS_ARCHIVE">
+                <ScalarProperty Name="TOTAL_PRICE_PAID_THIS_PERIOD" ColumnName="TOTAL_PRICE_PAID_THIS_PERIOD" />
                 <ScalarProperty Name="ARCHIVE_DETAIL_ID" ColumnName="ARCHIVE_DETAIL_ID" />
                 <ScalarProperty Name="DETAIL_ID" ColumnName="DETAIL_ID" />
                 <ScalarProperty Name="HEADER_ID" ColumnName="HEADER_ID" />
@@ -2245,6 +2255,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <EntitySetMapping Name="STATEMENT_HEADER">
             <EntityTypeMapping TypeName="Broker_CommissionModel.STATEMENT_HEADER">
               <MappingFragment StoreEntitySet="STATEMENT_HEADER">
+                <ScalarProperty Name="STATEMENT_PROCESSED_THIS_PERIOD" ColumnName="STATEMENT_PROCESSED_THIS_PERIOD" />
                 <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
                 <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
                 <ScalarProperty Name="HEADER_ID" ColumnName="HEADER_ID" />
@@ -2263,6 +2274,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <EntitySetMapping Name="STATEMENT_HEADER_ARCHIVE">
             <EntityTypeMapping TypeName="Broker_CommissionModel.STATEMENT_HEADER_ARCHIVE">
               <MappingFragment StoreEntitySet="STATEMENT_HEADER_ARCHIVE">
+                <ScalarProperty Name="STATEMENT_PROCESSED_THIS_PERIOD" ColumnName="STATEMENT_PROCESSED_THIS_PERIOD" />
                 <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
                 <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
                 <ScalarProperty Name="ARCHIVE_HEADER_ID" ColumnName="ARCHIVE_HEADER_ID" />

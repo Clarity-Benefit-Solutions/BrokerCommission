@@ -7,11 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrokerCommissionWebApp {
-    
-    
-    public partial class Upload_Result {
-        
+namespace BrokerCommissionWebApp
+{
+
+
+    public partial class Upload_Result
+    {
+
+        /// <summary>
+        /// cboShowAllOrSome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cboShowAllOrSome;
+
         /// <summary>
         /// ASPxButton1 control.
         /// </summary>
@@ -20,7 +31,7 @@ namespace BrokerCommissionWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton ASPxButton1;
-        
+
         /// <summary>
         /// btn_Approve_Email control.
         /// </summary>
@@ -29,7 +40,7 @@ namespace BrokerCommissionWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton btn_Approve_Email;
-        
+
         /// <summary>
         /// ASPxFormLayout1 control.
         /// </summary>
@@ -38,7 +49,7 @@ namespace BrokerCommissionWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
-        
+
         /// <summary>
         /// lbl_month control.
         /// </summary>
@@ -47,7 +58,7 @@ namespace BrokerCommissionWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxLabel lbl_month;
-        
+
         /// <summary>
         /// lbl_year control.
         /// </summary>
@@ -56,7 +67,7 @@ namespace BrokerCommissionWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxLabel lbl_year;
-        
+
         /// <summary>
         /// cmb_broker control.
         /// </summary>
@@ -65,7 +76,7 @@ namespace BrokerCommissionWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxComboBox cmb_broker;
-        
+
         /// <summary>
         /// ASPxMenu1 control.
         /// </summary>
@@ -74,7 +85,7 @@ namespace BrokerCommissionWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxMenu ASPxMenu1;
-        
+
         /// <summary>
         /// gridExport control.
         /// </summary>
@@ -83,7 +94,7 @@ namespace BrokerCommissionWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridViewExporter gridExport;
-        
+
         /// <summary>
         /// lbl_count control.
         /// </summary>
@@ -92,7 +103,7 @@ namespace BrokerCommissionWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxLabel lbl_count;
-        
+
         /// <summary>
         /// grid_summary control.
         /// </summary>
@@ -101,7 +112,7 @@ namespace BrokerCommissionWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView grid_summary;
-        
+
         /// <summary>
         /// SqlDataSource1 control.
         /// </summary>

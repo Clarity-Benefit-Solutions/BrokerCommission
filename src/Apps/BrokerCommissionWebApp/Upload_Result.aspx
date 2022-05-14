@@ -82,7 +82,9 @@
                 <h6 class="text-primary" style="font-weight: bold">UPLOAD RESULT</h6>
             </div>
             <div style="width: 100%; text-align: right; margin-bottom: 20px">
-
+                <dx:ASPxComboBox ID="cboShowAllOrSome" runat="server" Theme="Moderno" Width="50%"
+                    OnSelectedIndexChanged="cboShowAllOrSome_SelectedIndexChanged" AutoPostBack="True">
+                </dx:ASPxComboBox>
                 <dx:ASPxButton runat="server" ID="ASPxButton1" Text="REFRESH" Theme="Moderno"
                     OnClick="btn_refresh_OnClick">
                 </dx:ASPxButton>
@@ -149,12 +151,12 @@
                     VerticalScrollableHeight="400" VerticalScrollBarMode="Auto" VerticalScrollBarStyle="VirtualSmooth" />
                 <SettingsDataSecurity AllowDelete="False" AllowEdit="False" AllowInsert="False" />
                 <Columns>
-                    <dx:GridViewDataColumn Caption="INDEX" VisibleIndex="0"  FixedStyle="Left" Width="10%">
+                    <dx:GridViewDataColumn Caption="INDEX" VisibleIndex="0" FixedStyle="Left" Width="10%">
                         <SettingsHeaderFilter>
                             <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                         </SettingsHeaderFilter>
                         <DataItemTemplate>
-                           <%# Container.ItemIndex + 1 %>
+                            <%# Container.ItemIndex + 1 %>
                         </DataItemTemplate>
                     </dx:GridViewDataColumn>
                     <dx:GridViewDataTextColumn FieldName="BROKER_NAME" VisibleIndex="1" FixedStyle="Left" Width="30%" Caption="BROKER NAME">
