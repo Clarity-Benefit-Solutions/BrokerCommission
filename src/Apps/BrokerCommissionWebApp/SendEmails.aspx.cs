@@ -120,7 +120,7 @@ namespace BrokerCommissionWebApp
                     ASPxProgressBar1.Position = util.getPercentage(sent, totalCount);
                     lbl_time_execution.Text = Math.Round(Convert.ToDouble((watch.ElapsedMilliseconds) / 1000), 2) + " Seconds";
 
-                    if (sent + errors % 5 == 0)
+                    if ((sent + errors) % 5 == 0)
                     {
                         //lbl_status.Text = "Processing";
                         // todo: inform user that we have started this operation

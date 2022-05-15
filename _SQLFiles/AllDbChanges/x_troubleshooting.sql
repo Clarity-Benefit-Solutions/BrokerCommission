@@ -141,3 +141,14 @@ order by
     d.Num
   , d.Agent
   , Name;
+
+-- exec SP_IMPORT_FILE_SENT_SSIS  'MARCH', 2022;
+go
+select * from dbo.BROKER_MASTER where BROKER_NAME like '%DEL%';
+go
+Select * from dbo.STATEMENT_DETAILS where BROKER_ID = 26;
+go
+Select line_payment_status, sum(TOTAL_PRICE), sum(OPEN_BALANCE) from dbo.STATEMENT_DETAILS where BROKER_ID = 26
+group by line_payment_status;
+;
+delete from dbo.SENT_INVOICE where month ='MARCH' and year = 2022;

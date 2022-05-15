@@ -81,8 +81,9 @@
             <div class="headerPane" style="width: 100%; text-align: center">
                 <h6 class="text-primary" style="font-weight: bold">UPLOAD RESULT</h6>
             </div>
-            <div style="width: 100%; text-align: right; margin-bottom: 20px">
-                <dx:ASPxComboBox ID="cboShowAllOrSome" runat="server" Theme="Moderno" 
+            <div style="width: 100%; text-align: right; margin-bottom: 20px">&nbsp;&nbsp;
+                Show&nbsp;&nbsp;
+                <dx:ASPxComboBox ID="cboShowAllOrSome" runat="server" Theme="Moderno"  Width="25%"
                     OnSelectedIndexChanged="cboShowAllOrSome_SelectedIndexChanged" AutoPostBack="True">
                 </dx:ASPxComboBox>
                 &nbsp;&nbsp;

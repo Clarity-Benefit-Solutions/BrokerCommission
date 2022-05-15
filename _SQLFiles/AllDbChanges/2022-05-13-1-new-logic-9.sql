@@ -531,7 +531,8 @@ BEGIN
                         end
                     else
                         begin
-                            set @NEW_LINE_STATUS = concat( 'already paid: ' , @PRV_INV_SENT_AMOUNT );
+                            set @NEW_LINE_STATUS = concat( 'already paid', '' );
+                            /*: ' , @PRV_INV_SENT_AMOUNT */
                         end
                 end
             
@@ -567,3 +568,4 @@ BEGIN
 END
 go
 
+exec sp_update_header_totals
