@@ -745,38 +745,38 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
         <Function Name="format_field" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
           <Parameter Name="value" Type="varchar(max)" Mode="In" />
         </Function>
-        <Function Name="get_broker_commission_already_paid_amount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+        <Function Name="get_broker_commission_already_paid_amount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
           <Parameter Name="broker_id" Type="int" Mode="In" />
           <Parameter Name="month" Type="varchar" Mode="In" />
           <Parameter Name="year" Type="int" Mode="In" />
         </Function>
-        <Function Name="get_broker_commission_paid_amount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+        <Function Name="get_broker_commission_paid_amount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
           <Parameter Name="broker_id" Type="int" Mode="In" />
           <Parameter Name="month" Type="varchar" Mode="In" />
           <Parameter Name="year" Type="int" Mode="In" />
         </Function>
-        <Function Name="get_broker_commission_pending_amount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+        <Function Name="get_broker_commission_pending_amount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
           <Parameter Name="broker_id" Type="int" Mode="In" />
           <Parameter Name="month" Type="varchar" Mode="In" />
           <Parameter Name="year" Type="int" Mode="In" />
         </Function>
         <Function Name="get_current_statement_month" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
         <Function Name="get_current_statement_year" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="get_invoice_sent_total_open_balance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+        <Function Name="get_invoice_sent_total_open_balance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
           <Parameter Name="invNum" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="get_invoice_sent_total_paid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+        <Function Name="get_invoice_sent_total_paid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
           <Parameter Name="invNum" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="get_invoice_sent_total_processed_this_period" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+        <Function Name="get_invoice_sent_total_processed_this_period" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
           <Parameter Name="invNum" Type="nvarchar" Mode="In" />
           <Parameter Name="month" Type="varchar" Mode="In" />
           <Parameter Name="year" Type="int" Mode="In" />
         </Function>
-        <Function Name="get_total_processed_this_period" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+        <Function Name="get_total_processed_this_period" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
           <Parameter Name="header_id" Type="int" Mode="In" />
         </Function>
-        <Function Name="get_total_processed_this_period_NOTGOOD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+        <Function Name="get_total_processed_this_period_NOTGOOD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
           <Parameter Name="header_id" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_BU_PREVIOUSTABLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
