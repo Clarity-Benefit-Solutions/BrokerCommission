@@ -184,34 +184,6 @@ namespace BrokerCommissionWebApp
         }
 
 
-        //FRS_SSIS_PaymentFile
-        protected void execute_ssis()
-        {
-            string sum = "";
-            string query = "";
-
-            query = "[dbo].[SP_IMPORT_FILE_SENT_SSIS]";
-
-
-            string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
-
-            // Define the ADO.NET Objects
-
-
-            SqlConnection con = new SqlConnection(constr);
-
-            SqlCommand cmd = new SqlCommand(query, con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            con.Open();
-
-            int rowsAffected = cmd.ExecuteNonQuery();
-
-            con.Close();
-
-        }
-
-
 
         protected DataTable LoadDataForBrokersCombo()
         {

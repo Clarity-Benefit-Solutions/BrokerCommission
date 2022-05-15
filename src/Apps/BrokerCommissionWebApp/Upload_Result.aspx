@@ -82,9 +82,10 @@
                 <h6 class="text-primary" style="font-weight: bold">UPLOAD RESULT</h6>
             </div>
             <div style="width: 100%; text-align: right; margin-bottom: 20px">
-                <dx:ASPxComboBox ID="cboShowAllOrSome" runat="server" Theme="Moderno" Width="50%"
+                <dx:ASPxComboBox ID="cboShowAllOrSome" runat="server" Theme="Moderno" 
                     OnSelectedIndexChanged="cboShowAllOrSome_SelectedIndexChanged" AutoPostBack="True">
                 </dx:ASPxComboBox>
+                &nbsp;&nbsp;
                 <dx:ASPxButton runat="server" ID="ASPxButton1" Text="REFRESH" Theme="Moderno"
                     OnClick="btn_refresh_OnClick">
                 </dx:ASPxButton>

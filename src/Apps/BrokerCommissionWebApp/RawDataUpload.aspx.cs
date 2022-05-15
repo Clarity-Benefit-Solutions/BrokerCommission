@@ -160,21 +160,36 @@ namespace BrokerCommissionWebApp
                     string month = cmb_month.Text.ToUpper(); //util.GetCustomAbbreviatedMonthNames(int.Parse());  
                     int year = int.Parse(cmb_Year.Text);
 
+                    // todo: inform user that we have started this operation
+                    Response.Write($"{DateTime.Now} - Importing File <BR><BR>");
+                    Response.Flush();
+
+
                     // import raw data using sqlBulkCopy
                     util.ImportNewRawDataFile(util.rawDataUploadedFilePath);
 
                     // process imported data
                     //todo: show message: processing
 
+                    // todo: inform user that we have started this operation
+                    Response.Write($"{DateTime.Now} - Processing Imported Data<BR><BR>");
+                    Response.Flush();
+
                     // process imported data and generate statement tables
                     util.processImportedRawData(month, year);
 
+                    // todo: inform user that we have started this operation
+                    Response.Write($"{DateTime.Now} - Processed Imported Data<BR><BR>");
+                    Response.Flush();
+
                     //todo: show message: processed
 
+                    Response.Write("<script type='text/javascript'>"); Response.Write("window.location = '" + "/Upload_Result.aspx" + "'</script>"); Response.Flush();
                     // redirect to showing result of import and allowing user to view indiviodual statement, and generate and process all
-                    Response.Redirect("Upload_Result.aspx", false);
+                    //   Server.Transfer("Upload_Result.aspx", false);
                     // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
-                    Context.ApplicationInstance.CompleteRequest();
+                   // Response.End();
+                  //  Context.ApplicationInstance.CompleteRequest();
 
                 }
                 catch (Exception exception)
