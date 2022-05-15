@@ -147,8 +147,22 @@ namespace BrokerCommissionWebApp
                 /*   var list_paid = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE == 0).OrderBy(x => x.CLIENT_NAME).ToList();
                    var list_pending = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE != 0).OrderBy(x => x.CLIENT_NAME).ToList();
                 */
-                var list_paid = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.line_payment_status == "paid").OrderBy(x => x.CLIENT_NAME).OrderBy(x => x.QB_FEE).ToList();
-                var list_pending = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.line_payment_status == "pending").OrderBy(x => x.CLIENT_NAME).OrderBy(x => x.QB_FEE).ToList();
+                //todo: added filter for Total price > 0 and pending > 0
+                var list_paid = db.STATEMENT_DETAILS.Where(
+                    x => x.HEADER_ID == statementID &&
+                    x.line_payment_status == "paid" &&
+                    x.TOTAL_PRICE > 0
+                    ).OrderBy(x => x.CLIENT_NAME).OrderBy(x => x.QB_FEE)
+                    .ToList();
+                //
+                var list_pending = db.STATEMENT_DETAILS.Where
+                    (x => x.HEADER_ID == statementID && 
+                    x.line_payment_status == "pending" && 
+                    x.TOTAL_PRICE > 0
+                    )
+                    .OrderBy(x => x.CLIENT_NAME)
+                    .OrderBy(x => x.QB_FEE)
+                    .ToList();
                 //
 
 

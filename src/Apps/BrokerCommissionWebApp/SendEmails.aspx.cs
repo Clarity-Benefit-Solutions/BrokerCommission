@@ -168,20 +168,31 @@ namespace BrokerCommissionWebApp
             string finalOutputPath2 = $"{Path.GetDirectoryName(Path.GetDirectoryName(processingOutputPath2))}\\{Path.GetFileName(processingOutputPath2)}";
 
             // save invoice sent lines
+            Dictionary<string, decimal?> invNos = new Dictionary<string, decimal?>();
+            Dictionary<string, STATEMENT_DETAILS> distintLines = new Dictionary<string, STATEMENT_DETAILS>();
+
+            // use a dictionary as Linq.Select seems tio return duplicates
+            foreach (var line in pdfGenerationResults.statementLinesAddedToPdf)
+            {
+                string key = line.INVOICE_NUM?.Trim().ToUpper();
+                if (line.line_payment_status == "paid" && line.TOTAL_PRICE > 0 && !distintLines.ContainsKey(key))
+                {
+                    distintLines.Add(key, line);
+                }
+            }
+
             try
             {
-                List<STATEMENT_DETAILS> distintLines = pdfGenerationResults.statementLinesAddedToPdf.GroupBy(p => p.INVOICE_NUM?.Trim().ToUpper()).Select(g => g.First()).ToList();
-
                 // save Invoices that were paid so we dont pay them again
                 if (distintLines.Count > 0)
                 {
-                   
-                    //todo: get distinct inv numbers
-                    foreach (var statement_dtl in distintLines)
+                    foreach (var statement_dtl in distintLines.Values)
                     {
                         // tried insert using SP - we can either merge or raise error if already present - but got error in explicit transactions handling
-                        if (statement_dtl.line_payment_status == "paid")
+                        // Note:Do not insert zero commission lines as they will be picked up again and again for invoicing till we add a filter for that
+                        if (statement_dtl.line_payment_status == "paid" && statement_dtl.TOTAL_PRICE > 0)
                         {
+                            invNos.Add(statement_dtl.INVOICE_NUM, statement_dtl.TOTAL_PRICE);
                             var sentInvoice = new SENT_INVOICE()
                             {
                                 INVOICE_NUM = statement_dtl.INVOICE_NUM,
@@ -192,8 +203,11 @@ namespace BrokerCommissionWebApp
                                 year = header.YEAR,
                                 DATE_PAID = DateTime.Now
                             };
-
-                            db2.SENT_INVOICE.Add(sentInvoice);
+                            //ensure we never save zero commission lines - will caujse a UK error when we process for next month!
+                            if (sentInvoice.COMMISSION_PAID > 0)
+                            {
+                                db2.SENT_INVOICE.Add(sentInvoice);
+                            }
                         }
                     }
                 }
@@ -212,7 +226,9 @@ namespace BrokerCommissionWebApp
                 //todo: show error on UI by broker ideally in broker grid as well as below button
                 var message = $"Error Saving Sent Invoices Or Other Database Error Statement for {header.BROKER_NAME} as ";
                 message += $"{ex.Message}";
-                message += $"<br><br>{ex.StackTrace.ToString()}";
+                message += $"\r\n\r\n{ex.StackTrace.ToString()}";
+                message += $"\r\n{ex.StackTrace.ToString()}";
+                message += $"\r\nInvoiceNumbers:\r\n{invNos.Keys.ToArray().Join(",")}";
 
                 // save error message to both paths
                 FileUtils.WriteToFile($"{processingOutputPath1}.err", message, null);
