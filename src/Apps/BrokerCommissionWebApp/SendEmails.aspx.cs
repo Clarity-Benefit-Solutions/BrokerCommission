@@ -74,7 +74,7 @@ namespace BrokerCommissionWebApp
                             /*to pay + pending > 0*/
                             && x.TOTAL > 0
                             /*statement not yet generated and emailed*/
-                            && x.STATEMENT_PROCESSED_THIS_PERIOD <= 0
+                            && x.STATEMENT_TOTAL > 0
                     )
                     .OrderBy(x => x.BROKER_ID).ToList();
                 int sent = 0;

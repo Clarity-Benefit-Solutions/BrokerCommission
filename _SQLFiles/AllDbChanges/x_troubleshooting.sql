@@ -11,6 +11,18 @@ from
 order by
     vw_incorrect_inv_nos1.INVOICE_NUM;
 
+/* statement details */
+ select d.INVOICE_NUM, d.BROKER_NAME, d.BROKER_ID, d.CLIENT_NAME, d.QB_FEE
+                           from
+                               dbo.STATEMENT_DETAILS d
+                           where
+                                   d.INVOICE_NUM in (
+                                                        select
+                                                            INVOICE_NUM
+                                                        from
+                                                            vw_incorrect_inv_nos1
+                                                    )
+
 /* find incorrectly mapped brokers*/
 select distinct
     id
