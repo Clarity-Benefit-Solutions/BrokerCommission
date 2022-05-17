@@ -176,8 +176,19 @@ namespace BrokerCommissionWebApp
 
         protected void btn_refresh_OnClick(object sender, EventArgs e)
         {
+            // todo: inform user that we have started this operation
+            Response.Write($"{DateTime.Now} - Re-Processing Imported Data<BR><BR>");
+            Response.Flush();
+
             // reprocessa data
-            util.reProcessImportedRawData();
+            //util.reProcessImportedRawData();
+            util.Period period = util.getLastUpload();
+            util.processImportedRawData(period.month, period.year);
+
+            // todo: inform user that we have started this operation
+            Response.Write($"{DateTime.Now} - Processed Imported Data<BR><BR>");
+            Response.Flush();
+
 
             // load data
             DataLoad();
