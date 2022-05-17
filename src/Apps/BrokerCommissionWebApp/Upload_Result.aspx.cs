@@ -124,7 +124,7 @@ namespace BrokerCommissionWebApp
                 if (model != null)
                 {
                     int brokerID = model.BROKER_ID == null ? 0 : int.Parse(model.BROKER_ID.ToString());
-                    string url = "ViewFile.aspx?" + "&StatementID=" + headerID;
+                    string url = "ViewFile.aspx?" + "&BID=" + brokerID;
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "popup_window", "popupwindow('" + url + "','" + "View Download Files" + "','" + "1600" + "','" + "1000" + "');", true);
                     //Response.Redirect (url);
 
