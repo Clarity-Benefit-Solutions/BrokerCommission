@@ -44,11 +44,15 @@ namespace BrokerCommissionWebApp
                 cmb_month.Items.Add(new ListEditItem(items.ToString()));
             }
 
+            //cmb_month.SelectedIndex = -1;
 
             for (int i = DateTime.Now.Year - 2; i <= DateTime.Now.Year + 2; i++)
             {
                 cmb_Year.Items.Add(new ListEditItem(i.ToString()));
             }
+            //cmb_Year.SelectedIndex = -1;
+
+
         }
 
         #region Read CSV

@@ -200,10 +200,10 @@ namespace BrokerCommissionWebApp
                     WriteCell(tableindex, CurrentRow, 3, a.INVOICE_DATE == null ? "" : a.START_DATE, doc);
                     WriteCell(tableindex, CurrentRow, 4, a.FEE_MEMO.Count() > 30 ? a.FEE_MEMO.Substring(0, 30) + "..." : a.FEE_MEMO, doc);
                     WriteCell(tableindex, CurrentRow, 5, a.QUANTITY == null ? "0" : a.QUANTITY.ToString(), doc);
-                    WriteCell(tableindex, CurrentRow, 6, a.SALES_PRICE == null ? "$0.00" : (Utils.ToDecimal(a.SALES_PRICE).ToString("C3", CultureInfo.CurrentCulture)), doc);
-                    WriteCell(tableindex, CurrentRow, 7, a.SALES_PRICE == null ? "$0.00" : (Utils.ToDecimal((a.SALES_PRICE * a.QUANTITY)).ToString("C3", CultureInfo.CurrentCulture)), doc);
-                    WriteCell(tableindex, CurrentRow, 8, a.COMMISSION_RATE == null ? "0.00" : (Utils.ToDecimal(a.COMMISSION_RATE).ToString("C3", CultureInfo.CurrentCulture)), doc); // a.COMMISSION_RATE.ToString(), doc);
-                    WriteCell(tableindex, CurrentRow, 9, a.TOTAL_PRICE == null ? "$0.00" : (Utils.ToDecimal(a.TOTAL_PRICE).ToString("C3", CultureInfo.CurrentCulture)), doc);
+                    WriteCell(tableindex, CurrentRow, 6, a.SALES_PRICE == null ? "$0.00" : (Utils.ToDecimal(a.SALES_PRICE).ToString("C2", CultureInfo.CurrentCulture)), doc);
+                    WriteCell(tableindex, CurrentRow, 7, a.SALES_PRICE == null ? "$0.00" : (Utils.ToDecimal((a.SALES_PRICE * a.QUANTITY)).ToString("C2", CultureInfo.CurrentCulture)), doc);
+                    WriteCell(tableindex, CurrentRow, 8, a.COMMISSION_RATE == null ? "0.00" : (Utils.ToDecimal(a.COMMISSION_RATE).ToString("C2", CultureInfo.CurrentCulture)), doc); // a.COMMISSION_RATE.ToString(), doc);
+                    WriteCell(tableindex, CurrentRow, 9, a.TOTAL_PRICE == null ? "$0.00" : (Utils.ToDecimal(a.TOTAL_PRICE).ToString("C2", CultureInfo.CurrentCulture)), doc);
                     total_1 += a.TOTAL_PRICE == null ? 0 : Utils.ToDecimal(a.TOTAL_PRICE.ToString());
 
                     i++;
@@ -213,7 +213,7 @@ namespace BrokerCommissionWebApp
                     pdfGenerationResults.statementLinesAddedToPdf.Add(a);
 
                 }
-                SetBookMark(doc, "Paid_Total", Utils.ToDecimal(total_1).ToString("C3", CultureInfo.CurrentCulture));
+                SetBookMark(doc, "Paid_Total", Utils.ToDecimal(total_1).ToString("C2", CultureInfo.CurrentCulture));
                 CurrentRow = CurrentRow + 6;
 
                 decimal total_2 = 0.00m;
@@ -231,10 +231,10 @@ namespace BrokerCommissionWebApp
                     WriteCell(tableindex, CurrentRow, 3, a.INVOICE_DATE == null ? "" : a.START_DATE, doc);
                     WriteCell(tableindex, CurrentRow, 4, a.FEE_MEMO.Count() > 30 ? a.FEE_MEMO.Substring(0, 30) + "..." : a.FEE_MEMO, doc);
                     WriteCell(tableindex, CurrentRow, 5, a.QUANTITY == null ? "0" : a.QUANTITY.ToString(), doc);
-                    WriteCell(tableindex, CurrentRow, 6, a.SALES_PRICE == null ? "$0.00" : (Utils.ToDecimal(a.SALES_PRICE).ToString("C3", CultureInfo.CurrentCulture)), doc);
-                    WriteCell(tableindex, CurrentRow, 7, a.SALES_PRICE == null ? "$0.00" : (Utils.ToDecimal((a.SALES_PRICE * a.QUANTITY)).ToString("C3", CultureInfo.CurrentCulture)), doc);
-                    WriteCell(tableindex, CurrentRow, 8, a.COMMISSION_RATE == null ? "0.00" : (Utils.ToDecimal(a.COMMISSION_RATE).ToString("C3", CultureInfo.CurrentCulture)), doc); // a.COMMISSION_RATE.ToString(), doc);
-                    WriteCell(tableindex, CurrentRow, 9, a.TOTAL_PRICE == null ? "$0.00" : (Utils.ToDecimal(a.TOTAL_PRICE).ToString("C3", CultureInfo.CurrentCulture)), doc);
+                    WriteCell(tableindex, CurrentRow, 6, a.SALES_PRICE == null ? "$0.00" : (Utils.ToDecimal(a.SALES_PRICE).ToString("C2", CultureInfo.CurrentCulture)), doc);
+                    WriteCell(tableindex, CurrentRow, 7, a.SALES_PRICE == null ? "$0.00" : (Utils.ToDecimal((a.SALES_PRICE * a.QUANTITY)).ToString("C2", CultureInfo.CurrentCulture)), doc);
+                    WriteCell(tableindex, CurrentRow, 8, a.COMMISSION_RATE == null ? "0.00" : (Utils.ToDecimal(a.COMMISSION_RATE).ToString("C2", CultureInfo.CurrentCulture)), doc); // a.COMMISSION_RATE.ToString(), doc);
+                    WriteCell(tableindex, CurrentRow, 9, a.TOTAL_PRICE == null ? "$0.00" : (Utils.ToDecimal(a.TOTAL_PRICE).ToString("C2", CultureInfo.CurrentCulture)), doc);
 
                     total_2 += a.TOTAL_PRICE == null ? 0 : Utils.ToDecimal(a.TOTAL_PRICE.ToString());
 
@@ -242,7 +242,7 @@ namespace BrokerCommissionWebApp
                     CurrentRow++;
                 }
 
-                SetBookMark(doc, "pending_Total", Utils.ToDecimal(total_2).ToString("C3", CultureInfo.CurrentCulture));
+                SetBookMark(doc, "pending_Total", Utils.ToDecimal(total_2).ToString("C2", CultureInfo.CurrentCulture));
                 string urlsp = "http://" + System.Web.HttpContext.Current.Request.Url.Authority;
                 string imgpath = "<img width='250' height='100' src='" + urlsp + "/Content/Images/Clarity_Secondary.png.png' />";
                 DocumentBuilder dbuiderfuj = new DocumentBuilder(doc);

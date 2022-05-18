@@ -266,7 +266,8 @@ namespace BrokerCommissionWebApp
             {
                 //to = "aidubor@claritybenefitsolutions.com";
                 //to = "azhu@claritybenefitsolutions.com" ;
-                to = util.getEmailAddress(int.Parse(header.BROKER_ID.ToString()));
+                to = "claritydev@claritybenefitsolutions.com";
+                //to = util.getEmailAddress(int.Parse(header.BROKER_ID.ToString()));
             }
             else
             {
