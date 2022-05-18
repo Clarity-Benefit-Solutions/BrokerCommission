@@ -761,13 +761,13 @@ namespace BrokerCommissionWebApp
             else
             {
                 //todo: uncomment before live
-                //mail.CC.Add(copy);
-                //string copy2 = secondemail(BrokerName);
-                //if (copy2 != "")
-                //{
-                //    MailAddress copy_2 = new MailAddress(copy2);
-                //    mail.CC.Add(copy_2);
-                //}
+                mail.CC.Add(copy);
+                string copy2 = secondemail(BrokerName);
+                if (copy2 != "")
+                {
+                    MailAddress copy_2 = new MailAddress(copy2);
+                    mail.CC.Add(copy_2);
+                }
             }
             mail.IsBodyHtml = true;
             mail.Attachments.Add(attachment);

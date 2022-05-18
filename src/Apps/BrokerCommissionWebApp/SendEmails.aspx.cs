@@ -274,8 +274,8 @@ namespace BrokerCommissionWebApp
             {
                 //todo: uncomment before live
                 // todo: change to actual email address when ready
-                to = "claritydev@claritybenefitsolutions.com";
-                // to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
+                //to = "claritydev@claritybenefitsolutions.com";
+                to = util.getEmailAddress(int.Parse(header.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
             }
 
             // send the email with pdf attached - use the one wiothout the paylocity code
