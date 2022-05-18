@@ -479,7 +479,9 @@ namespace BrokerCommissionWebApp
                         NetworkCred.UserName = from_username;
                         NetworkCred.Password = from_email_pass;
                         smtp.Credentials = NetworkCred;
-                        smtp.Send(mm);
+
+                        //todo: check why this function is used and is it needed
+                        //smtp.Send(mm);
 
                         //Original Mail setting comment out 05/04/2022
                         //smtp.Host = "smtp.office365.com";
@@ -717,6 +719,7 @@ namespace BrokerCommissionWebApp
 
             SmtpClient smtp = new SmtpClient();
 
+
             smtp.Host = from_host;
             smtp.Port = Int32.Parse(from_port);
             smtp.EnableSsl = from_enablessl != "false" ? true : false;
@@ -750,21 +753,23 @@ namespace BrokerCommissionWebApp
 
             if (debugMode == "True")
             {
-                mail.CC.Add(new MailAddress("finance-it@claritybenefitsolutions.com"));
+                //mail.CC.Add(new MailAddress("finance-it@claritybenefitsolutions.com"));
             }
             else
             {
-                mail.CC.Add(copy);
-                mail.CC.Add(new MailAddress("azhu@claritybenefitsolutions.com"));
-                string copy2 = secondemail(BrokerName);
-                if (copy2 != "")
-                {
-                    MailAddress copy_2 = new MailAddress(copy2);
-                    mail.CC.Add(copy_2);
-                }
+                //todo: uncomment before live
+                //mail.CC.Add(copy);
+                //string copy2 = secondemail(BrokerName);
+                //if (copy2 != "")
+                //{
+                //    MailAddress copy_2 = new MailAddress(copy2);
+                //    mail.CC.Add(copy_2);
+                //}
             }
             mail.IsBodyHtml = true;
             mail.Attachments.Add(attachment);
+
+         
             smtp.Send(mail);
         }
 
