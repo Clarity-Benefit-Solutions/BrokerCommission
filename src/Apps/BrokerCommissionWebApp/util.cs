@@ -713,6 +713,9 @@ namespace BrokerCommissionWebApp
         }
         public static void email_send_with_attachment(string sender, string receiver, string filePath, string BrokerName, string Month, int year)
         {
+            // sumeet: note: this line ios ESSNTIAL top send email via outlook
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+
             MailMessage mail = new MailMessage(sender, receiver);
 
             MailAddress copy = new MailAddress(cc_email);
