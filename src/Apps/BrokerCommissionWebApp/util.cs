@@ -479,7 +479,9 @@ namespace BrokerCommissionWebApp
                         NetworkCred.UserName = from_username;
                         NetworkCred.Password = from_email_pass;
                         smtp.Credentials = NetworkCred;
-                        smtp.Send(mm);
+
+                        //todo: check why this function is used and is it needed
+                        //smtp.Send(mm);
 
                         //Original Mail setting comment out 05/04/2022
                         //smtp.Host = "smtp.office365.com";
@@ -711,11 +713,15 @@ namespace BrokerCommissionWebApp
         }
         public static void email_send_with_attachment(string sender, string receiver, string filePath, string BrokerName, string Month, int year)
         {
+            // sumeet: note: this line ios ESSNTIAL top send email via outlook
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+
             MailMessage mail = new MailMessage(sender, receiver);
 
             MailAddress copy = new MailAddress(cc_email);
 
             SmtpClient smtp = new SmtpClient();
+
 
             smtp.Host = from_host;
             smtp.Port = Int32.Parse(from_port);
@@ -750,12 +756,12 @@ namespace BrokerCommissionWebApp
 
             if (debugMode == "True")
             {
-                mail.CC.Add(new MailAddress("finance-it@claritybenefitsolutions.com"));
+                //mail.CC.Add(new MailAddress("finance-it@claritybenefitsolutions.com"));
             }
             else
             {
+                //todo: uncomment before live
                 mail.CC.Add(copy);
-                mail.CC.Add(new MailAddress("azhu@claritybenefitsolutions.com"));
                 string copy2 = secondemail(BrokerName);
                 if (copy2 != "")
                 {
@@ -765,6 +771,8 @@ namespace BrokerCommissionWebApp
             }
             mail.IsBodyHtml = true;
             mail.Attachments.Add(attachment);
+
+         
             smtp.Send(mail);
         }
 

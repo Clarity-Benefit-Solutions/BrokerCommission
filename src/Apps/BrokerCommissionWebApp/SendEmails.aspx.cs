@@ -47,6 +47,7 @@ namespace BrokerCommissionWebApp
         protected void sendEmails()
         {
 
+            
             var watch = new System.Diagnostics.Stopwatch();
             watch.Start();
             string month = lbl_month.Text;
@@ -54,6 +55,10 @@ namespace BrokerCommissionWebApp
 
             try
             {
+
+                // todo: inform user that we have started this operation
+                Response.Write($"{DateTime.Now} - Starting Sending Statements <BR><BR>");
+                Response.Flush();
 
                 // setup statement header list
                 //note: take only those invoices we have not already processed this month and have a pending amount
@@ -69,7 +74,7 @@ namespace BrokerCommissionWebApp
                             /*to pay + pending > 0*/
                             && x.TOTAL > 0
                             /*statement not yet generated and emailed*/
-                            && x.STATEMENT_PROCESSED_THIS_PERIOD <= 0
+                            && x.STATEMENT_TOTAL > 0
                     )
                     .OrderBy(x => x.BROKER_ID).ToList();
                 int sent = 0;
@@ -78,6 +83,11 @@ namespace BrokerCommissionWebApp
 
                 // show statement count
                 lbl_TotalCount.Text = totalCount.ToString();
+
+
+                // todo: inform user that we have started this operation
+                Response.Write($"{DateTime.Now} - Processing {totalCount} Statements <BR><BR>");
+                Response.Flush();
 
 
                 // send email for each header
@@ -110,9 +120,13 @@ namespace BrokerCommissionWebApp
                     ASPxProgressBar1.Position = util.getPercentage(sent, totalCount);
                     lbl_time_execution.Text = Math.Round(Convert.ToDouble((watch.ElapsedMilliseconds) / 1000), 2) + " Seconds";
 
-                    if (position == 10)
+                    if ((sent + errors) % 5 == 0)
                     {
-                        lbl_status.Text = "Processing";
+                        //lbl_status.Text = "Processing";
+                        // todo: inform user that we have started this operation
+                        Response.Write($"{DateTime.Now} - Processed {sent} Statements with {errors} Errors<BR><BR>");
+                        Response.Flush();
+
                     }
 
                 } // for each statement
@@ -120,6 +134,11 @@ namespace BrokerCommissionWebApp
                 watch.Stop();
 
                 lbl_time_execution.Text = Math.Round(Convert.ToDouble((watch.ElapsedMilliseconds) / 1000), 2) + " Seconds";
+
+                // todo: inform user that we have started this operation
+                Response.Write($"{DateTime.Now} - Processed {totalCount} Statements with {errors} Errors<BR><BR>");
+                Response.Flush();
+
 
             } // try
 
@@ -131,6 +150,7 @@ namespace BrokerCommissionWebApp
                 //Context.ApplicationInstance.CompleteRequest();
                 watch.Stop();
                 Response.Write(exception.Message);
+                Response.Flush();
 
                 lbl_time_execution.Text = Math.Round(Convert.ToDouble((watch.ElapsedMilliseconds) / 1000), 2) + " Seconds";
                 lbl_not_sent.Text = "0";
@@ -140,13 +160,13 @@ namespace BrokerCommissionWebApp
             } //try
             // todo: inform user that we have started this operation
             // refresh data
-            Response.Write("Refreshing Totals<BR><BR>");
+            Response.Write($"{DateTime.Now} - Starting Refresh Totals<BR><BR>");
             Response.Flush();
 
             //
             util.reProcessImportedRawData();
             //
-            Response.Write("Refreshed Totals<BR><BR>");
+            Response.Write($"{DateTime.Now} - Completed Refresh Totals<BR><BR>");
             Response.Flush();
         }
 
@@ -242,17 +262,20 @@ namespace BrokerCommissionWebApp
             string from = util.from_email;
             string to = "";
 
+
             if (util.debugMode == "True")
             {
                 //to = "aidubor@claritybenefitsolutions.com";
                 //to = "azhu@claritybenefitsolutions.com" ;
-                to = util.getEmailAddress(int.Parse(header.BROKER_ID.ToString()));
+                to = "claritydev@claritybenefitsolutions.com";
+                //to = util.getEmailAddress(int.Parse(header.BROKER_ID.ToString()));
             }
             else
             {
+                //todo: uncomment before live
                 // todo: change to actual email address when ready
-                to = "claritydev@claritybenefitsolutions.com";
-                // to = util.getEmailAddress(int.Parse(item.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
+                //to = "claritydev@claritybenefitsolutions.com";
+                to = util.getEmailAddress(int.Parse(header.BROKER_ID.ToString())); //remove comment Ayo 05/06/2022
             }
 
             // send the email with pdf attached - use the one wiothout the paylocity code

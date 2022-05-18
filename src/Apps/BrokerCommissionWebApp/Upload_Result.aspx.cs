@@ -61,7 +61,7 @@ namespace BrokerCommissionWebApp
             // todo: need specs. commented. add checkbox for all or only not yet emailed. show all statements not only those which have been emailed by default
             if (cboShowAllOrSome.Text == "Not Paid")
             {
-                query += " AND STATEMENT_PROCESSED_THIS_PERIOD <= 0 ";
+                query += " AND STATEMENT_TOTAL > 0 ";
             }
             else if (cboShowAllOrSome.Text == "Paid")
             {
@@ -124,7 +124,7 @@ namespace BrokerCommissionWebApp
                 if (model != null)
                 {
                     int brokerID = model.BROKER_ID == null ? 0 : int.Parse(model.BROKER_ID.ToString());
-                    string url = "ViewFile.aspx?" + "&StatementID=" + headerID;
+                    string url = "ViewFile.aspx?" + "&BID=" + brokerID;
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "popup_window", "popupwindow('" + url + "','" + "View Download Files" + "','" + "1600" + "','" + "1000" + "');", true);
                     //Response.Redirect (url);
 
@@ -176,39 +176,22 @@ namespace BrokerCommissionWebApp
 
         protected void btn_refresh_OnClick(object sender, EventArgs e)
         {
+            // todo: inform user that we have started this operation
+            Response.Write($"{DateTime.Now} - Re-Processing Imported Data<BR><BR>");
+            Response.Flush();
+
             // reprocessa data
-            util.reProcessImportedRawData();
+            //util.reProcessImportedRawData();
+            util.Period period = util.getLastUpload();
+            util.processImportedRawData(period.month, period.year);
+
+            // todo: inform user that we have started this operation
+            Response.Write($"{DateTime.Now} - Processed Imported Data<BR><BR>");
+            Response.Flush();
+
 
             // load data
             DataLoad();
-        }
-
-
-        //FRS_SSIS_PaymentFile
-        protected void execute_ssis()
-        {
-            string sum = "";
-            string query = "";
-
-            query = "[dbo].[SP_IMPORT_FILE_SENT_SSIS]";
-
-
-            string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
-
-            // Define the ADO.NET Objects
-
-
-            SqlConnection con = new SqlConnection(constr);
-
-            SqlCommand cmd = new SqlCommand(query, con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            con.Open();
-
-            int rowsAffected = cmd.ExecuteNonQuery();
-
-            con.Close();
-
         }
 
 

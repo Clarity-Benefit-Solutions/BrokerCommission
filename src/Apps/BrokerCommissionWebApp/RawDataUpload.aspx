@@ -48,7 +48,7 @@
                                 <dx:LayoutItemNestedControlContainer>
                                     <dx:ASPxTextBox runat="server" ID="ASPxTextBox1" Theme="Moderno" Width="100%" >
                                         <ValidationSettings SetFocusOnError="true">
-                                            <RequiredField IsRequired="True" />
+                                            <RequiredField IsRequired="false" />
                                         </ValidationSettings>
                                     </dx:ASPxTextBox>
                                 </dx:LayoutItemNestedControlContainer>
