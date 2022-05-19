@@ -47,13 +47,13 @@
                         <BorderBottom BorderWidth="1px" />
                         <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
                         <Columns>
-                            <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" FixedStyle="Left" Caption="Memo ID" Width="10%">
+                            <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" FixedStyle="Left" Caption="Memo ID" Width="10%" HeaderStyle-HorizontalAlign="Center">
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="MEMO" VisibleIndex="1" FixedStyle="Left" Width="55%" >
+                            <dx:GridViewDataTextColumn FieldName="MEMO" VisibleIndex="1" FixedStyle="Left" Width="55%" HeaderStyle-HorizontalAlign="Center">
                             </dx:GridViewDataTextColumn>
 
 
-                            <dx:GridViewDataColumn Caption="COMMISIONABLE?" VisibleIndex="10" Width="20%">
+                            <dx:GridViewDataColumn Caption="COMMISIONABLE?" CellStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" VisibleIndex="10" Width="20%">
                                 <SettingsHeaderFilter>
                                     <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                 </SettingsHeaderFilter>
@@ -62,7 +62,7 @@
                                     </dx:ASPxCheckBox>
                                 </DataItemTemplate>
                             </dx:GridViewDataColumn>
-                            <dx:GridViewDataColumn Caption="Edit" VisibleIndex="10" Width="15%">
+                            <dx:GridViewDataColumn Caption="Edit" VisibleIndex="10" Width="15%" CellStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" >
                                 <SettingsHeaderFilter>
                                     <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                 </SettingsHeaderFilter>

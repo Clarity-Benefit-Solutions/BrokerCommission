@@ -32,23 +32,23 @@
 
                                 <dx:ASPxGridView ID="ASPxGridView1" runat="server" Width="100%" Theme="MaterialCompact" OnPageIndexChanged="ASPxGridView1_PageIndexChanged" OnRowCommand="ASPxGridView1_RowCommand">
                                     <Columns>
-                                        <dx:GridViewDataTextColumn FieldName="QB_CLIENT_NAME" ShowInCustomizationForm="True" VisibleIndex="2" Caption="NAME" Width="20%">
+                                        <dx:GridViewDataTextColumn FieldName="QB_CLIENT_NAME" ShowInCustomizationForm="True" VisibleIndex="2" Caption="NAME" Width="20%" HeaderStyle-HorizontalAlign="Center">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="QB_FEE" ShowInCustomizationForm="True" VisibleIndex="3" Caption="ITEM" Width="20%">
+                                        <dx:GridViewDataTextColumn FieldName="QB_FEE" ShowInCustomizationForm="True" VisibleIndex="3" Caption="ITEM" Width="20%" HeaderStyle-HorizontalAlign="Center">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="BROKER_NAME" ShowInCustomizationForm="True" VisibleIndex="4" Caption="BROKER NAME" Width="20%">
+                                        <dx:GridViewDataTextColumn FieldName="BROKER_NAME" ShowInCustomizationForm="True" VisibleIndex="4" Caption="BROKER NAME" Width="20%" HeaderStyle-HorizontalAlign="Center">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="QUANTITY" ShowInCustomizationForm="True" VisibleIndex="5" Caption="QUANTITY" Width="10%">
+                                        <dx:GridViewDataTextColumn FieldName="QUANTITY" ShowInCustomizationForm="True" VisibleIndex="5" Caption="QUANTITY" Width="10%" HeaderStyle-HorizontalAlign="Center">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="COMMISSION_RATE" ShowInCustomizationForm="True" VisibleIndex="6" Caption="RATE" Width="10%">
+                                        <dx:GridViewDataTextColumn FieldName="COMMISSION_RATE" ShowInCustomizationForm="True" VisibleIndex="6" Caption="RATE" Width="10%" HeaderStyle-HorizontalAlign="Center">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="SALES_PRICE" ShowInCustomizationForm="True" VisibleIndex="9" Caption="AMOUNT" Width="10%">
+                                        <dx:GridViewDataTextColumn FieldName="SALES_PRICE" ShowInCustomizationForm="True" VisibleIndex="9" Caption="AMOUNT" Width="10%" HeaderStyle-HorizontalAlign="Center">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="TOTAL_PRICE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="COMMISSION AMOUNT" Width="10%">
+                                        <dx:GridViewDataTextColumn FieldName="TOTAL_PRICE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="COMMISSION AMOUNT" Width="10%" HeaderStyle-HorizontalAlign="Center">
                                         </dx:GridViewDataTextColumn>
                                         <%--      <dx:GridViewDataTextColumn FieldName="START_DATE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="START_DATE" Width="10%">
                                         </dx:GridViewDataTextColumn>--%>
-                                        <dx:GridViewDataColumn Caption="Edit" VisibleIndex="10" Width="120px">
+                                        <dx:GridViewDataColumn Caption="Edit" VisibleIndex="10" Width="120px" HeaderStyle-HorizontalAlign="Center">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                             </SettingsHeaderFilter>
@@ -309,7 +309,7 @@
                                             <CellStyle HorizontalAlign="Left"></CellStyle>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataColumn Caption="AMOUNT($)" VisibleIndex="2"
-                                            Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                            Width="12%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -324,7 +324,7 @@
                                             <CellStyle HorizontalAlign="Left"></CellStyle>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataColumn Caption="COMMISSION RATE ($)" VisibleIndex="4"
-                                            Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                            Width="16%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
