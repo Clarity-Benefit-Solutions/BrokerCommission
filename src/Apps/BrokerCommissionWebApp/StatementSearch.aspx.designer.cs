@@ -33,6 +33,24 @@ namespace BrokerCommissionWebApp
         protected global::DevExpress.Web.ASPxLabel lbl_month;
 
         /// <summary>
+        /// from_month control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel from_month;
+
+        /// <summary>
+        /// from_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit from_date;
+
+        /// <summary>
         /// lbl_year control.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,24 @@ namespace BrokerCommissionWebApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxLabel lbl_year;
+
+        /// <summary>
+        /// to_month control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel to_month;
+
+        /// <summary>
+        /// to_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit to_date;
 
         /// <summary>
         /// cmb_broker control.

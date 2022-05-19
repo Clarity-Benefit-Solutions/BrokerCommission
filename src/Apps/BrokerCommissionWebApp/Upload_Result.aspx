@@ -153,7 +153,7 @@
                     VerticalScrollableHeight="400" VerticalScrollBarMode="Auto" VerticalScrollBarStyle="VirtualSmooth" />
                 <SettingsDataSecurity AllowDelete="False" AllowEdit="False" AllowInsert="False" />
                 <Columns>
-                    <dx:GridViewDataColumn Caption="INDEX" VisibleIndex="0" FixedStyle="Left" Width="10%">
+                    <dx:GridViewDataColumn Caption="INDEX" VisibleIndex="0" FixedStyle="Left" Width="10%" HeaderStyle-HorizontalAlign="Center">
                         <SettingsHeaderFilter>
                             <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                         </SettingsHeaderFilter>
@@ -161,17 +161,17 @@
                             <%# Container.ItemIndex + 1 %>
                         </DataItemTemplate>
                     </dx:GridViewDataColumn>
-                    <dx:GridViewDataTextColumn FieldName="BROKER_NAME" VisibleIndex="1" FixedStyle="Left" Width="30%" Caption="BROKER NAME">
+                    <dx:GridViewDataTextColumn FieldName="BROKER_NAME" VisibleIndex="1" FixedStyle="Left" Width="30%" HeaderStyle-HorizontalAlign="Center" Caption="BROKER NAME">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="PAYLOCITY_ID" VisibleIndex="2" FixedStyle="Left" Width="10%" Caption="PAYLOCITY ID">
+                    <dx:GridViewDataTextColumn FieldName="PAYLOCITY_ID" VisibleIndex="2" FixedStyle="Left" Width="10%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center" Caption="PAYLOCITY ID">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="STATEMENT_TOTAL" VisibleIndex="3" Width="20%" Caption="TO PAY ($)">
+                    <dx:GridViewDataTextColumn FieldName="STATEMENT_TOTAL" VisibleIndex="3" Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center" Caption="TO PAY ($)">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="STATEMENT_PROCESSED_THIS_PERIOD" VisibleIndex="3" Width="20%" Caption="PAID ($)">
+                    <dx:GridViewDataTextColumn FieldName="STATEMENT_PROCESSED_THIS_PERIOD" VisibleIndex="3" Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center" Caption="PAID ($)">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="STATEMENT_PENDING_TOTAL" VisibleIndex="3" Width="20%" Caption="PENDING ($)">
+                    <dx:GridViewDataTextColumn FieldName="STATEMENT_PENDING_TOTAL" VisibleIndex="3" Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center" Caption="PENDING ($)">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataColumn Caption="VIEW STATEMENT" VisibleIndex="4" Width="20%">
+                    <dx:GridViewDataColumn Caption="VIEW STATEMENT" VisibleIndex="4" Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center">
                         <SettingsHeaderFilter>
                             <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                         </SettingsHeaderFilter>

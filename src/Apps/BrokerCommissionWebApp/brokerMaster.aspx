@@ -75,9 +75,9 @@
 
 
     <div class="row">
-        <div class="col-1">
-        </div>
-        <div class="col-10">
+<%--        <div class="col-1">
+        </div>--%>
+        <div class="col-10" style="margin-left:60px;">
             <div style="width: 100%; margin-top: 30px"></div>
             <div class="headerPane" style="width: 100%; text-align: center">
                 <h6 class="text-primary" style="font-weight: bold">BROKER MASTER</h6>
@@ -159,20 +159,20 @@
                 OnRowCommand="grid_broker_OnRowCommand" Theme="Moderno"
                 Width="100%">
                 <%--  <SettingsAdaptivity AdaptivityMode="HideDataCells" />--%>
-                <Settings HorizontalScrollBarMode="Visible" VerticalScrollableHeight="400" VerticalScrollBarMode="Auto" />
+                <Settings HorizontalScrollBarMode="Hidden" VerticalScrollableHeight="400" VerticalScrollBarMode="Auto" />
                 <SettingsPager PageSize="100" />
                 <Paddings Padding="0px" />
                 <Border BorderWidth="0px" />
                 <BorderBottom BorderWidth="1px" />
                 <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
                 <Columns>
-                    <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" FixedStyle="Left" Caption="Broker ID" Width="80px">
+                    <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" FixedStyle="Left" Caption="Broker ID" Width="80px" HeaderStyle-HorizontalAlign="Center">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="BROKER_NAME" VisibleIndex="1" FixedStyle="Left" Width="280px" Caption="BROKER NAME">
+                    <dx:GridViewDataTextColumn FieldName="BROKER_NAME" VisibleIndex="1" FixedStyle="Left" Width="280px" HeaderStyle-HorizontalAlign="Center" Caption="BROKER NAME">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="BROKER_NAME_ID" VisibleIndex="1" FixedStyle="Left" Width="280px" Caption="QB BROKER NAME">
+                    <dx:GridViewDataTextColumn FieldName="BROKER_NAME_ID" VisibleIndex="1" FixedStyle="Left" Width="280px" HeaderStyle-HorizontalAlign="Center" Caption="QB BROKER NAME">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataColumn Caption="BROKER STATUS" VisibleIndex="2" Width="180px">
+                    <dx:GridViewDataColumn Caption="BROKER STATUS" VisibleIndex="2" Width="120px" HeaderStyle-HorizontalAlign="Center">
                         <SettingsHeaderFilter>
                             <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                         </SettingsHeaderFilter>
@@ -180,13 +180,13 @@
                             <dx:ASPxLabel runat="server" ID="lbl_BROKER_STATUS" Text='<%# Eval("BROKER_STATUS") == null? "N/A": Eval("BROKER_STATUS").ToString() %>' />
                         </DataItemTemplate>
                     </dx:GridViewDataColumn>
-                    <dx:GridViewDataTextColumn FieldName="EMAIL" VisibleIndex="3" Width="280px">
+                    <dx:GridViewDataTextColumn FieldName="EMAIL" VisibleIndex="3" Width="280px" HeaderStyle-HorizontalAlign="Center">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="PAYLOCITY_ID" VisibleIndex="4" Caption="PAYLOCITY ID" Width="120px">
+                    <dx:GridViewDataTextColumn FieldName="PAYLOCITY_ID" VisibleIndex="4" Caption="PAYLOCITY ID" Width="100px" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="NOTES" VisibleIndex="5" Caption="NOTES" Width="500px">
+                    <dx:GridViewDataTextColumn FieldName="NOTES" VisibleIndex="5" Caption="NOTES" Width="250px" HeaderStyle-HorizontalAlign="Center">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataColumn Caption="STATUS" VisibleIndex="10" Width="120px">
+                    <dx:GridViewDataColumn Caption="STATUS" VisibleIndex="10" Width="90px" HeaderStyle-HorizontalAlign="Center">
                         <SettingsHeaderFilter>
                             <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                         </SettingsHeaderFilter>
@@ -195,7 +195,7 @@
                         </DataItemTemplate>
                     </dx:GridViewDataColumn>
 
-                    <dx:GridViewDataColumn Caption="Edit" VisibleIndex="10" Width="120px">
+                    <dx:GridViewDataColumn Caption="Edit" VisibleIndex="10" Width="100px" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center">
                         <SettingsHeaderFilter>
                             <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                         </SettingsHeaderFilter>

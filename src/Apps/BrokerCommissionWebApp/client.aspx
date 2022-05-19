@@ -38,19 +38,19 @@
                 OnRowCommand="grid_client_OnRowCommand" Theme="Moderno" KeyFieldName="ID"
                 Width="100%">
                 <%--  <SettingsAdaptivity AdaptivityMode="HideDataCells" />--%>
-                <Settings HorizontalScrollBarMode="Visible" VerticalScrollableHeight="520" VerticalScrollBarMode="Auto" />
+                <Settings HorizontalScrollBarMode="Hidden" VerticalScrollableHeight="520" VerticalScrollBarMode="Auto" />
                 <SettingsPager PageSize="50" />
                 <Paddings Padding="0px" />
                 <Border BorderWidth="0px" />
                 <BorderBottom BorderWidth="1px" />
                 <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
                 <Columns>
-                    <dx:GridViewDataTextColumn FieldName="CLIENT_ID" VisibleIndex="0" FixedStyle="Left" Caption="CLIENT ID" Width="5%">
+                    <dx:GridViewDataTextColumn FieldName="CLIENT_ID" VisibleIndex="0" FixedStyle="Left" Caption="CLIENT ID" Width="5%" HeaderStyle-HorizontalAlign="Center">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="CLIENT_NAME" VisibleIndex="1" FixedStyle="Left" Width="40%" Caption="CLIENT NAME">
+                    <dx:GridViewDataTextColumn FieldName="CLIENT_NAME" VisibleIndex="1" FixedStyle="Left" Width="40%" Caption="CLIENT NAME"  HeaderStyle-HorizontalAlign="Center">
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataColumn Caption="STATUS" VisibleIndex="4" Width="10%">
+                    <dx:GridViewDataColumn Caption="STATUS" VisibleIndex="4" Width="10%"  HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center">
                         <SettingsHeaderFilter>
                             <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                         </SettingsHeaderFilter>
@@ -58,7 +58,7 @@
                             <dx:ASPxLabel runat="server" ID="lbl_s" Text='<%# Eval("STATUS") == null? "Active": Eval("STATUS").ToString()=="ACTIVE"? "Active": "Inactive"%>' />
                         </DataItemTemplate>
                     </dx:GridViewDataColumn>
-                    <dx:GridViewDataColumn Caption="EDIT" VisibleIndex="10" Width="10%">
+                    <dx:GridViewDataColumn Caption="EDIT" VisibleIndex="10" Width="10%"  HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center">
                         <SettingsHeaderFilter>
                             <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                         </SettingsHeaderFilter>

@@ -71,10 +71,11 @@
         }
 
     </script>
+    
     <div class="row">
-        <div class="col-lg-1">
-        </div>
-        <div class="col-lg-10">
+        <%--<div class="col-lg-1">
+        </div>--%>
+        <div class="col-lg-11" style="margin-left:60px">
 
             <div style="width: 100%; margin-top: 30px"></div>
             <div class="headerPane" style="width: 100%; text-align: center">
@@ -90,20 +91,31 @@
                     Text="EMAIL ALL & ARCHIVE" Theme="Moderno" OnClick="btn_Approve_Email_OnClick">
                 </dx:ASPxButton>
             </div>--%>
-            <dx:ASPxFormLayout runat="server" ID="ASPxFormLayout1" Width="100%" ClientInstanceName="FormLayout" Theme="Moderno">
+            <dx:ASPxFormLayout runat="server" ID="ASPxFormLayout1" Width="100%" ClientInstanceName="FormLayout" Theme="Moderno" >
                 <Items>
                     <dx:LayoutGroup Width="40%" Caption="SEARCH" ColCount="2" ShowCaption="False">
 
                         <Items>
 
                             <dx:LayoutItem Caption="INVOICE PERIOD" VerticalAlign="Middle" ColSpan="2">
+                               
                                 <LayoutItemNestedControlCollection>
                                     <dx:LayoutItemNestedControlContainer>
                                         <dx:ASPxLabel runat="server" ID="lbl_month" Theme="Moderno" Font-Bold="True" Visible="false" />
+                                        <div style="display:flex">
+                                            <dx:ASPxLabel runat="server" ID="from_month" Theme="Moderno" Font-Bold="True" Text="From" Visible="true" />&nbsp;
+                                        <dx:ASPxDateEdit runat="server" ID="from_date" PickerType="Months" />
                                         &nbsp;
-                                        <dx:ASPxLabel runat="server" ID="lbl_year" Theme="Moderno" Font-Bold="True" Visible="false" />
+                                            <dx:ASPxLabel runat="server" ID="lbl_year" Theme="Moderno" Font-Bold="True" Visible="false" />&nbsp;
+                                        <dx:ASPxLabel runat="server" ID="to_month" Theme="Moderno" Font-Bold="True" Text="To" Visible="true" />&nbsp;
+                                         <dx:ASPxDateEdit runat="server" ID="to_date" PickerType="Months" AutoPostBack="true" />
+                                          </div>
+                                        
+                                       
                                     </dx:LayoutItemNestedControlContainer>
+                                    
                                 </LayoutItemNestedControlCollection>
+                                
                             </dx:LayoutItem>
                             <dx:LayoutItem Caption="BROKER NAME" VerticalAlign="Middle" ColSpan="2">
                                 <LayoutItemNestedControlCollection>
@@ -156,15 +168,15 @@
                            <%# Container.ItemIndex + 1 %>
                         </DataItemTemplate>
                     </dx:GridViewDataColumn>
-                    <dx:GridViewDataTextColumn FieldName="BROKER_NAME" VisibleIndex="1" FixedStyle="Left" Width="40%" Caption="BROKER NAME">
+                    <dx:GridViewDataTextColumn FieldName="BROKER_NAME" VisibleIndex="1" FixedStyle="Left" Width="40%" HeaderStyle-HorizontalAlign="Center" Caption="BROKER NAME">
                     </dx:GridViewDataTextColumn>
-                      <dx:GridViewDataTextColumn FieldName="PAYLOCITY_ID" VisibleIndex="1" FixedStyle="Left" Width="20%" Caption="PAYLOCITY_ID">
+                      <dx:GridViewDataTextColumn FieldName="PAYLOCITY_ID" VisibleIndex="1" FixedStyle="Left" Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center" Caption="PAYLOCITY_ID">
                     </dx:GridViewDataTextColumn>
-                     <dx:GridViewDataTextColumn FieldName="MONTH" VisibleIndex="2" FixedStyle="Left" Width="20%" Caption="MONTH">
+                     <dx:GridViewDataTextColumn FieldName="MONTH" VisibleIndex="2" FixedStyle="Left" Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center" Caption="MONTH">
                     </dx:GridViewDataTextColumn>
-                     <dx:GridViewDataTextColumn FieldName="YEAR" VisibleIndex="3" FixedStyle="Left" Width="10%" Caption="YEAR">
+                     <dx:GridViewDataTextColumn FieldName="YEAR" VisibleIndex="3" FixedStyle="Left" Width="10%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center" Caption="YEAR">
                     </dx:GridViewDataTextColumn>
-                      <dx:GridViewDataColumn Caption="STATUS" VisibleIndex="4" Width="20%">
+                      <dx:GridViewDataColumn Caption="STATUS" VisibleIndex="4" Width="20%" HeaderStyle-HorizontalAlign="Center">
                         <SettingsHeaderFilter>
                             <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                         </SettingsHeaderFilter>
@@ -174,7 +186,7 @@
                             </dx:ASPxLAbel>
                         </DataItemTemplate>
                     </dx:GridViewDataColumn>
-                          <dx:GridViewDataColumn Caption="LAST MODIFY" VisibleIndex="5" FieldName="Change_Date" Width="20%">
+                          <dx:GridViewDataColumn Caption="LAST MODIFY" VisibleIndex="5" FieldName="Change_Date" Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center">
                         <SettingsHeaderFilter>
                             <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                         </SettingsHeaderFilter>
@@ -182,14 +194,14 @@
                             <%# Convert.ToDateTime(Eval("Change_Date").ToString()).ToString("MM/dd/yyyy") %>
                         </DataItemTemplate>
                     </dx:GridViewDataColumn>
-                    <dx:GridViewDataTextColumn FieldName="STATEMENT_TOTAL" VisibleIndex="6" Width="20%" Caption="COMMISSION AMOUNT($)">
+                    <dx:GridViewDataTextColumn FieldName="STATEMENT_TOTAL" VisibleIndex="6" Width="20%" Caption="COMMISSION AMOUNT($)" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataColumn Caption="VIEW STATEMENT" VisibleIndex="7" Width="20%">
+                    <dx:GridViewDataColumn Caption="VIEW STATEMENT" VisibleIndex="7" Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Center">
                         <SettingsHeaderFilter>
                             <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                         </SettingsHeaderFilter>
                         <DataItemTemplate>
-                            <dx:ASPxButton runat="server" ID="btn_edit" Text="STATEMENT" Theme="Moderno"
+                            <dx:ASPxButton runat="server" ID="btn_edit" Text="STATEMENT" Theme="Moderno" 
                                 CommandName="statement" CommandArgument='<%# Eval("HEADER_ID") %>'>
                             </dx:ASPxButton>
                         </DataItemTemplate>
