@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="client_add.aspx.cs" Inherits="BrokerCommissionWebApp.client_add" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
-    
+
     <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
@@ -68,7 +67,10 @@
                                 &nbsp;&nbsp;
                                 <dx:ASPxButton runat="server" ID="btn_Back" Text="GO BACK" OnClick="btn_Back_OnClick" Theme="Moderno" Width="100px"></dx:ASPxButton>
                                 &nbsp;&nbsp;
-                                <dx:ASPxButton runat="server" ID="btn_delete" Text="DELETE CLIENT" OnClick="btn_delete_OnClick" Theme="Mulberry" Width="100px"></dx:ASPxButton>
+                                <dx:ASPxButton runat="server" ID="btn_delete" Text="DELETE CLIENT"  OnClick="btn_delete_OnClick" Theme="Mulberry" Width="100px">
+                                     <ClientSideEvents Click="function(s, e) {  
+                                        e.processOnServer = confirm('Are you sure you want to delete this Record?');  }" /> 
+                                </dx:ASPxButton>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
