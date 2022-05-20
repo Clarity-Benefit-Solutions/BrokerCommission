@@ -1,8 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="ViewFile.aspx.cs" Inherits="BrokerCommissionWebApp.ViewFile" %>
-
-
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <script type="text/javascript">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="ViewFile.aspx.cs" Inherits="BrokerCommissionWebApp.WebForm4" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
+     <script type="text/javascript">
         function CloseTheFreakingWindow() {
             if (window.opener != null) {
                 window.opener.location = window.opener.location;
@@ -13,7 +11,7 @@
             }
             window.open('', '_self', ''); window.close();
         }
-    </script>
+     </script>
     <div class="row">
         <%--<div class="col-1"></div>--%>
         <div class="col-12">
@@ -48,7 +46,7 @@
                                         </dx:GridViewDataTextColumn>
                                         <%--      <dx:GridViewDataTextColumn FieldName="START_DATE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="START_DATE" Width="10%">
                                         </dx:GridViewDataTextColumn>--%>
-                                        <dx:GridViewDataColumn Caption="Edit" VisibleIndex="10" Width="120px" HeaderStyle-HorizontalAlign="Center">
+                                        <dx:GridViewDataColumn Caption="ACTION" VisibleIndex="10" Width="120px" HeaderStyle-HorizontalAlign="Center">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                             </SettingsHeaderFilter>
@@ -61,7 +59,11 @@
                                                     Text="DELETE" Theme="Mulberry" CommandName="delete"
                                                     CommandArgument='<%# Eval("INVOICE_NUM") %>'>
                                                 </dx:ASPxButton>
-
+                                                 <dx:ASPxButton runat="server" ID="ASPxButton2"
+                                                    Visible='<%# Eval("STATUS") == null ? false: Eval("STATUS").ToString() == "" ?false:true %>'
+                                                    Text="EDIT" Theme="Mulberry" CommandName="edit"
+                                                    CommandArgument='<%# Eval("INVOICE_NUM") %>'>
+                                                </dx:ASPxButton>
 
                                                 <dx:ASPxButton runat="server" ID="ASPxButton1"
                                                     Visible='<%# Eval("STATUS") == null ? false: Eval("STATUS").ToString() == "" ?false:true %>'
@@ -386,7 +388,6 @@
         </div>
         <%--  <div class="col-1"></div>--%>
     </div>
-
 
 
 

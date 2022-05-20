@@ -78,6 +78,15 @@ namespace BrokerCommissionWebApp
         protected global::DevExpress.Web.ASPxDateEdit to_date;
 
         /// <summary>
+        /// filter_btn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton filter_btn;
+
+        /// <summary>
         /// cmb_broker control.
         /// </summary>
         /// <remarks>

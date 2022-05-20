@@ -104,12 +104,13 @@
                                         <dx:ASPxLabel runat="server" ID="lbl_month" Theme="Moderno" Font-Bold="True" Visible="false" />
                                         <div style="display:flex">
                                             <dx:ASPxLabel runat="server" ID="from_month" Theme="Moderno" Font-Bold="True" Text="From" Visible="true" />&nbsp;
-                                        <dx:ASPxDateEdit runat="server" ID="from_date" PickerType="Months" />
+                                        <dx:ASPxDateEdit runat="server" ID="from_date" PickerType="Months" EditFormat="Custom" />
                                         &nbsp;
                                             <dx:ASPxLabel runat="server" ID="lbl_year" Theme="Moderno" Font-Bold="True" Visible="false" />&nbsp;
                                         <dx:ASPxLabel runat="server" ID="to_month" Theme="Moderno" Font-Bold="True" Text="To" Visible="true" />&nbsp;
-                                         <dx:ASPxDateEdit runat="server" ID="to_date" PickerType="Months" AutoPostBack="true" />
-                                          </div>
+                                         <dx:ASPxDateEdit runat="server" ID="to_date" PickerType="Months" AutoPostBack="false" EditFormat="Custom" />&nbsp;
+                                        <dx:ASPxButton runat="server" ID="filter_btn" Text="Filter" OnClick="filter_btn_Click" ></dx:ASPxButton>
+                                        </div>
                                         
                                        
                                     </dx:LayoutItemNestedControlContainer>

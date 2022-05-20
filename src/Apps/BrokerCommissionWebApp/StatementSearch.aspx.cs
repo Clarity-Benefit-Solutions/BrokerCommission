@@ -109,7 +109,8 @@ namespace BrokerCommissionWebApp
                 {
                     int brokerID = model.BROKER_ID == null ? 0 : int.Parse(model.BROKER_ID.ToString());
                     string url = "ViewFile.aspx?BID=" + brokerID + "&StatementID=" + headerID + "&Flag=3";
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "popup_window", "popupwindow('" + url + "','" + "View Download Files" + "','" + "1600" + "','" + "1000" + "');", true);
+                    // Page.ClientScript.RegisterStartupScript(this.GetType(), "popup_window", "popupwindow('" + url + "','" + "View Download Files" + "','" + "1600" + "','" + "1000" + "');", true);
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "redirect", "window.open('" + url + "')", true);
                     //Response.Redirect (url);
 
                 }
@@ -238,6 +239,35 @@ namespace BrokerCommissionWebApp
             var pageIndex = view.PageIndex;
             grid_summary.PageIndex = pageIndex;
             DataLoad();
+        }
+
+        protected void filter_btn_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT [dbo].[STATEMENT_HEADER].[HEADER_ID], [dbo].[STATEMENT_HEADER].[MONTH],[dbo].[STATEMENT_HEADER].[YEAR],[dbo].[STATEMENT_HEADER].[BROKER_NAME],[FLAG],[STATEMENT_TOTAL],[Change_Date],[dbo].[BROKER_MASTER].PAYLOCITY_ID " +
+                        "FROM[dbo].[STATEMENT_HEADER] LEFT JOIN[dbo].[BROKER_MASTER] ON[dbo].[STATEMENT_HEADER].BROKER_ID = [dbo].[BROKER_MASTER].ID";
+
+
+            if (cmb_broker.SelectedIndex > 0)
+            {
+                query += " WHERE [dbo].[STATEMENT_HEADER].BROKER_NAME = '" + cmb_broker.SelectedItem.Text + "'";
+
+            }
+            else if (from_date.Value != "" && to_date.Value != "")
+            {
+                DateTime toDateinfo = Convert.ToDateTime(to_date.Value);
+                DateTime fromDateinfo = Convert.ToDateTime(from_date.Value);
+                string frommonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(fromDateinfo.Month);
+                string tomonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(toDateinfo.Month);
+                
+
+                //lbl_count.Text = q
+                query += " WHERE Convert(int, MONTH([dbo].[STATEMENT_HEADER].[MONTH] + '1,1')) between '" + fromDateinfo.Month + "' and '"+ toDateinfo.Month
+                    + "' and YEAR between " + fromDateinfo.Year + " and " + toDateinfo.Year + "";
+            }
+
+            
+            SqlDataSource1.SelectCommand = query;
+            //lbl_count.Text = q
         }
     }
 }

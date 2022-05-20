@@ -11,35 +11,8 @@ namespace BrokerCommissionWebApp
 {
 
 
-    public partial class WebForm4
+    public partial class WebForm3
     {
-
-        /// <summary>
-        /// lblBRoker control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel lblBRoker;
-
-        /// <summary>
-        /// ASPxPageControl1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPageControl ASPxPageControl1;
-
-        /// <summary>
-        /// ASPxGridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView ASPxGridView1;
 
         /// <summary>
         /// ASPxFormLayout control.
@@ -49,6 +22,15 @@ namespace BrokerCommissionWebApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout;
+
+        /// <summary>
+        /// btn_confirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btn_confirm;
 
         /// <summary>
         /// txt_name control.
@@ -69,75 +51,48 @@ namespace BrokerCommissionWebApp
         protected global::DevExpress.Web.ASPxTextBox txt_item;
 
         /// <summary>
-        /// txt_qt control.
+        /// txt_brokername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txt_qt;
+        protected global::DevExpress.Web.ASPxTextBox txt_brokername;
 
         /// <summary>
-        /// txt_sales control.
+        /// txt_quantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txt_sales;
+        protected global::DevExpress.Web.ASPxTextBox txt_quantity;
 
         /// <summary>
-        /// txt_commissionrate control.
+        /// txt_rate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txt_commissionrate;
+        protected global::DevExpress.Web.ASPxTextBox txt_rate;
 
         /// <summary>
-        /// txt_commission_amount control.
+        /// txt_amount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txt_commission_amount;
+        protected global::DevExpress.Web.ASPxTextBox txt_amount;
 
         /// <summary>
-        /// btn_addNew control.
+        /// txt_commissionamount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btn_addNew;
-
-        /// <summary>
-        /// btn_view_statement control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btn_view_statement;
-
-        /// <summary>
-        /// ASPxButton3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButton3;
-
-        /// <summary>
-        /// grid_import control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView grid_import;
+        protected global::DevExpress.Web.ASPxTextBox txt_commissionamount;
     }
 }

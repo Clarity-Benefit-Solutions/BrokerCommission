@@ -1,10 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Data.SqlClient;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using iTextSharp.text.html.simpleparser;
-using System.Data;
+﻿using System.Data;
 using System.Configuration;
 using System.Linq;
 using System.IO;
@@ -15,10 +9,13 @@ using System.Web.UI.WebControls;
 using System.Net;
 
 using BrokerCommissionWebApp.DataModel;
+using System;
 
 namespace BrokerCommissionWebApp
 {
-    public partial class ViewFile : System.Web.UI.Page
+    
+
+    public partial class WebForm4 : System.Web.UI.Page
     {
         Broker_CommissionEntities db = new Broker_CommissionEntities();
         protected void Page_Load(object sender, EventArgs e)
@@ -415,6 +412,15 @@ namespace BrokerCommissionWebApp
                 string bid = Request.QueryString["BID"].ToString();
                 LoadEditTable(bid);
             }
+            else if (e.CommandArgs.CommandName.ToString() == "edit")
+            {
+                string id = e.CommandArgs.CommandArgument.ToString();
+                string url = "statement_edit.aspx?ID=" + id;
+                Response.Redirect(url, false);
+                // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+                Context.ApplicationInstance.CompleteRequest();
+
+            }
         }
 
         protected void btn_addNew_Click(object sender, EventArgs e)
@@ -535,5 +541,4 @@ namespace BrokerCommissionWebApp
         public bool exist { get; set; }
         public int broker_id { get; set; }
     }
-
 }
