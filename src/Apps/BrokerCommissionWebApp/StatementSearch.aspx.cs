@@ -256,13 +256,11 @@ namespace BrokerCommissionWebApp
             {
                 DateTime toDateinfo = Convert.ToDateTime(to_date.Value);
                 DateTime fromDateinfo = Convert.ToDateTime(from_date.Value);
-                string frommonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(fromDateinfo.Month);
-                string tomonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(toDateinfo.Month);
-                
+                string fromyear = Convert.ToString(fromDateinfo.Year + "" + fromDateinfo.Month);
+                string toyear = Convert.ToString(toDateinfo.Year+""+toDateinfo.Month);
 
                 //lbl_count.Text = q
-                query += " WHERE Convert(int, MONTH([dbo].[STATEMENT_HEADER].[MONTH] + '1,1')) between '" + fromDateinfo.Month + "' and '"+ toDateinfo.Month
-                    + "' and YEAR between " + fromDateinfo.Year + " and " + toDateinfo.Year + "";
+                query += " where Convert(int,CONCAT([dbo].[STATEMENT_HEADER].[YEAR], MONTH([MONTH] + '1,1')))  between " + fromyear + " and " + toyear + "";
             }
 
             

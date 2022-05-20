@@ -8,7 +8,7 @@
             <dx:LayoutItem Caption="" VerticalAlign="Middle">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer>
-                               <dx:ASPxButton runat="server" ID="btn_confirm" Text="BACK" OnClick="btn_Back_OnClick" Theme="MaterialCompact" Width="100px"></dx:ASPxButton>
+                               <dx:ASPxButton runat="server" ID="btn_back" Text="BACK" OnClick="btn_Back_OnClick" Theme="MaterialCompact" Width="100px"></dx:ASPxButton>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
@@ -65,15 +65,15 @@
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>                    
                     <dx:LayoutItem Caption=" " VerticalAlign="Middle" ColSpan="2" ShowCaption="False" HorizontalAlign="Right">
-                      <%--  <LayoutItemNestedControlCollection>
+                        <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer>
                                 <dx:ASPxButton runat="server" ID="btn_confirm" Text="CONFIRM CHANGES" OnClick="btn_confirm_OnClick" Theme="MaterialCompact" Width="100px"></dx:ASPxButton>
                                 &nbsp;&nbsp;
-                                <dx:ASPxButton runat="server" ID="btn_Back" Text="GO BACK" OnClick="btn_Back_OnClick" Theme="Moderno" Width="100px"></dx:ASPxButton>
+                               <%-- <dx:ASPxButton runat="server" ID="btn_Back" Text="GO BACK" OnClick="btn_Back_OnClick" Theme="Moderno" Width="100px"></dx:ASPxButton>--%>
                                 &nbsp;&nbsp;
-                               <dx:ASPxButton runat="server" ID="btn_delete" Text="DELETE CLIENT" OnClick="btn_delete_OnClick" Theme="Mulberry" Width="100px"></dx:ASPxButton>
+                              <%-- <dx:ASPxButton runat="server" ID="btn_delete" Text="DELETE CLIENT" OnClick="btn_delete_OnClick" Theme="Mulberry" Width="100px"></dx:ASPxButton>--%>
                             </dx:LayoutItemNestedControlContainer>
-                        </LayoutItemNestedControlCollection>--%>
+                        </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
                 </Items>
             </dx:LayoutGroup>

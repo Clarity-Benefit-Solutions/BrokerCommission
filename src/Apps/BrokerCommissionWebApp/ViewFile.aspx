@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="ViewFile.aspx.cs" Inherits="BrokerCommissionWebApp.WebForm4" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
      <script type="text/javascript">
         function CloseTheFreakingWindow() {
@@ -61,14 +62,16 @@
                                                 </dx:ASPxButton>
                                                  <dx:ASPxButton runat="server" ID="ASPxButton2"
                                                     Visible='<%# Eval("STATUS") == null ? false: Eval("STATUS").ToString() == "" ?false:true %>'
-                                                    Text="EDIT" Theme="Mulberry" CommandName="edit"
+                                                     ToolTip="Edit Row" CommandName="edit"
                                                     CommandArgument='<%# Eval("INVOICE_NUM") %>'>
+                                                     <Image IconID="dashboards_edit_svg_dark_32x32"></Image>
                                                 </dx:ASPxButton>
 
                                                 <dx:ASPxButton runat="server" ID="ASPxButton1"
                                                     Visible='<%# Eval("STATUS") == null ? false: Eval("STATUS").ToString() == "" ?false:true %>'
-                                                    Text="DELETE" Theme="Mulberry" CommandName="delete_client"
+                                                     ToolTip="Delete Row" CommandName="delete_client"
                                                     CommandArgument='<%# Eval("OPEN_BALANCE") %>'>
+                                                    <Image IconID="hybriddemoicons_bottompanel_hybriddemo_delete_svg_32x32"></Image>
                                                 </dx:ASPxButton>
                                             </DataItemTemplate>
                                         </dx:GridViewDataColumn>
