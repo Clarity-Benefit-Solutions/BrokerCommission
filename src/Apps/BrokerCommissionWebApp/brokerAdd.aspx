@@ -1,6 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="brokerAdd.aspx.cs" Inherits="BrokerCommissionWebApp.brokerAdd" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <%-- <script type="text/javascript">
+
+        function ConfirmDelete() {
+            if (confirm("Are you sure you want to delete this Row?")) {
+                //alert('Delete Successfully');
+                return true; 
+            }
+            return false; 
+        }
+       
+    </script>--%>
     <dx:ASPxFormLayout runat="server" ID="ASPxFormLayout" Width="100%" ClientInstanceName="FormLayout" Theme="Mulberry">
         <Items>
             <dx:LayoutGroup Width="100%" Caption="BROKER PROFILE" ColCount="3">
@@ -166,9 +177,9 @@
                                         <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                     </SettingsHeaderFilter>
                                     <DataItemTemplate>
-                                        <dx:ASPxLabel runat="server" ID="lbl_qb_clientName" Text='<%# Eval("QB_CLIENT_NAME") %>' Theme="Moderno"/>
+                                        <dx:ASPxLabel runat="server" ID="lbl_qb_clientName" Text='<%# Eval("QB_CLIENT_NAME") %>' Theme="Moderno" />
 
-                                       <%-- <dx:ASPxComboBox ID="cmb_clientName" runat="server" Value='<%# Bind("QB_CLIENT_NAME") %>' Width="100%" Theme="Moderno"
+                                        <%-- <dx:ASPxComboBox ID="cmb_clientName" runat="server" Value='<%# Bind("QB_CLIENT_NAME") %>' Width="100%" Theme="Moderno"
                                             OnInit="CLIENT_NAME_Init">
                                             <ClearButton DisplayMode="Never" ToolTip="Please Select a Client">
                                             </ClearButton>
@@ -182,8 +193,8 @@
                                         <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                     </SettingsHeaderFilter>
                                     <DataItemTemplate>
-                                        <dx:ASPxLabel runat="server" ID="lbl_QB_FEE" Text='<%# Eval("QB_FEE") %>' Theme="Moderno"/>
-                                      <%--  <dx:ASPxComboBox ID="cmb_QB_FEE" runat="server" Value='<%# Bind("QB_FEE") %>' Width="100%" Theme="Moderno"
+                                        <dx:ASPxLabel runat="server" ID="lbl_QB_FEE" Text='<%# Eval("QB_FEE") %>' Theme="Moderno" />
+                                        <%--  <dx:ASPxComboBox ID="cmb_QB_FEE" runat="server" Value='<%# Bind("QB_FEE") %>' Width="100%" Theme="Moderno"
                                             OnInit="MEMO_Init">
                                             <ClearButton DisplayMode="Never" ToolTip="Please Select a QUICKBOOK Memo">
                                             </ClearButton>
@@ -197,8 +208,8 @@
                                         <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                     </SettingsHeaderFilter>
                                     <DataItemTemplate>
-                                        <dx:ASPxLabel runat="server" ID="lbl_FEE_MEMO" Text='<%# Eval("FEE_MEMO") %>' Theme="Moderno"/>
-                                       <%-- <dx:ASPxComboBox ID="cmb_FEE_MEMO" runat="server" Value='<%# Bind("FEE_MEMO") %>' Width="100%" Theme="Moderno"
+                                        <dx:ASPxLabel runat="server" ID="lbl_FEE_MEMO" Text='<%# Eval("FEE_MEMO") %>' Theme="Moderno" />
+                                        <%-- <dx:ASPxComboBox ID="cmb_FEE_MEMO" runat="server" Value='<%# Bind("FEE_MEMO") %>' Width="100%" Theme="Moderno"
                                             OnInit="sMEMO_Init">
                                             <ClearButton DisplayMode="Never" ToolTip="Please Select a STATEMENT Memo">
                                             </ClearButton>
@@ -212,8 +223,8 @@
                                         <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                     </SettingsHeaderFilter>
                                     <DataItemTemplate>
-                                        <dx:ASPxLabel runat="server" ID="lbl_commission_rate" Text='<%# Eval("COMMISSION_RATE") %>' Theme="Moderno"/>
-                                      <%--  <dx:ASPxTextBox ID="txt_rate" runat="server" Width="100%" Theme="Moderno" Text='<%# Eval("COMMISSION_RATE") %>'>
+                                        <dx:ASPxLabel runat="server" ID="lbl_commission_rate" Text='<%# Eval("COMMISSION_RATE") %>' Theme="Moderno" />
+                                        <%--  <dx:ASPxTextBox ID="txt_rate" runat="server" Width="100%" Theme="Moderno" Text='<%# Eval("COMMISSION_RATE") %>'>
                                             <MaskSettings Mask="<0..99999g>.<00..99>" ErrorText="Please input missing digits" />
                                             <ValidationSettings ErrorDisplayMode="ImageWithTooltip" Display="Dynamic" ErrorTextPosition="Bottom" />
                                         </dx:ASPxTextBox>--%>
@@ -226,8 +237,8 @@
                                         <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                     </SettingsHeaderFilter>
                                     <DataItemTemplate>
-                                        <dx:ASPxLabel runat="server" ID="lbl_UNIT" Text='<%# Eval("UNIT") %>' Theme="Moderno"/>
-                                      <%--  <dx:ASPxComboBox ID="txt_UNIT" runat="server" Theme="Moderno" Value='<%# Bind("UNIT") %>' Width="100%">
+                                        <dx:ASPxLabel runat="server" ID="lbl_UNIT" Text='<%# Eval("UNIT") %>' Theme="Moderno" />
+                                        <%--  <dx:ASPxComboBox ID="txt_UNIT" runat="server" Theme="Moderno" Value='<%# Bind("UNIT") %>' Width="100%">
                                             <Items>
                                                 <dx:ListEditItem Value="0" Text="Per Qt" />
                                                 <dx:ListEditItem Value="1" Text="Per Amount" />
@@ -246,7 +257,7 @@
                                     </SettingsHeaderFilter>
                                     <DataItemTemplate>
                                         <%--<dx:ASPxDateEdit runat="server" ID="de_start" Theme="Moderno" Date='<%# Eval("START_DATE") == null? Convert.ToDateTime("01/01/2099") : string.IsNullOrEmpty(Eval("START_DATE").ToString())?Convert.ToDateTime("01/01/2099") :Convert.ToDateTime(Eval("START_DATE").ToString()) %>'></dx:ASPxDateEdit>--%>
-                                           <dx:ASPxLabel runat="server" ID="lbl_StartDate" Text='<%# Eval("START_DATE") == null ? "N/A" : Eval("START_DATE") %>' Theme="Moderno"/>
+                                        <dx:ASPxLabel runat="server" ID="lbl_StartDate" Text='<%# Eval("START_DATE") == null ? "N/A" : Eval("START_DATE") %>' Theme="Moderno" />
                                     </DataItemTemplate>
                                 </dx:GridViewDataColumn>
                                 <dx:GridViewDataColumn Caption="EDIT" VisibleIndex="7"
@@ -258,6 +269,8 @@
                                     <DataItemTemplate>
                                         <dx:ASPxButton runat="server" ID="btn_edit" Text="DELETE" Theme="Moderno"
                                             CommandName="DELETE" CommandArgument='<%#Eval("CLIENT_ID") %>'>
+                                             <ClientSideEvents Click="function(s, e) {  
+                                        e.processOnServer = confirm('Are you sure you want to delete this Row?');  }" /> 
                                         </dx:ASPxButton>
                                     </DataItemTemplate>
                                 </dx:GridViewDataColumn>
