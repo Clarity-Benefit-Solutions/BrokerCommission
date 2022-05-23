@@ -94,6 +94,9 @@ namespace BrokerCommissionWebApp
                 {
                     db.CLIENT_.Remove(model);
                     db.SaveChanges();
+                    //string message = "Deleted Successfully!";
+                    //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + message + "');", true);
+
                 }
             }
         }
@@ -124,13 +127,20 @@ namespace BrokerCommissionWebApp
 
         protected void btn_delete_OnClick(object sender, EventArgs e)
         {
-            delete();
-            string message = "Deleted Successfully!";
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + message + "');", true);
+          
 
-            Response.Redirect("client.aspx", false);
+            if (Request.QueryString["ID"] != null)
+            {
+                delete();
+                ScriptManager.RegisterStartupScript(this, this.GetType(),
+            "alert",
+             "alert('Deleted Successfully!');window.location ='client.aspx';",
+              true);
+            }
+           
+           // Response.Redirect("client.aspx", false);
             // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
-            Context.ApplicationInstance.CompleteRequest();
+            //Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Net;
 
 using BrokerCommissionWebApp.DataModel;
 using System;
+using System.Web.UI;
 
 namespace BrokerCommissionWebApp
 {
@@ -408,9 +409,14 @@ namespace BrokerCommissionWebApp
                 {
                     db.CLIENTs.Remove(model);
                     db.SaveChanges();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),
+         "alert",
+         "alert('Deleted Successfully!');window.location ='ViewFile.aspx';",
+          true);
                 }
                 string bid = Request.QueryString["BID"].ToString();
                 LoadEditTable(bid);
+               
             }
             else if (e.CommandArgs.CommandName.ToString() == "edit")
             {

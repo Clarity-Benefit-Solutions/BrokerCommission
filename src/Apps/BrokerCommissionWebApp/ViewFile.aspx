@@ -55,24 +55,29 @@
                                                 <%--
                                                     ToDo: How do these buttons work - will they work now that we regerante statements  directly from Imports-OCT
                                                 --%>
+                                                <div style="display:flex">
                                                 <dx:ASPxButton runat="server" ID="btn_delete"
                                                     Visible='<%# Eval("STATUS") == null ? true: Eval("STATUS").ToString() == "" ?true:false %>'
                                                     Text="DELETE" Theme="Mulberry" CommandName="delete"
                                                     CommandArgument='<%# Eval("INVOICE_NUM") %>'>
                                                 </dx:ASPxButton>
-                                                 <dx:ASPxButton runat="server" ID="ASPxButton2"
+                                                 <dx:ASPxButton runat="server" ID="ASPxButton2" Border-BorderStyle="None" style="padding:0px; opacity:100%; background-image:none"
                                                     Visible='<%# Eval("STATUS") == null ? false: Eval("STATUS").ToString() == "" ?false:true %>'
                                                      ToolTip="Edit Row" CommandName="edit"
                                                     CommandArgument='<%# Eval("INVOICE_NUM") %>'>
                                                      <Image IconID="dashboards_edit_svg_dark_32x32"></Image>
                                                 </dx:ASPxButton>
 
-                                                <dx:ASPxButton runat="server" ID="ASPxButton1"
+                                                <dx:ASPxButton runat="server" ID="ASPxButton1" Border-BorderStyle="None" style="padding:0px; opacity:100%; background-image:none"
                                                     Visible='<%# Eval("STATUS") == null ? false: Eval("STATUS").ToString() == "" ?false:true %>'
                                                      ToolTip="Delete Row" CommandName="delete_client"
                                                     CommandArgument='<%# Eval("OPEN_BALANCE") %>'>
-                                                    <Image IconID="hybriddemoicons_bottompanel_hybriddemo_delete_svg_32x32"></Image>
+                                                    <ClientSideEvents Click="function(s, e) {  
+                                        e.processOnServer = confirm('Are you sure you want to delete this Record?');  }" />
+                                                    <Image IconID="hybriddemoicons_bottompanel_hybriddemo_delete_svg_32x32">
+                                                    </Image>
                                                 </dx:ASPxButton>
+                                                </div>
                                             </DataItemTemplate>
                                         </dx:GridViewDataColumn>
                                     </Columns>
