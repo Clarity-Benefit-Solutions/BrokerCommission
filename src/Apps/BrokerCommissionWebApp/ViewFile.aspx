@@ -198,7 +198,7 @@
                     <dx:TabPage Name="RAW DATA" Text="QUICKBOOKS RAW DATA">
                         <ContentCollection>
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
-                                <div style="width: 100%; text-align: right; margin-bottom: 20px">
+                                <div style="width: 100%; text-align: right; margin-bottom: 20px"> 
                                     <dx:ASPxButton runat="server" ID="ASPxButton3" Text="SAVE CHANGES" Theme="Moderno" OnClick="btn_save_OnClick">
                                     </dx:ASPxButton>
                                 </div>
@@ -214,7 +214,7 @@
                                     <BorderBottom BorderWidth="1px" />
                                     <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
                                     <Columns>
-                                        <dx:GridViewDataColumn Caption="STATEMENT" VisibleIndex="0" Width="12%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                        <dx:GridViewDataColumn Caption="STATEMENT" VisibleIndex="0" Width="9%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -274,7 +274,7 @@
                                             <CellStyle HorizontalAlign="Left"></CellStyle>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataColumn Caption="AGENT" VisibleIndex="2"
-                                            Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                            Width="25%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -289,7 +289,7 @@
                                             <CellStyle HorizontalAlign="Left"></CellStyle>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataColumn Caption="QT" VisibleIndex="2"
-                                            Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                            Width="10%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="center"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -301,10 +301,10 @@
 
                                             <HeaderStyle HorizontalAlign="Center" Font-Bold="True"></HeaderStyle>
 
-                                            <CellStyle HorizontalAlign="Left"></CellStyle>
+                                            <CellStyle HorizontalAlign="center"></CellStyle>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataColumn Caption="SALES PRIE($)" VisibleIndex="2"
-                                            Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                            Width="10%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="center"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -316,10 +316,10 @@
 
                                             <HeaderStyle HorizontalAlign="Center" Font-Bold="True"></HeaderStyle>
 
-                                            <CellStyle HorizontalAlign="Left"></CellStyle>
+                                            <CellStyle HorizontalAlign="center"></CellStyle>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataColumn Caption="AMOUNT($)" VisibleIndex="2"
-                                            Width="12%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                            Width="10%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="center"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -331,7 +331,7 @@
 
                                             <HeaderStyle HorizontalAlign="Center" Font-Bold="True"></HeaderStyle>
 
-                                            <CellStyle HorizontalAlign="Left"></CellStyle>
+                                            <CellStyle HorizontalAlign="center"></CellStyle>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataColumn Caption="COMMISSION RATE ($)" VisibleIndex="4"
                                             Width="16%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
