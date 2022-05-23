@@ -44,6 +44,10 @@
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer>
                                 <dx:ASPxTextBox runat="server" ID="txt_email" Width="100%" Theme="Moderno">
+                                    <ValidationSettings SetFocusOnError="true" Display="Dynamic">
+                                            <RegularExpression ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ErrorText="Invalid e-mail." />
+                                            <RequiredField IsRequired="true" ErrorText="Email Id is required" />
+                                        </ValidationSettings>
                                 </dx:ASPxTextBox>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -52,6 +56,10 @@
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer>
                                 <dx:ASPxTextBox runat="server" ID="txt_sec_email" Width="100%" Theme="Moderno">
+                                    <ValidationSettings SetFocusOnError="true" Display="Dynamic">
+                                            <RegularExpression ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ErrorText="Invalid e-mail." />
+                                            <RequiredField IsRequired="true" ErrorText="Email Id is required" />
+                                        </ValidationSettings>
                                 </dx:ASPxTextBox>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -217,7 +225,7 @@
                                     </DataItemTemplate>
                                 </dx:GridViewDataColumn>
                                 <dx:GridViewDataColumn Caption="COMMISSION RATE ($)" VisibleIndex="4"
-                                    Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                    Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="center"
                                     HeaderStyle-Font-Bold="true">
                                     <SettingsHeaderFilter>
                                         <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -250,7 +258,7 @@
                                     </DataItemTemplate>
                                 </dx:GridViewDataColumn>
                                 <dx:GridViewDataColumn Caption="BILLING START" VisibleIndex="6"
-                                    Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                    Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="center"
                                     HeaderStyle-Font-Bold="true">
                                     <SettingsHeaderFilter>
                                         <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -261,7 +269,7 @@
                                     </DataItemTemplate>
                                 </dx:GridViewDataColumn>
                                 <dx:GridViewDataColumn Caption="EDIT" VisibleIndex="7"
-                                    Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                    Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="center"
                                     HeaderStyle-Font-Bold="true">
                                     <SettingsHeaderFilter>
                                         <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>

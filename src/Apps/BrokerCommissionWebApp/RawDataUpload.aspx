@@ -47,8 +47,9 @@
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer>
                                     <dx:ASPxTextBox runat="server" ID="ASPxTextBox1" Theme="Moderno" Width="100%" >
-                                        <ValidationSettings SetFocusOnError="true">
-                                            <RequiredField IsRequired="false" />
+                                        <ValidationSettings SetFocusOnError="true" Display="Dynamic">
+                                            <RegularExpression ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ErrorText="Invalid e-mail." />
+                                            <RequiredField IsRequired="true" ErrorText="Email Id is required" />
                                         </ValidationSettings>
                                     </dx:ASPxTextBox>
                                 </dx:LayoutItemNestedControlContainer>
@@ -71,7 +72,7 @@
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer>
                                     <dx:ASPxComboBox runat="server" ID="cmb_Year" Theme="Moderno"  Width="100%" >
-                                        <ValidationSettings SetFocusOnError="true">
+                                        <ValidationSettings SetFocusOnError="true" Display="Dynamic">
                                             <RequiredField IsRequired="True" />
                                         </ValidationSettings>
                                     </dx:ASPxComboBox>
