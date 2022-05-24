@@ -26,6 +26,7 @@ namespace BrokerCommissionWebApp
                 if (Request.QueryString["BID"] != null)
                 {
                     string bid = Request.QueryString["BID"].ToString();
+                    
                     LoadRawDataTable();
                     LoadEditTable(bid);
                 }
@@ -35,6 +36,7 @@ namespace BrokerCommissionWebApp
                     ASPxPageControl1.TabPages[2].Visible = false;
                     //ASPxButton1.Visible = false;
                     string bid = Request.QueryString["BID"].ToString();
+                  
                     //
                     LoadRawDataTable();
                     LoadEditTable(bid);
@@ -421,7 +423,8 @@ namespace BrokerCommissionWebApp
             else if (e.CommandArgs.CommandName.ToString() == "edit")
             {
                 string id = e.CommandArgs.CommandArgument.ToString();
-                string url = "statement_edit.aspx?ID=" + id;
+                string bid = Request.QueryString["BID"].ToString();
+                string url = "statement_edit.aspx?ID=" + id + "&BID=" + bid;
                 Response.Redirect(url, false);
                 // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
                 Context.ApplicationInstance.CompleteRequest();

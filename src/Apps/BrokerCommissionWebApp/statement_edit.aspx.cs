@@ -79,7 +79,8 @@ namespace BrokerCommissionWebApp
             if (Request.QueryString["ID"] != null)
             {
                 string id = Request.QueryString["ID"].ToString();
-                string url = "ViewFile.aspx?ID=" + id;
+                string bid = Request.QueryString["BID"].ToString();
+                string url = "ViewFile.aspx?ID=" + id + "&BID=" + bid;
                 Response.Redirect(url, false);
             }
         }

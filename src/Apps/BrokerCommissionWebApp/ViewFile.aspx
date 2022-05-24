@@ -23,27 +23,37 @@
                 </h6>
             </div>
 
-            <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="1" Theme="Moderno" Width="100%" Height="1200">
+            <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Theme="Moderno" Width="100%" Height="1200">
                 <TabPages>
                     <dx:TabPage Name="DESIGN VIEW" Text="DESIGN VIEW">
                         <ContentCollection>
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
 
                                 <dx:ASPxGridView ID="ASPxGridView1" runat="server" Width="100%" Theme="MaterialCompact" OnPageIndexChanged="ASPxGridView1_PageIndexChanged" OnRowCommand="ASPxGridView1_RowCommand">
+<SettingsPopup>
+<FilterControl AutoUpdatePosition="False"></FilterControl>
+</SettingsPopup>
                                     <Columns>
                                         <dx:GridViewDataTextColumn FieldName="QB_CLIENT_NAME" ShowInCustomizationForm="True" VisibleIndex="2" Caption="NAME" Width="20%" HeaderStyle-HorizontalAlign="Center">
+<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="QB_FEE" ShowInCustomizationForm="True" VisibleIndex="3" Caption="ITEM" Width="20%" HeaderStyle-HorizontalAlign="Center">
+<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="BROKER_NAME" ShowInCustomizationForm="True" VisibleIndex="4" Caption="BROKER NAME" Width="20%" HeaderStyle-HorizontalAlign="Center">
+<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="QUANTITY" ShowInCustomizationForm="True" VisibleIndex="5" Caption="QUANTITY" Width="10%" HeaderStyle-HorizontalAlign="Center">
+<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="COMMISSION_RATE" ShowInCustomizationForm="True" VisibleIndex="6" Caption="RATE" Width="10%" HeaderStyle-HorizontalAlign="Center">
+<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="SALES_PRICE" ShowInCustomizationForm="True" VisibleIndex="9" Caption="AMOUNT" Width="10%" HeaderStyle-HorizontalAlign="Center">
+<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="TOTAL_PRICE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="COMMISSION AMOUNT" Width="10%" HeaderStyle-HorizontalAlign="Center">
+<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                         </dx:GridViewDataTextColumn>
                                         <%--      <dx:GridViewDataTextColumn FieldName="START_DATE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="START_DATE" Width="10%">
                                         </dx:GridViewDataTextColumn>--%>
@@ -79,6 +89,8 @@
                                                 </dx:ASPxButton>
                                                 </div>
                                             </DataItemTemplate>
+
+<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                         </dx:GridViewDataColumn>
                                     </Columns>
 
@@ -95,6 +107,11 @@
                                                             <dx:ASPxTextBox ID="txt_name" runat="server" Width="100%" Theme="Mulberry">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
+<ErrorFrameStyle ForeColor="Red"></ErrorFrameStyle>
+
+<RegularExpression ErrorText="This Field IS Required"></RegularExpression>
+
+<RequiredField IsRequired="True"></RequiredField>
                                                                 </ValidationSettings>
 
                                                             </dx:ASPxTextBox>
@@ -107,6 +124,11 @@
                                                             <dx:ASPxTextBox ID="txt_item" runat="server" Width="100%" Theme="Mulberry">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
+<ErrorFrameStyle ForeColor="Red"></ErrorFrameStyle>
+
+<RegularExpression ErrorText="This Field IS Required"></RegularExpression>
+
+<RequiredField IsRequired="True"></RequiredField>
                                                                 </ValidationSettings>
 
                                                             </dx:ASPxTextBox>
@@ -119,6 +141,11 @@
                                                             <dx:ASPxTextBox ID="txt_qt" runat="server" Width="100%" Theme="Mulberry">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
+<ErrorFrameStyle ForeColor="Red"></ErrorFrameStyle>
+
+<RegularExpression ErrorText="This Field IS Required"></RegularExpression>
+
+<RequiredField IsRequired="True"></RequiredField>
                                                                 </ValidationSettings>
                                                                 <MaskSettings Mask="<0..9999>" />
                                                             </dx:ASPxTextBox>
@@ -131,6 +158,11 @@
                                                             <dx:ASPxTextBox ID="txt_sales" runat="server" Width="100%" Theme="Mulberry">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
+<ErrorFrameStyle ForeColor="Red"></ErrorFrameStyle>
+
+<RegularExpression ErrorText="This Field IS Required"></RegularExpression>
+
+<RequiredField IsRequired="True"></RequiredField>
                                                                 </ValidationSettings>
                                                                 <MaskSettings Mask="<0..999999>.<0..99>" />
                                                             </dx:ASPxTextBox>
@@ -143,6 +175,11 @@
                                                             <dx:ASPxTextBox ID="txt_commissionrate" runat="server" Width="100%" Theme="Mulberry">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
+<ErrorFrameStyle ForeColor="Red"></ErrorFrameStyle>
+
+<RegularExpression ErrorText="This Field IS Required"></RegularExpression>
+
+<RequiredField IsRequired="True"></RequiredField>
                                                                 </ValidationSettings>
                                                             </dx:ASPxTextBox>
 
@@ -156,6 +193,11 @@
                                                             <dx:ASPxTextBox ID="txt_commission_amount" runat="server" Width="100%" Theme="Mulberry" ClientInstanceName="txtWCNSerialFrom">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
+<ErrorFrameStyle ForeColor="Red"></ErrorFrameStyle>
+
+<RegularExpression ErrorText="This Field IS Required"></RegularExpression>
+
+<RequiredField IsRequired="True"></RequiredField>
                                                                 </ValidationSettings>
                                                                 <MaskSettings Mask="<0..999999>.<0..99>" />
                                                             </dx:ASPxTextBox>
@@ -213,6 +255,10 @@
                                     <Border BorderWidth="0px" />
                                     <BorderBottom BorderWidth="1px" />
                                     <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
+
+<SettingsPopup>
+<FilterControl AutoUpdatePosition="False"></FilterControl>
+</SettingsPopup>
                                     <Columns>
                                         <dx:GridViewDataColumn Caption="STATEMENT" VisibleIndex="0" Width="9%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
