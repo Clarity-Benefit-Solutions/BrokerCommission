@@ -14,7 +14,7 @@
             window.open('', '_self', ''); window.close();
         }
     </script>
-    <div class="row">
+   <div class="row">
         <%--<div class="col-1"></div>--%>
         <div class="col-12">
             <div style="width: 100%; margin-top: 30px"></div>
@@ -79,7 +79,7 @@
 
                                             <Items>
 
-                                                <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
+                                           <%--     <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <dx:ASPxTextBox ID="txt_name" runat="server" Width="100%" Theme="Mulberry">
@@ -90,7 +90,19 @@
                                                             </dx:ASPxTextBox>
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
-                                                </dx:LayoutItem>
+                                                </dx:LayoutItem>--%>
+
+                            <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
+                                <LayoutItemNestedControlCollection>
+                                    <dx:LayoutItemNestedControlContainer>
+                                        <dx:ASPxComboBox runat="server" ID="cmb_client" Theme="Moderno" DisplayMember="CLIENT_NAME" ValueMember="CLIENT_NAME" OnSelectedIndexChanged="cmb_client_OnSelectedIndexChanged" Width="100%"
+                                            AutoPostBack="True">
+                                        </dx:ASPxComboBox>
+                                    </dx:LayoutItemNestedControlContainer>
+                                </LayoutItemNestedControlCollection>
+                            </dx:LayoutItem>
+
+
                                                 <dx:LayoutItem Caption="ITEM" VerticalAlign="Middle">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
@@ -106,7 +118,7 @@
                                                 <dx:LayoutItem Caption="QUANTITY" VerticalAlign="Middle">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
-                                                            <dx:ASPxTextBox ID="txt_qt" runat="server" Width="100%" Theme="Mulberry">
+                                                            <dx:ASPxTextBox ID="txt_qt" runat="server" Width="100%" Theme="Mulberry" OnTextChanged="Commission_amount" AutoPostBack="true">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
                                                                 </ValidationSettings>
@@ -130,7 +142,7 @@
                                                 <dx:LayoutItem Caption="RATE" VerticalAlign="Middle">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
-                                                            <dx:ASPxTextBox ID="txt_commissionrate" runat="server" Width="100%" Theme="Mulberry">
+                                                            <dx:ASPxTextBox ID="txt_commissionrate" runat="server" Width="100%" Theme="Mulberry" OnTextChanged="Commission_amount" AutoPostBack="true">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
                                                                 </ValidationSettings>

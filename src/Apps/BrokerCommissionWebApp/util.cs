@@ -324,6 +324,13 @@ namespace BrokerCommissionWebApp
 
             //todo: show completion message
 
+        }  
+        
+        public static void processImportedRawData()
+        {
+            Period period = getLastUpload();
+            processImportedRawData(period.month, period.year);
+
         }
         public static void reProcessImportedRawData()
         {

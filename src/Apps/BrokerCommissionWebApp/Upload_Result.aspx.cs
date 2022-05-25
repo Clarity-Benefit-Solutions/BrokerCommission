@@ -61,7 +61,8 @@ namespace BrokerCommissionWebApp
             // todo: need specs. commented. add checkbox for all or only not yet emailed. show all statements not only those which have been emailed by default
             if (cboShowAllOrSome.Text == "Not Paid")
             {
-                query += " AND STATEMENT_TOTAL > 0 ";
+                //query += " STATEMENT_PROCESSED_THIS_PERIOD > 0 "; //Ayo 052520222 finance wants to see paid amount ev
+                query += " AND STATEMENT_TOTAL > 0 "; 
             }
             else if (cboShowAllOrSome.Text == "Paid")
             {

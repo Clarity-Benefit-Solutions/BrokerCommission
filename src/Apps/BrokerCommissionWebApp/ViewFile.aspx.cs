@@ -23,6 +23,40 @@ namespace BrokerCommissionWebApp
         Broker_CommissionEntities db = new Broker_CommissionEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            string mainconn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(mainconn);
+            string sqlquery = "select CLIENT_NAME from [dbo].[client_]";
+            //SqlDataAdapter da = new SqlDataAdapter(sqlquery, conn);
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+            SqlCommand cmd = new SqlCommand(sqlquery, conn);
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+                cmb_client.Items.Add(dr["CLIENT_NAME"].ToString());
+            }
+
+            conn.Close();
+            //cmb_client.DataSource = dt;
+
+            //cmb_client.DataBind();
+
+
+            //string mainconn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
+            //SqlConnection conn = new SqlConnection(mainconn);
+            //string sqlquery = "select CLIENT_NAME from [dbo].[client_]";
+            //SqlDataAdapter da = new SqlDataAdapter(sqlquery, conn);
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+            //DropDownList1.DataSource = dt;
+            //DropDownList1.DataTextField = "CLIENT_NAME";
+            //DropDownList1.DataTextField = "CLIENT_NAME";
+            //DropDownList1.DataBind();
+
+
             if (!IsPostBack)
             {
                 if (Request.QueryString["BID"] != null)
@@ -45,6 +79,88 @@ namespace BrokerCommissionWebApp
 
         }
 
+
+        //Start Ayo 05222022
+        protected void ASPxGridView1_OnPageIndexChanged(object sender, EventArgs e)
+        {
+            var view = sender as ASPxGridView;
+            if (view == null) return;
+            var pageIndex = view.PageIndex;
+            ASPxGridView1.PageIndex = pageIndex;
+            DataLoad1();
+        }
+
+        protected void ASPxGridView1_OnRowCommand(object sender, ASPxGridViewRowCommandEventArgs e)
+        {
+            if (e.CommandArgs.CommandName == "Edit")
+            {
+                string id = e.CommandArgs.CommandArgument.ToString();
+                string url = "client_add.aspx?ID=" + id;
+                Response.Redirect(url);
+
+            }
+        }
+        protected void cmb_client_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataLoad1();
+        }
+        protected void DataLoad1()
+        {
+
+            //string mainconn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
+            //SqlConnection conn = new SqlConnection(mainconn);
+            //string sqlquery = "select CLIENT_NAME from [dbo].[client_]";
+            //SqlDataAdapter da = new SqlDataAdapter(sqlquery, conn);
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+            //cmb_client.DataSource = dt;
+            //cmb_client.DataBind();
+
+            string mainconn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(mainconn);
+            string sqlquery = "select CLIENT_NAME from [dbo].[client_]";
+            //SqlDataAdapter da = new SqlDataAdapter(sqlquery, conn);
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+            SqlCommand cmd = new SqlCommand(sqlquery, conn);
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+                cmb_client.Items.Add(dr["CLIENT_NAME"].ToString());
+            }
+            conn.Close();
+            //var list = db.CLIENT_.Where(x => x.CLIENT_NAME != null).ToList();
+            //if (!string.IsNullOrEmpty(cmb_client.Text) && cmb_client.SelectedIndex != 0)
+            //{
+            //    string borkertext = cmb_client.SelectedItem.Text;
+            //    list = list.Where(x => x.CLIENT_NAME == cmb_client).ToList();
+            //}
+
+            //cmb_client.DataSource = list;
+            //cmb_client.DataBind();
+
+        }
+        //End Ayo 05222022
+        //Start Ayo 052122
+        //protected void Commission_amount(object sender, EventArgs e)
+        //{
+        //    Decimal amount;
+        //    amount = Convert.ToDecimal(txt_sales.Text) * Convert.ToDecimal(txt_commissionrate.Text);
+        //    txt_commission_amount.Text = "20";
+
+        //    //txt_commission_amount.Text = Convert.ToString(amount);
+        //}
+        protected void Commission_amount(object sender, EventArgs e)
+        {
+            Decimal amount;
+            amount = Convert.ToDecimal(txt_qt.Text) * Convert.ToDecimal(txt_commissionrate.Text);
+            //txt_commission_amount.Text = Convert.ToString(20);
+
+            txt_commission_amount.Text = Convert.ToString(amount);
+        }
+        //End Ayo 052122
         protected void LoadEditTable(string headerID)
         {
 
@@ -433,8 +549,11 @@ namespace BrokerCommissionWebApp
                     HEADER_ID = sid,
                     BROKER_ID = getBrokerID(sid),
                     BROKER_NAME = getBrokerName(sid),
-                    CLIENT_NAME = txt_name.Text,
-                    QB_CLIENT_NAME = txt_name.Text,
+                    //CLIENT_NAME = txt_name.Text,
+                    //QB_CLIENT_NAME = txt_name.Text,
+                    CLIENT_NAME = cmb_client.Text,
+                    QB_CLIENT_NAME = cmb_client.Text,
+
                     COMMISSION_RATE = Convert.ToDecimal(txt_commissionrate.Text),
                     SALES_PRICE = Convert.ToDecimal(txt_sales.Text),
                     FEE_MEMO = txt_item.Text,
