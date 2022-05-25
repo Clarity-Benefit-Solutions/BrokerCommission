@@ -182,9 +182,7 @@ namespace BrokerCommissionWebApp
             Response.Flush();
 
             // reprocessa data
-            //util.reProcessImportedRawData();
-            util.Period period = util.getLastUpload();
-            util.processImportedRawData(period.month, period.year);
+            util.processImportedRawData();
 
             // todo: inform user that we have started this operation
             Response.Write($"{DateTime.Now} - Processed Imported Data<BR><BR>");

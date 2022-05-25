@@ -23,7 +23,11 @@
                     <dx:ASPxLabel runat="server" ID="lblBRoker" Theme="Moderno" />
                 </h6>
             </div>
-
+            <div>
+                <dx:ASPxButton runat="server" ID="ASPxButton1" Text="REFRESH" Theme="Moderno"
+                    OnClick="btn_refresh_OnClick">
+                </dx:ASPxButton>
+            </div>
             <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="1" Theme="Moderno" Width="100%" Height="1200">
                 <TabPages>
                     <dx:TabPage Name="DESIGN VIEW" Text="DESIGN VIEW">

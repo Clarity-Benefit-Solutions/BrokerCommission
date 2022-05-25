@@ -366,6 +366,22 @@ namespace BrokerCommissionWebApp
             #endregion
         }
 
+        protected void btn_refresh_OnClick(object sender, EventArgs e)
+        {
+            // todo: inform user that we have started this operation
+            Response.Write($"{DateTime.Now} - Re-Processing Imported Data<BR><BR>");
+            Response.Flush();
+
+            // reprocessa data
+            util.processImportedRawData();
+
+            // todo: inform user that we have started this operation
+            Response.Write($"{DateTime.Now} - Processed Imported Data<BR><BR>");
+            Response.Flush();
+
+            //
+            Page_Load(this, EventArgs.Empty);
+        }
 
         protected void btn_save_OnClick(object sender, EventArgs e)
         {
@@ -381,6 +397,7 @@ namespace BrokerCommissionWebApp
             if (Request.QueryString["BID"] != null)
             {
                 bid = int.Parse(Request.QueryString["BID"].ToString());
+        
             }
             for (int i = 0; i < grid_import.VisibleRowCount; i++)
             {
