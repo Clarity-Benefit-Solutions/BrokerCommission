@@ -414,37 +414,6 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_CLIENT' does not have
           <Property Name="CLIENT_ID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="COMMISSION_RESULT">
-          <Property Name="ID" Type="int" />
-          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
-          <Property Name="QB_BROKER_NAME" Type="nvarchar" MaxLength="4000" />
-          <Property Name="QB_AGENT" Type="nvarchar" MaxLength="4000" />
-          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="4000" />
-          <Property Name="QB_CLIENT" Type="nvarchar" MaxLength="4000" />
-          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
-          <Property Name="MEMO" Type="nvarchar" MaxLength="3000" />
-          <Property Name="Qty" Type="int" />
-          <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
-          <Property Name="COMMISSION AMOUNT" Type="numeric" Precision="37" Scale="4" />
-          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
-          <Property Name="EMAIL" Type="nvarchar" MaxLength="500" />
-          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
-          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
-          <Property Name="BROKER_ID" Type="int" />
-          <Property Name="Date" Type="datetime" />
-          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
-          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
-          <Property Name="Num" Type="varchar" MaxLength="3000" />
-          <Property Name="INVOICE_DATE" Type="datetime" />
-          <Property Name="CLIENT_ID" Type="int" />
-          <Property Name="Total_Invoice_Sent_Open_Balance" Type="numeric" Precision="18" Scale="0" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT_NAME0' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="COMMISSION_RESULT_NAME0">
           <Key>
@@ -676,17 +645,11 @@ warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT_NAME6' doe
           <Property Name="CLIENT_ID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'Broker_Commission.dbo.COMMISSION_SUMMARY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="COMMISSION_SUMMARY">
-          <Property Name="BROKER_ID" Type="int" />
-          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
-          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'Broker_Commission.dbo.DASH_BOARD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DASH_BOARD">
           <Key>
             <PropertyRef Name="ID" />
+            <PropertyRef Name="created_at" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
@@ -713,14 +676,10 @@ warning 6002: The table/view 'Broker_Commission.dbo.DASH_BOARD' does not have a 
           <Property Name="BROKER_NAME_4_FORMATTED" Type="nvarchar" MaxLength="4000" />
           <Property Name="BROKER_NAME_5_FORMATTED" Type="nvarchar" MaxLength="4000" />
           <Property Name="BROKER_NAME_6_FORMATTED" Type="nvarchar" MaxLength="4000" />
-          <Property Name="TOTAL_AMOUNT" Type="numeric" Precision="19" Scale="0" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="created_by" Type="nvarchar" MaxLength="200" />
+          <Property Name="TOTAL_AMOUNT" Type="money" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Broker_Commission.dbo.vw_incorrect_inv_nos1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vw_incorrect_inv_nos1">
-          <Property Name="INVOICE_NUM" Type="nvarchar" MaxLength="500" />
-          <Property Name="count_broker_id" Type="int" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_DETAILS_ADD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VW_STATEMENT_DETAILS_ADD">
@@ -1233,6 +1192,8 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
     [DASH_BOARD].[BROKER_NAME_4_FORMATTED] AS [BROKER_NAME_4_FORMATTED], 
     [DASH_BOARD].[BROKER_NAME_5_FORMATTED] AS [BROKER_NAME_5_FORMATTED], 
     [DASH_BOARD].[BROKER_NAME_6_FORMATTED] AS [BROKER_NAME_6_FORMATTED], 
+    [DASH_BOARD].[created_at] AS [created_at], 
+    [DASH_BOARD].[created_by] AS [created_by], 
     [DASH_BOARD].[TOTAL_AMOUNT] AS [TOTAL_AMOUNT]
     FROM [dbo].[DASH_BOARD] AS [DASH_BOARD]</DefiningQuery>
           </EntitySet>
@@ -1955,6 +1916,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
         <EntityType Name="DASH_BOARD">
           <Key>
             <PropertyRef Name="ID" />
+            <PropertyRef Name="created_at" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -1973,7 +1935,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="BROKER_NAME_4" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="BROKER_NAME_5" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="BROKER_NAME_6" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="TOTAL_AMOUNT" Type="Decimal" Precision="19" Scale="0" />
+          <Property Name="TOTAL_AMOUNT" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="BROKER_NAME_ID_FORMATTED" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="BROKER_NAME_FORMATTED" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="BROKER_NAME_1_FORMATTED" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
@@ -1982,6 +1944,8 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="BROKER_NAME_4_FORMATTED" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="BROKER_NAME_5_FORMATTED" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="BROKER_NAME_6_FORMATTED" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="created_by" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="VW_STATEMENT_DETAILS_ADD">
           <Key>
@@ -2152,7 +2116,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <EntitySet Name="vw_statement_details_archive_and_paid" EntityType="Broker_CommissionModel.vw_statement_details_archive_and_paid" />
           <FunctionImport Name="sp_update_header_totals" />
           <FunctionImport Name="UTIL_TRUNCATE_TRN_TABLES" ReturnType="Collection(String)">
-            <Parameter Name="param" Mode="In" Type="String" />
+          <Parameter Name="param" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="vw_statement_details_archive_and_paid">
@@ -2850,6 +2814,8 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <EntitySetMapping Name="DASH_BOARD">
             <EntityTypeMapping TypeName="Broker_CommissionModel.DASH_BOARD">
               <MappingFragment StoreEntitySet="DASH_BOARD">
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
                 <ScalarProperty Name="BROKER_NAME_6_FORMATTED" ColumnName="BROKER_NAME_6_FORMATTED" />
                 <ScalarProperty Name="BROKER_NAME_5_FORMATTED" ColumnName="BROKER_NAME_5_FORMATTED" />
                 <ScalarProperty Name="BROKER_NAME_4_FORMATTED" ColumnName="BROKER_NAME_4_FORMATTED" />
