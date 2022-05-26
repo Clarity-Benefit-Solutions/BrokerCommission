@@ -100,7 +100,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
           <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
           <Property Name="QB_CLIENT_NAME_FORMATTED" Type="nvarchar" MaxLength="4000" StoreGeneratedPattern="Computed" />
           <Property Name="QB_FEE_FORMATTED" Type="nvarchar" MaxLength="500" StoreGeneratedPattern="Computed" />
-          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="created_at" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="created_by" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="CLIENT_">
@@ -195,7 +195,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
           <Property Name="Name" Type="varchar" MaxLength="3000" />
           <Property Name="Memo" Type="varchar" MaxLength="3000" />
           <Property Name="Agent" Type="varchar" MaxLength="500" />
-          <Property Name="Qty" Type="int" />
+          <Property Name="Qty" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
@@ -220,7 +220,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
           <Property Name="Name" Type="varchar" MaxLength="3000" />
           <Property Name="Memo" Type="varchar" MaxLength="3000" />
           <Property Name="Agent" Type="varchar" MaxLength="500" />
-          <Property Name="Qty" Type="int" />
+          <Property Name="Qty" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
@@ -264,7 +264,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
           <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
           <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
           <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
-          <Property Name="QUANTITY" Type="int" />
+          <Property Name="QUANTITY" Type="numeric" Precision="18" Scale="2" />
           <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
           <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
           <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
@@ -291,7 +291,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
           <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
           <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
           <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
-          <Property Name="QUANTITY" Type="int" />
+          <Property Name="QUANTITY" Type="numeric" Precision="18" Scale="2" />
           <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
           <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
           <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
@@ -319,7 +319,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
           <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
           <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
           <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
-          <Property Name="QUANTITY" Type="int" />
+          <Property Name="QUANTITY" Type="numeric" Precision="18" Scale="2" />
           <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
           <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
           <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
@@ -1369,7 +1369,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="QB_CLIENT_NAME_FORMATTED" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="QB_FEE_FORMATTED" Type="String" MaxLength="500" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="created_by" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CLIENT_">
@@ -1533,7 +1533,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="QUANTITY" Type="Decimal" />
           <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1562,7 +1562,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="QUANTITY" Type="Decimal" />
           <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

@@ -22,7 +22,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string BROKER_NAME { get; set; }
         public string QB_FEE { get; set; }
         public string FEE_MEMO { get; set; }
-        public Nullable<int> QUANTITY { get; set; }
+        public Nullable<decimal> QUANTITY { get; set; }
         public Nullable<decimal> COMMISSION_RATE { get; set; }
         public string UNIT { get; set; }
         public string STATUS { get; set; }

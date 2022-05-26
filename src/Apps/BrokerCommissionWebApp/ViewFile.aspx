@@ -14,7 +14,7 @@
             window.open('', '_self', ''); window.close();
         }
     </script>
-   <div class="row">
+    <div class="row">
         <%--<div class="col-1"></div>--%>
         <div class="col-12">
             <div style="width: 100%; margin-top: 30px"></div>
@@ -54,14 +54,17 @@
                                         </dx:GridViewDataTextColumn>
                                         <%--      <dx:GridViewDataTextColumn FieldName="START_DATE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="START_DATE" Width="10%">
                                         </dx:GridViewDataTextColumn>--%>
+                                        <%--
+                                                    ToDo: How do these buttons work - will they work now that we regerante statements  directly from Imports-OCT
+                                        --%>
+
+                                        <%-- hide button till functionality is implemented --%>
+                                        <%--
                                         <dx:GridViewDataColumn Caption="Edit" VisibleIndex="10" Width="120px">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                             </SettingsHeaderFilter>
                                             <DataItemTemplate>
-                                                <%--
-                                                    ToDo: How do these buttons work - will they work now that we regerante statements  directly from Imports-OCT
-                                                --%>
                                                 <dx:ASPxButton runat="server" ID="btn_delete"
                                                     Visible='<%# Eval("STATUS") == null ? true: Eval("STATUS").ToString() == "" ?true:false %>'
                                                     Text="DELETE" Theme="Mulberry" CommandName="delete"
@@ -76,6 +79,7 @@
                                                 </dx:ASPxButton>
                                             </DataItemTemplate>
                                         </dx:GridViewDataColumn>
+                                        --%>
                                     </Columns>
 
                                 </dx:ASPxGridView>
@@ -85,7 +89,7 @@
 
                                             <Items>
 
-                                           <%--     <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
+                                                <%--     <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <dx:ASPxTextBox ID="txt_name" runat="server" Width="100%" Theme="Mulberry">
@@ -98,15 +102,15 @@
                                                     </LayoutItemNestedControlCollection>
                                                 </dx:LayoutItem>--%>
 
-                            <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
-                                <LayoutItemNestedControlCollection>
-                                    <dx:LayoutItemNestedControlContainer>
-                                        <dx:ASPxComboBox runat="server" ID="cmb_client" Theme="Moderno" DisplayMember="CLIENT_NAME" ValueMember="CLIENT_NAME" OnSelectedIndexChanged="cmb_client_OnSelectedIndexChanged" Width="100%"
-                                            AutoPostBack="True">
-                                        </dx:ASPxComboBox>
-                                    </dx:LayoutItemNestedControlContainer>
-                                </LayoutItemNestedControlCollection>
-                            </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer>
+                                                            <dx:ASPxComboBox runat="server" ID="cmb_client" Theme="Moderno" DisplayMember="CLIENT_NAME" ValueMember="CLIENT_NAME" OnSelectedIndexChanged="cmb_client_OnSelectedIndexChanged" Width="100%"
+                                                                AutoPostBack="True">
+                                                            </dx:ASPxComboBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
 
 
                                                 <dx:LayoutItem Caption="ITEM" VerticalAlign="Middle">
@@ -128,7 +132,8 @@
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
                                                                 </ValidationSettings>
-                                                                <MaskSettings Mask="<0..9999>" />
+                                                                <MaskSettings Mask="<0..999999>.<0..99>" />
+                                                                <%--  <MaskSettings Mask="<0..9999>" />--%>
                                                             </dx:ASPxTextBox>
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
@@ -173,8 +178,9 @@
                                                 <dx:LayoutItem ShowCaption="False" VerticalAlign="Middle" ColSpan="3" HorizontalAlign="Right">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
-                                                            <dx:ASPxButton runat="server" ID="btn_addNew" Text="ADD NEW LINE" Theme="MaterialCompact" OnClick="btn_addNew_Click" ValidationGroup="al"></dx:ASPxButton>
-
+                                                            <%-- add line is disabled till april ststerments are sent out and this is tested fully --%>
+                                                            <%-- <dx:ASPxButton runat="server" ID="btn_addNew" Text="ADD NEW LINE" Theme="MaterialCompact" OnClick="btn_addNew_Click" ValidationGroup="al"></dx:ASPxButton>
+                                                            --%>
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
                                                 </dx:LayoutItem>
@@ -207,8 +213,10 @@
                         <ContentCollection>
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                 <div style="width: 100%; text-align: right; margin-bottom: 20px">
+                                    <%-- hidden til;l working properly --%>
+                                    <%-- 
                                     <dx:ASPxButton runat="server" ID="ASPxButton3" Text="SAVE CHANGES" Theme="Moderno" OnClick="btn_save_OnClick">
-                                    </dx:ASPxButton>
+                                    </dx:ASPxButton> --%>
                                 </div>
 
                                 <dx:ASPxGridView ID="grid_import" runat="server" AutoGenerateColumns="False"
