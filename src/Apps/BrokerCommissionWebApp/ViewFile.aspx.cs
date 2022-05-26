@@ -155,7 +155,7 @@ namespace BrokerCommissionWebApp
         protected void Commission_amount(object sender, EventArgs e)
         {
             Decimal amount;
-            amount = Convert.ToDecimal(txt_qt.Text) * Convert.ToDecimal(txt_commissionrate.Text);
+            amount = CoreUtils.Classes.Utils.ToDecimal (txt_qt.Text) * CoreUtils.Classes.Utils.ToDecimal(txt_commissionrate.Text);
             //txt_commission_amount.Text = Convert.ToString(20);
 
             txt_commission_amount.Text = Convert.ToString(amount);
@@ -385,6 +385,8 @@ namespace BrokerCommissionWebApp
 
         protected void btn_save_OnClick(object sender, EventArgs e)
         {
+            throw new Exception("Do not use this functionality");
+
             //ToDo: check how button works when editing rawdata or statements
             SaveAllChanges();
             LoadRawDataTable();
@@ -522,6 +524,7 @@ namespace BrokerCommissionWebApp
 
         protected void ASPxGridView1_RowCommand(object sender, ASPxGridViewRowCommandEventArgs e)
         {
+            throw new Exception("Do not use this functionality");
             if (e.CommandArgs.CommandName.ToString() == "delete")
             {
                 int detailID = int.Parse(e.CommandArgs.CommandArgument.ToString());
