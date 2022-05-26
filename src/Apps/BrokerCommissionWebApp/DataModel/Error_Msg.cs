@@ -18,5 +18,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string Flat_File_Source_Error_Output_Column { get; set; }
         public Nullable<int> ErrorCode { get; set; }
         public Nullable<int> ErrorColumn { get; set; }
+        public System.DateTime created_at { get; set; }
+        public string created_by { get; set; }
     }
 }

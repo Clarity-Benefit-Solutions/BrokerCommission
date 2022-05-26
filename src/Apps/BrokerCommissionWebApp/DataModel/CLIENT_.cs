@@ -22,5 +22,7 @@ namespace BrokerCommissionWebApp.DataModel
         public Nullable<decimal> COMMISSION_RATE { get; set; }
         public string UNIT { get; set; }
         public string STATUS { get; set; }
+        public System.DateTime created_at { get; set; }
+        public string created_by { get; set; }
     }
 }

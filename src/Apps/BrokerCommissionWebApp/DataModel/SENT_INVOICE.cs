@@ -23,5 +23,7 @@ namespace BrokerCommissionWebApp.DataModel
         public int year { get; set; }
         public System.DateTime DATE_PAID { get; set; }
         public int BROKER_ID { get; set; }
+        public System.DateTime created_at { get; set; }
+        public string created_by { get; set; }
     }
 }

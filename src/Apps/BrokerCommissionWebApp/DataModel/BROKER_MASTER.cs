@@ -45,6 +45,8 @@ namespace BrokerCommissionWebApp.DataModel
         public string BROKER_NAME_4_FORMATTED { get; set; }
         public string BROKER_NAME_5_FORMATTED { get; set; }
         public string BROKER_NAME_6_FORMATTED { get; set; }
+        public System.DateTime created_at { get; set; }
+        public string created_by { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STATEMENT_DETAILS> STATEMENT_DETAILS { get; set; }

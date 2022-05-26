@@ -25,5 +25,7 @@ namespace BrokerCommissionWebApp.DataModel
         public Nullable<decimal> Sales_Price { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public Nullable<decimal> Open_Balance { get; set; }
+        public System.DateTime created_at { get; set; }
+        public string created_by { get; set; }
     }
 }

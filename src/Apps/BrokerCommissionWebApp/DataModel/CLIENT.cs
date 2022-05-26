@@ -27,5 +27,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string START_DATE { get; set; }
         public string QB_CLIENT_NAME_FORMATTED { get; set; }
         public string QB_FEE_FORMATTED { get; set; }
+        public System.DateTime created_at { get; set; }
+        public string created_by { get; set; }
     }
 }

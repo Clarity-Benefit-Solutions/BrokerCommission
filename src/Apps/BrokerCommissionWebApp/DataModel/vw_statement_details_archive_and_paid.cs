@@ -12,10 +12,13 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class STATEMENT_DETAILS_ADD
+    public partial class vw_statement_details_archive_and_paid
     {
+        public int ARCHIVE_DETAIL_ID { get; set; }
         public int DETAIL_ID { get; set; }
         public int HEADER_ID { get; set; }
+        public Nullable<System.DateTime> INVOICE_DATE { get; set; }
+        public string INVOICE_NUM { get; set; }
         public string QB_CLIENT_NAME { get; set; }
         public string CLIENT_NAME { get; set; }
         public Nullable<int> BROKER_ID { get; set; }
@@ -30,9 +33,17 @@ namespace BrokerCommissionWebApp.DataModel
         public Nullable<decimal> TOTAL_PRICE { get; set; }
         public string START_DATE { get; set; }
         public string BROKER_STATUS { get; set; }
-        public string PAYLOCITY_ID { get; set; }
-        public Nullable<int> RESULTID { get; set; }
+        public Nullable<decimal> OPEN_BALANCE { get; set; }
+        public string month { get; set; }
+        public Nullable<int> year { get; set; }
+        public string line_payment_status { get; set; }
         public System.DateTime created_at { get; set; }
         public string created_by { get; set; }
+        public Nullable<decimal> PaidOpenBalance { get; set; }
+        public Nullable<decimal> PaidCommission { get; set; }
+        public Nullable<System.DateTime> PaidDate { get; set; }
+        public Nullable<int> PaidBrokerId { get; set; }
+        public string PaidMonth { get; set; }
+        public Nullable<int> PaidYear { get; set; }
     }
 }

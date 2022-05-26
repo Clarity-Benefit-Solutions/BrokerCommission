@@ -33,5 +33,6 @@ namespace BrokerCommissionWebApp.DataModel
         public string statement_month { get; set; }
         public string statement_year { get; set; }
         public int is_deleted { get; set; }
+        public string created_by { get; set; }
     }
 }

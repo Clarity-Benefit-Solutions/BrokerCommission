@@ -37,5 +37,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string month { get; set; }
         public Nullable<int> year { get; set; }
         public string line_payment_status { get; set; }
+        public System.DateTime created_at { get; set; }
+        public string created_by { get; set; }
     }
 }
