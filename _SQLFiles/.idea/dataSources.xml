@@ -7,5 +7,11 @@
       <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:jtds:sqlserver://BE015</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="BE014" uuid="796ba9d8-dd10-408d-8b8e-771ba10368d0">
+      <driver-ref>sqlserver.jtds</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:jtds:sqlserver://BE014</jdbc-url>
+    </data-source>
   </component>
 </project>
