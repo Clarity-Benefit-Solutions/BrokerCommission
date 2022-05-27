@@ -24,6 +24,15 @@ namespace BrokerCommissionWebApp
         protected global::DevExpress.Web.ASPxLabel lblBRoker;
 
         /// <summary>
+        /// ASPxButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxButton1;
+
+        /// <summary>
         /// ASPxPageControl1 control.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,13 @@ namespace BrokerCommissionWebApp
         protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout;
 
         /// <summary>
-        /// txt_name control.
+        /// cmb_client control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txt_name;
+        protected global::DevExpress.Web.ASPxComboBox cmb_client;
 
         /// <summary>
         /// txt_item control.

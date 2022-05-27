@@ -165,8 +165,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="StatementSearch.aspx" />
     <Content Include="SendEmails.aspx" />
-    <Content Include="statement_edit.aspx" />
-    <Content Include="ViewFile.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Light.master" />
@@ -179,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Upload_Result.aspx" />
+    <Content Include="ViewFile.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -374,6 +373,9 @@
     <Compile Include="DataModel\VW_STATEMENT_DETAILS_ADD.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\vw_statement_details_archive_and_paid.cs">
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\VW_STATEMENT_HEADER.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
@@ -453,26 +455,19 @@
       <DependentUpon>Upload_Result.aspx</DependentUpon>
     </Compile>
     <Compile Include="util.cs" />
-    <Compile Include="SendEmails.aspx.cs">
-      <DependentUpon>SendEmails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SendEmails.aspx.designer.cs">
-      <DependentUpon>SendEmails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="statement_edit.aspx.cs">
-      <DependentUpon>statement_edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="statement_edit.aspx.designer.cs">
-      <DependentUpon>statement_edit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ViewFile.aspx.cs">
       <DependentUpon>ViewFile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewFile.aspx.designer.cs">
       <DependentUpon>ViewFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SendEmails.aspx.cs">
+      <DependentUpon>SendEmails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SendEmails.aspx.designer.cs">
+      <DependentUpon>SendEmails.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -513,7 +508,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59290</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59296/</IISUrl>
+          <IISUrl>http://localhost:59294/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -32,5 +32,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string BROKER_STATUS { get; set; }
         public string PAYLOCITY_ID { get; set; }
         public Nullable<int> RESULTID { get; set; }
+        public System.DateTime created_at { get; set; }
+        public string created_by { get; set; }
     }
 }

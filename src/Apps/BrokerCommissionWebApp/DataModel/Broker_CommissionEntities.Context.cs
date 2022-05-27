@@ -57,6 +57,7 @@ namespace BrokerCommissionWebApp.DataModel
         public virtual DbSet<DASH_BOARD> DASH_BOARD { get; set; }
         public virtual DbSet<VW_STATEMENT_DETAILS_ADD> VW_STATEMENT_DETAILS_ADD { get; set; }
         public virtual DbSet<VW_STATEMENT_HEADER> VW_STATEMENT_HEADER { get; set; }
+        public virtual DbSet<vw_statement_details_archive_and_paid> vw_statement_details_archive_and_paid { get; set; }
     
         public virtual int db_log_error(string err_no, string err_source, string err_msg, string sqlstate)
         {
@@ -237,6 +238,20 @@ namespace BrokerCommissionWebApp.DataModel
                 new ObjectParameter("year", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDATE_STATEMENT_PAYMENT_STATUS", monthParameter, yearParameter);
+        }
+    
+        public virtual int sp_update_header_totals()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_update_header_totals");
+        }
+    
+        public virtual ObjectResult<string> UTIL_TRUNCATE_TRN_TABLES(string param)
+        {
+            var paramParameter = param != null ?
+                new ObjectParameter("param", param) :
+                new ObjectParameter("param", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("UTIL_TRUNCATE_TRN_TABLES", paramParameter);
         }
     }
 }

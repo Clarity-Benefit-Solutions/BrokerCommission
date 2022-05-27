@@ -20,5 +20,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string BROKER_NAME { get; set; }
         public Nullable<int> PAYLOCITY_NUMBER { get; set; }
         public Nullable<decimal> PAYMENT_AMOUNT { get; set; }
+        public System.DateTime created_at { get; set; }
+        public string created_by { get; set; }
     }
 }

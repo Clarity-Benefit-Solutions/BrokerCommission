@@ -310,19 +310,20 @@ namespace BrokerCommissionWebApp
 
         public static void processImportedRawData(string month, int year)
         {
-
             Vars Vars = new Vars();
             var fileLogParams = Vars.GetDbFileProcessingLogParams("BrokerCommission");
             var dbConn = Vars.dbConnBrokerCommission;
-
-            //todo: show starting message
 
             // run SP
             string query = "";
             query = "EXEC [dbo].[SP_IMPORT_FILE_SENT_SSIS] @Month='" + month + "', @Year=" + year + "";
             object rowsAffected = DbUtils.DbQuery(DbOperation.ExecuteScalar, dbConn, query, null, fileLogParams.DbMessageLogParams, false, false);
-
-            //todo: show completion message
+        }  
+        
+        public static void processImportedRawData()
+        {
+            Period period = getLastUpload();
+            processImportedRawData(period.month, period.year);
 
         }
         public static void reProcessImportedRawData()
@@ -334,14 +335,10 @@ namespace BrokerCommissionWebApp
             var fileLogParams = Vars.GetDbFileProcessingLogParams("BrokerCommission");
             var dbConn = Vars.dbConnBrokerCommission;
 
-            //todo: show starting message
-            
             // run SP
             string query = "";
             query = "EXEC [dbo].[SP_UPDATE_STATEMENT_PAYMENT_STATUS] @Month='" + period.month + "', @Year=" + period.year + "";
             object rowsAffected = DbUtils.DbQuery(DbOperation.ExecuteScalar, dbConn, query, null, fileLogParams.DbMessageLogParams, false, false);
-
-            //todo: show completion message
 
         }
 

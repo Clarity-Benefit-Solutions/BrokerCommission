@@ -37,6 +37,7 @@
         <EntityTypeShape EntityType="Broker_CommissionModel.VW_STATEMENT_HEADER" Width="1.5" PointX="2.75" PointY="17.75" IsExpanded="true" />
         <AssociationConnector Association="Broker_CommissionModel.STATEMENT_DETAILS_broker__fk" ManuallyRouted="false" />
         <AssociationConnector Association="Broker_CommissionModel.STATEMENT_DETAILS__header_fk" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.vw_statement_details_archive_and_paid" Width="1.5" PointX="11.375" PointY="18.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

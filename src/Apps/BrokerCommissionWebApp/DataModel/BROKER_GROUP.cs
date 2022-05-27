@@ -19,5 +19,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string AGENT { get; set; }
         public Nullable<int> AGENT_ID { get; set; }
         public string TITLE { get; set; }
+        public System.DateTime created_at { get; set; }
+        public string created_by { get; set; }
     }
 }
