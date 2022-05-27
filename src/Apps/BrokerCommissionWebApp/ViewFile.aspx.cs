@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using DevExpress.Web;
 using System.Web.UI.WebControls;
 using System.Net;
+using CoreUtils.Classes;
 
 using BrokerCommissionWebApp.DataModel;
 using System;
@@ -22,42 +23,43 @@ namespace BrokerCommissionWebApp
         Broker_CommissionEntities db = new Broker_CommissionEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            string mainconn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
-            SqlConnection conn = new SqlConnection(mainconn);
-            string sqlquery = "select CLIENT_NAME from [dbo].[client_]";
-            //SqlDataAdapter da = new SqlDataAdapter(sqlquery, conn);
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            SqlCommand cmd = new SqlCommand(sqlquery, conn);
-            conn.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-
-                cmb_client.Items.Add(dr["CLIENT_NAME"].ToString());
-            }
-
-            conn.Close();
-            //cmb_client.DataSource = dt;
-
-            //cmb_client.DataBind();
-
-
-            //string mainconn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
-            //SqlConnection conn = new SqlConnection(mainconn);
-            //string sqlquery = "select CLIENT_NAME from [dbo].[client_]";
-            //SqlDataAdapter da = new SqlDataAdapter(sqlquery, conn);
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //DropDownList1.DataSource = dt;
-            //DropDownList1.DataTextField = "CLIENT_NAME";
-            //DropDownList1.DataTextField = "CLIENT_NAME";
-            //DropDownList1.DataBind();
-
-
             if (!IsPostBack)
             {
+
+                string mainconn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
+                SqlConnection conn = new SqlConnection(mainconn);
+                string sqlquery = "select CLIENT_NAME from [dbo].[client_]";
+                //SqlDataAdapter da = new SqlDataAdapter(sqlquery, conn);
+                //DataTable dt = new DataTable();
+                //da.Fill(dt);
+                SqlCommand cmd = new SqlCommand(sqlquery, conn);
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+
+                    cmb_client.Items.Add(dr["CLIENT_NAME"].ToString());
+                }
+
+                conn.Close();
+                //cmb_client.DataSource = dt;
+
+                //cmb_client.DataBind();
+
+
+                //string mainconn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
+                //SqlConnection conn = new SqlConnection(mainconn);
+                //string sqlquery = "select CLIENT_NAME from [dbo].[client_]";
+                //SqlDataAdapter da = new SqlDataAdapter(sqlquery, conn);
+                //DataTable dt = new DataTable();
+                //da.Fill(dt);
+                //DropDownList1.DataSource = dt;
+                //DropDownList1.DataTextField = "CLIENT_NAME";
+                //DropDownList1.DataTextField = "CLIENT_NAME";
+                //DropDownList1.DataBind();
+
+
+
                 if (Request.QueryString["BID"] != null)
                 {
                     string bid = Request.QueryString["BID"].ToString();
@@ -132,41 +134,21 @@ namespace BrokerCommissionWebApp
                 cmb_client.Items.Add(dr["CLIENT_NAME"].ToString());
             }
             conn.Close();
-            //var list = db.CLIENT_.Where(x => x.CLIENT_NAME != null).ToList();
-            //if (!string.IsNullOrEmpty(cmb_client.Text) && cmb_client.SelectedIndex != 0)
-            //{
-            //    string borkertext = cmb_client.SelectedItem.Text;
-            //    list = list.Where(x => x.CLIENT_NAME == cmb_client).ToList();
-            //}
 
-            //cmb_client.DataSource = list;
-            //cmb_client.DataBind();
 
         }
-        //End Ayo 05222022
-        //Start Ayo 052122
-        //protected void Commission_amount(object sender, EventArgs e)
-        //{
-        //    Decimal amount;
-        //    amount = Convert.ToDecimal(txt_sales.Text) * Convert.ToDecimal(txt_commissionrate.Text);
-        //    txt_commission_amount.Text = "20";
-
-        //    //txt_commission_amount.Text = Convert.ToString(amount);
-        //}
         protected void Commission_amount(object sender, EventArgs e)
         {
             Decimal amount;
-            amount = CoreUtils.Classes.Utils.ToDecimal (txt_qt.Text) * CoreUtils.Classes.Utils.ToDecimal(txt_commissionrate.Text);
-            //txt_commission_amount.Text = Convert.ToString(20);
-
+            amount = Utils.ToDecimal(txt_qt.Text) * Utils.ToDecimal(txt_commissionrate.Text);
             txt_commission_amount.Text = Convert.ToString(amount);
         }
         //End Ayo 052122
-        protected void LoadEditTable(string headerID)
+        protected void LoadEditTable(string bid)
         {
 
             //string bid = Request.QueryString["BID"].ToString();
-            DataTable datat = ReportHelper.GetCommissionResultForBroker(headerID);
+            DataTable datat = ReportHelper.GetCommissionResultForBroker(bid);
             List<STATEMENT_DETAILS> list = new List<STATEMENT_DETAILS>();
             list = (from DataRow dr in datat.Rows
                     select new STATEMENT_DETAILS()
@@ -175,7 +157,7 @@ namespace BrokerCommissionWebApp
                         QB_CLIENT_NAME = dr["CLIENT_NAME"].ToString(),
                         QB_FEE = dr["QB_FEE"].ToString(),
                         BROKER_NAME = dr["QB_BROKER_NAME"].ToString(),
-                        QUANTITY = int.Parse(dr["Qty"].ToString()),
+                        QUANTITY = Utils.ToDecimal(dr["Qty"].ToString()),
                         COMMISSION_RATE = Convert.ToDecimal(dr["COMMISSION_RATE"].ToString()),
                         SALES_PRICE = Convert.ToDecimal(dr["Sales Price"].ToString()),
                         TOTAL_PRICE = Convert.ToDecimal(dr["COMMISSION AMOUNT"].ToString()),
@@ -400,7 +382,7 @@ namespace BrokerCommissionWebApp
             if (Request.QueryString["BID"] != null)
             {
                 bid = int.Parse(Request.QueryString["BID"].ToString());
-        
+
             }
             for (int i = 0; i < grid_import.VisibleRowCount; i++)
             {
@@ -573,12 +555,13 @@ namespace BrokerCommissionWebApp
         {
             //ToDo: check how button works when editing rawdata or statements
 
-            string bid = Request.QueryString["BID"].ToString();
-            int statementID = int.Parse(bid);//brokerID
-
-            if (Request.QueryString["StatementID"] != null)
+            int bid = Utils.ToInt(Request.QueryString["BID"].ToString());
+            //int statementID = int.Parse(bid);//brokerID
+            //if (Request.QueryString["StatementID"] != null)
+            if (bid != 0)
             {
-                int sid = int.Parse(Request.QueryString["StatementID"].ToString());
+                STATEMENT_HEADER header = db.STATEMENT_HEADER.Where(x => x.BROKER_ID == bid).FirstOrDefault();
+                int sid = header != null? header.HEADER_ID : 0;
 
                 STATEMENT_DETAILS_ADD model = new STATEMENT_DETAILS_ADD()
                 {
@@ -594,18 +577,18 @@ namespace BrokerCommissionWebApp
                     SALES_PRICE = Convert.ToDecimal(txt_sales.Text),
                     FEE_MEMO = txt_item.Text,
                     QB_FEE = txt_item.Text,
-                    QUANTITY = int.Parse(txt_qt.Text),
+                    QUANTITY = Utils.ToDecimal(txt_qt.Text),
                     UNIT = "Per Qt",
-                    PAYLOCITY_ID = getPaylocityID(statementID),
+                    PAYLOCITY_ID = getPaylocityID(bid),
                     TOTAL_PRICE = Convert.ToDecimal(txt_commission_amount.Text),
                     RESULTID = util.getMaxResult(),
                     START_DATE = "N/A",
-                    BROKER_STATUS = getBRokerStatus(statementID)
+                    BROKER_STATUS = getBRokerStatus(bid)
                 };
 
                 db.STATEMENT_DETAILS_ADD.Add(model);
                 db.SaveChanges();
-                LoadEditTable(bid);
+                LoadEditTable(bid.ToString());
 
 
 

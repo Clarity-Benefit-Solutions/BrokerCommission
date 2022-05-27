@@ -114,15 +114,6 @@ namespace BrokerCommissionWebApp
         protected global::DevExpress.Web.ASPxTextBox txt_commission_amount;
 
         /// <summary>
-        /// btn_addNew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btn_addNew;
-
-        /// <summary>
         /// btn_view_statement control.
         /// </summary>
         /// <remarks>
@@ -130,15 +121,6 @@ namespace BrokerCommissionWebApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton btn_view_statement;
-
-        /// <summary>
-        /// ASPxButton3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButton3;
 
         /// <summary>
         /// grid_import control.
