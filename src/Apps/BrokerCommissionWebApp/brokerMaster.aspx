@@ -159,7 +159,8 @@
                 OnRowCommand="grid_broker_OnRowCommand" Theme="Moderno"
                 Width="100%">
                 <%--  <SettingsAdaptivity AdaptivityMode="HideDataCells" />--%>
-                <Settings HorizontalScrollBarMode="Hidden" VerticalScrollableHeight="400" VerticalScrollBarMode="Auto" />
+                <%-- sumeet - changed to allow scrolling to right evcen on lower res --%>
+                <Settings HorizontalScrollBarMode="Visible" VerticalScrollableHeight="400" VerticalScrollBarMode="Auto" />
                 <SettingsPager PageSize="100" />
                 <Paddings Padding="0px" />
                 <Border BorderWidth="0px" />
@@ -206,6 +207,10 @@
 
                 </Columns>
             </dx:ASPxGridView>
+
+            <div>
+                &nbsp;
+            </div>
 
         </div>
         <div class="col-1">
