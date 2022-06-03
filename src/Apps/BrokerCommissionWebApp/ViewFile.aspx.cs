@@ -29,9 +29,6 @@ namespace BrokerCommissionWebApp
                 string mainconn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
                 SqlConnection conn = new SqlConnection(mainconn);
                 string sqlquery = "select CLIENT_NAME from [dbo].[client_]";
-                //SqlDataAdapter da = new SqlDataAdapter(sqlquery, conn);
-                //DataTable dt = new DataTable();
-                //da.Fill(dt);
                 SqlCommand cmd = new SqlCommand(sqlquery, conn);
                 conn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -42,22 +39,7 @@ namespace BrokerCommissionWebApp
                 }
 
                 conn.Close();
-                //cmb_client.DataSource = dt;
-
-                //cmb_client.DataBind();
-
-
-                //string mainconn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
-                //SqlConnection conn = new SqlConnection(mainconn);
-                //string sqlquery = "select CLIENT_NAME from [dbo].[client_]";
-                //SqlDataAdapter da = new SqlDataAdapter(sqlquery, conn);
-                //DataTable dt = new DataTable();
-                //da.Fill(dt);
-                //DropDownList1.DataSource = dt;
-                //DropDownList1.DataTextField = "CLIENT_NAME";
-                //DropDownList1.DataTextField = "CLIENT_NAME";
-                //DropDownList1.DataBind();
-
+      
 
 
                 if (Request.QueryString["BID"] != null)
@@ -71,7 +53,8 @@ namespace BrokerCommissionWebApp
                 {
                     ASPxPageControl1.TabPages[0].Visible = false;
                     ASPxPageControl1.TabPages[2].Visible = false;
-                    //ASPxButton1.Visible = false;
+                    ASPxButton1.Visible = false;   //Ayo06022022 not set to true yet what does it do 
+                    //ASPxButton1.Visible = true;   //Ayo06022022 not set to true yet what does it do 
                     string bid = Request.QueryString["BID"].ToString();
                   
                     //
@@ -507,7 +490,7 @@ namespace BrokerCommissionWebApp
 
         protected void ASPxGridView1_RowCommand(object sender, ASPxGridViewRowCommandEventArgs e)
         {
-            throw new Exception("Do not use this functionality");
+            //throw new Exception("Do not use this functionality");
             if (e.CommandArgs.CommandName.ToString() == "delete")
             {
                 int detailID = int.Parse(e.CommandArgs.CommandArgument.ToString());
@@ -554,7 +537,8 @@ namespace BrokerCommissionWebApp
         protected void btn_addNew_Click(object sender, EventArgs e)
         {
             //ToDo: check how button works when editing rawdata or statements
-
+           
+            var dt = DateTime.Now;  //AyoI added 06/02/2022
             int bid = Utils.ToInt(Request.QueryString["BID"].ToString());
             //int statementID = int.Parse(bid);//brokerID
             //if (Request.QueryString["StatementID"] != null)
@@ -582,7 +566,9 @@ namespace BrokerCommissionWebApp
                     PAYLOCITY_ID = getPaylocityID(bid),
                     TOTAL_PRICE = Convert.ToDecimal(txt_commission_amount.Text),
                     RESULTID = util.getMaxResult(),
-                    START_DATE = "N/A",
+                    //START_DATE = "N/A",   //AyoI removed 06/02/2022
+                    //START_DATE = 
+                    START_DATE = dt.ToString("MM/dd/yyyy"),  //AyoI added 06/02/2022
                     BROKER_STATUS = getBRokerStatus(bid)
                 };
 
@@ -652,10 +638,34 @@ namespace BrokerCommissionWebApp
 
 
 
+        //protected void ASPxButton2_Click(object sender, EventArgs e)
+        //{
+        //    LoadRawDataTable();
+        //}
+
+
         protected void ASPxButton2_Click(object sender, EventArgs e)
         {
+
+            // todo: inform user that we have started this operation
+            Response.Write($"{DateTime.Now} - Re-Processing Imported Data<BR><BR>");
+            Response.Flush();
+
+            // reprocessa data
+            util.processImportedRawData();
+
+            // todo: inform user that we have started this operation
+            Response.Write($"{DateTime.Now} - Processed Imported Data<BR><BR>");
+            Response.Flush();
+
+
+            // load data
+            //DataLoad();
+
             LoadRawDataTable();
         }
+
+
     }
 
     public class broker_Import

@@ -1,7 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="ViewFile.aspx.cs" Inherits="BrokerCommissionWebApp.WebForm4" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="ViewFile.aspx.cs" Inherits="BrokerCommissionWebApp.ViewFile" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-     <script type="text/javascript">
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
         function CloseTheFreakingWindow() {
             if (window.opener != null) {
                 window.opener.location = window.opener.location;
@@ -12,7 +13,7 @@
             }
             window.open('', '_self', ''); window.close();
         }
-     </script>
+    </script>
     <div class="row">
         <%--<div class="col-1"></div>--%>
         <div class="col-12">
@@ -22,113 +23,110 @@
                     <dx:ASPxLabel runat="server" ID="lblBRoker" Theme="Moderno" />
                 </h6>
             </div>
-
-            <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="0" Theme="Moderno" Width="100%" Height="1200">
+            <!--
+            <div>
+                <dx:ASPxButton runat="server" ID="ASPxButton1" Text="REFRESH" Theme="Moderno"
+                    OnClick="btn_refresh_OnClick">
+                </dx:ASPxButton>
+            </div>
+            -->
+            <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="1" Theme="Moderno" Width="100%" Height="1200">
                 <TabPages>
                     <dx:TabPage Name="DESIGN VIEW" Text="DESIGN VIEW">
                         <ContentCollection>
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
 
                                 <dx:ASPxGridView ID="ASPxGridView1" runat="server" Width="100%" Theme="MaterialCompact" OnPageIndexChanged="ASPxGridView1_PageIndexChanged" OnRowCommand="ASPxGridView1_RowCommand">
-<SettingsPopup>
-<FilterControl AutoUpdatePosition="False"></FilterControl>
-</SettingsPopup>
                                     <Columns>
-                                        <dx:GridViewDataTextColumn FieldName="QB_CLIENT_NAME" ShowInCustomizationForm="True" VisibleIndex="2" Caption="NAME" Width="20%" HeaderStyle-HorizontalAlign="Center">
-<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                                        <dx:GridViewDataTextColumn FieldName="QB_CLIENT_NAME" ShowInCustomizationForm="True" VisibleIndex="2" Caption="NAME" Width="20%">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="QB_FEE" ShowInCustomizationForm="True" VisibleIndex="3" Caption="ITEM" Width="20%" HeaderStyle-HorizontalAlign="Center">
-<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                                        <dx:GridViewDataTextColumn FieldName="QB_FEE" ShowInCustomizationForm="True" VisibleIndex="3" Caption="ITEM" Width="20%">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="BROKER_NAME" ShowInCustomizationForm="True" VisibleIndex="4" Caption="BROKER NAME" Width="20%" HeaderStyle-HorizontalAlign="Center">
-<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                                        <dx:GridViewDataTextColumn FieldName="BROKER_NAME" ShowInCustomizationForm="True" VisibleIndex="4" Caption="BROKER NAME" Width="20%">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="QUANTITY" ShowInCustomizationForm="True" VisibleIndex="5" Caption="QUANTITY" Width="10%" HeaderStyle-HorizontalAlign="Center">
-<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                                        <dx:GridViewDataTextColumn FieldName="QUANTITY" ShowInCustomizationForm="True" VisibleIndex="5" Caption="QUANTITY" Width="10%">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="COMMISSION_RATE" ShowInCustomizationForm="True" VisibleIndex="6" Caption="RATE" Width="10%" HeaderStyle-HorizontalAlign="Center">
-<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                                        <dx:GridViewDataTextColumn FieldName="COMMISSION_RATE" ShowInCustomizationForm="True" VisibleIndex="6" Caption="RATE" Width="10%">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="SALES_PRICE" ShowInCustomizationForm="True" VisibleIndex="9" Caption="AMOUNT" Width="10%" HeaderStyle-HorizontalAlign="Center">
-<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                                        <dx:GridViewDataTextColumn FieldName="SALES_PRICE" ShowInCustomizationForm="True" VisibleIndex="9" Caption="AMOUNT" Width="10%">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="TOTAL_PRICE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="COMMISSION AMOUNT" Width="10%" HeaderStyle-HorizontalAlign="Center">
-<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                                        <dx:GridViewDataTextColumn FieldName="TOTAL_PRICE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="COMMISSION AMOUNT" Width="10%">
                                         </dx:GridViewDataTextColumn>
-                                        <%--      <dx:GridViewDataTextColumn FieldName="START_DATE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="START_DATE" Width="10%">
-                                        </dx:GridViewDataTextColumn>--%>
-                                        <dx:GridViewDataColumn Caption="ACTION" VisibleIndex="10" Width="120px" HeaderStyle-HorizontalAlign="Center">
+                                        <dx:GridViewDataTextColumn FieldName="START_DATE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="START_DATE" Width="10%">
+                                        </dx:GridViewDataTextColumn>
+                                        <%--
+                                                    ToDo: How do these buttons work - will they work now that we regerante statements  directly from Imports-OCT
+                                        --%>
+
+                                        <%-- hide button till functionality is implemented --%>
+                                        
+                                        <dx:GridViewDataColumn Caption="Edit" VisibleIndex="10" Width="120px">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                             </SettingsHeaderFilter>
                                             <DataItemTemplate>
-                                                <%--
-                                                    ToDo: How do these buttons work - will they work now that we regerante statements  directly from Imports-OCT
-                                                --%>
-                                                <div style="display:flex">
                                                 <dx:ASPxButton runat="server" ID="btn_delete"
                                                     Visible='<%# Eval("STATUS") == null ? true: Eval("STATUS").ToString() == "" ?true:false %>'
                                                     Text="DELETE" Theme="Mulberry" CommandName="delete"
                                                     CommandArgument='<%# Eval("INVOICE_NUM") %>'>
                                                 </dx:ASPxButton>
-                                                 <dx:ASPxButton runat="server" ID="ASPxButton2" Border-BorderStyle="None" style="padding:0px; opacity:100%; background-image:none"
-                                                    Visible='<%# Eval("STATUS") == null ? false: Eval("STATUS").ToString() == "" ?false:true %>'
-                                                     ToolTip="Edit Row" CommandName="edit"
-                                                    CommandArgument='<%# Eval("INVOICE_NUM") %>'>
-                                                     <Image IconID="dashboards_edit_svg_dark_32x32"></Image>
-                                                </dx:ASPxButton>
 
-                                                <dx:ASPxButton runat="server" ID="ASPxButton1" Border-BorderStyle="None" style="padding:0px; opacity:100%; background-image:none"
+
+                                                <dx:ASPxButton runat="server" ID="ASPxButton1"
                                                     Visible='<%# Eval("STATUS") == null ? false: Eval("STATUS").ToString() == "" ?false:true %>'
-                                                     ToolTip="Delete Row" CommandName="delete_client"
+                                                    Text="DELETE" Theme="Mulberry" CommandName="delete_client"
                                                     CommandArgument='<%# Eval("OPEN_BALANCE") %>'>
-                                                    <ClientSideEvents Click="function(s, e) {  
-                                        e.processOnServer = confirm('Are you sure you want to delete this Record?');  }" />
-                                                    <Image IconID="hybriddemoicons_bottompanel_hybriddemo_delete_svg_32x32">
-                                                    </Image>
                                                 </dx:ASPxButton>
-                                                </div>
                                             </DataItemTemplate>
-
-<HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                         </dx:GridViewDataColumn>
+                                        
                                     </Columns>
 
                                 </dx:ASPxGridView>
+
+
+
+                                 
+                       <%--             <dx:ASPxFormLayout runat="server" ID="ASPxFormLayout1" Width="100%" ClientInstanceName="FormLayout" Theme="Moderno" OnPageIndexChanged="grid_client_OnPageIndexChanged"
+                OnRowCommand="grid_client_OnRowCommand">
+                                    <Items>--%>
+
                                 <dx:ASPxFormLayout runat="server" ID="ASPxFormLayout" Width="100%" ClientInstanceName="FormLayout" Theme="Moderno">
                                     <Items>
                                         <dx:LayoutGroup Width="100%" Caption="ADD STATEMENT LINE" ColCount="3" ShowCaption="False">
 
                                             <Items>
 
-                                                <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
+                                                <%--     <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <dx:ASPxTextBox ID="txt_name" runat="server" Width="100%" Theme="Mulberry">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
-<ErrorFrameStyle ForeColor="Red"></ErrorFrameStyle>
-
-<RegularExpression ErrorText="This Field IS Required"></RegularExpression>
-
-<RequiredField IsRequired="True"></RequiredField>
                                                                 </ValidationSettings>
 
                                                             </dx:ASPxTextBox>
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>--%>
+
+                                                <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer>
+                                                            <dx:ASPxComboBox runat="server" ID="cmb_client" Theme="Moderno" DisplayMember="CLIENT_NAME" ValueMember="CLIENT_NAME" OnSelectedIndexChanged="cmb_client_OnSelectedIndexChanged" Width="100%">
+                                                           
+                                                            </dx:ASPxComboBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
                                                 </dx:LayoutItem>
+
+
                                                 <dx:LayoutItem Caption="ITEM" VerticalAlign="Middle">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <dx:ASPxTextBox ID="txt_item" runat="server" Width="100%" Theme="Mulberry">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
-<ErrorFrameStyle ForeColor="Red"></ErrorFrameStyle>
-
-<RegularExpression ErrorText="This Field IS Required"></RegularExpression>
-
-<RequiredField IsRequired="True"></RequiredField>
                                                                 </ValidationSettings>
 
                                                             </dx:ASPxTextBox>
@@ -138,16 +136,12 @@
                                                 <dx:LayoutItem Caption="QUANTITY" VerticalAlign="Middle">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
-                                                            <dx:ASPxTextBox ID="txt_qt" runat="server" Width="100%" Theme="Mulberry">
+                                                            <dx:ASPxTextBox ID="txt_qt" runat="server" Width="100%" Theme="Mulberry" OnTextChanged="Commission_amount" AutoPostBack="true">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
-<ErrorFrameStyle ForeColor="Red"></ErrorFrameStyle>
-
-<RegularExpression ErrorText="This Field IS Required"></RegularExpression>
-
-<RequiredField IsRequired="True"></RequiredField>
                                                                 </ValidationSettings>
-                                                                <MaskSettings Mask="<0..9999>" />
+                                                                <MaskSettings Mask="<0..999999>.<0..99>" />
+                                                                <%--  <MaskSettings Mask="<0..9999>" />--%>
                                                             </dx:ASPxTextBox>
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
@@ -158,11 +152,6 @@
                                                             <dx:ASPxTextBox ID="txt_sales" runat="server" Width="100%" Theme="Mulberry">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
-<ErrorFrameStyle ForeColor="Red"></ErrorFrameStyle>
-
-<RegularExpression ErrorText="This Field IS Required"></RegularExpression>
-
-<RequiredField IsRequired="True"></RequiredField>
                                                                 </ValidationSettings>
                                                                 <MaskSettings Mask="<0..999999>.<0..99>" />
                                                             </dx:ASPxTextBox>
@@ -172,14 +161,9 @@
                                                 <dx:LayoutItem Caption="RATE" VerticalAlign="Middle">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
-                                                            <dx:ASPxTextBox ID="txt_commissionrate" runat="server" Width="100%" Theme="Mulberry">
+                                                            <dx:ASPxTextBox ID="txt_commissionrate" runat="server" Width="100%" Theme="Mulberry" OnTextChanged="Commission_amount" AutoPostBack="true">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
-<ErrorFrameStyle ForeColor="Red"></ErrorFrameStyle>
-
-<RegularExpression ErrorText="This Field IS Required"></RegularExpression>
-
-<RequiredField IsRequired="True"></RequiredField>
                                                                 </ValidationSettings>
                                                             </dx:ASPxTextBox>
 
@@ -193,11 +177,6 @@
                                                             <dx:ASPxTextBox ID="txt_commission_amount" runat="server" Width="100%" Theme="Mulberry" ClientInstanceName="txtWCNSerialFrom">
                                                                 <ValidationSettings RequiredField-IsRequired="true" RegularExpression-ErrorText="This Field IS Required" ValidationGroup="al"
                                                                     ErrorFrameStyle-ForeColor="Red">
-<ErrorFrameStyle ForeColor="Red"></ErrorFrameStyle>
-
-<RegularExpression ErrorText="This Field IS Required"></RegularExpression>
-
-<RequiredField IsRequired="True"></RequiredField>
                                                                 </ValidationSettings>
                                                                 <MaskSettings Mask="<0..999999>.<0..99>" />
                                                             </dx:ASPxTextBox>
@@ -207,8 +186,9 @@
                                                 <dx:LayoutItem ShowCaption="False" VerticalAlign="Middle" ColSpan="3" HorizontalAlign="Right">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
-                                                            <dx:ASPxButton runat="server" ID="btn_addNew" Text="ADD NEW LINE" Theme="MaterialCompact" OnClick="btn_addNew_Click" ValidationGroup="al"></dx:ASPxButton>
-
+                                                            <%-- add line is disabled till april ststerments are sent out and this is tested fully --%>
+                                                             <dx:ASPxButton runat="server" ID="btn_addNew" Text="ADD NEW LINE" Theme="MaterialCompact" OnClick="btn_addNew_Click" ValidationGroup="al"></dx:ASPxButton>
+                                                            
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
                                                 </dx:LayoutItem>
@@ -225,24 +205,26 @@
                         <ContentCollection>
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                 <div style="width: 100%; text-align: center; margin-top: 80px">
-                                    <%--    <dx:ASPxButton runat="server" ID="ASPxButton2" Text="REFRESH" Theme="Moderno" OnClick="ASPxButton2_Click"></dx:ASPxButton>
-                                    &nbsp;&nbsp;--%>
+                                        <dx:ASPxButton runat="server" ID="ASPxButton2" Text="REFRESH" Theme="Moderno" OnClick="ASPxButton2_Click"></dx:ASPxButton>
+                                    &nbsp;&nbsp;
                                     <dx:ASPxButton runat="server" ID="btn_view_statement" Text="VIEW/DOWNLOAD STATEMENT" Theme="Moderno"
                                         OnClick="btn_view_statement_OnClick">
                                     </dx:ASPxButton>
                                 </div>
 
-                                <%--    <dx:ASPxImage ID="ASPxImage1" runat="server" ShowLoadingImage="true" Height="600" Width="600"  ></dx:ASPxImage>
-                                --%>
+                                    <dx:ASPxImage ID="ASPxImage1" runat="server" ShowLoadingImage="true" Height="600" Width="600"  ></dx:ASPxImage>
+                                
                             </dx:ContentControl>
                         </ContentCollection>
                     </dx:TabPage>
                     <dx:TabPage Name="RAW DATA" Text="QUICKBOOKS RAW DATA">
                         <ContentCollection>
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
-                                <div style="width: 100%; text-align: right; margin-bottom: 20px"> 
+                                <div style="width: 100%; text-align: right; margin-bottom: 20px">
+                                    <%-- hidden til;l working properly --%>
+                                     
                                     <dx:ASPxButton runat="server" ID="ASPxButton3" Text="SAVE CHANGES" Theme="Moderno" OnClick="btn_save_OnClick">
-                                    </dx:ASPxButton>
+                                    </dx:ASPxButton> 
                                 </div>
 
                                 <dx:ASPxGridView ID="grid_import" runat="server" AutoGenerateColumns="False"
@@ -255,12 +237,8 @@
                                     <Border BorderWidth="0px" />
                                     <BorderBottom BorderWidth="1px" />
                                     <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
-
-<SettingsPopup>
-<FilterControl AutoUpdatePosition="False"></FilterControl>
-</SettingsPopup>
                                     <Columns>
-                                        <dx:GridViewDataColumn Caption="STATEMENT" VisibleIndex="0" Width="9%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                        <dx:GridViewDataColumn Caption="STATEMENT" VisibleIndex="0" Width="12%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -320,7 +298,7 @@
                                             <CellStyle HorizontalAlign="Left"></CellStyle>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataColumn Caption="AGENT" VisibleIndex="2"
-                                            Width="25%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                            Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -335,7 +313,7 @@
                                             <CellStyle HorizontalAlign="Left"></CellStyle>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataColumn Caption="QT" VisibleIndex="2"
-                                            Width="10%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="center"
+                                            Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -347,10 +325,10 @@
 
                                             <HeaderStyle HorizontalAlign="Center" Font-Bold="True"></HeaderStyle>
 
-                                            <CellStyle HorizontalAlign="center"></CellStyle>
+                                            <CellStyle HorizontalAlign="Left"></CellStyle>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataColumn Caption="SALES PRIE($)" VisibleIndex="2"
-                                            Width="10%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="center"
+                                            Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -362,10 +340,10 @@
 
                                             <HeaderStyle HorizontalAlign="Center" Font-Bold="True"></HeaderStyle>
 
-                                            <CellStyle HorizontalAlign="center"></CellStyle>
+                                            <CellStyle HorizontalAlign="Left"></CellStyle>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataColumn Caption="AMOUNT($)" VisibleIndex="2"
-                                            Width="10%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="center"
+                                            Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -377,10 +355,10 @@
 
                                             <HeaderStyle HorizontalAlign="Center" Font-Bold="True"></HeaderStyle>
 
-                                            <CellStyle HorizontalAlign="center"></CellStyle>
+                                            <CellStyle HorizontalAlign="Left"></CellStyle>
                                         </dx:GridViewDataColumn>
                                         <dx:GridViewDataColumn Caption="COMMISSION RATE ($)" VisibleIndex="4"
-                                            Width="16%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
+                                            Width="15%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -420,15 +398,17 @@
 
                                             <CellStyle HorizontalAlign="Left"></CellStyle>
                                         </dx:GridViewDataColumn>
-                                        <%-- <dx:GridViewDataColumn Caption="BILLING START" VisibleIndex="6"
+
+                                       <%--  <dx:GridViewDataColumn Caption="BILLING START" VisibleIndex="6"
                                             Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
-                                                <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
+                                                <DateRangePickerSettings EditFormatString="mm/dd/yyyy"></DateRangePickerSettings>
                                             </SettingsHeaderFilter>
                                             <DataItemTemplate>
                                                 <dx:ASPxDateEdit runat="server" ID="de_start" Theme="Moderno" Date='<%# Eval("START_DATE") == null ? null : Convert.ToDateTime(Eval("START_DATE").ToString()) %>' ></dx:ASPxDateEdit>
-                                                 
+                                           <dx:ASPxDateEdit ID="de_start" runat="server" Theme="Moderno" NullText= "mm/dd/yyyy"></dx:ASPxDateEdit>
+   
                                             </DataItemTemplate>
                                         </dx:GridViewDataColumn>--%>
                                     </Columns>
@@ -442,6 +422,7 @@
         </div>
         <%--  <div class="col-1"></div>--%>
     </div>
+
 
 
 
