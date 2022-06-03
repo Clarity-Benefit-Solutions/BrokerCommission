@@ -33,7 +33,6 @@
         <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME5" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME6" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Broker_CommissionModel.DASH_BOARD" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.VW_STATEMENT_DETAILS_ADD" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Broker_CommissionModel.VW_STATEMENT_HEADER" Width="1.5" PointX="2.75" PointY="17.75" IsExpanded="true" />
         <AssociationConnector Association="Broker_CommissionModel.STATEMENT_DETAILS_broker__fk" ManuallyRouted="false" />
         <AssociationConnector Association="Broker_CommissionModel.STATEMENT_DETAILS__header_fk" ManuallyRouted="false" />

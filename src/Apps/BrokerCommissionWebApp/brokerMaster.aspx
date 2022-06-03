@@ -172,6 +172,14 @@
                 <BorderBottom BorderWidth="1px" />
                 <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
                 <Columns>
+                        <dx:GridViewDataColumn Caption="Edit" VisibleIndex="0" Width="120px">
+                        <SettingsHeaderFilter>
+                            <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
+                        </SettingsHeaderFilter>
+                        <DataItemTemplate>
+                            <dx:ASPxButton runat="server" ID="btn_edit" Text="Edit" Theme="Mulberry" CommandName="Edit" CommandArgument='<%# Eval("ID") %>'></dx:ASPxButton>
+                        </DataItemTemplate>
+                    </dx:GridViewDataColumn>
                     <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" FixedStyle="Left" Caption="Broker ID" Width="80px">
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn FieldName="BROKER_NAME" VisibleIndex="1" FixedStyle="Left" Width="280px" Caption="BROKER NAME">
@@ -201,14 +209,7 @@
                         </DataItemTemplate>
                     </dx:GridViewDataColumn>
 
-                    <dx:GridViewDataColumn Caption="Edit" VisibleIndex="10" Width="120px">
-                        <SettingsHeaderFilter>
-                            <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
-                        </SettingsHeaderFilter>
-                        <DataItemTemplate>
-                            <dx:ASPxButton runat="server" ID="btn_edit" Text="Edit" Theme="Mulberry" CommandName="Edit" CommandArgument='<%# Eval("ID") %>'></dx:ASPxButton>
-                        </DataItemTemplate>
-                    </dx:GridViewDataColumn>
+                
 
                 </Columns>
             </dx:ASPxGridView>

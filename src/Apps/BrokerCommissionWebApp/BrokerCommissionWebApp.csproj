@@ -373,9 +373,6 @@
     <Compile Include="DataModel\vw_statement_design_view.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\VW_STATEMENT_DETAILS_ADD.cs">
-      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataModel\vw_statement_details_archive_and_paid.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>

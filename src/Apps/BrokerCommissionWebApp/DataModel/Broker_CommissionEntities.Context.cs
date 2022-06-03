@@ -55,7 +55,6 @@ namespace BrokerCommissionWebApp.DataModel
         public virtual DbSet<COMMISSION_RESULT_NAME5> COMMISSION_RESULT_NAME5 { get; set; }
         public virtual DbSet<COMMISSION_RESULT_NAME6> COMMISSION_RESULT_NAME6 { get; set; }
         public virtual DbSet<DASH_BOARD> DASH_BOARD { get; set; }
-        public virtual DbSet<VW_STATEMENT_DETAILS_ADD> VW_STATEMENT_DETAILS_ADD { get; set; }
         public virtual DbSet<VW_STATEMENT_HEADER> VW_STATEMENT_HEADER { get; set; }
         public virtual DbSet<vw_statement_details_archive_and_paid> vw_statement_details_archive_and_paid { get; set; }
         public virtual DbSet<vw_statement_design_view> vw_statement_design_view { get; set; }
