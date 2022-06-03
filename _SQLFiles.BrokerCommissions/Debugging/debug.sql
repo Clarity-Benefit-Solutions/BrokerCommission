@@ -68,3 +68,6 @@ from
 where
       Name like 'CMS FACILITIES MGT SERVICES LLC'
   and memo_FORMATTED like 'HRA';
+
+select * from
+        [dbo].[COMMISSION_RESULT] AS RT

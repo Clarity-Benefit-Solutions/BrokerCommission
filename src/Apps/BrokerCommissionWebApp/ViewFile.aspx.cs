@@ -574,11 +574,9 @@ namespace BrokerCommissionWebApp
                     HEADER_ID = sid,
                     BROKER_ID = getBrokerID(sid),
                     BROKER_NAME = util.FormatField( getBrokerName(sid)),
-                    //CLIENT_NAME = txt_name.Text,
-                    //QB_CLIENT_NAME = txt_name.Text,
                     CLIENT_NAME = util.FormatField(cmb_client.Text),
                     QB_CLIENT_NAME = util.FormatField(cmb_client.Text),
-                    STATUS = null,
+                    STATUS = "Appended",
                     COMMISSION_RATE = Convert.ToDecimal(txt_commissionrate.Text),
                     SALES_PRICE = Convert.ToDecimal(txt_sales.Text),
                     FEE_MEMO = util.FormatField(txt_item.Text),
@@ -591,7 +589,8 @@ namespace BrokerCommissionWebApp
                     //START_DATE = "N/A",   //AyoI removed 06/02/2022
                     //START_DATE = 
                     START_DATE = dt.ToString("MM/dd/yyyy"),  //AyoI added 06/02/2022
-                    BROKER_STATUS = getBRokerStatus(bid)
+                    BROKER_STATUS = getBRokerStatus(bid),
+                    
                 };
 
                 db.STATEMENT_DETAILS_ADD.Add(model);

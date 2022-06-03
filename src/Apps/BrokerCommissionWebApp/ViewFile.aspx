@@ -66,14 +66,14 @@
                                             </SettingsHeaderFilter>
                                             <DataItemTemplate>
                                                 <dx:ASPxButton runat="server" ID="btn_delete"
-                                                    Visible='<%# Eval("STATUS") == null ? true: Eval("STATUS").ToString() == "" ?true:false %>'
+                                                    Visible='<%# Eval("STATUS") == null ? true: Eval("STATUS").ToString() == "Appended" ?true:false %>'
                                                     Text="DELETE" Theme="Mulberry" CommandName="delete_new_line"
                                                     CommandArgument='<%# Eval("DETAIL_ID") %>'>
                                                 </dx:ASPxButton>
 
 
                                                 <dx:ASPxButton runat="server" ID="ASPxButton1"
-                                                    Visible='<%# Eval("STATUS") == null ? false: Eval("STATUS").ToString() == "" ?false:true %>'
+                                                    Visible='<%# Eval("STATUS") == null ? false: Eval("STATUS").ToString() == "Appended" ?false:true %>'
                                                     Text="DELETE" Theme="Mulberry" CommandName="delete_raw_data_line"
                                                     CommandArgument='<%# Eval("DETAIL_ID") %>'>
                                                 </dx:ASPxButton>
