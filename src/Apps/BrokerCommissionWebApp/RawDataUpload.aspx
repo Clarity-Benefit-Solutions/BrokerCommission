@@ -1,12 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="RawDataUpload.aspx.cs" Inherits="BrokerCommissionWebApp.RawDataUpload" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
       <script type="text/javascript">
-        function popupwindow(url, title, w, h) {
-            var left = (screen.width / 2) - (w / 2);
-            var top = (screen.height / 2) - (h / 2);
-            return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no,      menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
-        }
-    </script>
+          function popupwindow(url, title, w, h) {
+              debugger;
+              var left = (screen.width / 2) - (w / 2);
+              var top = (screen.height / 2) - (h / 2);
+              // sumeet - do not open popup window - open new tab
+              // return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no,      menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+              // return window.open(url, title);//, 'toolbar=no, location=no, directories=no, status=no,      menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+
+              window.open(url, '_blank').focus();
+              return false;
+          }
+      </script>
 <%--    <dx:ASPxGridView ID="gridview" runat="server">
 
     </dx:ASPxGridView>--%>

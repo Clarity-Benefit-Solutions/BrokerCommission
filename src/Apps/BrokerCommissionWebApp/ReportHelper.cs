@@ -294,7 +294,8 @@ namespace BrokerCommissionWebApp
         {
             DataTable dt = new DataTable();
             //todo: memo added to order by
-            string queryString = "SELECT * FROM [dbo].[COMMISSION_RESULT] WHERE BROKER_ID = " + bid + " ORDER BY QB_CLIENT_NAME, MEMO";
+            //string queryString = "SELECT * FROM [dbo].[COMMISSION_RESULT] WHERE BROKER_ID = " + bid + " ORDER BY QB_CLIENT_NAME, MEMO";
+            string queryString = "SELECT * FROM [dbo].[vw_statement_design_view] WHERE BROKER_ID = " + bid + " ORDER BY QB_CLIENT_NAME, FEE_MEMO";
             string conn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ToString();
             var table = new DataTable();
             using (SqlConnection sql = new SqlConnection(conn))

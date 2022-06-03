@@ -40,7 +40,7 @@ namespace BrokerCommissionWebApp
                 }
 
                 conn.Close();
-      
+
 
 
                 if (Request.QueryString["BID"] != null)
@@ -103,7 +103,7 @@ namespace BrokerCommissionWebApp
 
             string mainconn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(mainconn);
-            string sqlquery = "select CLIENT_NAME from [dbo].[client_]";
+            string sqlquery = "select CLIENT_NAME from [dbo].[client_] order by CLIENT_NAME";
             //SqlDataAdapter da = new SqlDataAdapter(sqlquery, conn);
             //DataTable dt = new DataTable();
             //da.Fill(dt);
@@ -135,19 +135,20 @@ namespace BrokerCommissionWebApp
             list = (from DataRow dr in datat.Rows
                     select new STATEMENT_DETAILS()
                     {
-                        STATUS = dr["EMAIL"].ToString(),
+                        STATUS = dr["STATUS"].ToString(),
                         QB_CLIENT_NAME = dr["CLIENT_NAME"].ToString(),
                         QB_FEE = dr["QB_FEE"].ToString(),
-                        BROKER_NAME = dr["QB_BROKER_NAME"].ToString(),
-                        QUANTITY = Utils.ToDecimal(dr["Qty"].ToString()),
+                        BROKER_NAME = dr["BROKER_NAME"].ToString(),
+                        QUANTITY = Utils.ToDecimal(dr["QUANTITY"].ToString()),
                         COMMISSION_RATE = Convert.ToDecimal(dr["COMMISSION_RATE"].ToString()),
-                        SALES_PRICE = Convert.ToDecimal(dr["Sales Price"].ToString()),
-                        TOTAL_PRICE = Convert.ToDecimal(dr["COMMISSION AMOUNT"].ToString()),
+                        SALES_PRICE = Convert.ToDecimal(dr["SALES_PRICE"].ToString()),
+                        TOTAL_PRICE = Convert.ToDecimal(dr["TOTAL_PRICE"].ToString()),
                         BROKER_STATUS = dr["BROKER_STATUS"].ToString(),
-                        DETAIL_ID = int.Parse(dr["ID"].ToString()),
                         START_DATE = dr["START_DATE"].ToString(),
-                        INVOICE_NUM = dr["Num"].ToString(),
-                        OPEN_BALANCE = decimal.Parse(dr["CLIENT_ID"].ToString())
+                        INVOICE_NUM = dr["INVOICE_NUM"].ToString(),
+                        INVOICE_DATE = Utils.ToDate(dr["INVOICE_DATE"].ToString()),
+                        OPEN_BALANCE = Utils.ToDecimal(dr["OPEN_BALANCE"].ToString()),
+                        DETAIL_ID = Utils.ToInt(dr["DETAIL_ID"].ToString())
 
 
                     }).ToList();
@@ -489,11 +490,11 @@ namespace BrokerCommissionWebApp
 
         protected void ASPxGridView1_RowCommand(object sender, ASPxGridViewRowCommandEventArgs e)
         {
-            //throw new Exception("Do not use this functionality");
-            if (e.CommandArgs.CommandName.ToString() == "delete")
+            int detailID = int.Parse(e.CommandArgs.CommandArgument.ToString());
+
+            // if we just added this line, remove it from STATEMENT_DETAILS_ADD
+            if (e.CommandArgs.CommandName.ToString() == "delete_new_line")
             {
-                int detailID = int.Parse(e.CommandArgs.CommandArgument.ToString());
-                //Response.Write(detailID);
                 var model = db.STATEMENT_DETAILS_ADD.Where(x => x.DETAIL_ID == detailID).FirstOrDefault();
                 if (model != null)
                 {
@@ -503,16 +504,53 @@ namespace BrokerCommissionWebApp
                 string bid = Request.QueryString["BID"].ToString();
                 LoadEditTable(bid);
             }
-            else if (e.CommandArgs.CommandName.ToString() == "delete_client")
+            // else remove it from qbraw data so it will disappera from statement_details after refresh
+            else if (e.CommandArgs.CommandName.ToString() == "delete_raw_data_line")
             {
-                int detailID = int.Parse(e.CommandArgs.CommandArgument.ToString());
-                //Response.Write(detailID);
-                var model = db.CLIENTs.Where(x => x.CLIENT_ID == detailID).FirstOrDefault();
-                if (model != null)
+                // wrong code - just have to delete that same line from qbrawdata so that it disapperas from the current statement
+                var dtl = db.STATEMENT_DETAILS.Where(x => x.DETAIL_ID == detailID).FirstOrDefault();
+                if (dtl != null)
                 {
-                    db.CLIENTs.Remove(model);
+                    // delete from the statement
+                    List<STATEMENT_DETAILS> dtlRows = db.STATEMENT_DETAILS.Where(x => x.DETAIL_ID == detailID).ToList();
+                    if (dtlRows != null)
+                    {
+                        foreach (var row in dtlRows)
+                        {
+                            db.STATEMENT_DETAILS.Remove(row);
+                        }
+                    }
+
+                    // delete from the statement_add if present
+                    List<STATEMENT_DETAILS_ADD> dtlAddRows = db.STATEMENT_DETAILS_ADD.Where(x => x.DETAIL_ID == detailID).ToList();
+                    if (dtlAddRows != null)
+                    {
+                        foreach (var row in dtlAddRows)
+                        {
+                            db.STATEMENT_DETAILS_ADD.Remove(row);
+                        }
+                    }
+
+                    // delete from the statement
+                    List<Import_OCT> importRows = db.Import_OCT.Where(x => x.Name_FORMATTED == dtl.QB_CLIENT_NAME && x.NUM_FORMATTED == dtl.INVOICE_NUM && x.memo_FORMATTED == dtl.FEE_MEMO).ToList();
+                    if (importRows != null)
+                    {
+                        foreach (var row in importRows)
+                        {
+                            db.Import_OCT.Remove(row);
+                        }
+                    }
+
+
+
+                    //
                     db.SaveChanges();
                 }
+                else
+                {
+                    throw new Exception($"Could Not Find any matching detail to delete for DetailID {detailID}");
+                }
+
                 string bid = Request.QueryString["BID"].ToString();
                 LoadEditTable(bid);
             }
@@ -521,7 +559,7 @@ namespace BrokerCommissionWebApp
         protected void btn_addNew_Click(object sender, EventArgs e)
         {
             //ToDo: check how button works when editing rawdata or statements
-           
+
             var dt = DateTime.Now;  //AyoI added 06/02/2022
             int bid = Utils.ToInt(Request.QueryString["BID"].ToString());
             //int statementID = int.Parse(bid);//brokerID
@@ -529,7 +567,7 @@ namespace BrokerCommissionWebApp
             if (bid != 0)
             {
                 STATEMENT_HEADER header = db.STATEMENT_HEADER.Where(x => x.BROKER_ID == bid).FirstOrDefault();
-                int sid = header != null? header.HEADER_ID : 0;
+                int sid = header != null ? header.HEADER_ID : 0;
 
                 STATEMENT_DETAILS_ADD model = new STATEMENT_DETAILS_ADD()
                 {

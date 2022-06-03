@@ -52,7 +52,7 @@
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="TOTAL_PRICE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="COMMISSION AMOUNT" Width="10%">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="START_DATE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="START_DATE" Width="10%">
+                                        <dx:GridViewDataTextColumn FieldName="INVOICE_DATE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="INVOICE_DATE" Width="10%">
                                         </dx:GridViewDataTextColumn>
                                         <%--
                                                     ToDo: How do these buttons work - will they work now that we regerante statements  directly from Imports-OCT
@@ -67,15 +67,15 @@
                                             <DataItemTemplate>
                                                 <dx:ASPxButton runat="server" ID="btn_delete"
                                                     Visible='<%# Eval("STATUS") == null ? true: Eval("STATUS").ToString() == "" ?true:false %>'
-                                                    Text="DELETE" Theme="Mulberry" CommandName="delete"
-                                                    CommandArgument='<%# Eval("INVOICE_NUM") %>'>
+                                                    Text="DELETE" Theme="Mulberry" CommandName="delete_new_line"
+                                                    CommandArgument='<%# Eval("DETAIL_ID") %>'>
                                                 </dx:ASPxButton>
 
 
                                                 <dx:ASPxButton runat="server" ID="ASPxButton1"
                                                     Visible='<%# Eval("STATUS") == null ? false: Eval("STATUS").ToString() == "" ?false:true %>'
-                                                    Text="DELETE" Theme="Mulberry" CommandName="delete_client"
-                                                    CommandArgument='<%# Eval("OPEN_BALANCE") %>'>
+                                                    Text="DELETE" Theme="Mulberry" CommandName="delete_raw_data_line"
+                                                    CommandArgument='<%# Eval("DETAIL_ID") %>'>
                                                 </dx:ASPxButton>
                                             </DataItemTemplate>
                                         </dx:GridViewDataColumn>
@@ -221,10 +221,11 @@
                         <ContentCollection>
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                 <div style="width: 100%; text-align: right; margin-bottom: 20px">
-                                    <%-- hidden til;l working properly --%>
-                                     
+                                    <%-- hidden till working properly and editing the imported raw data --%>
+                                    <%-- 
                                     <dx:ASPxButton runat="server" ID="ASPxButton3" Text="SAVE CHANGES" Theme="Moderno" OnClick="btn_save_OnClick">
                                     </dx:ASPxButton> 
+                                     --%>
                                 </div>
 
                                 <dx:ASPxGridView ID="grid_import" runat="server" AutoGenerateColumns="False"
