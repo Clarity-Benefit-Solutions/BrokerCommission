@@ -34,7 +34,7 @@ from
     dbo.STATEMENT_DETAILS
 where
       BROKER_ID = 2
-  and CLIENT_NAME like 'CMS%'
+--   and CLIENT_NAME like 'CMS%'
 order by
     STATEMENT_DETAILS.CLIENT_NAME
   , STATEMENT_DETAILS.QB_FEE asc
@@ -43,6 +43,11 @@ order by
 select *
 from
     dbo.STATEMENT_DETAILS_ADD
+where
+    BROKER_ID = 2
+select *
+from
+    dbo.vw_STATEMENT_DETAILS_ADD
 where
     BROKER_ID = 2
 

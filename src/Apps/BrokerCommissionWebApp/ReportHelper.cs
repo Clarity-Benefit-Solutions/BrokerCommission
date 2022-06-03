@@ -152,7 +152,7 @@ namespace BrokerCommissionWebApp
                     x => x.HEADER_ID == statementID &&
                     x.line_payment_status == "paid" &&
                     x.TOTAL_PRICE > 0
-                    ).OrderBy(x => x.CLIENT_NAME).OrderBy(x => x.QB_FEE)
+                    ).OrderBy(x => x.CLIENT_NAME).ThenBy(x => x.QB_FEE)
                     .ToList();
                 //
                 var list_pending = db.STATEMENT_DETAILS.Where
@@ -161,7 +161,7 @@ namespace BrokerCommissionWebApp
                     x.TOTAL_PRICE > 0
                     )
                     .OrderBy(x => x.CLIENT_NAME)
-                    .OrderBy(x => x.QB_FEE)
+                    .ThenBy(x => x.QB_FEE)
                     .ToList();
                 //
 
