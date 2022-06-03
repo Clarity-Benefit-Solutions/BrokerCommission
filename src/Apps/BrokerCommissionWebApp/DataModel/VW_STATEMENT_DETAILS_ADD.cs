@@ -14,7 +14,7 @@ namespace BrokerCommissionWebApp.DataModel
     
     public partial class VW_STATEMENT_DETAILS_ADD
     {
-        public Nullable<int> ID { get; set; }
+        public int ID { get; set; }
         public string BROKER_NAME { get; set; }
         public string QB_BROKER_NAME { get; set; }
         public string QB_AGENT { get; set; }
@@ -40,5 +40,6 @@ namespace BrokerCommissionWebApp.DataModel
         public string Num { get; set; }
         public System.DateTime Invoice_Date { get; set; }
         public int CLIENT_ID { get; set; }
+        public string invoice_date { get; set; }
     }
 }

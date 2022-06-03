@@ -301,7 +301,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_GROUP' does not have 
           <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
           <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="50" />
           <Property Name="RESULTID" Type="int" />
-          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="created_at" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="created_by" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="STATEMENT_DETAILS_ARCHIVE">
@@ -414,6 +414,37 @@ warning 6002: The table/view 'Broker_Commission.dbo.BROKER_CLIENT' does not have
           <Property Name="CLIENT_ID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6013: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="COMMISSION_RESULT">
+          <Property Name="ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_BROKER_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_AGENT" Type="nvarchar" MaxLength="4000" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_CLIENT" Type="nvarchar" MaxLength="4000" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="MEMO" Type="nvarchar" MaxLength="3000" />
+          <Property Name="Qty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMISSION AMOUNT" Type="numeric" Precision="37" Scale="4" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_ID" Type="int" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="Num" Type="nvarchar" MaxLength="3000" />
+          <Property Name="INVOICE_DATE" Type="datetime" />
+          <Property Name="CLIENT_ID" Type="int" />
+          <Property Name="Total_Invoice_Sent_Open_Balance" Type="money" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT_NAME0' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="COMMISSION_RESULT_NAME0">
           <Key>
@@ -427,7 +458,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT_NAME0' doe
           <Property Name="QB_CLIENT" Type="varchar" MaxLength="8000" />
           <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
           <Property Name="MEMO" Type="varchar" MaxLength="3000" />
-          <Property Name="Qty" Type="int" />
+          <Property Name="Qty" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Open Balance" Type="numeric" Precision="18" Scale="2" />
@@ -645,6 +676,13 @@ warning 6002: The table/view 'Broker_Commission.dbo.COMMISSION_RESULT_NAME6' doe
           <Property Name="CLIENT_ID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6013: The table/view 'Broker_Commission.dbo.COMMISSION_SUMMARY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="COMMISSION_SUMMARY">
+          <Property Name="BROKER_ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="500" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'Broker_Commission.dbo.DASH_BOARD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DASH_BOARD">
           <Key>
@@ -681,16 +719,55 @@ warning 6002: The table/view 'Broker_Commission.dbo.DASH_BOARD' does not have a 
           <Property Name="TOTAL_AMOUNT" Type="money" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6013: The table/view 'Broker_Commission.dbo.vw_incorrect_inv_nos1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_incorrect_inv_nos1">
+          <Property Name="INVOICE_NUM" Type="nvarchar" MaxLength="500" />
+          <Property Name="count_broker_id" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Broker_Commission.dbo.vw_statement_design_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_statement_design_view">
+          <Key>
+            <PropertyRef Name="DETAIL_ID" />
+            <PropertyRef Name="HEADER_ID" />
+            <PropertyRef Name="created_at" />
+          </Key>
+          <Property Name="DETAIL_ID" Type="int" Nullable="false" />
+          <Property Name="HEADER_ID" Type="int" Nullable="false" />
+          <Property Name="INVOICE_DATE" Type="date" />
+          <Property Name="INVOICE_NUM" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="CLIENT_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="BROKER_ID" Type="int" />
+          <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
+          <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
+          <Property Name="FEE_MEMO" Type="nvarchar" MaxLength="500" />
+          <Property Name="QUANTITY" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="SALES_PRICE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TOTAL_PRICE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="START_DATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="BROKER_STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="OPEN_BALANCE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="month" Type="varchar" MaxLength="50" />
+          <Property Name="year" Type="int" />
+          <Property Name="line_payment_status" Type="varchar" MaxLength="100" />
+          <Property Name="created_at" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="created_by" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_DETAILS_ADD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VW_STATEMENT_DETAILS_ADD">
           <Key>
+            
             <PropertyRef Name="Open Balance" />
             <PropertyRef Name="EMAIL" />
             <PropertyRef Name="Date" />
-            <PropertyRef Name="Invoice_Date" />
             <PropertyRef Name="CLIENT_ID" />
           </Key>
-          <Property Name="ID" Type="int" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BROKER_NAME" Type="nvarchar" MaxLength="500" />
           <Property Name="QB_BROKER_NAME" Type="nvarchar" MaxLength="500" />
           <Property Name="QB_AGENT" Type="nvarchar" MaxLength="500" />
@@ -698,7 +775,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_DETAILS_ADD' do
           <Property Name="QB_CLIENT" Type="nvarchar" MaxLength="500" />
           <Property Name="QB_FEE" Type="nvarchar" MaxLength="500" />
           <Property Name="MEMO" Type="nvarchar" MaxLength="500" />
-          <Property Name="Qty" Type="int" />
+          <Property Name="Qty" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Sales Price" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
           <Property Name="Open Balance" Type="int" Nullable="false" />
@@ -713,8 +790,8 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_DETAILS_ADD' do
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="PAYLOCITY_ID" Type="nvarchar" MaxLength="50" />
           <Property Name="START_DATE" Type="varchar" MaxLength="10" />
-          <Property Name="Num" Type="varchar" MaxLength="10" />
-          <Property Name="Invoice_Date" Type="datetime" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="49" />
+          <Property Name="invoice_date" Type="nvarchar" MaxLength="50" />
           <Property Name="CLIENT_ID" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -1197,6 +1274,34 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
     [DASH_BOARD].[TOTAL_AMOUNT] AS [TOTAL_AMOUNT]
     FROM [dbo].[DASH_BOARD] AS [DASH_BOARD]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vw_statement_design_view" EntityType="Self.vw_statement_design_view" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_statement_design_view].[DETAIL_ID] AS [DETAIL_ID], 
+    [vw_statement_design_view].[HEADER_ID] AS [HEADER_ID], 
+    [vw_statement_design_view].[INVOICE_DATE] AS [INVOICE_DATE], 
+    [vw_statement_design_view].[INVOICE_NUM] AS [INVOICE_NUM], 
+    [vw_statement_design_view].[QB_CLIENT_NAME] AS [QB_CLIENT_NAME], 
+    [vw_statement_design_view].[CLIENT_NAME] AS [CLIENT_NAME], 
+    [vw_statement_design_view].[BROKER_ID] AS [BROKER_ID], 
+    [vw_statement_design_view].[BROKER_NAME] AS [BROKER_NAME], 
+    [vw_statement_design_view].[QB_FEE] AS [QB_FEE], 
+    [vw_statement_design_view].[FEE_MEMO] AS [FEE_MEMO], 
+    [vw_statement_design_view].[QUANTITY] AS [QUANTITY], 
+    [vw_statement_design_view].[COMMISSION_RATE] AS [COMMISSION_RATE], 
+    [vw_statement_design_view].[UNIT] AS [UNIT], 
+    [vw_statement_design_view].[STATUS] AS [STATUS], 
+    [vw_statement_design_view].[SALES_PRICE] AS [SALES_PRICE], 
+    [vw_statement_design_view].[TOTAL_PRICE] AS [TOTAL_PRICE], 
+    [vw_statement_design_view].[START_DATE] AS [START_DATE], 
+    [vw_statement_design_view].[BROKER_STATUS] AS [BROKER_STATUS], 
+    [vw_statement_design_view].[OPEN_BALANCE] AS [OPEN_BALANCE], 
+    [vw_statement_design_view].[month] AS [month], 
+    [vw_statement_design_view].[year] AS [year], 
+    [vw_statement_design_view].[line_payment_status] AS [line_payment_status], 
+    [vw_statement_design_view].[created_at] AS [created_at], 
+    [vw_statement_design_view].[created_by] AS [created_by]
+    FROM [dbo].[vw_statement_design_view] AS [vw_statement_design_view]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="VW_STATEMENT_DETAILS_ADD" EntityType="Self.VW_STATEMENT_DETAILS_ADD" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [VW_STATEMENT_DETAILS_ADD].[ID] AS [ID], 
@@ -1223,7 +1328,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
     [VW_STATEMENT_DETAILS_ADD].[PAYLOCITY_ID] AS [PAYLOCITY_ID], 
     [VW_STATEMENT_DETAILS_ADD].[START_DATE] AS [START_DATE], 
     [VW_STATEMENT_DETAILS_ADD].[Num] AS [Num], 
-    [VW_STATEMENT_DETAILS_ADD].[Invoice_Date] AS [Invoice_Date], 
+    [VW_STATEMENT_DETAILS_ADD].[invoice_date] AS [invoice_date], 
     [VW_STATEMENT_DETAILS_ADD].[CLIENT_ID] AS [CLIENT_ID]
     FROM [dbo].[VW_STATEMENT_DETAILS_ADD] AS [VW_STATEMENT_DETAILS_ADD]</DefiningQuery>
           </EntitySet>
@@ -1533,7 +1638,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="QUANTITY" Type="Decimal" />
+          <Property Name="QUANTITY" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1562,7 +1667,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="QUANTITY" Type="Decimal" />
+          <Property Name="QUANTITY" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1572,7 +1677,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PAYLOCITY_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RESULTID" Type="Int32" />
-          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="created_by" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="STATEMENT_DETAILS_ARCHIVE">
@@ -1955,7 +2060,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
             <PropertyRef Name="Invoice_Date" />
             <PropertyRef Name="CLIENT_ID" />
           </Key>
-          <Property Name="ID" Type="Int32" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="QB_BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="QB_AGENT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -1978,9 +2083,10 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PAYLOCITY_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="START_DATE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Num" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Num" Type="String" MaxLength="49" FixedLength="false" Unicode="true" />
           <Property Name="Invoice_Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CLIENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="invoice_date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="VW_STATEMENT_HEADER">
           <Key>
@@ -2118,6 +2224,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <FunctionImport Name="UTIL_TRUNCATE_TRN_TABLES" ReturnType="Collection(String)">
           <Parameter Name="param" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="vw_statement_design_view" EntityType="Broker_CommissionModel.vw_statement_design_view" />
         </EntityContainer>
         <EntityType Name="vw_statement_details_archive_and_paid">
           <Key>
@@ -2157,6 +2264,37 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <Property Name="PaidBrokerId" Type="Int32" />
           <Property Name="PaidMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PaidYear" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_statement_design_view">
+          <Key>
+            <PropertyRef Name="DETAIL_ID" />
+            <PropertyRef Name="HEADER_ID" />
+            <PropertyRef Name="created_at" />
+          </Key>
+          <Property Name="DETAIL_ID" Type="Int32" Nullable="false" />
+          <Property Name="HEADER_ID" Type="Int32" Nullable="false" />
+          <Property Name="INVOICE_DATE" Type="DateTime" Precision="0" />
+          <Property Name="INVOICE_NUM" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENT_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_ID" Type="Int32" />
+          <Property Name="BROKER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QB_FEE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FEE_MEMO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QUANTITY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="COMMISSION_RATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UNIT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SALES_PRICE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TOTAL_PRICE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="START_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BROKER_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OPEN_BALANCE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="month" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="line_payment_status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="created_by" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2848,6 +2986,7 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           <EntitySetMapping Name="VW_STATEMENT_DETAILS_ADD">
             <EntityTypeMapping TypeName="Broker_CommissionModel.VW_STATEMENT_DETAILS_ADD">
               <MappingFragment StoreEntitySet="VW_STATEMENT_DETAILS_ADD">
+                <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
                 <ScalarProperty Name="QB_BROKER_NAME" ColumnName="QB_BROKER_NAME" />
@@ -2872,7 +3011,6 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
                 <ScalarProperty Name="PAYLOCITY_ID" ColumnName="PAYLOCITY_ID" />
                 <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
                 <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Invoice_Date" ColumnName="Invoice_Date" />
                 <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2943,6 +3081,36 @@ warning 6002: The table/view 'Broker_Commission.dbo.VW_STATEMENT_HEADER' does no
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_update_header_totals" FunctionName="Broker_CommissionModel.Store.sp_update_header_totals" />
           <FunctionImportMapping FunctionImportName="UTIL_TRUNCATE_TRN_TABLES" FunctionName="Broker_CommissionModel.Store.UTIL_TRUNCATE_TRN_TABLES" />
+          <EntitySetMapping Name="vw_statement_design_view">
+            <EntityTypeMapping TypeName="Broker_CommissionModel.vw_statement_design_view">
+              <MappingFragment StoreEntitySet="vw_statement_design_view">
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="line_payment_status" ColumnName="line_payment_status" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="OPEN_BALANCE" ColumnName="OPEN_BALANCE" />
+                <ScalarProperty Name="BROKER_STATUS" ColumnName="BROKER_STATUS" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="TOTAL_PRICE" ColumnName="TOTAL_PRICE" />
+                <ScalarProperty Name="SALES_PRICE" ColumnName="SALES_PRICE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="COMMISSION_RATE" ColumnName="COMMISSION_RATE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="FEE_MEMO" ColumnName="FEE_MEMO" />
+                <ScalarProperty Name="QB_FEE" ColumnName="QB_FEE" />
+                <ScalarProperty Name="BROKER_NAME" ColumnName="BROKER_NAME" />
+                <ScalarProperty Name="BROKER_ID" ColumnName="BROKER_ID" />
+                <ScalarProperty Name="CLIENT_NAME" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="QB_CLIENT_NAME" ColumnName="QB_CLIENT_NAME" />
+                <ScalarProperty Name="INVOICE_NUM" ColumnName="INVOICE_NUM" />
+                <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
+                <ScalarProperty Name="HEADER_ID" ColumnName="HEADER_ID" />
+                <ScalarProperty Name="DETAIL_ID" ColumnName="DETAIL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

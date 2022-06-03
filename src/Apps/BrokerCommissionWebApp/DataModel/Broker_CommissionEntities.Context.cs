@@ -58,6 +58,7 @@ namespace BrokerCommissionWebApp.DataModel
         public virtual DbSet<VW_STATEMENT_DETAILS_ADD> VW_STATEMENT_DETAILS_ADD { get; set; }
         public virtual DbSet<VW_STATEMENT_HEADER> VW_STATEMENT_HEADER { get; set; }
         public virtual DbSet<vw_statement_details_archive_and_paid> vw_statement_details_archive_and_paid { get; set; }
+        public virtual DbSet<vw_statement_design_view> vw_statement_design_view { get; set; }
     
         public virtual int db_log_error(string err_no, string err_source, string err_msg, string sqlstate)
         {

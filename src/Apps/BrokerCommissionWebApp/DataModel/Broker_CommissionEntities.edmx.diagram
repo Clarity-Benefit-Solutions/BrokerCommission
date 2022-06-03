@@ -38,6 +38,7 @@
         <AssociationConnector Association="Broker_CommissionModel.STATEMENT_DETAILS_broker__fk" ManuallyRouted="false" />
         <AssociationConnector Association="Broker_CommissionModel.STATEMENT_DETAILS__header_fk" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Broker_CommissionModel.vw_statement_details_archive_and_paid" Width="1.5" PointX="11.375" PointY="18.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.vw_statement_design_view" Width="1.5" PointX="19.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
