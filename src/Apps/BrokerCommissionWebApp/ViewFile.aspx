@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="ViewFile.aspx.cs" Inherits="BrokerCommissionWebApp.ViewFile" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="ViewFile.aspx.cs" Inherits="BrokerCommissionWebApp.ViewFile"
+    MaintainScrollPositionOnPostback="true"%>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
