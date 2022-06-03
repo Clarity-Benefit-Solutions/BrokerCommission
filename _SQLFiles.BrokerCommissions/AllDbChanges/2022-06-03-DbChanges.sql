@@ -5,7 +5,7 @@ go
 CREATE or alter view VW_STATEMENT_DETAILS_ADD
 as
     select
-        [RESULTID] ID
+        [DETAIL_ID] ID
       , BROKER_NAME BROKER_NAME
       , BROKER_NAME QB_BROKER_NAME
       , BROKER_NAME QB_AGENT
@@ -30,7 +30,7 @@ as
       , [PAYLOCITY_ID] PAYLOCITY_ID
       , CONVERT( varchar(10) , [START_DATE] ) [START_DATE]
       ,/* CONVERT( varchar(10) , [DETAIL_ID] )*/
-        left( concat( BROKER_ID , '-' , RESULTID , '-' , START_DATE ) , 49 ) Num
+        left( concat( BROKER_ID , '-' , DETAIL_ID , '-' , START_DATE ) , 49 ) Num
       , start_date invoice_date
       , 0 [CLIENT_ID]
     FROM
@@ -80,7 +80,7 @@ as
                 DETAIL_ID
               , HEADER_ID
               , START_DATE INVOICE_DATE
-              , left( concat( BROKER_ID , '-' , RESULTID , '-' , START_DATE ) , 49 ) INVOICE_NUM
+              , left( concat( BROKER_ID , '-' , DETAIL_ID , '-' , START_DATE ) , 49 ) INVOICE_NUM
               , QB_CLIENT_NAME
               , CLIENT_NAME
               , BROKER_ID
