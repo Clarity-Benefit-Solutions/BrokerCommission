@@ -24,13 +24,7 @@
                     <dx:ASPxLabel runat="server" ID="lblBRoker" Theme="Moderno" />
                 </h6>
             </div>
-            <!--
-            <div>
-                <dx:ASPxButton runat="server" ID="ASPxButton1" Text="REFRESH" Theme="Moderno"
-                    OnClick="btn_refresh_OnClick">
-                </dx:ASPxButton>
-            </div>
-            -->
+          
             <dx:ASPxPageControl ID="ASPxPageControl1" runat="server" ActiveTabIndex="1" Theme="Moderno" Width="100%" Height="1200">
                 <TabPages>
                     <dx:TabPage Name="DESIGN VIEW" Text="DESIGN VIEW">
@@ -206,7 +200,7 @@
                         <ContentCollection>
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                 <div style="width: 100%; text-align: center; margin-top: 80px">
-                                        <dx:ASPxButton runat="server" ID="ASPxButton2" Text="REFRESH" Theme="Moderno" OnClick="ASPxButton2_Click"></dx:ASPxButton>
+                                        <dx:ASPxButton runat="server" ID="ASPxButton2" Text="REFRESH" Theme="Moderno" OnClick="btn_refresh_OnClick"></dx:ASPxButton>
                                     &nbsp;&nbsp;
                                     <dx:ASPxButton runat="server" ID="btn_view_statement" Text="VIEW/DOWNLOAD STATEMENT" Theme="Moderno"
                                         OnClick="btn_view_statement_OnClick">

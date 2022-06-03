@@ -345,8 +345,13 @@ namespace BrokerCommissionWebApp
             Response.Write($"{DateTime.Now} - Processed Imported Data<BR><BR>");
             Response.Flush();
 
-            //
-            Page_Load(this, EventArgs.Empty);
+
+            //ensure fuill reload by response.redirect
+            string url = Request.Url.ToString();
+            Response.Redirect(url, false);
+            // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
+            Context.ApplicationInstance.CompleteRequest();
+
         }
 
         protected void btn_save_OnClick(object sender, EventArgs e)
@@ -657,34 +662,6 @@ namespace BrokerCommissionWebApp
             return id;
         }
 
-
-
-        //protected void ASPxButton2_Click(object sender, EventArgs e)
-        //{
-        //    LoadRawDataTable();
-        //}
-
-
-        protected void ASPxButton2_Click(object sender, EventArgs e)
-        {
-
-            // todo: inform user that we have started this operation
-            Response.Write($"{DateTime.Now} - Re-Processing Imported Data<BR><BR>");
-            Response.Flush();
-
-            // reprocessa data
-            util.processImportedRawData();
-
-            // todo: inform user that we have started this operation
-            Response.Write($"{DateTime.Now} - Processed Imported Data<BR><BR>");
-            Response.Flush();
-
-
-            // load data
-            //DataLoad();
-
-            LoadRawDataTable();
-        }
 
 
     }
