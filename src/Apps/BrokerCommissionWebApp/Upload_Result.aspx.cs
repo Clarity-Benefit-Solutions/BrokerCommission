@@ -189,8 +189,10 @@ namespace BrokerCommissionWebApp
             Response.Flush();
 
 
-            // load data
-            DataLoad();
+            //ensure fuill reload by response.redirect
+            string url = Request.Url.ToString();
+            Response.Write("<script type='text/javascript'>"); Response.Write("window.location = '" + url + "'</script>");
+            Response.Flush();
         }
 
 
