@@ -53,7 +53,7 @@ namespace BrokerCommissionWebApp
                 {
                     ASPxPageControl1.TabPages[0].Visible = false;
                     ASPxPageControl1.TabPages[2].Visible = false;
-                    ASPxButton1.Visible = false;   //Ayo06022022 not set to true yet what does it do 
+                    //ASPxButton1.Visible = false;   //Ayo06022022 not set to true yet what does it do 
                     //ASPxButton1.Visible = true;   //Ayo06022022 not set to true yet what does it do 
                     string bid = Request.QueryString["BID"].ToString();
                     //
@@ -348,9 +348,10 @@ namespace BrokerCommissionWebApp
 
             //ensure fuill reload by response.redirect
             string url = Request.Url.ToString();
-            Response.Redirect(url, false);
-            // note:: avoid ThreadAbort Exception in .Net v4.7x on redirect
-            Context.ApplicationInstance.CompleteRequest();
+            Response.Write("<script type='text/javascript'>"); Response.Write("window.location = '" + url + "'</script>"); 
+            Response.Flush();
+            
+            
 
         }
 
