@@ -71,7 +71,15 @@ namespace BrokerCommissionWebApp
 
         public static string rawDataUploadedFilePath = file_import + "\\file_import.csv";
 
+        public static string FormatField(string value)
+        {
+            if (Utils.IsBlank(value))
+            {
+                return "";
+            }
 
+            return value.Replace("&", "").Replace(",", "").Replace(".", "").Replace(" -", "-").Replace("- ", "-").Replace("-", "").ToUpper().Trim();
+        }
         public static StringBuilder stringPDF(DataTable dtp, string month, int year)
         {
             StringBuilder sb = new StringBuilder();
