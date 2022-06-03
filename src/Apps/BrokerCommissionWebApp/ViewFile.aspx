@@ -52,14 +52,14 @@
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="TOTAL_PRICE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="COMMISSION AMOUNT" Width="10%">
                                         </dx:GridViewDataTextColumn>
-                                        <%--      <dx:GridViewDataTextColumn FieldName="START_DATE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="START_DATE" Width="10%">
-                                        </dx:GridViewDataTextColumn>--%>
+                                        <dx:GridViewDataTextColumn FieldName="START_DATE" ShowInCustomizationForm="True" VisibleIndex="10" Caption="START_DATE" Width="10%">
+                                        </dx:GridViewDataTextColumn>
                                         <%--
                                                     ToDo: How do these buttons work - will they work now that we regerante statements  directly from Imports-OCT
                                         --%>
 
                                         <%-- hide button till functionality is implemented --%>
-                                        <%--
+                                        
                                         <dx:GridViewDataColumn Caption="Edit" VisibleIndex="10" Width="120px">
                                             <SettingsHeaderFilter>
                                                 <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
@@ -79,10 +79,18 @@
                                                 </dx:ASPxButton>
                                             </DataItemTemplate>
                                         </dx:GridViewDataColumn>
-                                        --%>
+                                        
                                     </Columns>
 
                                 </dx:ASPxGridView>
+
+
+
+                                 
+                       <%--             <dx:ASPxFormLayout runat="server" ID="ASPxFormLayout1" Width="100%" ClientInstanceName="FormLayout" Theme="Moderno" OnPageIndexChanged="grid_client_OnPageIndexChanged"
+                OnRowCommand="grid_client_OnRowCommand">
+                                    <Items>--%>
+
                                 <dx:ASPxFormLayout runat="server" ID="ASPxFormLayout" Width="100%" ClientInstanceName="FormLayout" Theme="Moderno">
                                     <Items>
                                         <dx:LayoutGroup Width="100%" Caption="ADD STATEMENT LINE" ColCount="3" ShowCaption="False">
@@ -105,8 +113,8 @@
                                                 <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
-                                                            <dx:ASPxComboBox runat="server" ID="cmb_client" Theme="Moderno" DisplayMember="CLIENT_NAME" ValueMember="CLIENT_NAME" OnSelectedIndexChanged="cmb_client_OnSelectedIndexChanged" Width="100%"
-                                                                AutoPostBack="True">
+                                                            <dx:ASPxComboBox runat="server" ID="cmb_client" Theme="Moderno" DisplayMember="CLIENT_NAME" ValueMember="CLIENT_NAME" OnSelectedIndexChanged="cmb_client_OnSelectedIndexChanged" Width="100%">
+                                                           
                                                             </dx:ASPxComboBox>
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
@@ -179,8 +187,8 @@
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <%-- add line is disabled till april ststerments are sent out and this is tested fully --%>
-                                                            <%-- <dx:ASPxButton runat="server" ID="btn_addNew" Text="ADD NEW LINE" Theme="MaterialCompact" OnClick="btn_addNew_Click" ValidationGroup="al"></dx:ASPxButton>
-                                                            --%>
+                                                             <dx:ASPxButton runat="server" ID="btn_addNew" Text="ADD NEW LINE" Theme="MaterialCompact" OnClick="btn_addNew_Click" ValidationGroup="al"></dx:ASPxButton>
+                                                            
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
                                                 </dx:LayoutItem>
@@ -197,15 +205,15 @@
                         <ContentCollection>
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                 <div style="width: 100%; text-align: center; margin-top: 80px">
-                                    <%--    <dx:ASPxButton runat="server" ID="ASPxButton2" Text="REFRESH" Theme="Moderno" OnClick="ASPxButton2_Click"></dx:ASPxButton>
-                                    &nbsp;&nbsp;--%>
+                                        <dx:ASPxButton runat="server" ID="ASPxButton2" Text="REFRESH" Theme="Moderno" OnClick="ASPxButton2_Click"></dx:ASPxButton>
+                                    &nbsp;&nbsp;
                                     <dx:ASPxButton runat="server" ID="btn_view_statement" Text="VIEW/DOWNLOAD STATEMENT" Theme="Moderno"
                                         OnClick="btn_view_statement_OnClick">
                                     </dx:ASPxButton>
                                 </div>
 
-                                <%--    <dx:ASPxImage ID="ASPxImage1" runat="server" ShowLoadingImage="true" Height="600" Width="600"  ></dx:ASPxImage>
-                                --%>
+                                    <dx:ASPxImage ID="ASPxImage1" runat="server" ShowLoadingImage="true" Height="600" Width="600"  ></dx:ASPxImage>
+                                
                             </dx:ContentControl>
                         </ContentCollection>
                     </dx:TabPage>
@@ -214,9 +222,9 @@
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                 <div style="width: 100%; text-align: right; margin-bottom: 20px">
                                     <%-- hidden til;l working properly --%>
-                                    <%-- 
+                                     
                                     <dx:ASPxButton runat="server" ID="ASPxButton3" Text="SAVE CHANGES" Theme="Moderno" OnClick="btn_save_OnClick">
-                                    </dx:ASPxButton> --%>
+                                    </dx:ASPxButton> 
                                 </div>
 
                                 <dx:ASPxGridView ID="grid_import" runat="server" AutoGenerateColumns="False"
@@ -390,15 +398,17 @@
 
                                             <CellStyle HorizontalAlign="Left"></CellStyle>
                                         </dx:GridViewDataColumn>
-                                        <%-- <dx:GridViewDataColumn Caption="BILLING START" VisibleIndex="6"
+
+                                       <%--  <dx:GridViewDataColumn Caption="BILLING START" VisibleIndex="6"
                                             Width="20%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>
-                                                <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
+                                                <DateRangePickerSettings EditFormatString="mm/dd/yyyy"></DateRangePickerSettings>
                                             </SettingsHeaderFilter>
                                             <DataItemTemplate>
                                                 <dx:ASPxDateEdit runat="server" ID="de_start" Theme="Moderno" Date='<%# Eval("START_DATE") == null ? null : Convert.ToDateTime(Eval("START_DATE").ToString()) %>' ></dx:ASPxDateEdit>
-                                                 
+                                           <dx:ASPxDateEdit ID="de_start" runat="server" Theme="Moderno" NullText= "mm/dd/yyyy"></dx:ASPxDateEdit>
+   
                                             </DataItemTemplate>
                                         </dx:GridViewDataColumn>--%>
                                     </Columns>
