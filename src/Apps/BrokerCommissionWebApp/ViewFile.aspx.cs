@@ -29,7 +29,7 @@ namespace BrokerCommissionWebApp
 
                 string mainconn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ConnectionString;
                 SqlConnection conn = new SqlConnection(mainconn);
-                string sqlquery = "select CLIENT_NAME from [dbo].[client_]";
+                string sqlquery = "select CLIENT_NAME from [dbo].[client_] order by client_name asc";
                 SqlCommand cmd = new SqlCommand(sqlquery, conn);
                 conn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -578,7 +578,7 @@ namespace BrokerCommissionWebApp
                     //QB_CLIENT_NAME = txt_name.Text,
                     CLIENT_NAME = util.FormatField(cmb_client.Text),
                     QB_CLIENT_NAME = util.FormatField(cmb_client.Text),
-
+                    STATUS = null,
                     COMMISSION_RATE = Convert.ToDecimal(txt_commissionrate.Text),
                     SALES_PRICE = Convert.ToDecimal(txt_sales.Text),
                     FEE_MEMO = util.FormatField(txt_item.Text),
