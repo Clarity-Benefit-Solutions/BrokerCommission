@@ -32,9 +32,12 @@ namespace BrokerCommissionWebApp
     {
         protected static Broker_CommissionEntities db = new Broker_CommissionEntities();
 
+        public static string Environment = System.Web.Configuration.WebConfigurationManager.AppSettings["Environment"].ToString();
+
         public static string debugMode =
           System.Web.Configuration.WebConfigurationManager.AppSettings["DebugMode"].ToString();
 
+        
         public static string receive =
           System.Web.Configuration.WebConfigurationManager.AppSettings["receive_emails"].ToString();
 

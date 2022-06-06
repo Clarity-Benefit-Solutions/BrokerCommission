@@ -7,11 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrokerCommissionWebApp {
-    
-    
-    public partial class MainMaster {
-        
+namespace BrokerCommissionWebApp
+{
+
+
+    public partial class MainMaster
+    {
+
+        /// <summary>
+        /// txtEnvironment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtEnvironment;
+
         /// <summary>
         /// LeftPane control.
         /// </summary>
@@ -20,7 +31,7 @@ namespace BrokerCommissionWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxPanel LeftPane;
-        
+
         /// <summary>
         /// ASPxNavBar1 control.
         /// </summary>
@@ -29,7 +40,7 @@ namespace BrokerCommissionWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxNavBar ASPxNavBar1;
-        
+
         /// <summary>
         /// MainContent control.
         /// </summary>
