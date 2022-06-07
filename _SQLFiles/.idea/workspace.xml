@@ -211,11 +211,15 @@
     <state x="361" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.930@0.0.1536.930" timestamp="1650714218274" />
     <state x="408" y="114" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1474.864@62.0.1474.864" timestamp="1654592227316" />
     <state x="408" y="127" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1474.960@62.0.1474.960" timestamp="1652804840675" />
-    <state x="589" y="204" key="FileChooserDialogImpl" timestamp="1653632932167">
+    <state x="553" y="301" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1654592384496">
+      <screen x="62" y="0" width="1474" height="864" />
+    </state>
+    <state x="553" y="301" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/62.0.1474.864@62.0.1474.864" timestamp="1654592384496" />
+    <state x="589" y="204" key="FileChooserDialogImpl" timestamp="1654592382159">
       <screen x="62" y="0" width="1474" height="864" />
     </state>
     <state x="549" y="220" key="FileChooserDialogImpl/0.0.1536.930@0.0.1536.930" timestamp="1650714183158" />
-    <state x="589" y="204" key="FileChooserDialogImpl/62.0.1474.864@62.0.1474.864" timestamp="1653632932167" />
+    <state x="589" y="204" key="FileChooserDialogImpl/62.0.1474.864@62.0.1474.864" timestamp="1654592382159" />
     <state x="589" y="227" key="FileChooserDialogImpl/62.0.1474.960@62.0.1474.960" timestamp="1652803348065" />
     <state width="1159" height="251" key="GridCell.Tab.0.bottom" timestamp="1653632767399">
       <screen x="62" y="0" width="1474" height="864" />
