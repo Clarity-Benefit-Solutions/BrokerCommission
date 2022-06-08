@@ -93,7 +93,7 @@
                     OnSelectedIndexChanged="cboShowAllOrSome_SelectedIndexChanged" AutoPostBack="True">
                 </dx:ASPxComboBox>
                 &nbsp;&nbsp;
-                <dx:ASPxButton runat="server" ID="ASPxButton1" Text="REFRESH" Theme="Moderno"
+                <dx:ASPxButton runat="server" ID="ASPxButton1" Text="RECALCULATE" Theme="Moderno"
                     OnClick="btn_refresh_OnClick">
                 </dx:ASPxButton>
                 &nbsp;&nbsp;

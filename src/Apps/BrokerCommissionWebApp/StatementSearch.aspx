@@ -88,7 +88,7 @@
             </div>
           <%--  <div style="width: 100%; text-align: right; margin-bottom: 20px">
 
-                <dx:ASPxButton runat="server" ID="ASPxButton1" Text="REFRESH" Theme="Moderno"
+                <dx:ASPxButton runat="server" ID="ASPxButton1" Text="RECALCULATE" Theme="Moderno"
                     OnClick="btn_refresh_OnClick">
                 </dx:ASPxButton>
                 &nbsp;&nbsp;

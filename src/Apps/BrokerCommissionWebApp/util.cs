@@ -81,7 +81,8 @@ namespace BrokerCommissionWebApp
                 return "";
             }
 
-            return value.Replace("&", "").Replace(",", "").Replace(".", "").Replace(" -", "-").Replace("- ", "-").Replace("-", "").ToUpper().Trim();
+            // allow commaa
+            return value.Replace("&", "")/*.Replace(",", "")*/.Replace(".", "").Replace(" -", "-").Replace("- ", "-").Replace("-", "").ToUpper().Trim();
         }
         public static StringBuilder stringPDF(DataTable dtp, string month, int year)
         {
