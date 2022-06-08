@@ -200,7 +200,7 @@
                         <ContentCollection>
                             <dx:ContentControl runat="server" SupportsDisabledAttribute="True">
                                 <div style="width: 100%; text-align: center; margin-top: 80px">
-                                        <dx:ASPxButton runat="server" ID="ASPxButton2" Text="REFRESH" Theme="Moderno" OnClick="btn_refresh_OnClick"></dx:ASPxButton>
+                                        <dx:ASPxButton runat="server" ID="ASPxButton2" Text="RECALCULATE" Theme="Moderno" OnClick="btn_refresh_OnClick"></dx:ASPxButton>
                                     &nbsp;&nbsp;
                                     <dx:ASPxButton runat="server" ID="btn_view_statement" Text="VIEW/DOWNLOAD STATEMENT" Theme="Moderno"
                                         OnClick="btn_view_statement_OnClick">
