@@ -112,12 +112,12 @@ BEGIN
     --EXEC msdb..sp_start_job @job_name='Broker_Commission'
     DELETE
     FROM
-        [dbo].[STATEMENT_HEADER]
+        [dbo].Statement_Header
     WHERE
           [MONTH] = @Month
       AND [YEAR] = @Year
     
-    INSERT INTO [dbo].[STATEMENT_HEADER]
+    INSERT INTO [dbo].Statement_Header
     (
     [MONTH],
     [YEAR],
@@ -165,7 +165,7 @@ BEGIN
               SELECT
                   COUNT( * )
               FROM
-                  [dbo].[STATEMENT_HEADER]
+                  [dbo].Statement_Header
               WHERE
                   FLAG = 0
           ) > 0
@@ -173,11 +173,11 @@ BEGIN
             Select Top 1
                 @Id = HEADER_ID
             From
-                [dbo].[STATEMENT_HEADER]
+                [dbo].Statement_Header
             Where
                 FLAG = 0
             
-            INSERT INTO [dbo].[STATEMENT_DETAILS]
+            INSERT INTO [dbo].Statement_Details
             (
                 [HEADER_ID]
             ,   [QB_CLIENT_NAME]
@@ -219,21 +219,21 @@ BEGIN
               , [INVOICE_DATE]
             
             FROM
-                [dbo].[STATEMENT_HEADER] AS HEADER
+                [dbo].Statement_Header AS HEADER
                     LEFT JOIN [dbo].[COMMISSION_RESULT] AS R ON HEADER.[BROKER_ID] = R.[BROKER_ID]
             
             WHERE
                   R.[QB_CLIENT_NAME] IS NOT NULL
               AND HEADER.HEADER_ID = @Id
             
-            Update [dbo].[STATEMENT_HEADER]
+            Update [dbo].Statement_Header
             Set
                 FLAG = 4
             Where
                 HEADER_ID = @Id
         End
     
-    TRUNCATE TABLE [dbo].[STATEMENT_DETAILS_ADD]
+    TRUNCATE TABLE [dbo].Statement_Details_Add
 END
 go
 

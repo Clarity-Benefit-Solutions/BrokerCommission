@@ -129,11 +129,11 @@
                             <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
                             <Columns>
 
-                                <dx:GridViewDataTextColumn FieldName="QB_CLIENT_NAME" VisibleIndex="1" FixedStyle="Left" Caption="QB CLIENT NAME" Width="35%">
+                                <dx:GridViewDataTextColumn FieldName="QB_CLIENT_NAME" VisibleIndex="1" FixedStyle="Left" Caption="QB Client NAME" Width="35%">
                                 </dx:GridViewDataTextColumn>
                                 <dx:GridViewDataTextColumn FieldName="QB_FEE" VisibleIndex="2" FixedStyle="Left" Caption="QB MEMO" Width="15%">
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewDataTextColumn FieldName="FEE_MEMO" VisibleIndex="3" FixedStyle="Left" Caption="STATEMENT MEMO" Width="25%">
+                                <dx:GridViewDataTextColumn FieldName="Fee_Memo" VisibleIndex="3" FixedStyle="Left" Caption="STATEMENT MEMO" Width="25%">
                                 </dx:GridViewDataTextColumn>
                                 <dx:GridViewDataTextColumn FieldName="COMMISSION_RATE" VisibleIndex="4" FixedStyle="Left" Caption="COMMISSION RATE ($)" Width="25%">
                                 </dx:GridViewDataTextColumn>

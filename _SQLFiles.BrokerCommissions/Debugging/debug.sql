@@ -3,20 +3,20 @@ go
 
 select *
 from
-    dbo.BROKER_MASTER t
+    dbo.Broker_Master t
 where
     t.BROKER_NAME like '%ASC%'
 go
 
 select *
 from
-    dbo.SENT_INVOICE
+    dbo.Sent_Invoice
 where
     month = 'MARCH';
 
 select *
 from
-    dbo.Import_OCT
+    dbo.Import
 where
     name like '%CPS METALS INC%';
 
@@ -24,25 +24,25 @@ where
 
 select *
 from
-    dbo.STATEMENT_DETAILS
+    dbo.Statement_Details
 where
     BROKER_NAME like '%STEVEN%'
 order by
-    STATEMENT_DETAILS.OPEN_BALANCE desc;
+    Statement_Details.OPEN_BALANCE desc;
 select *
 from
-    dbo.STATEMENT_DETAILS
+    dbo.Statement_Details
 where
       BROKER_ID = 2
 --   and CLIENT_NAME like 'CMS%'
 order by
-    STATEMENT_DETAILS.CLIENT_NAME
-  , STATEMENT_DETAILS.QB_FEE asc
+    Statement_Details.CLIENT_NAME
+  , Statement_Details.QB_FEE asc
 
 -- delete from dbo.STATEMENT_DETAILS where BROKER_ID =2 and DETAIL_ID <> 169642;
 select *
 from
-    dbo.STATEMENT_DETAILS_ADD
+    dbo.Statement_Details_Add
 where
     BROKER_ID = 2
 select *
@@ -53,7 +53,7 @@ where
 
 select *
 from
-    dbo.Import_OCT
+    dbo.Import
 where
     name like '%aims%';
 go
@@ -69,7 +69,7 @@ order by
 
 select *
 from
-    dbo.Import_OCT
+    dbo.Import
 where
       Name like 'CMS FACILITIES MGT SERVICES LLC'
   and memo_FORMATTED like 'HRA';

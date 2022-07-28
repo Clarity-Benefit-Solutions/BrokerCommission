@@ -12,27 +12,21 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Statement_Details_Add
+    public partial class Client_Memo_Broker
     {
-        public int DETAIL_ID { get; set; }
-        public int HEADER_ID { get; set; }
-        public string QB_CLIENT_NAME { get; set; }
-        public string CLIENT_NAME { get; set; }
-        public Nullable<int> BROKER_ID { get; set; }
-        public string BROKER_NAME { get; set; }
-        public string QB_FEE { get; set; }
-        public string FEE_MEMO { get; set; }
-        public Nullable<decimal> QUANTITY { get; set; }
+        public int CLIENT_ID { get; set; }
+        public string MEMO { get; set; }
+        public int BROKER_ID { get; set; }
         public Nullable<decimal> COMMISSION_RATE { get; set; }
         public string UNIT { get; set; }
         public string STATUS { get; set; }
-        public Nullable<decimal> SALES_PRICE { get; set; }
-        public Nullable<decimal> TOTAL_PRICE { get; set; }
-        public string START_DATE { get; set; }
-        public string BROKER_STATUS { get; set; }
-        public string PAYLOCITY_ID { get; set; }
-        public Nullable<int> RESULTID { get; set; }
+        public string FEE { get; set; }
+        public Nullable<System.DateTime> START_DATE { get; set; }
         public System.DateTime created_at { get; set; }
         public string created_by { get; set; }
+    
+        public virtual Broker_Master Broker_Master { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual Fee_Memo Fee_Memo { get; set; }
     }
 }

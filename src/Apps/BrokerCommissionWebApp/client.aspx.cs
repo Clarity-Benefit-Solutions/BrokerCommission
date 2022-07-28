@@ -27,7 +27,7 @@ namespace BrokerCommissionWebApp
         {
             cmb_client.Items.Clear();
             cmb_client.Items.Add(new ListEditItem("All"));
-            var list = db.CLIENT_.Where(x => x.CLIENT_NAME!= null).ToList();
+            var list = db.Client_.Where(x => x.CLIENT_NAME!= null).ToList();
             foreach (var items in list)
             {
                 cmb_client.Items.Add(new ListEditItem(items.CLIENT_NAME));
@@ -39,7 +39,7 @@ namespace BrokerCommissionWebApp
 
         protected void DataLoad()
         {
-            var list = db.CLIENT_.Where(x => x.CLIENT_NAME != null).ToList();
+            var list = db.Client_.Where(x => x.CLIENT_NAME != null).ToList();
             if (!string.IsNullOrEmpty(cmb_client.Text) && cmb_client.SelectedIndex != 0)
             {
                 string borkertext = cmb_client.SelectedItem.Text;

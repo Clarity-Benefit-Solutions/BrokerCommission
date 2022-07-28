@@ -12,9 +12,9 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class COMMISSION_RESULT_NAME0
+    public partial class VW_STATEMENT_DETAILS_ADD
     {
-        public Nullable<int> ID { get; set; }
+        public int ID { get; set; }
         public string BROKER_NAME { get; set; }
         public string QB_BROKER_NAME { get; set; }
         public string QB_AGENT { get; set; }
@@ -25,7 +25,7 @@ namespace BrokerCommissionWebApp.DataModel
         public Nullable<decimal> Qty { get; set; }
         public Nullable<decimal> Sales_Price { get; set; }
         public Nullable<decimal> Amount { get; set; }
-        public Nullable<decimal> Open_Balance { get; set; }
+        public int Open_Balance { get; set; }
         public Nullable<decimal> COMMISSION_RATE { get; set; }
         public string UNIT { get; set; }
         public Nullable<decimal> COMMISSION_AMOUNT { get; set; }
@@ -33,12 +33,12 @@ namespace BrokerCommissionWebApp.DataModel
         public string EMAIL { get; set; }
         public string QB_CLIENT_NAME { get; set; }
         public string FEE_MEMO { get; set; }
-        public int BROKER_ID { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<int> BROKER_ID { get; set; }
+        public System.DateTime Date { get; set; }
         public string PAYLOCITY_ID { get; set; }
         public string START_DATE { get; set; }
         public string Num { get; set; }
-        public Nullable<System.DateTime> INVOICE_DATE { get; set; }
-        public Nullable<int> CLIENT_ID { get; set; }
+        public string invoice_date { get; set; }
+        public int CLIENT_ID { get; set; }
     }
 }

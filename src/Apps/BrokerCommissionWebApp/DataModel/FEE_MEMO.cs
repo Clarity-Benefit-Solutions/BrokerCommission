@@ -12,15 +12,22 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class FEE_MEMO
+    public partial class Fee_Memo
     {
-        public int ID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Fee_Memo()
+        {
+            this.Client_Memo_Broker = new HashSet<Client_Memo_Broker>();
+        }
+    
         public string MEMO { get; set; }
         public Nullable<int> COMMISIONABLE { get; set; }
-        public Nullable<int> CLIENT_ID { get; set; }
         public string NOTE { get; set; }
         public Nullable<decimal> RATE { get; set; }
         public System.DateTime created_at { get; set; }
         public string created_by { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Client_Memo_Broker> Client_Memo_Broker { get; set; }
     }
 }

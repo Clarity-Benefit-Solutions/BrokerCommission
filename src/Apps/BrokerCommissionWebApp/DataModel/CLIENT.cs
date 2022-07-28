@@ -12,22 +12,24 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class CLIENT
+    public partial class Client
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Client()
+        {
+            this.Client_Memo_Broker = new HashSet<Client_Memo_Broker>();
+        }
+    
         public int CLIENT_ID { get; set; }
         public string QB_CLIENT_NAME { get; set; }
         public string CLIENT_NAME { get; set; }
-        public Nullable<int> BROKER_ID { get; set; }
-        public string QB_FEE { get; set; }
-        public string FEE_MEMO { get; set; }
-        public Nullable<decimal> COMMISSION_RATE { get; set; }
-        public string UNIT { get; set; }
         public string STATUS { get; set; }
-        public string FEE { get; set; }
-        public string START_DATE { get; set; }
         public string QB_CLIENT_NAME_FORMATTED { get; set; }
-        public string QB_FEE_FORMATTED { get; set; }
         public System.DateTime created_at { get; set; }
         public string created_by { get; set; }
+        public Nullable<System.DateTime> START_DATE { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Client_Memo_Broker> Client_Memo_Broker { get; set; }
     }
 }

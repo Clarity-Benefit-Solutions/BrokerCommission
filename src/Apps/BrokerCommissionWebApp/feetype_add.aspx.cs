@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using BrokerCommissionWebApp.DataModel;
 
@@ -22,14 +18,15 @@ namespace BrokerCommissionWebApp
 
         protected void DataLoad()
         {
-            if (Request.QueryString["ID"] != null)
+            if (Request.QueryString["MEMO"] != null)
             {
-                int id = int.Parse(Request.QueryString["ID"].ToString());
-                var model = db.FEE_MEMO.Where(x => x.ID == id).FirstOrDefault();
+                // todo: @Ayo: pass memo as querystring not id
+                string memo = Request.QueryString["MEMO"].ToString();
+                var model = db.Fee_Memo.Where(x => x.MEMO == memo).FirstOrDefault();
                 if (model != null)
                 {
                     txt_name.Text = model.MEMO;
-                    lbl_no.Text = model.ID.ToString();
+                    //lbl_no.Text = model.ID.ToString();
                     if (model.COMMISIONABLE != null)
                     {
                         if (model.COMMISIONABLE == 1)
@@ -52,15 +49,16 @@ namespace BrokerCommissionWebApp
 
         protected void save()
         {
-            if (Request.QueryString["ID"] != null)
+            if (Request.QueryString["MEMO"] != null)
             {
-                int id = int.Parse(Request.QueryString["ID"].ToString());
-                var model = db.FEE_MEMO.Where(x => x.ID == id).FirstOrDefault();
+                // todo: @Ayo: pass memo as querystring not id
+                string memo = Request.QueryString["MEMO"].ToString();
+                var model = db.Fee_Memo.Where(x => x.MEMO == memo).FirstOrDefault();
                 if (model != null)
                 {
                     model.MEMO = txt_name.Text;
-                    model.NOTE = memo_note.Text; 
-                    if(cb_commission.Checked){ model.COMMISIONABLE = 1; } else{ model.COMMISIONABLE = 0; } 
+                    model.NOTE = memo_note.Text;
+                    if (cb_commission.Checked) { model.COMMISIONABLE = 1; } else { model.COMMISIONABLE = 0; }
                     db.SaveChanges();
                 }
             }
@@ -68,27 +66,28 @@ namespace BrokerCommissionWebApp
 
         protected void add()
         {
-            var model = new FEE_MEMO()
+            var model = new Fee_Memo()
             {
                 MEMO = txt_name.Text,
                 NOTE = memo_note.Text,
-                COMMISIONABLE = cb_commission.Checked ? 1 : 0 
+                COMMISIONABLE = cb_commission.Checked ? 1 : 0
             };
 
 
-            db.FEE_MEMO.Add(model);
-            db.SaveChanges(); 
+            db.Fee_Memo.Add(model);
+            db.SaveChanges();
         }
 
         protected void delete()
         {
-            if (Request.QueryString["ID"] != null)
+            if (Request.QueryString["MEMO"] != null)
             {
-                int id = int.Parse(Request.QueryString["ID"].ToString());
-                var model = db.FEE_MEMO.Where(x => x.ID == id).FirstOrDefault();
+                // todo: @Ayo: pass memo as querystring not id
+                string memo = Request.QueryString["MEMO"].ToString();
+                var model = db.Fee_Memo.Where(x => x.MEMO == memo).FirstOrDefault();
                 if (model != null)
                 {
-                    db.FEE_MEMO.Remove(model);
+                    db.Fee_Memo.Remove(model);
                     db.SaveChanges();
                 }
             }

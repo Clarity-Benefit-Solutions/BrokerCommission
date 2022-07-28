@@ -12,15 +12,17 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Broker_Commission
+    public partial class vw_Client_Memo_Broker
     {
-        public int ID { get; set; }
-        public string PERIOD { get; set; }
-        public Nullable<int> BROKER_ID { get; set; }
+        public int CLIENT_ID { get; set; }
+        public string CLIENT_NAME { get; set; }
+        public Nullable<decimal> COMMISSION_RATE { get; set; }
+        public string UNIT { get; set; }
+        public string STATUS { get; set; }
+        public int BROKER_ID { get; set; }
         public string BROKER_NAME { get; set; }
-        public Nullable<int> PAYLOCITY_NUMBER { get; set; }
-        public Nullable<decimal> PAYMENT_AMOUNT { get; set; }
-        public System.DateTime created_at { get; set; }
-        public string created_by { get; set; }
+        public string PAYLOCITY_ID { get; set; }
+        public string MEMO { get; set; }
+        public Nullable<int> COMMISIONABLE { get; set; }
     }
 }

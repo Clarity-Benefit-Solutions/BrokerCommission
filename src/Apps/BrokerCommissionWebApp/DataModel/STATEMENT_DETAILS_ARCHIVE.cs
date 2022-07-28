@@ -12,7 +12,7 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class STATEMENT_DETAILS_ARCHIVE
+    public partial class Statement_Details_Archive
     {
         public int ARCHIVE_DETAIL_ID { get; set; }
         public int DETAIL_ID { get; set; }
@@ -25,7 +25,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string BROKER_NAME { get; set; }
         public string QB_FEE { get; set; }
         public string FEE_MEMO { get; set; }
-        public Nullable<int> QUANTITY { get; set; }
+        public Nullable<decimal> QUANTITY { get; set; }
         public Nullable<decimal> COMMISSION_RATE { get; set; }
         public string UNIT { get; set; }
         public string STATUS { get; set; }

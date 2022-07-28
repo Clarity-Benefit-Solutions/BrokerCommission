@@ -5,14 +5,14 @@
         <div class="col-sm-10">
             <div style="width: 100%; margin-top: 30px"></div>
             <div class="headerPane" style="width: 100%; text-align: center">
-                <h6 class="text-primary" style="font-weight: bold">CLIENT MASTER</h6>
+                <h6 class="text-primary" style="font-weight: bold">Client MASTER</h6>
             </div>
             <dx:ASPxFormLayout runat="server" ID="ASPxFormLayout" Width="100%" Theme="Moderno" Paddings="0">
                 <Items>
                     <dx:LayoutGroup Width="100%" Caption="SEARCH" ColCount="3" ShowCaption="False">
 
                         <Items>
-                            <dx:LayoutItem Caption="CLIENT" VerticalAlign="Middle" HorizontalAlign="Left">
+                            <dx:LayoutItem Caption="Client" VerticalAlign="Middle" HorizontalAlign="Left">
                                 <LayoutItemNestedControlCollection>
                                     <dx:LayoutItemNestedControlContainer>
                                         <dx:ASPxComboBox runat="server" ID="cmb_client" Theme="Moderno" OnSelectedIndexChanged="cmb_client_OnSelectedIndexChanged" Width="50%"
@@ -24,7 +24,7 @@
                             <dx:LayoutItem Caption=" " VerticalAlign="Middle" ColSpan="2" HorizontalAlign="Right" ShowCaption="False">
                                 <LayoutItemNestedControlCollection>
                                     <dx:LayoutItemNestedControlContainer>
-                                        <dx:ASPxButton runat="server" ID="btn_new" Theme="Moderno" OnClick="btn_new_OnClick" Text="NEW CLIENT" Width="100%"></dx:ASPxButton>
+                                        <dx:ASPxButton runat="server" ID="btn_new" Theme="Moderno" OnClick="btn_new_OnClick" Text="NEW Client" Width="100%"></dx:ASPxButton>
 
                                     </dx:LayoutItemNestedControlContainer>
                                 </LayoutItemNestedControlCollection>
@@ -45,9 +45,9 @@
                 <BorderBottom BorderWidth="1px" />
                 <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
                 <Columns>
-                    <dx:GridViewDataTextColumn FieldName="CLIENT_ID" VisibleIndex="0" FixedStyle="Left" Caption="CLIENT ID" Width="5%">
+                    <dx:GridViewDataTextColumn FieldName="CLIENT_ID" VisibleIndex="0" FixedStyle="Left" Caption="Client ID" Width="5%">
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn FieldName="CLIENT_NAME" VisibleIndex="1" FixedStyle="Left" Width="40%" Caption="CLIENT NAME">
+                    <dx:GridViewDataTextColumn FieldName="CLIENT_NAME" VisibleIndex="1" FixedStyle="Left" Width="40%" Caption="Client NAME">
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataColumn Caption="STATUS" VisibleIndex="4" Width="10%">

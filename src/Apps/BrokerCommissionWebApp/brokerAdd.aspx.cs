@@ -31,14 +31,14 @@ namespace BrokerCommissionWebApp
             cmb_qb_memo.Items.Clear();
             cmb_st_memo.Items.Clear();
             //cmb_qb_client.Items.Add(new ListEditItem("All"));
-            var list = db.CLIENT_.Where(x => x.CLIENT_NAME != null).OrderBy(x => x.CLIENT_NAME).ToList();
+            var list = db.Client_.Where(x => x.CLIENT_NAME != null).OrderBy(x => x.CLIENT_NAME).ToList();
             foreach (var items in list)
             {
                 cmb_qb_client.Items.Add(new ListEditItem(items.CLIENT_NAME));
 
             }
 
-            var list_memo = db.FEE_MEMO.Where(x => x.MEMO != null && x.COMMISIONABLE == 1).OrderBy(x => x.MEMO)
+            var list_memo = db.Fee_Memo.Where(x => x.MEMO != null && x.COMMISIONABLE == 1).OrderBy(x => x.MEMO)
                 .ToList();
             foreach (var items in list_memo)
             {
@@ -54,7 +54,7 @@ namespace BrokerCommissionWebApp
             if (Request.QueryString["ID"] != null)
             {
                 int id = int.Parse(Request.QueryString["ID"].ToString());
-                var model = db.BROKER_MASTER.Where(x => x.ID == id).FirstOrDefault();
+                var model = db.Broker_Master.Where(x => x.ID == id).FirstOrDefault();
                 if (model != null)
                 {
                     txt_name.Text = model.BROKER_NAME;
@@ -93,7 +93,7 @@ namespace BrokerCommissionWebApp
 
         protected void loadClient_ByBrokerID(int brokerID)
         {
-            var list = db.CLIENTs.Where(x => x.BROKER_ID == brokerID).OrderBy(x => x.CLIENT_NAME).ToList();
+            var list = db.vw_Client_Memo_Broker.Where(x => x.BROKER_ID == brokerID).OrderBy(x => x.CLIENT_NAME).ToList();
 
             grid_client.DataSource = list;
             grid_client.DataBind();
@@ -112,7 +112,7 @@ namespace BrokerCommissionWebApp
             if (Request.QueryString["ID"] != null)
             {
                 int id = int.Parse(Request.QueryString["ID"].ToString());
-                var model = db.BROKER_MASTER.Where(x => x.ID == id).FirstOrDefault();
+                var model = db.Broker_Master.Where(x => x.ID == id).FirstOrDefault();
                 if (model != null)
                 {
                     if (!string.IsNullOrEmpty(txt_name.Text))
@@ -187,7 +187,7 @@ namespace BrokerCommissionWebApp
         {
 
 
-            var model = new BROKER_MASTER();
+            var model = new Broker_Master();
 
             if (!string.IsNullOrEmpty(txt_name.Text))
             {
@@ -245,7 +245,7 @@ namespace BrokerCommissionWebApp
 
 
             model.STATUS = cmb_status.Text;
-            db.BROKER_MASTER.Add(model);
+            db.Broker_Master.Add(model);
             db.SaveChanges();
 
             string myStringVariable = "Saved Successfully!";
@@ -282,7 +282,7 @@ namespace BrokerCommissionWebApp
                 if (index >= 0)
                 {
                     combo.Items.Clear();
-                    var list = db.CLIENT_.Where(x => x.CLIENT_NAME != null).OrderBy(x => x.CLIENT_NAME).ToList();
+                    var list = db.Client_.Where(x => x.CLIENT_NAME != null).OrderBy(x => x.CLIENT_NAME).ToList();
                     foreach (var items in list)
                     {
                         combo.Items.Add(new ListEditItem(items.CLIENT_NAME));
@@ -309,7 +309,7 @@ namespace BrokerCommissionWebApp
                 if (index >= 0)
                 {
                     combo.Items.Clear();
-                    var list = db.FEE_MEMO.Where(x => x.MEMO != null).OrderBy(x => x.MEMO).ToList();
+                    var list = db.Fee_Memo.Where(x => x.MEMO != null).OrderBy(x => x.MEMO).ToList();
                     foreach (var items in list)
                     {
                         combo.Items.Add(new ListEditItem(items.MEMO));
@@ -335,13 +335,13 @@ namespace BrokerCommissionWebApp
                 if (index >= 0)
                 {
                     combo.Items.Clear();
-                    var list = db.FEE_MEMO.Where(x => x.MEMO != null).OrderBy(x => x.MEMO).ToList();
+                    var list = db.Fee_Memo.Where(x => x.MEMO != null).OrderBy(x => x.MEMO).ToList();
                     foreach (var items in list)
                     {
                         combo.Items.Add(new ListEditItem(items.MEMO));
 
                     }
-                    //combo.Value = container.Grid.GetRowValues(container.VisibleIndex, "FEE_MEMO");
+                    //combo.Value = container.Grid.GetRowValues(container.VisibleIndex, "Fee_Memo");
                 }
 
             }
@@ -365,14 +365,15 @@ namespace BrokerCommissionWebApp
                 {
 
                     int PID = int.Parse(hid_id.Value);
-                    var model = db.CLIENTs.Where(x => x.CLIENT_ID== PID).FirstOrDefault();
+                    var model = db.Client_Memo_Broker.Where(x => x.CLIENT_ID== PID).FirstOrDefault();
                     if (model != null)
                     {
-                        model.QB_CLIENT_NAME = cmb_clientName.Text;
-                        model.QB_FEE = cmb_QB_FEE.Text;
-                        model.FEE_MEMO = cmb_FEE_MEMO.Text;
+                        //todo: @ayo: set client_id
+                        //model.QB_CLIENT_NAME = cmb_clientName.Text;
+                        //model.QB_FEE = cmb_QB_FEE.Text;
+                        model.MEMO = cmb_FEE_MEMO.Text;
                         model.UNIT = txt_UNIT.Text;
-                        model.START_DATE = de_start.Date.ToString();
+                        //model.START_DATE = de_start.Date.ToString();
                         decimal rate = 0.0m;
                         decimal.TryParse(txt_rate.Text, out rate);
                         model.COMMISSION_RATE = rate;
@@ -394,11 +395,11 @@ namespace BrokerCommissionWebApp
             if (e.CommandArgs.CommandName == "DELETE")
             {
                 int cid = int.Parse(e.CommandArgs.CommandArgument.ToString());
-                var model = db.CLIENTs.Where((x => x.CLIENT_ID == cid)).FirstOrDefault();
+                var model = db.Clients.Where((x => x.CLIENT_ID == cid)).FirstOrDefault();
 
                 if (model != null)
                 {
-                    db.CLIENTs.Remove(model);
+                    db.Clients.Remove(model);
                     db.SaveChanges();
                     if (Request.QueryString["ID"] != null)
                     {
@@ -418,19 +419,20 @@ namespace BrokerCommissionWebApp
                 if (Request.QueryString["ID"] != null)
                 {
                     int id = int.Parse(Request.QueryString["ID"].ToString());
-                    var model = new CLIENT();
+                    var model = new Client_Memo_Broker();
                     model.BROKER_ID = id;
-                    model.CLIENT_NAME = cmb_qb_client.Text;
-                    model.QB_CLIENT_NAME = cmb_qb_client.Text;
-                    model.QB_FEE = cmb_qb_memo.Text;
-                    model.FEE_MEMO = cmb_st_memo.Text;
+                    //todo: @ayo: set client_id
+                    //model.CLIENT_NAME = cmb_qb_client.Text;
+                    //model.QB_CLIENT_NAME = cmb_qb_client.Text;
+                    //model.QB_FEE = cmb_qb_memo.Text;
+                    model.MEMO = cmb_st_memo.Text;
 
                     model.UNIT = cmb_unit.Text;
-                    model.START_DATE = de_start_date.Date.ToString();
+                    // model.START_DATE = de_start_date.Date.ToString();
                     decimal rate = 0.0m;
                     decimal.TryParse(txt_cm_rate.Text, out rate);
                     model.COMMISSION_RATE = rate;
-                    db.CLIENTs.Add(model);
+                    db.Client_Memo_Broker.Add(model);
                     db.SaveChanges();
                     //loadClient_ByBrokerID(id);
                 }

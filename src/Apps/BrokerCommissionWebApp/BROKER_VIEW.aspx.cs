@@ -29,7 +29,7 @@ namespace BrokerCommissionWebApp
             if (Request.QueryString["ID"] != null)
             {
                 int id = int.Parse(Request.QueryString["ID"].ToString());
-                var model = db.BROKER_MASTER.Where(x => x.ID == id).FirstOrDefault();
+                var model = db.Broker_Master.Where(x => x.ID == id).FirstOrDefault();
                 if (model != null)
                 {
                     txt_name.Text = model.BROKER_NAME;
@@ -55,7 +55,7 @@ namespace BrokerCommissionWebApp
 
         protected void loadClient_ByBrokerID(int brokerID)
         {
-            var list = db.CLIENTs.Where(x => x.BROKER_ID == brokerID).OrderBy(x => x.CLIENT_NAME).ToList();
+            var list = db.vw_Client_Memo_Broker.Where(x => x.BROKER_ID == brokerID).OrderBy(x => x.CLIENT_NAME).ToList();
 
             grid_client.DataSource = list;
             grid_client.DataBind();
@@ -69,7 +69,7 @@ namespace BrokerCommissionWebApp
             //var list = db.BROKER_COMMISSION.Where(x => x.BROKER_ID == brokerID).OrderByDescending(x => x.PERIOD)
             //    .ToList();
 
-            var list = db.STATEMENT_HEADER.Where(x => x.BROKER_ID == brokerID && x.FLAG == 3).OrderByDescending(x => x.YEAR).ThenByDescending(x => x.MONTH).ToList();
+            var list = db.Statement_Header.Where(x => x.BROKER_ID == brokerID && x.FLAG == 3).OrderByDescending(x => x.YEAR).ThenByDescending(x => x.MONTH).ToList();
             grid_history.DataSource = list;
             grid_history.DataBind();
 
@@ -85,7 +85,7 @@ namespace BrokerCommissionWebApp
             if (e.CommandArgs.CommandName == "statement")
             {
                 int id = int.Parse(e.CommandArgs.CommandArgument.ToString());
-                var model = db.STATEMENT_HEADER.Where(x => x.HEADER_ID == id).FirstOrDefault();
+                var model = db.Statement_Header.Where(x => x.HEADER_ID == id).FirstOrDefault();
                 if (model != null)
                 {
                     string url = "ViewFile.aspx?BID=" + model.BROKER_ID + "&statement=1&&Flag=3";

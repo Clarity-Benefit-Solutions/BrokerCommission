@@ -7,17 +7,17 @@
     <div class="col-sm-8">
       <dx:ASPxFormLayout runat="server" ID="ASPxFormLayout" Width="100%" ClientInstanceName="FormLayout" Theme="Moderno">
         <Items>
-            <dx:LayoutGroup Width="100%" Caption="CLIENT PROFILE" ColCount="2">
+            <dx:LayoutGroup Width="100%" Caption="Client PROFILE" ColCount="2">
 
                 <Items>
-                    <dx:LayoutItem Caption="CLIENT ID" VerticalAlign="Middle">
+                    <dx:LayoutItem Caption="Client ID" VerticalAlign="Middle">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer>
                                 <dx:ASPxLabel runat="server" ID="lbl_no"/>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem> 
-                    <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
+                    <dx:LayoutItem Caption="Client NAME" VerticalAlign="Middle">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer>
                                 <dx:ASPxTextBox runat="server" ID="txt_name" Width="100%"></dx:ASPxTextBox> 
@@ -68,7 +68,7 @@
                                 &nbsp;&nbsp;
                                 <dx:ASPxButton runat="server" ID="btn_Back" Text="GO BACK" OnClick="btn_Back_OnClick" Theme="Moderno" Width="100px"></dx:ASPxButton>
                                 &nbsp;&nbsp;
-                                <dx:ASPxButton runat="server" ID="btn_delete" Text="DELETE CLIENT" OnClick="btn_delete_OnClick" Theme="Mulberry" Width="100px"></dx:ASPxButton>
+                                <dx:ASPxButton runat="server" ID="btn_delete" Text="DELETE Client" OnClick="btn_delete_OnClick" Theme="Mulberry" Width="100px"></dx:ASPxButton>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>

@@ -274,7 +274,7 @@
     <Compile Include="DataModel\BROKER_CLIENT.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\BROKER_COMMISSION.cs">
+    <Compile Include="DataModel\Broker_Commission.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Broker_CommissionEntities.Context.cs">
@@ -292,19 +292,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Broker_CommissionEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\BROKER_GROUP.cs">
+    <Compile Include="DataModel\Broker_Group.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\BROKER_MASTER.cs">
+    <Compile Include="DataModel\Broker_Master.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\BROKER_MASTER_.cs">
+    <Compile Include="DataModel\Broker_Master_.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\CLIENT.cs">
+    <Compile Include="DataModel\Client.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\CLIENT_.cs">
+    <Compile Include="DataModel\Client_.cs">
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Client_Memo_Broker.cs">
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Client_Prv.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\COMMISSION_RESULT_NAME0.cs">
@@ -343,34 +349,40 @@
     <Compile Include="DataModel\Error_Msg.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\FEE_MEMO.cs">
+    <Compile Include="DataModel\Fee_Memo.cs">
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Import.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Import_Archive.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\Import_OCT.cs">
+    <Compile Include="DataModel\Sent_Invoice.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\SENT_INVOICE.cs">
+    <Compile Include="DataModel\Statement_Details.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\STATEMENT_DETAILS.cs">
+    <Compile Include="DataModel\Statement_Details_Add.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\STATEMENT_DETAILS_ADD.cs">
+    <Compile Include="DataModel\Statement_Details_Archive.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\STATEMENT_DETAILS_ARCHIVE.cs">
+    <Compile Include="DataModel\Statement_Header.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\STATEMENT_HEADER.cs">
+    <Compile Include="DataModel\Statement_Header_Archive.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\STATEMENT_HEADER_ARCHIVE.cs">
+    <Compile Include="DataModel\vw_Client_Memo_Broker.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\vw_statement_design_view.cs">
+      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\VW_STATEMENT_DETAILS_ADD.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\vw_statement_details_archive_and_paid.cs">

@@ -12,7 +12,7 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class BROKER_GROUP
+    public partial class Broker_Group
     {
         public int ID { get; set; }
         public string BROKER_GROUP1 { get; set; }

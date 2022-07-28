@@ -31,7 +31,6 @@ namespace BrokerCommissionWebApp.DataModel
         public string BROKER_NAME_4 { get; set; }
         public string BROKER_NAME_5 { get; set; }
         public string BROKER_NAME_6 { get; set; }
-        public Nullable<decimal> TOTAL_AMOUNT { get; set; }
         public string BROKER_NAME_ID_FORMATTED { get; set; }
         public string BROKER_NAME_FORMATTED { get; set; }
         public string BROKER_NAME_1_FORMATTED { get; set; }
@@ -42,5 +41,6 @@ namespace BrokerCommissionWebApp.DataModel
         public string BROKER_NAME_6_FORMATTED { get; set; }
         public System.DateTime created_at { get; set; }
         public string created_by { get; set; }
+        public Nullable<decimal> TOTAL_AMOUNT { get; set; }
     }
 }

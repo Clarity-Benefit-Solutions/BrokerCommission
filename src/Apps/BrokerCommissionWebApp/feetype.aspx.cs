@@ -28,7 +28,7 @@ namespace BrokerCommissionWebApp
         {
             cmb_feetype.Items.Clear();
             cmb_feetype.Items.Add(new ListEditItem("All"));
-            var list = db.FEE_MEMO.Where(x => x.MEMO!= null).ToList();
+            var list = db.Fee_Memo.Where(x => x.MEMO!= null).ToList();
             foreach (var items in list)
             {
                 cmb_feetype.Items.Add(new ListEditItem(items.MEMO));
@@ -41,7 +41,7 @@ namespace BrokerCommissionWebApp
 
         protected void DataLoad()
         {
-            var list = db.FEE_MEMO.Where(x => x.MEMO != null).ToList();
+            var list = db.Fee_Memo.Where(x => x.MEMO != null).ToList();
             if (!string.IsNullOrEmpty(cmb_feetype.Text) && cmb_feetype.SelectedIndex != 0)
             {
                 string borkertext = cmb_feetype.SelectedItem.Text;
@@ -88,8 +88,10 @@ namespace BrokerCommissionWebApp
 
             //Response.Write(chkLstid);
 
-            int id = int.Parse(chkLstid);
-            var model = db.FEE_MEMO.Where(x => x.ID == id).FirstOrDefault();
+            //int id = int.Parse(chkLstid);
+            //todo: @Ayo: we use Memo itself as primary key - fix combo code when loading it
+            string memo = chkLstid;
+            var model = db.Fee_Memo.Where(x => x.MEMO== memo).FirstOrDefault();
             if (model != null)
             {
                 if (cbChkBox.Checked)

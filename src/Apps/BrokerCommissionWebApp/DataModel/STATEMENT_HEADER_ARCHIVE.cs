@@ -12,7 +12,7 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class STATEMENT_HEADER_ARCHIVE
+    public partial class Statement_Header_Archive
     {
         public int ARCHIVE_HEADER_ID { get; set; }
         public int HEADER_ID { get; set; }

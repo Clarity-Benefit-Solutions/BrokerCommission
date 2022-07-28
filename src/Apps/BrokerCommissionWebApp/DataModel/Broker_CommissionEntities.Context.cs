@@ -27,25 +27,27 @@ namespace BrokerCommissionWebApp.DataModel
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BROKER_COMMISSION> BROKER_COMMISSION { get; set; }
-        public virtual DbSet<BROKER_MASTER> BROKER_MASTER { get; set; }
-        public virtual DbSet<BROKER_MASTER_> BROKER_MASTER_ { get; set; }
-        public virtual DbSet<CLIENT> CLIENTs { get; set; }
-        public virtual DbSet<CLIENT_> CLIENT_ { get; set; }
+        public virtual DbSet<Broker_Commission> Broker_Commission { get; set; }
+        public virtual DbSet<Broker_Master> Broker_Master { get; set; }
+        public virtual DbSet<Broker_Master_> Broker_Master_ { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Client_> Client_ { get; set; }
+        public virtual DbSet<Client_Prv> Client_Prv { get; set; }
         public virtual DbSet<db_error_log> db_error_log { get; set; }
         public virtual DbSet<db_message_log> db_message_log { get; set; }
         public virtual DbSet<Detail_Input> Detail_Input { get; set; }
         public virtual DbSet<Error_Msg> Error_Msg { get; set; }
-        public virtual DbSet<FEE_MEMO> FEE_MEMO { get; set; }
+        public virtual DbSet<Fee_Memo> Fee_Memo { get; set; }
+        public virtual DbSet<Import> Imports { get; set; }
         public virtual DbSet<Import_Archive> Import_Archive { get; set; }
-        public virtual DbSet<Import_OCT> Import_OCT { get; set; }
-        public virtual DbSet<SENT_INVOICE> SENT_INVOICE { get; set; }
-        public virtual DbSet<STATEMENT_DETAILS> STATEMENT_DETAILS { get; set; }
-        public virtual DbSet<STATEMENT_DETAILS_ADD> STATEMENT_DETAILS_ADD { get; set; }
-        public virtual DbSet<STATEMENT_DETAILS_ARCHIVE> STATEMENT_DETAILS_ARCHIVE { get; set; }
-        public virtual DbSet<STATEMENT_HEADER> STATEMENT_HEADER { get; set; }
-        public virtual DbSet<STATEMENT_HEADER_ARCHIVE> STATEMENT_HEADER_ARCHIVE { get; set; }
-        public virtual DbSet<BROKER_GROUP> BROKER_GROUP { get; set; }
+        public virtual DbSet<Sent_Invoice> Sent_Invoice { get; set; }
+        public virtual DbSet<Statement_Details> Statement_Details { get; set; }
+        public virtual DbSet<Statement_Details_Add> Statement_Details_Add { get; set; }
+        public virtual DbSet<Statement_Details_Archive> Statement_Details_Archive { get; set; }
+        public virtual DbSet<Statement_Header> Statement_Header { get; set; }
+        public virtual DbSet<Statement_Header_Archive> Statement_Header_Archive { get; set; }
+        public virtual DbSet<Broker_Group> Broker_Group { get; set; }
+        public virtual DbSet<Client_Memo_Broker> Client_Memo_Broker { get; set; }
         public virtual DbSet<BROKER_CLIENT> BROKER_CLIENT { get; set; }
         public virtual DbSet<COMMISSION_RESULT_NAME0> COMMISSION_RESULT_NAME0 { get; set; }
         public virtual DbSet<COMMISSION_RESULT_NAME1> COMMISSION_RESULT_NAME1 { get; set; }
@@ -55,9 +57,11 @@ namespace BrokerCommissionWebApp.DataModel
         public virtual DbSet<COMMISSION_RESULT_NAME5> COMMISSION_RESULT_NAME5 { get; set; }
         public virtual DbSet<COMMISSION_RESULT_NAME6> COMMISSION_RESULT_NAME6 { get; set; }
         public virtual DbSet<DASH_BOARD> DASH_BOARD { get; set; }
-        public virtual DbSet<VW_STATEMENT_HEADER> VW_STATEMENT_HEADER { get; set; }
-        public virtual DbSet<vw_statement_details_archive_and_paid> vw_statement_details_archive_and_paid { get; set; }
+        public virtual DbSet<vw_Client_Memo_Broker> vw_Client_Memo_Broker { get; set; }
         public virtual DbSet<vw_statement_design_view> vw_statement_design_view { get; set; }
+        public virtual DbSet<VW_STATEMENT_DETAILS_ADD> VW_STATEMENT_DETAILS_ADD { get; set; }
+        public virtual DbSet<vw_statement_details_archive_and_paid> vw_statement_details_archive_and_paid { get; set; }
+        public virtual DbSet<VW_STATEMENT_HEADER> VW_STATEMENT_HEADER { get; set; }
     
         public virtual int db_log_error(string err_no, string err_source, string err_msg, string sqlstate)
         {

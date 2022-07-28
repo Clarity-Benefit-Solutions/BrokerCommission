@@ -5,39 +5,46 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1b163fcb6e63452aadf76a4d2dc00bcd" Name="Diagram1" ZoomLevel="91">
-        <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_COMMISSION" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_MASTER" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_MASTER_" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.CLIENT" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.CLIENT_" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.db_error_log" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.db_message_log" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.Detail_Input" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.Error_Msg" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.FEE_MEMO" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.Import_Archive" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.Import_OCT" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.SENT_INVOICE" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.STATEMENT_DETAILS" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.STATEMENT_DETAILS_ADD" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.STATEMENT_DETAILS_ARCHIVE" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.STATEMENT_HEADER" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.STATEMENT_HEADER_ARCHIVE" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_GROUP" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_CLIENT" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME0" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME1" Width="1.5" PointX="14.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME2" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME3" Width="1.5" PointX="6.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME4" Width="1.5" PointX="8.75" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME5" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME6" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.DASH_BOARD" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.VW_STATEMENT_HEADER" Width="1.5" PointX="2.75" PointY="17.75" IsExpanded="true" />
-        <AssociationConnector Association="Broker_CommissionModel.STATEMENT_DETAILS_broker__fk" ManuallyRouted="false" />
-        <AssociationConnector Association="Broker_CommissionModel.STATEMENT_DETAILS__header_fk" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.vw_statement_details_archive_and_paid" Width="1.5" PointX="11.375" PointY="18.75" />
-        <EntityTypeShape EntityType="Broker_CommissionModel.vw_statement_design_view" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Broker_Commission" Width="1.5" PointX="5.75" PointY="2" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Broker_Master" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Broker_Master_" Width="1.5" PointX="8.75" PointY="2" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Client" Width="1.5" PointX="3.75" PointY="11.875" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Client_" Width="1.5" PointX="8.75" PointY="7" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Client_Prv" Width="1.5" PointX="5.75" PointY="11" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.db_error_log" Width="1.5" PointX="7.75" PointY="11" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.db_message_log" Width="1.5" PointX="9.75" PointY="11" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Detail_Input" Width="1.5" PointX="10.75" PointY="2" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Error_Msg" Width="1.5" PointX="10.75" PointY="7" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Fee_Memo" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Import" Width="1.5" PointX="11.75" PointY="10" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Import_Archive" Width="1.5" PointX="12.75" PointY="2" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Sent_Invoice" Width="1.5" PointX="13.75" PointY="8" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Statement_Details" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Statement_Details_Add" Width="1.5" PointX="7.75" PointY="15" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Statement_Details_Archive" Width="1.5" PointX="13.75" PointY="12" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Statement_Header" Width="1.5" PointX="0.75" PointY="13.625" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Statement_Header_Archive" Width="1.5" PointX="14.75" PointY="2" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Broker_Group" Width="1.5" PointX="2.75" PointY="16" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.Client_Memo_Broker" Width="1.5" PointX="6" PointY="5.875" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.BROKER_CLIENT" Width="1.5" PointX="4.75" PointY="16" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME0" Width="1.5" PointX="9.75" PointY="16" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME1" Width="1.5" PointX="15.75" PointY="7" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME2" Width="1.5" PointX="15.75" PointY="14" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME3" Width="1.5" PointX="17.75" PointY="2" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME4" Width="1.5" PointX="17.75" PointY="9" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME5" Width="1.5" PointX="11.75" PointY="19" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.COMMISSION_RESULT_NAME6" Width="1.5" PointX="17.75" PointY="16" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.DASH_BOARD" Width="1.5" PointX="0.75" PointY="20" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.vw_Client_Memo_Broker" Width="1.5" PointX="19.75" PointY="2" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.vw_statement_design_view" Width="1.5" PointX="19.75" PointY="6" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.VW_STATEMENT_DETAILS_ADD" Width="1.5" PointX="6.75" PointY="21" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.vw_statement_details_archive_and_paid" Width="1.5" PointX="19.75" PointY="13" />
+        <EntityTypeShape EntityType="Broker_CommissionModel.VW_STATEMENT_HEADER" Width="1.5" PointX="13.75" PointY="21" />
+        <AssociationConnector Association="Broker_CommissionModel.FK_Client_Memo_Broker_Broker" />
+        <AssociationConnector Association="Broker_CommissionModel.FK_Client_Memo_Broker_Client" />
+        <AssociationConnector Association="Broker_CommissionModel.FK_Client_Memo_Broker_Memo" />
+        <AssociationConnector Association="Broker_CommissionModel.STATEMENT_DETAILS__header_fk" />
+        <AssociationConnector Association="Broker_CommissionModel.Statement_Details_Broker_Master__fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

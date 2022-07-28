@@ -39,7 +39,7 @@ namespace BrokerCommissionWebApp {
             cmb_qb_broker.Items.Add(new ListEditItem("All"));
 
 
-            var list = db.BROKER_MASTER.Where(x => x.BROKER_NAME != null).OrderBy(x => x.BROKER_NAME).ToList();
+            var list = db.Broker_Master.Where(x => x.BROKER_NAME != null).OrderBy(x => x.BROKER_NAME).ToList();
             foreach (var items in list)
             {
                 cmb_broker.Items.Add(new ListEditItem(items.BROKER_NAME));

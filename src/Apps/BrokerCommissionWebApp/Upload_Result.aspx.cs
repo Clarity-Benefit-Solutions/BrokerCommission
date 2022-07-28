@@ -55,7 +55,7 @@ namespace BrokerCommissionWebApp
         protected void DataLoad()
         {
 
-            string query = "select * from dbo.STATEMENT_HEADER A ";
+            string query = "select * from dbo.Statement_Header A ";
             query += " WHERE 1=1 ";
 
             // todo: need specs. commented. add checkbox for all or only not yet emailed. show all statements not only those which have been emailed by default
@@ -121,7 +121,7 @@ namespace BrokerCommissionWebApp
             if (e.CommandArgs.CommandName == "statement")
             {
                 int headerID = int.Parse(e.CommandArgs.CommandArgument.ToString());
-                var model = db.STATEMENT_HEADER.Where(x => x.HEADER_ID == headerID).FirstOrDefault();
+                var model = db.Statement_Header.Where(x => x.HEADER_ID == headerID).FirstOrDefault();
                 if (model != null)
                 {
                     int brokerID = model.BROKER_ID == null ? 0 : int.Parse(model.BROKER_ID.ToString());
@@ -138,7 +138,7 @@ namespace BrokerCommissionWebApp
                 string month = lbl_month.Text;
                 int year = int.Parse(lbl_year.Text);
                 int bid = int.Parse(e.CommandArgs.CommandArgument.ToString());
-                var model = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID == bid).FirstOrDefault();
+                var model = db.Statement_Header.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID == bid).FirstOrDefault();
 
                 if (model != null)
                 {

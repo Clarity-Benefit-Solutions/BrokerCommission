@@ -12,12 +12,12 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class STATEMENT_HEADER
+    public partial class Statement_Header
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public STATEMENT_HEADER()
+        public Statement_Header()
         {
-            this.STATEMENT_DETAILS = new HashSet<STATEMENT_DETAILS>();
+            this.Statement_Details = new HashSet<Statement_Details>();
         }
     
         public int HEADER_ID { get; set; }
@@ -37,6 +37,6 @@ namespace BrokerCommissionWebApp.DataModel
         public string created_by { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<STATEMENT_DETAILS> STATEMENT_DETAILS { get; set; }
+        public virtual ICollection<Statement_Details> Statement_Details { get; set; }
     }
 }

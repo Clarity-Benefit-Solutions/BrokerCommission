@@ -25,7 +25,7 @@ namespace BrokerCommissionWebApp
     {
         public string outputPath1 = "";
         public string outputPath2 = "";
-        public List<STATEMENT_DETAILS> statementLinesAddedToPdf = new List<STATEMENT_DETAILS>();
+        public List<Statement_Details> statementLinesAddedToPdf = new List<Statement_Details>();
         public Boolean success = false;
         public Exception error = null;
     }
@@ -63,7 +63,7 @@ namespace BrokerCommissionWebApp
         #region Request Form
         public static int GetStatementIdForBrokerId(int brokerID)
         {
-            var statement_Header = db.STATEMENT_HEADER.Where(x => x.BROKER_ID == brokerID).FirstOrDefault();
+            var statement_Header = db.Statement_Header.Where(x => x.BROKER_ID == brokerID).FirstOrDefault();
             if (statement_Header != null)
             {
                 return statement_Header.HEADER_ID;
@@ -80,7 +80,7 @@ namespace BrokerCommissionWebApp
             //
             PdfGenerationResults pdfGenerationResults = new PdfGenerationResults();
             //
-            var statement_Header = db.STATEMENT_HEADER.Where(x => x.HEADER_ID == statementID).ToList().FirstOrDefault();
+            var statement_Header = db.Statement_Header.Where(x => x.HEADER_ID == statementID).ToList().FirstOrDefault();
             if (statementID <= 0 || statement_Header == null)
             {
                 var message = $"ERROR: {MethodBase.GetCurrentMethod()?.Name} : Cannot Create Statement for HeaderId : {statementID} as no such Header was found";
@@ -91,7 +91,7 @@ namespace BrokerCommissionWebApp
             string broker_Status = "";
             //
             int broker_Id = int.Parse(statement_Header.BROKER_ID.ToString());
-            var broker_Master = db.BROKER_MASTER.Where(x => x.ID == broker_Id).FirstOrDefault();
+            var broker_Master = db.Broker_Master.Where(x => x.ID == broker_Id).FirstOrDefault();
             if (broker_Master == null)
             {
                 var message = $"ERROR: {MethodBase.GetCurrentMethod()?.Name} : Cannot Create Statement for HeaderId : {statementID} as no matching broker found";
@@ -144,18 +144,18 @@ namespace BrokerCommissionWebApp
                 Document doc = new Document();
 
                 //note: use line status to determine paid, pending and already paid
-                /*   var list_paid = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE == 0).OrderBy(x => x.CLIENT_NAME).ToList();
-                   var list_pending = db.STATEMENT_DETAILS.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE != 0).OrderBy(x => x.CLIENT_NAME).ToList();
+                /*   var list_paid = db.Statement_Details.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE == 0).OrderBy(x => x.CLIENT_NAME).ToList();
+                   var list_pending = db.Statement_Details.Where(x => x.HEADER_ID == statementID && x.OPEN_BALANCE != 0).OrderBy(x => x.CLIENT_NAME).ToList();
                 */
                 //todo: added filter for Total price > 0 and pending > 0
-                var list_paid = db.STATEMENT_DETAILS.Where(
+                var list_paid = db.Statement_Details.Where(
                     x => x.HEADER_ID == statementID &&
                     x.line_payment_status == "paid" &&
                     x.TOTAL_PRICE > 0
                     ).OrderBy(x => x.CLIENT_NAME).ThenBy(x => x.QB_FEE)
                     .ToList();
                 //
-                var list_pending = db.STATEMENT_DETAILS.Where
+                var list_pending = db.Statement_Details.Where
                     (x => x.HEADER_ID == statementID && 
                     x.line_payment_status == "pending" && 
                     x.TOTAL_PRICE > 0
@@ -274,7 +274,7 @@ namespace BrokerCommissionWebApp
         public static DataTable dataTable_master(string bid)
         {
             DataTable dt = new DataTable();
-            string queryString = "SELECT BROKER_NAME_1, BROKER_NAME_2, BROKER_NAME_3, BROKER_NAME_4, BROKER_NAME_ID FROM dbo.BROKER_MASTER WHERE ID =" + bid;
+            string queryString = "SELECT BROKER_NAME_1, BROKER_NAME_2, BROKER_NAME_3, BROKER_NAME_4, BROKER_NAME_ID FROM dbo.Broker_Master WHERE ID =" + bid;
             string conn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ToString();
             var table = new DataTable();
             using (SqlConnection sql = new SqlConnection(conn))
@@ -295,7 +295,7 @@ namespace BrokerCommissionWebApp
             DataTable dt = new DataTable();
             //todo: memo added to order by
             //string queryString = "SELECT * FROM [dbo].[COMMISSION_RESULT] WHERE BROKER_ID = " + bid + " ORDER BY QB_CLIENT_NAME, MEMO";
-            string queryString = "SELECT * FROM [dbo].[vw_statement_design_view] WHERE BROKER_ID = " + bid + " ORDER BY QB_CLIENT_NAME, FEE_MEMO";
+            string queryString = "SELECT * FROM [dbo].[vw_statement_design_view] WHERE BROKER_ID = " + bid + " ORDER BY QB_CLIENT_NAME, Fee_Memo";
             string conn = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"].ToString();
             var table = new DataTable();
             using (SqlConnection sql = new SqlConnection(conn))

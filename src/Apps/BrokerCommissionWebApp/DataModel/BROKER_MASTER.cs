@@ -12,12 +12,13 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class BROKER_MASTER
+    public partial class Broker_Master
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BROKER_MASTER()
+        public Broker_Master()
         {
-            this.STATEMENT_DETAILS = new HashSet<STATEMENT_DETAILS>();
+            this.Client_Memo_Broker = new HashSet<Client_Memo_Broker>();
+            this.Statement_Details = new HashSet<Statement_Details>();
         }
     
         public int ID { get; set; }
@@ -49,6 +50,8 @@ namespace BrokerCommissionWebApp.DataModel
         public string created_by { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<STATEMENT_DETAILS> STATEMENT_DETAILS { get; set; }
+        public virtual ICollection<Client_Memo_Broker> Client_Memo_Broker { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Statement_Details> Statement_Details { get; set; }
     }
 }

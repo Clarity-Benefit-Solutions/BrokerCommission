@@ -12,13 +12,13 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class SENT_INVOICE
+    public partial class Sent_Invoice
     {
         public int ID { get; set; }
         public string INVOICE_NUM { get; set; }
         public Nullable<decimal> OPEN_BALANCE { get; set; }
-        public string INVOICE_NUM_FORMATTED { get; set; }
         public decimal COMMISSION_PAID { get; set; }
+        public string INVOICE_NUM_FORMATTED { get; set; }
         public string month { get; set; }
         public int year { get; set; }
         public System.DateTime DATE_PAID { get; set; }

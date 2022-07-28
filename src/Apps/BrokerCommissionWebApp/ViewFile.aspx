@@ -92,7 +92,7 @@
 
                                             <Items>
 
-                                                <%--     <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
+                                                <%--     <dx:LayoutItem Caption="Client NAME" VerticalAlign="Middle">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <dx:ASPxTextBox ID="txt_name" runat="server" Width="100%" Theme="Mulberry">
@@ -105,7 +105,7 @@
                                                     </LayoutItemNestedControlCollection>
                                                 </dx:LayoutItem>--%>
 
-                                                <dx:LayoutItem Caption="CLIENT NAME" VerticalAlign="Middle">
+                                                <dx:LayoutItem Caption="Client NAME" VerticalAlign="Middle">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer>
                                                             <dx:ASPxComboBox runat="server" ID="cmb_client" Theme="Moderno" DisplayMember="CLIENT_NAME" ValueMember="CLIENT_NAME" OnSelectedIndexChanged="cmb_client_OnSelectedIndexChanged" Width="100%">
@@ -262,7 +262,7 @@
 
                                             <CellStyle HorizontalAlign="Left"></CellStyle>
                                         </dx:GridViewDataColumn>
-                                        <dx:GridViewDataColumn Caption="CLIENT NAME" VisibleIndex="1"
+                                        <dx:GridViewDataColumn Caption="Client NAME" VisibleIndex="1"
                                             Width="30%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                             HeaderStyle-Font-Bold="true">
                                             <SettingsHeaderFilter>

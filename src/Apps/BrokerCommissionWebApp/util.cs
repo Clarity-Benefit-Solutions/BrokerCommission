@@ -21,6 +21,8 @@ using CoreUtils.Classes;
 using BrokerCommissionWebApp.DataModel;
 using System.Reflection;
 
+using Import = DataProcessing.Import;
+
 
 //todo: how can we show propgress during postbacks?
 /*
@@ -292,7 +294,7 @@ namespace BrokerCommissionWebApp
             var period = new Period();
             DataTable table = new DataTable();
 
-            string query = "SELECT TOP(1) H.MONTH, H.YEAR FROM [dbo].[STATEMENT_HEADER] AS H ORDER BY FLAG, MONTH";
+            string query = "SELECT TOP(1) H.MONTH, H.YEAR FROM [dbo].[Statement_Header] AS H ORDER BY FLAG, MONTH";
 
             string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"]
                .ConnectionString;
@@ -417,7 +419,7 @@ namespace BrokerCommissionWebApp
                     string broker_name = dr[1].ToString();
                     double amount = Convert.ToDouble(dr[2].ToString());
 
-                    var model = new STATEMENT_HEADER()
+                    var model = new Statement_Header()
                     {
                         BROKER_NAME = broker_name,
                         Change_Date = DateTime.Now,
@@ -429,7 +431,7 @@ namespace BrokerCommissionWebApp
 
                     };
 
-                    db.STATEMENT_HEADER.Add(model);
+                    db.Statement_Header.Add(model);
                     db.SaveChanges();
 
 
@@ -511,7 +513,7 @@ namespace BrokerCommissionWebApp
         {
             string memberID = "";
 
-            string query = " SELECT COUNT(*) AS C FROM [dbo].[STATEMENT_HEADER] WHERE [MONTH] = '" + month + "' AND [YEAR]=" + year + " AND FLAG=3";
+            string query = " SELECT COUNT(*) AS C FROM [dbo].[Statement_Header] WHERE [MONTH] = '" + month + "' AND [YEAR]=" + year + " AND FLAG=3";
             string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"]
                 .ConnectionString;
 
@@ -567,7 +569,7 @@ namespace BrokerCommissionWebApp
         {
             string Address = "";
 
-            var broker_model = db.BROKER_MASTER.Where(x => x.ID == BrokerID).FirstOrDefault();
+            var broker_model = db.Broker_Master.Where(x => x.ID == BrokerID).FirstOrDefault();
 
             if (broker_model != null)
             {
@@ -594,7 +596,7 @@ namespace BrokerCommissionWebApp
         {
             string memberID = "";
 
-            string query = " SELECT COUNT(*) AS C FROM [dbo].[STATEMENT_HEADER] WHERE [MONTH] = '" + month + "' AND [YEAR]=" + year + " AND FLAG!=3";
+            string query = " SELECT COUNT(*) AS C FROM [dbo].[Statement_Header] WHERE [MONTH] = '" + month + "' AND [YEAR]=" + year + " AND FLAG!=3";
             string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"]
                 .ConnectionString;
 
@@ -633,7 +635,7 @@ namespace BrokerCommissionWebApp
         {
             string memberID = "";
 
-            string query = "SELECT TOP (1) [YEAR] FROM [dbo].[STATEMENT_HEADER] ORDER BY FLAG, [MONTH] ";
+            string query = "SELECT TOP (1) [YEAR] FROM [dbo].[Statement_Header] ORDER BY FLAG, [MONTH] ";
             string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"]
                 .ConnectionString;
 
@@ -671,7 +673,7 @@ namespace BrokerCommissionWebApp
         {
             string memberID = "";
 
-            string query = "SELECT TOP (1) [MONTH] FROM [dbo].[STATEMENT_HEADER] ORDER BY FLAG, [MONTH] ";
+            string query = "SELECT TOP (1) [MONTH] FROM [dbo].[Statement_Header] ORDER BY FLAG, [MONTH] ";
             string constr = ConfigurationManager.ConnectionStrings["Broker_CommissionConnectionString"]
                 .ConnectionString;
 
@@ -709,7 +711,7 @@ namespace BrokerCommissionWebApp
         {
             string secondEmail = "";
 
-            var model = db.BROKER_MASTER.Where(x => x.BROKER_NAME == brokerName).FirstOrDefault();
+            var model = db.Broker_Master.Where(x => x.BROKER_NAME == brokerName).FirstOrDefault();
 
             if (model != null)
             {

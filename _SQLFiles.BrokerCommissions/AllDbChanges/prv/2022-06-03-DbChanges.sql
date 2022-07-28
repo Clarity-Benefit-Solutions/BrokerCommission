@@ -34,7 +34,7 @@ as
       , start_date invoice_date
       , 0 [CLIENT_ID]
     FROM
-        [dbo].[STATEMENT_DETAILS_ADD]
+        [dbo].Statement_Details_Add
 go
 
 
@@ -70,7 +70,7 @@ as
               , created_at
               , created_by
             from
-                dbo.STATEMENT_DETAILS
+                dbo.Statement_Details
             where
                   BROKER_STATUS != 'Appended'
               and line_payment_status in ('paid', 'pending')
@@ -103,7 +103,7 @@ as
               , created_by
             
             from
-                dbo.STATEMENT_DETAILS_ADD
+                dbo.Statement_Details_Add
         
         ) t
 go
@@ -129,7 +129,7 @@ BEGIN
     set @month = dbo.format_field( @month );
     
     /*1. update current statement month and year in imported data for archival purposes*/
-    update dbo.Import_OCT
+    update dbo.Import
     set
         statement_year  = @Year,
         statement_month = @Month,
@@ -194,7 +194,7 @@ BEGIN
       , statement_year
       , is_deleted
     from
-        dbo.Import_OCT
+        dbo.Import
     where
           statement_month = @Month
       and statement_year = @Year;
@@ -203,16 +203,16 @@ BEGIN
     -- delete first curent statement details due to FK
     DELETE
     FROM
-        [dbo].[STATEMENT_DETAILS];
+        [dbo].Statement_Details;
     
     -- delete curent statement header
     DELETE
     FROM
-        [dbo].[STATEMENT_HEADER];
+        [dbo].Statement_Header;
     
     /* 4. generate new statements header and details fr om imported data joiniong imported data agent witgh various possible broker names in master */
     -- create distinct statement header
-    INSERT INTO [dbo].[STATEMENT_HEADER]
+    INSERT INTO [dbo].Statement_Header
     (
     [MONTH],
     [YEAR],
@@ -241,7 +241,7 @@ BEGIN
       , RT.PAYLOCITY_ID;
     
     -- create distinct statement details
-    INSERT INTO [dbo].[STATEMENT_DETAILS]
+    INSERT INTO [dbo].Statement_Details
     (
         [HEADER_ID]
     ,   [QB_CLIENT_NAME]
@@ -286,7 +286,7 @@ BEGIN
       , HEADER.MONTH
       , HEADER.YEAR
     FROM
-        [dbo].[STATEMENT_HEADER] AS HEADER
+        [dbo].Statement_Header AS HEADER
             LEFT JOIN [dbo].[COMMISSION_RESULT] AS R ON HEADER.[BROKER_ID] = R.[BROKER_ID]
     WHERE
           month = @Month
@@ -334,7 +334,7 @@ AS
       , BC.[CLIENT_ID]
     FROM
         [dbo].[BROKER_CLIENT] AS BC
-            LEFT JOIN [dbo].[Import_OCT] AS OCT
+            LEFT JOIN [dbo].Import AS OCT
                       ON
                               BC.QB_BROKER_NAME_FORMATTED = oct.Agent_FORMATTED
                               and BC.QB_CLIENT_NAME_FORMATTED = oct.Name_FORMATTED
@@ -623,6 +623,6 @@ AS
       , dbo.get_invoice_sent_total_open_balance( A.Num ) Total_Invoice_Sent_Open_Balance
     FROM
         CTE_RESULT AS A
-            LEFT JOIN [dbo].[SENT_INVOICE] AS B ON RTRIM( LTRIM( A.[Num] ) ) = RTRIM( LTRIM( B.[INVOICE_NUM] ) )
+            LEFT JOIN [dbo].Sent_Invoice AS B ON RTRIM( LTRIM( A.[Num] ) ) = RTRIM( LTRIM( B.[INVOICE_NUM] ) )
 go
 

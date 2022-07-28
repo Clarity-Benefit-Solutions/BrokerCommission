@@ -27,7 +27,7 @@ namespace BrokerCommissionWebApp
             if (Request.QueryString["ID"] != null)
             {
                 int id = int.Parse(Request.QueryString["ID"].ToString());
-                var model = db.CLIENT_.Where(x => x.CLIENT_ID == id).FirstOrDefault();
+                var model = db.Client_.Where(x => x.CLIENT_ID == id).FirstOrDefault();
                 if (model != null)
                 {
                     txt_name.Text = model.CLIENT_NAME;
@@ -49,7 +49,7 @@ namespace BrokerCommissionWebApp
             if (Request.QueryString["ID"] != null)
             {
                 int id = int.Parse(Request.QueryString["ID"].ToString());
-                var model = db.CLIENT_.Where(x => x.CLIENT_ID == id).FirstOrDefault();
+                var model = db.Client_.Where(x => x.CLIENT_ID == id).FirstOrDefault();
                 if (model != null)
                 {
                     model.CLIENT_NAME = txt_name.Text;
@@ -71,7 +71,7 @@ namespace BrokerCommissionWebApp
         {
             decimal rate = 0.0m;
             //decimal.TryParse(txt_rate.Text, out rate);
-            var model = new CLIENT_()
+            var model = new Client_()
             {
                 CLIENT_NAME = txt_name.Text,
                 FEE_MEMO = memo_note.Text,
@@ -80,7 +80,7 @@ namespace BrokerCommissionWebApp
             };
 
 
-            db.CLIENT_.Add(model);
+            db.Client_.Add(model);
             db.SaveChanges();
         }
 
@@ -89,10 +89,10 @@ namespace BrokerCommissionWebApp
             if (Request.QueryString["ID"] != null)
             {
                 int id = int.Parse(Request.QueryString["ID"].ToString());
-                var model = db.CLIENT_.Where(x => x.CLIENT_ID == id).FirstOrDefault();
+                var model = db.Client_.Where(x => x.CLIENT_ID == id).FirstOrDefault();
                 if (model != null)
                 {
-                    db.CLIENT_.Remove(model);
+                    db.Client_.Remove(model);
                     db.SaveChanges();
                 }
             }

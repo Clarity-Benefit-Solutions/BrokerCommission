@@ -52,13 +52,13 @@ namespace BrokerCommissionWebApp
         {
 
 
-            string query = "SELECT [dbo].[STATEMENT_HEADER].[HEADER_ID], [dbo].[STATEMENT_HEADER].[MONTH],[dbo].[STATEMENT_HEADER].[YEAR],[dbo].[STATEMENT_HEADER].[BROKER_NAME],[FLAG],[STATEMENT_TOTAL],[Change_Date],[dbo].[BROKER_MASTER].PAYLOCITY_ID " +
-                     "FROM[dbo].[STATEMENT_HEADER] LEFT JOIN[dbo].[BROKER_MASTER] ON[dbo].[STATEMENT_HEADER].BROKER_ID = [dbo].[BROKER_MASTER].ID";
+            string query = "SELECT [dbo].[Statement_Header].[HEADER_ID], [dbo].[Statement_Header].[MONTH],[dbo].[Statement_Header].[YEAR],[dbo].[Statement_Header].[BROKER_NAME],[FLAG],[STATEMENT_TOTAL],[Change_Date],[dbo].[Broker_Master].PAYLOCITY_ID " +
+                     "FROM[dbo].[Statement_Header] LEFT JOIN[dbo].[Broker_Master] ON[dbo].[Statement_Header].BROKER_ID = [dbo].[Broker_Master].ID";
 
 
             if (cmb_broker.SelectedIndex > 0)
             {
-                query += " WHERE [dbo].[STATEMENT_HEADER].BROKER_NAME = '" + cmb_broker.SelectedItem.Text + "'";
+                query += " WHERE [dbo].[Statement_Header].BROKER_NAME = '" + cmb_broker.SelectedItem.Text + "'";
 
             }
 
@@ -104,7 +104,7 @@ namespace BrokerCommissionWebApp
             if (e.CommandArgs.CommandName == "statement")
             {
                 int headerID = int.Parse(e.CommandArgs.CommandArgument.ToString());
-                var model = db.STATEMENT_HEADER.Where(x => x.HEADER_ID == headerID).FirstOrDefault();
+                var model = db.Statement_Header.Where(x => x.HEADER_ID == headerID).FirstOrDefault();
                 if (model != null)
                 {
                     int brokerID = model.BROKER_ID == null ? 0 : int.Parse(model.BROKER_ID.ToString());
@@ -121,7 +121,7 @@ namespace BrokerCommissionWebApp
                 string month = lbl_month.Text;
                 int year = int.Parse(lbl_year.Text);
                 int bid = int.Parse(e.CommandArgs.CommandArgument.ToString());
-                var model = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID == bid).FirstOrDefault();
+                var model = db.Statement_Header.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID == bid).FirstOrDefault();
 
                 if (model != null)
                 {

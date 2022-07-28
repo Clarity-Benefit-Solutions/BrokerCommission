@@ -63,7 +63,7 @@ namespace BrokerCommissionWebApp
                 // setup statement header list
                 //note: take only those invoices we have not already processed this month and have a pending amount
                 // this can still resend statements duplicate that have only pending amount for the broker for this period
-                var headers = db.STATEMENT_HEADER
+                var headers = db.Statement_Header
                     .Where(
                             /*for current month*/
                             x => x.MONTH == month
@@ -170,7 +170,7 @@ namespace BrokerCommissionWebApp
             Response.Flush();
         }
 
-        protected void sendEmailForStatement(STATEMENT_HEADER header)
+        protected void sendEmailForStatement(Statement_Header header)
         {
             // sumeet use new db context to avoid isolate entities being tracked from other queries
             Broker_CommissionEntities db2 = new Broker_CommissionEntities();
@@ -189,7 +189,7 @@ namespace BrokerCommissionWebApp
 
             // save invoice sent lines
             Dictionary<string, decimal?> invNos = new Dictionary<string, decimal?>();
-            Dictionary<string, STATEMENT_DETAILS> distintLines = new Dictionary<string, STATEMENT_DETAILS>();
+            Dictionary<string, Statement_Details> distintLines = new Dictionary<string, Statement_Details>();
 
             // use a dictionary as Linq.Select seems tio return duplicates
             foreach (var line in pdfGenerationResults.statementLinesAddedToPdf)
@@ -213,7 +213,7 @@ namespace BrokerCommissionWebApp
                         if (statement_dtl.line_payment_status == "paid" && statement_dtl.TOTAL_PRICE > 0)
                         {
                             invNos.Add(statement_dtl.INVOICE_NUM, statement_dtl.TOTAL_PRICE);
-                            var sentInvoice = new SENT_INVOICE()
+                            var sentInvoice = new Sent_Invoice()
                             {
                                 INVOICE_NUM = statement_dtl.INVOICE_NUM,
                                 OPEN_BALANCE = Utils.ToDecimal(statement_dtl.OPEN_BALANCE),
@@ -226,7 +226,7 @@ namespace BrokerCommissionWebApp
                             //ensure we never save zero commission lines - will caujse a UK error when we process for next month!
                             if (sentInvoice.COMMISSION_PAID > 0)
                             {
-                                db2.SENT_INVOICE.Add(sentInvoice);
+                                db2.Sent_Invoice.Add(sentInvoice);
                             }
                         }
                     }

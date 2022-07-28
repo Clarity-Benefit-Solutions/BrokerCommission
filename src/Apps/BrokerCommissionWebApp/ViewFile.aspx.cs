@@ -131,9 +131,9 @@ namespace BrokerCommissionWebApp
 
             //string bid = Request.QueryString["BID"].ToString();
             DataTable datat = ReportHelper.GetCommissionResultForBroker(bid);
-            List<STATEMENT_DETAILS> list = new List<STATEMENT_DETAILS>();
+            List<Statement_Details> list = new List<Statement_Details>();
             list = (from DataRow dr in datat.Rows
-                    select new STATEMENT_DETAILS()
+                    select new Statement_Details()
                     {
                         STATUS = dr["STATUS"].ToString(),
                         QB_CLIENT_NAME = dr["CLIENT_NAME"].ToString(),
@@ -210,12 +210,14 @@ namespace BrokerCommissionWebApp
             {
 
                 List<broker_Import> combine_list = new List<broker_Import>();
-                var list = db.Import_OCT.Where(x => broker_name_list.Contains(x.Agent)).OrderBy(x => x.Name).ToList();
+                var list = db.Imports.Where(x => broker_name_list.Contains(x.Agent)).OrderBy(x => x.Name).ToList();
                 foreach (var item in list)
                 {
                     broker_Import model = new broker_Import();
 
                     string qb_client = item.Name; string qb_memo = item.Memo;
+                    //todo: @Ayo: get client id from UI
+                    int qb_client_id = 1;
                     model.ID = item.ID;
                     model.Name = qb_client;
                     model.Agent = item.Agent;
@@ -223,13 +225,13 @@ namespace BrokerCommissionWebApp
                     model.Sales_Price = item.Sales_Price == null ? 0 : Convert.ToDecimal(item.Sales_Price.ToString());
                     model.Amount = item.Amount == null ? 0 : Convert.ToDecimal(item.Amount.ToString());
                     model.Qty = item.Qty == null ? 0 : int.Parse(item.Qty.ToString());
-                    var client_model = db.CLIENTs.Where(x => x.QB_CLIENT_NAME == qb_client && x.QB_FEE == qb_memo).FirstOrDefault();
+                    var client_model = db.vw_Client_Memo_Broker.Where(x => x.CLIENT_ID == qb_client_id && x.MEMO == qb_memo).FirstOrDefault();
                     if (client_model != null)
                     {
                         model.COMMISSION_RATE = client_model.COMMISSION_RATE == null ? 0 : Convert.ToDecimal(client_model.COMMISSION_RATE);
                         model.UNIT = client_model.UNIT;
-                        model.broker_id = client_model.BROKER_ID == null ? 0 : int.Parse(client_model.BROKER_ID.ToString());
-                        model.START_DATE = client_model.START_DATE;
+                        model.broker_id = int.Parse(client_model.BROKER_ID.ToString());
+                        model.START_DATE = DateTime.Now.ToString(); //client_model.START_DATE;
                         model.exist = true;
                     }
                     else
@@ -255,7 +257,7 @@ namespace BrokerCommissionWebApp
             {
                 string bid = Request.QueryString["BID"].ToString();
                 int brokerID = int.Parse(bid);
-                var model = db.BROKER_MASTER.Where(x => x.ID == brokerID).FirstOrDefault();
+                var model = db.Broker_Master.Where(x => x.ID == brokerID).FirstOrDefault();
                 if (model != null)
                 {
                     string FilePath = util.PDFOutPut
@@ -394,18 +396,17 @@ namespace BrokerCommissionWebApp
                         decimal amount = 0.0m;
                         decimal.TryParse(txt_rate.Text, out amount);
 
-                        CLIENT cl = new CLIENT()
+                        /*ToDo: @Ayo change to save changes to Client_Memo_Broker*/
+                        Client_Memo_Broker cl = new Client_Memo_Broker()
                         {
-                            QB_CLIENT_NAME = lbl_qb_clientName.Text,
-                            CLIENT_NAME = lbl_qb_clientName.Text,
-                            QB_FEE = lbl_QB_FEE.Text,
-                            FEE_MEMO = lbl_QB_FEE.Text,
+                            CLIENT_ID = 1,
+                            MEMO = lbl_QB_FEE.Text,
                             BROKER_ID = bid,
                             COMMISSION_RATE = amount,
                             UNIT = txt_UNIT.Text
                         };
 
-                        db.CLIENTs.Add(cl);
+                        db.Client_Memo_Broker.Add(cl);
                         db.SaveChanges();
                     }
 
@@ -428,18 +429,18 @@ namespace BrokerCommissionWebApp
                 //        decimal amount = 0.0m;
                 //        decimal.TryParse(txt_rate.Text, out amount);
 
-                //        CLIENT cl = new CLIENT()
+                //        Client cl = new Client()
                 //        {
                 //            QB_CLIENT_NAME = lbl_qb_clientName.Text,
                 //            CLIENT_NAME = lbl_qb_clientName.Text,
                 //            QB_FEE = lbl_QB_FEE.Text,
-                //            FEE_MEMO = lbl_QB_FEE.Text,
+                //            Fee_Memo = lbl_QB_FEE.Text,
                 //            BROKER_ID = bid,
                 //            COMMISSION_RATE = amount,
                 //            UNIT = txt_UNIT.Text
                 //        };
 
-                //        db.CLIENTs.Add(cl);
+                //        db.Clients.Add(cl);
                 //        db.SaveChanges();
                 //    }
 
@@ -466,7 +467,7 @@ namespace BrokerCommissionWebApp
 
                 #region email statement
 
-                var model = db.STATEMENT_HEADER.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID == bid).FirstOrDefault();
+                var model = db.Statement_Header.Where(x => x.MONTH == month && x.YEAR == year && x.BROKER_ID == bid).FirstOrDefault();
 
                 if (model != null)
                 {
@@ -498,13 +499,13 @@ namespace BrokerCommissionWebApp
         {
             int detailID = int.Parse(e.CommandArgs.CommandArgument.ToString());
 
-            // if we just added this line, remove it from STATEMENT_DETAILS_ADD
+            // if we just added this line, remove it from Statement_Details_Add
             if (e.CommandArgs.CommandName.ToString() == "delete_new_line")
             {
-                var model = db.STATEMENT_DETAILS_ADD.Where(x => x.DETAIL_ID == detailID).FirstOrDefault();
+                var model = db.Statement_Details_Add.Where(x => x.DETAIL_ID == detailID).FirstOrDefault();
                 if (model != null)
                 {
-                    db.STATEMENT_DETAILS_ADD.Remove(model);
+                    db.Statement_Details_Add.Remove(model);
                     db.SaveChanges();
                 }
                 string bid = Request.QueryString["BID"].ToString();
@@ -514,36 +515,36 @@ namespace BrokerCommissionWebApp
             else if (e.CommandArgs.CommandName.ToString() == "delete_raw_data_line")
             {
                 // wrong code - just have to delete that same line from qbrawdata so that it disapperas from the current statement
-                var dtl = db.STATEMENT_DETAILS.Where(x => x.DETAIL_ID == detailID).FirstOrDefault();
+                var dtl = db.Statement_Details.Where(x => x.DETAIL_ID == detailID).FirstOrDefault();
                 if (dtl != null)
                 {
                     // delete from the statement
-                    List<STATEMENT_DETAILS> dtlRows = db.STATEMENT_DETAILS.Where(x => x.DETAIL_ID == detailID).ToList();
+                    List<Statement_Details> dtlRows = db.Statement_Details.Where(x => x.DETAIL_ID == detailID).ToList();
                     if (dtlRows != null)
                     {
                         foreach (var row in dtlRows)
                         {
-                            db.STATEMENT_DETAILS.Remove(row);
+                            db.Statement_Details.Remove(row);
                         }
                     }
 
                     // delete from the statement_add if present
-                    List<STATEMENT_DETAILS_ADD> dtlAddRows = db.STATEMENT_DETAILS_ADD.Where(x => x.DETAIL_ID == detailID).ToList();
+                    List<Statement_Details_Add> dtlAddRows = db.Statement_Details_Add.Where(x => x.DETAIL_ID == detailID).ToList();
                     if (dtlAddRows != null)
                     {
                         foreach (var row in dtlAddRows)
                         {
-                            db.STATEMENT_DETAILS_ADD.Remove(row);
+                            db.Statement_Details_Add.Remove(row);
                         }
                     }
 
                     // delete from the statement
-                    List<Import_OCT> importRows = db.Import_OCT.Where(x => x.Name_FORMATTED == dtl.QB_CLIENT_NAME && x.NUM_FORMATTED == dtl.INVOICE_NUM && x.memo_FORMATTED == dtl.FEE_MEMO).ToList();
+                    List<Import> importRows = db.Imports.Where(x => x.Name_FORMATTED == dtl.QB_CLIENT_NAME && x.NUM_FORMATTED == dtl.INVOICE_NUM && x.memo_FORMATTED == dtl.FEE_MEMO).ToList();
                     if (importRows != null)
                     {
                         foreach (var row in importRows)
                         {
-                            db.Import_OCT.Remove(row);
+                            db.Imports.Remove(row);
                         }
                     }
 
@@ -572,10 +573,10 @@ namespace BrokerCommissionWebApp
             //if (Request.QueryString["StatementID"] != null)
             if (bid != 0)
             {
-                STATEMENT_HEADER header = db.STATEMENT_HEADER.Where(x => x.BROKER_ID == bid).FirstOrDefault();
+                Statement_Header header = db.Statement_Header.Where(x => x.BROKER_ID == bid).FirstOrDefault();
                 int sid = header != null ? header.HEADER_ID : 0;
 
-                STATEMENT_DETAILS_ADD model = new STATEMENT_DETAILS_ADD()
+                Statement_Details_Add model = new Statement_Details_Add()
                 {
                     HEADER_ID = sid,
                     BROKER_ID = getBrokerID(sid),
@@ -599,7 +600,7 @@ namespace BrokerCommissionWebApp
                     
                 };
 
-                db.STATEMENT_DETAILS_ADD.Add(model);
+                db.Statement_Details_Add.Add(model);
                 db.SaveChanges();
                 LoadEditTable(bid.ToString());
 
@@ -614,7 +615,7 @@ namespace BrokerCommissionWebApp
         protected int getBrokerID(int statementID)
         {
             int id = 0;
-            var statementModel = db.STATEMENT_HEADER.Where(x => x.HEADER_ID == statementID).FirstOrDefault();
+            var statementModel = db.Statement_Header.Where(x => x.HEADER_ID == statementID).FirstOrDefault();
             if (statementModel != null)
             {
                 id = statementModel.BROKER_ID == null ? 0 : int.Parse(statementModel.BROKER_ID.ToString());
@@ -628,7 +629,7 @@ namespace BrokerCommissionWebApp
         protected string getPaylocityID(int brokerID)
         {
             string id = "";
-            var statementModel = db.BROKER_MASTER.Where(x => x.ID == brokerID).FirstOrDefault();
+            var statementModel = db.Broker_Master.Where(x => x.ID == brokerID).FirstOrDefault();
             if (statementModel != null)
             {
                 id = statementModel.PAYLOCITY_ID == null ? "" : statementModel.PAYLOCITY_ID.ToString();
@@ -641,7 +642,7 @@ namespace BrokerCommissionWebApp
         protected string getBRokerStatus(int brokerID)
         {
             string id = "";
-            var statementModel = db.BROKER_MASTER.Where(x => x.ID == brokerID).FirstOrDefault();
+            var statementModel = db.Broker_Master.Where(x => x.ID == brokerID).FirstOrDefault();
             if (statementModel != null)
             {
                 id = statementModel.BROKER_STATUS == null ? "" : statementModel.BROKER_STATUS.ToString();
@@ -654,7 +655,7 @@ namespace BrokerCommissionWebApp
         protected string getBrokerName(int statementID)
         {
             string id = "";
-            var statementModel = db.STATEMENT_HEADER.Where(x => x.HEADER_ID == statementID).FirstOrDefault();
+            var statementModel = db.Statement_Header.Where(x => x.HEADER_ID == statementID).FirstOrDefault();
             if (statementModel != null)
             {
                 id = statementModel.BROKER_NAME == null ? "" : statementModel.BROKER_NAME;

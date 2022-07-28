@@ -159,7 +159,7 @@
                                         <%# Container.ItemIndex + 1 %>
                                     </DataItemTemplate>
                                 </dx:GridViewDataColumn>
-                                <dx:GridViewDataColumn Caption="QB CLIENT NAME" VisibleIndex="1"
+                                <dx:GridViewDataColumn Caption="QB Client NAME" VisibleIndex="1"
                                     Width="30%" HeaderStyle-HorizontalAlign="Center" CellStyle-HorizontalAlign="Left"
                                     HeaderStyle-Font-Bold="true">
                                     <SettingsHeaderFilter>
@@ -197,8 +197,8 @@
                                         <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                     </SettingsHeaderFilter>
                                     <DataItemTemplate>
-                                        <dx:ASPxLabel runat="server" ID="lbl_FEE_MEMO" Text='<%# Eval("FEE_MEMO") %>' Theme="Moderno"/>
-                                       <%-- <dx:ASPxComboBox ID="cmb_FEE_MEMO" runat="server" Value='<%# Bind("FEE_MEMO") %>' Width="100%" Theme="Moderno"
+                                        <dx:ASPxLabel runat="server" ID="lbl_FEE_MEMO" Text='<%# Eval("Fee_Memo") %>' Theme="Moderno"/>
+                                       <%-- <dx:ASPxComboBox ID="cmb_FEE_MEMO" runat="server" Value='<%# Bind("Fee_Memo") %>' Width="100%" Theme="Moderno"
                                             OnInit="sMEMO_Init">
                                             <ClearButton DisplayMode="Never" ToolTip="Please Select a STATEMENT Memo">
                                             </ClearButton>
@@ -267,7 +267,7 @@
                             <Items>
                                 <dx:LayoutGroup Width="100%" ColCount="3" ShowCaption="False">
                                     <Items>
-                                        <dx:LayoutItem Caption="QB CLIENT NAME" VerticalAlign="Middle">
+                                        <dx:LayoutItem Caption="QB Client NAME" VerticalAlign="Middle">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer>
                                                     <dx:ASPxComboBox runat="server" ID="cmb_qb_client" Theme="Moderno" Width="100%">
@@ -360,7 +360,7 @@
     </dx:ASPxFormLayout>
 
 
-    <%--<asp:SqlDataSource ID="D_clint" runat="server" ConnectionString="<%$ ConnectionStrings:Broker_CommissionConnectionString %>" SelectCommand="SELECT DISTINCT [CLIENT_NAME] FROM [CLIENT_] ORDER BY [CLIENT_NAME]"></asp:SqlDataSource>
+    <%--<asp:SqlDataSource ID="D_clint" runat="server" ConnectionString="<%$ ConnectionStrings:Broker_CommissionConnectionString %>" SelectCommand="SELECT DISTINCT [CLIENT_NAME] FROM [Client_] ORDER BY [CLIENT_NAME]"></asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="D_memo" runat="server" ConnectionString="<%$ ConnectionStrings:Broker_CommissionConnectionString %>" SelectCommand="SELECT DISTINCT [MEMO] FROM [dbo].[FEE_MEMO] ORDER BY [MEMO]"></asp:SqlDataSource>--%>
+    <asp:SqlDataSource ID="D_memo" runat="server" ConnectionString="<%$ ConnectionStrings:Broker_CommissionConnectionString %>" SelectCommand="SELECT DISTINCT [MEMO] FROM [dbo].[Fee_Memo] ORDER BY [MEMO]"></asp:SqlDataSource>--%>
 </asp:Content>

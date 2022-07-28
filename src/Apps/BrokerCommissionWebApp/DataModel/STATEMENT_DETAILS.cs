@@ -12,7 +12,7 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class STATEMENT_DETAILS
+    public partial class Statement_Details
     {
         public int DETAIL_ID { get; set; }
         public int HEADER_ID { get; set; }
@@ -38,8 +38,9 @@ namespace BrokerCommissionWebApp.DataModel
         public string line_payment_status { get; set; }
         public System.DateTime created_at { get; set; }
         public string created_by { get; set; }
+        public Nullable<int> new_column { get; set; }
     
-        public virtual BROKER_MASTER BROKER_MASTER { get; set; }
-        public virtual STATEMENT_HEADER STATEMENT_HEADER { get; set; }
+        public virtual Statement_Header Statement_Header { get; set; }
+        public virtual Broker_Master Broker_Master { get; set; }
     }
 }

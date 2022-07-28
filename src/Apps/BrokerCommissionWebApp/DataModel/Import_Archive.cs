@@ -22,7 +22,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string Name { get; set; }
         public string Memo { get; set; }
         public string Agent { get; set; }
-        public Nullable<int> Qty { get; set; }
+        public Nullable<decimal> Qty { get; set; }
         public Nullable<decimal> Sales_Price { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public Nullable<decimal> Open_Balance { get; set; }
@@ -30,7 +30,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string memo_FORMATTED { get; set; }
         public string Agent_FORMATTED { get; set; }
         public string Name_FORMATTED { get; set; }
-        public Nullable<System.DateTime> created_at { get; set; }
+        public System.DateTime created_at { get; set; }
         public string statement_month { get; set; }
         public string statement_year { get; set; }
         public int is_deleted { get; set; }
