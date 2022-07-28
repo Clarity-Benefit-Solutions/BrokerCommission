@@ -47,8 +47,7 @@
                         <BorderBottom BorderWidth="1px" />
                         <%-- DXCOMMENT: Configure ASPxGridView's columns in accordance with datasource fields --%>
                         <Columns>
-                            <dx:GridViewDataTextColumn FieldName="ID" VisibleIndex="0" FixedStyle="Left" Caption="Memo ID" Width="10%">
-                            </dx:GridViewDataTextColumn>
+                           
                             <dx:GridViewDataTextColumn FieldName="MEMO" VisibleIndex="1" FixedStyle="Left" Width="55%" >
                             </dx:GridViewDataTextColumn>
 
