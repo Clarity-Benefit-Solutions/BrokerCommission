@@ -63,8 +63,8 @@ namespace BrokerCommissionWebApp
             if (e.CommandArgs.CommandName == "Edit")
             {
                 string id = e.CommandArgs.CommandArgument.ToString();
-                string url = "feetype_add.aspx?ID=" + id;
-                Response.Redirect(url);
+                string url = "feetype_add.aspx?MEMO=" + id;
+                Response.Redirect(url, false);
 
             }
         }

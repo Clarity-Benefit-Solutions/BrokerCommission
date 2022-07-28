@@ -25,7 +25,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string EMAIL { get; set; }
         public string QB_CLIENT_NAME { get; set; }
         public string QB_CLIENT_NAME_FORMATTED { get; set; }
-        public string FEE_MEMO { get; set; }
+        public string MEMO { get; set; }
         public Nullable<decimal> COMMISSION_RATE { get; set; }
         public string UNIT { get; set; }
         public string PAYLOCITY_ID { get; set; }
@@ -43,7 +43,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string BROKER_NAME_4_FORMATTED { get; set; }
         public string BROKER_NAME_5_FORMATTED { get; set; }
         public string BROKER_NAME_6_FORMATTED { get; set; }
-        public string START_DATE { get; set; }
+        public Nullable<System.DateTime> START_DATE { get; set; }
         public Nullable<int> CLIENT_ID { get; set; }
     }
 }

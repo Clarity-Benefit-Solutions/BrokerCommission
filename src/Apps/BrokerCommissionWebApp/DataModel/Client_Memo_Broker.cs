@@ -24,6 +24,7 @@ namespace BrokerCommissionWebApp.DataModel
         public Nullable<System.DateTime> START_DATE { get; set; }
         public System.DateTime created_at { get; set; }
         public string created_by { get; set; }
+        public string MEMO_FORMATTED { get; set; }
     
         public virtual Broker_Master Broker_Master { get; set; }
         public virtual Client Client { get; set; }

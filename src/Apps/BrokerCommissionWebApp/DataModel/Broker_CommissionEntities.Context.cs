@@ -49,13 +49,7 @@ namespace BrokerCommissionWebApp.DataModel
         public virtual DbSet<Broker_Group> Broker_Group { get; set; }
         public virtual DbSet<Client_Memo_Broker> Client_Memo_Broker { get; set; }
         public virtual DbSet<BROKER_CLIENT> BROKER_CLIENT { get; set; }
-        public virtual DbSet<COMMISSION_RESULT_NAME0> COMMISSION_RESULT_NAME0 { get; set; }
-        public virtual DbSet<COMMISSION_RESULT_NAME1> COMMISSION_RESULT_NAME1 { get; set; }
-        public virtual DbSet<COMMISSION_RESULT_NAME2> COMMISSION_RESULT_NAME2 { get; set; }
-        public virtual DbSet<COMMISSION_RESULT_NAME3> COMMISSION_RESULT_NAME3 { get; set; }
-        public virtual DbSet<COMMISSION_RESULT_NAME4> COMMISSION_RESULT_NAME4 { get; set; }
-        public virtual DbSet<COMMISSION_RESULT_NAME5> COMMISSION_RESULT_NAME5 { get; set; }
-        public virtual DbSet<COMMISSION_RESULT_NAME6> COMMISSION_RESULT_NAME6 { get; set; }
+        public virtual DbSet<COMMISSION_RESULT_NAME_NEW> COMMISSION_RESULT_NAME_NEW { get; set; }
         public virtual DbSet<DASH_BOARD> DASH_BOARD { get; set; }
         public virtual DbSet<vw_Client_Memo_Broker> vw_Client_Memo_Broker { get; set; }
         public virtual DbSet<vw_statement_design_view> vw_statement_design_view { get; set; }

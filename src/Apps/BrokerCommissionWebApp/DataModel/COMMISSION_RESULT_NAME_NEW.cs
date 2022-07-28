@@ -12,7 +12,7 @@ namespace BrokerCommissionWebApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class COMMISSION_RESULT_NAME2
+    public partial class COMMISSION_RESULT_NAME_NEW
     {
         public Nullable<int> ID { get; set; }
         public string BROKER_NAME { get; set; }
@@ -22,7 +22,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string QB_CLIENT { get; set; }
         public string QB_FEE { get; set; }
         public string MEMO { get; set; }
-        public Nullable<int> Qty { get; set; }
+        public Nullable<decimal> Qty { get; set; }
         public Nullable<decimal> Sales_Price { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public Nullable<decimal> Open_Balance { get; set; }
@@ -36,7 +36,7 @@ namespace BrokerCommissionWebApp.DataModel
         public int BROKER_ID { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public string PAYLOCITY_ID { get; set; }
-        public string START_DATE { get; set; }
+        public Nullable<System.DateTime> START_DATE { get; set; }
         public string Num { get; set; }
         public Nullable<System.DateTime> INVOICE_DATE { get; set; }
         public Nullable<int> CLIENT_ID { get; set; }

@@ -40,7 +40,7 @@ namespace BrokerCommissionWebApp.DataModel
         public string created_by { get; set; }
         public Nullable<int> new_column { get; set; }
     
-        public virtual Statement_Header Statement_Header { get; set; }
         public virtual Broker_Master Broker_Master { get; set; }
+        public virtual Statement_Header Statement_Header { get; set; }
     }
 }

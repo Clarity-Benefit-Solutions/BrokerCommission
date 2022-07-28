@@ -37,7 +37,7 @@
                     
                  
            <dx:ASPxGridView ID="grid_feetype" runat="server" AutoGenerateColumns="False" OnPageIndexChanged="grid_broker_OnPageIndexChanged"
-                                     OnRowCommand="grid_broker_OnRowCommand" Theme="Moderno" KeyFieldName="ID"
+                                     OnRowCommand="grid_broker_OnRowCommand" Theme="Moderno" KeyFieldName="MEMO"
                                      Width="100%">
                         <%--  <SettingsAdaptivity AdaptivityMode="HideDataCells" />--%>
                         <Settings   VerticalScrollableHeight="520" VerticalScrollBarMode="Auto" />
@@ -66,7 +66,7 @@
                                     <DateRangePickerSettings EditFormatString=""></DateRangePickerSettings>
                                 </SettingsHeaderFilter>
                                 <DataItemTemplate>
-                                    <dx:ASPxButton runat="server" ID="btn_edit" Text="Edit" Theme="Mulberry" CommandName="Edit" CommandArgument='<%# Eval("ID") %>'></dx:ASPxButton>
+                                    <dx:ASPxButton runat="server" ID="btn_edit" Text="Edit" Theme="Mulberry" CommandName="Edit" CommandArgument='<%# Eval("MEMO") %>'></dx:ASPxButton>
                                 </DataItemTemplate>
                             </dx:GridViewDataColumn>
                         </Columns>

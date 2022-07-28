@@ -313,25 +313,7 @@
     <Compile Include="DataModel\Client_Prv.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\COMMISSION_RESULT_NAME0.cs">
-      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\COMMISSION_RESULT_NAME1.cs">
-      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\COMMISSION_RESULT_NAME2.cs">
-      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\COMMISSION_RESULT_NAME3.cs">
-      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\COMMISSION_RESULT_NAME4.cs">
-      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\COMMISSION_RESULT_NAME5.cs">
-      <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataModel\COMMISSION_RESULT_NAME6.cs">
+    <Compile Include="DataModel\COMMISSION_RESULT_NAME_NEW.cs">
       <DependentUpon>Broker_CommissionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\DASH_BOARD.cs">
